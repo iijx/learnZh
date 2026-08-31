@@ -1,11 +1,13 @@
 // services/tts.js —— 语音播报抽象层
 //
-// 当前方案：本地 TTS 音频（USE_LOCAL_AUDIO = true）。
-//   音频由 tools/gen-audio.js 用本地 Fish Speech 批量生成，存 assets/audio/，
+// 当前方案：预合成 TTS 音频（USE_LOCAL_AUDIO = true）。
+//   音频由 ../audio-pipeline/（豆包 TTS → 腾讯云 COS）批量生成，
 //   已生成的 key 登记在 data/audio-manifest.js（每次生成后自动重写）。
-//   speak() 会先用 opts.audioKey、再用「文本 → key」自动映射（_textKeyMap）找本地音频；
+//   音频位置由 services/audio-config.js 的 BASE 一处决定：
+//   本地打包 '/assets/audio/'，或 CDN 'https://…/course/v1/audio/'。
+//   speak() 会先用 opts.audioKey、再用「文本 → key」自动映射（_textKeyMap）找音频；
 //   找不到对应音频的文本走占位实现（播静音 + 按字数估算时长），流程不受影响。
-//   若音频托管 CDN，把 _audioSrcFor 返回 https URL，配合 wx.downloadFile 本地缓存。
+//   CDN 音频首次播放时下载到用户本地缓存（老人流量敏感，见 tools/README.md 第 1 节）。
 //
 // 备选方案：微信同声传译插件（实时合成）——把 USE_WECHAT_SI 置 true，并在 app.json 注册插件：
 //   "plugins": { "WechatSI": { "version": "0.3.6", "provider": "wx069ba97219f66d99" } }
@@ -15,6 +17,7 @@ var USE_WECHAT_SI = false;
 var USE_LOCAL_AUDIO = true;
 
 var storage = require('./storage.js');
+var audioConfig = require('./audio-config.js');
 var audioManifest = require('../data/audio-manifest.js');
 var charsData = require('../data/chars.js');
 
@@ -57,9 +60,12 @@ function _getTextKeyMap() {
   return _textKeyMap;
 }
 
-// 真实 TTS 音频按 key 取路径；不在清单内（尚未生成）返回 null
+// 音频按 key 取播放地址：清单命中后由 audio-config.js 决定本地路径还是 CDN URL；
+// 不在清单内（尚未生成）返回 null
 function _audioSrcFor(audioKey) {
-  return USE_LOCAL_AUDIO && audioKey ? audioManifest.path(audioKey) : null;
+  if (!USE_LOCAL_AUDIO || !audioKey) return null;
+  if (!audioManifest.has(audioKey)) return null;
+  return audioConfig.BASE + audioKey + '.mp3';
 }
 
 // 当前语速（读设置项，'slow' / 'normal'）
@@ -100,6 +106,45 @@ function _getCtx() {
   return _ctx;
 }
 
+// ===== CDN 音频本地缓存 =====
+// 缓存目录 USER_DATA_PATH/audio/<key>.mp3；同 key 并发只下一次，失败退化为直接播远程地址
+var _pendingDownloads = {};
+var _fs = null;
+
+function _getFs() {
+  if (!_fs && hasWx) _fs = wx.getFileSystemManager();
+  return _fs;
+}
+
+function _localFileFor(audioKey) {
+  return (wx.env.USER_DATA_PATH || '') + '/audio/' + audioKey + '.mp3';
+}
+
+function _ensureLocalAudio(src, audioKey) {
+  var file = _localFileFor(audioKey);
+  return new Promise(function (resolve) {
+    var fs = _getFs();
+    if (!fs) return resolve(src);
+    try { fs.accessSync(file); return resolve(file); } catch (e) {}
+    if (!_pendingDownloads[audioKey]) {
+      _pendingDownloads[audioKey] = new Promise(function (res2) {
+        wx.downloadFile({
+          url: src,
+          success: function (res) {
+            delete _pendingDownloads[audioKey];
+            if (res.statusCode === 200) {
+              try { fs.saveFileSync(res.tempFilePath, file); return res2(file); } catch (e) {}
+            }
+            res2(src);
+          },
+          fail: function () { delete _pendingDownloads[audioKey]; res2(src); }
+        });
+      });
+    }
+    _pendingDownloads[audioKey].then(resolve, function () { resolve(src); });
+  });
+}
+
 // 停当前这一条（不动队列）：speak 开播前清场用
 function _stopCurrent() {
   if (_timer) { clearTimeout(_timer); _timer = null; }
@@ -126,8 +171,28 @@ var tts = {
     var done = opts.onDone;
     var ctx = _getCtx();
     if (ctx) {
-      ctx.src = src || SILENCE_SRC;
       ctx.stop();
+      if (src && /^https?:\/\//.test(src)) {
+        // CDN 音频：先取本地缓存，未缓存则下载后播放（老人流量敏感，见 tools/README.md 第 1 节）
+        _realDone = done || null;
+        var remoteMs = _estimateMs(text, rate) * 2 + 8000;  // 比本地多预留下载时间
+        _timer = setTimeout(function () {
+          _timer = null;
+          if (_realDone) {
+            var d1 = _realDone;
+            _realDone = null;
+            if (ctx) ctx.stop();
+            if (d1) d1();
+          }
+        }, remoteMs);
+        _ensureLocalAudio(src, audioKey).then(function (local) {
+          if (done && _realDone !== done) return;  // 已被停止或新播放顶掉
+          ctx.src = local;
+          ctx.play();
+        });
+        return remoteMs;
+      }
+      ctx.src = src || SILENCE_SRC;
       if (src) {
         // 真实音频：onEnded 回调触发 onDone；这里只设兜底超时（估算时长 2 倍 + 3s）
         _realDone = done || null;

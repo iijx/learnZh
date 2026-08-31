@@ -1,0 +1,32 @@
+{
+  "_说明": "复制本文件为 config.json 并填入真实凭证（config.json 已被 .gitignore 忽略，勿提交）。凭证也可改用环境变量注入（见 .env.example），环境变量优先级最高，CI 场景推荐。",
+  "doubao": {
+    "_说明": "豆包 TTS（火山引擎语音技术 → 大模型语音合成）。新版控制台发单个 API Key；旧版用 AppID + AccessToken，两者填一种即可（apiKey 优先）。",
+    "apiKey": "",
+    "appId": "",
+    "accessToken": "",
+    "resourceId": "seed-tts-2.0",
+    "voice": "zh_female_wenroumama_uranus_bigtts",
+    "speechRate": -10,
+    "sampleRate": 24000,
+    "format": "mp3",
+    "uid": "learnzh-pipeline",
+    "timeoutMs": 60000
+  },
+  "cos": {
+    "_说明": "腾讯云 COS。建议用子账号密钥并只授权目标桶 prefix 的 PutObject/HeadObject 权限。region 必须与桶所在地一致；publicBaseUrl 用于生成可直读的公开地址（小程序端 services/audio-config.js 也填这个域名）。",
+    "secretId": "",
+    "secretKey": "",
+    "bucket": "",
+    "region": "ap-guangzhou",
+    "prefix": "course/v1/audio",
+    "publicBaseUrl": ""
+  },
+  "run": {
+    "_说明": "concurrency：合成并发数（豆包有 QPS 限制，建议 ≤4）。retries：单条失败重试次数（指数退避）。rate：默认语速档（PRD 要求慢一档）。",
+    "concurrency": 4,
+    "retries": 2,
+    "rate": "slow",
+    "rateMap": { "slow": -10, "normal": 0 }
+  }
+}

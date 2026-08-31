@@ -7,13 +7,18 @@
 - 命名规范：`audio/<key>.mp3`，key 规则：
   - 单字读音：`audio/的.mp3`、`audio/一.mp3`（key 就是字本身）
   - 讲解/组词/例句等长文本：建议 `audio/explain_的.mp3`、`audio/sentence_的.mp3`
-- 生成方式：用自有 TTS 管线离线批量合成（500 字 × 字音+讲解+组词+例句 ≈ 3000+ 条，见 PRD 6.2），
-  音色选亲和的中老年男声/女声，语速调慢一档。
-- 代码侧改动：打开 `services/tts.js`，把 `USE_LOCAL_AUDIO` 置为 `true`，
-  并按上面的命名规范实现 `_audioSrcFor(audioKey)`（已预留）。
+- 生成方式：`../audio-pipeline/`（豆包 TTS → 腾讯云 COS，用法见该目录 README）。
+  `node index.js` 生成本地 mp3 并自动重写 `data/audio-manifest.js`；
+  `--skip-upload` 只出本地，`--remote-only` 只传 COS。
+  全量 500 字 × 字音+讲解+组词+例句 ≈ 3000+ 条（见 PRD 6.2），
+  音色选亲和的中老年女声，语速调慢一档（管线默认 slow 档）。
+  （旧工具 `tools/gen-audio.js` 用本地 Fish Speech，已由管线取代，保留备用。）
+- 代码侧改动（已就绪）：`services/tts.js` 的 `USE_LOCAL_AUDIO` 置为 `true`，
+  音频位置由 `services/audio-config.js` 的 `BASE` 一处决定：
+  - 本地打包：保持默认 `'/assets/audio/'`；
+  - 若音频放 CDN：`BASE` 填 `https://<CDN>/course/v1/audio/<key>.mp3` 的目录前缀，
+    `tts.js` 会用 `wx.downloadFile` 做本地缓存（老人多为流量敏感用户）。
   调用处传 `tts.speak(text, { audioKey: '的' })` 即可。
-- 若音频放 CDN：把 `_audioSrcFor` 返回 `https://<CDN>/course/v1/audio/<key>.mp3`，
-  并配合 `wx.downloadFile` 做本地缓存（老人多为流量敏感用户）。
 - `silence.mp3` 是占位静音，正式接入真实 TTS 后可删除。
 
 ## 2. AI 插画（替换 assets/img/placeholder-<字>.svg）
