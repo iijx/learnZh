@@ -1,0 +1,60 @@
+/* components/char-card/char-card.wxss —— 听音选字卡片组
+   2×2 网格、每卡 ≥280rpx 见方、字 ≥160rpx、暖色系 */
+
+.cc-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 640rpx;
+  margin: 0 auto;
+}
+
+.cc-card {
+  box-sizing: border-box;
+  width: 300rpx;
+  height: 300rpx;
+  margin: 16rpx 0;
+  background: var(--color-bg-card);
+  border: 6rpx solid var(--color-line);
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.cc-hover {
+  opacity: 0.85;
+}
+
+.cc-char {
+  font-size: 170rpx;
+  font-weight: bold;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+/* 答对：墨绿底 + 轻微放大 */
+.cc-correct {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.cc-correct .cc-char {
+  color: #FFF8E7;
+}
+
+/* 答错：砖红描边 + 抖动（不出现任何 × 符号） */
+.cc-wrong {
+  border-color: var(--color-warn);
+  animation: cc-shake 0.4s ease;
+}
+
+@keyframes cc-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-14rpx); }
+  40% { transform: translateX(14rpx); }
+  60% { transform: translateX(-10rpx); }
+  80% { transform: translateX(10rpx); }
+}

@@ -1,0 +1,53 @@
+// data/audio-manifest.js —— 已生成的本地语音清单（tools/gen-audio.js 每次运行后自动重写）
+// key 规则：单字读音 <字>；讲解 explain_<字>；组词 word_<字>_<i>；例句 sentence_<字>
+var KEYS = [
+  "explain_一",
+  "explain_了",
+  "explain_人",
+  "explain_在",
+  "explain_我",
+  "explain_是",
+  "explain_的",
+  "sentence_一",
+  "sentence_了",
+  "sentence_人",
+  "sentence_在",
+  "sentence_我",
+  "sentence_是",
+  "sentence_的",
+  "word_一_0",
+  "word_一_1",
+  "word_一_2",
+  "word_了_0",
+  "word_了_1",
+  "word_了_2",
+  "word_人_0",
+  "word_人_1",
+  "word_人_2",
+  "word_在_0",
+  "word_在_1",
+  "word_在_2",
+  "word_我_0",
+  "word_我_1",
+  "word_我_2",
+  "word_是_0",
+  "word_是_1",
+  "word_是_2",
+  "word_的_0",
+  "word_的_1",
+  "word_的_2",
+  "一",
+  "了",
+  "人",
+  "他",
+  "在",
+  "我",
+  "是",
+  "的"
+];
+
+module.exports = {
+  has: function (key) { return KEYS.indexOf(key) !== -1; },
+  path: function (key) { return this.has(key) ? '/assets/audio/' + key + '.mp3' : null; },
+  keys: KEYS
+};

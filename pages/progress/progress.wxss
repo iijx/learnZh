@@ -1,0 +1,93 @@
+/* pages/progress/progress.wxss —— 我的进度（大字页） */
+.page {
+  padding: 24rpx 24rpx 60rpx;
+}
+
+.stat-label {
+  font-size: 44rpx;
+  text-align: center;
+  color: var(--color-text-light);
+  margin-top: 24rpx;
+}
+
+/* 已学字数：≥160rpx 超大数字 */
+.stat-big {
+  font-size: 200rpx;
+  font-weight: bold;
+  text-align: center;
+  color: var(--color-accent);
+  line-height: 1.2;
+}
+
+.stat-unit {
+  font-size: 56rpx;
+  margin-left: 12rpx;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-around;
+  margin: 32rpx 0 16rpx;
+}
+
+.stat-item {
+  background: var(--color-bg-card);
+  border-radius: 24rpx;
+  border: 4rpx solid var(--color-line);
+  padding: 32rpx 48rpx;
+  min-width: 260rpx;
+}
+
+.stat-num {
+  font-size: 88rpx;
+  font-weight: bold;
+  text-align: center;
+}
+
+.group-title {
+  font-size: 52rpx;
+  font-weight: bold;
+  margin: 40rpx 8rpx 8rpx;
+}
+
+.ms-group-name {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: var(--color-text-light);
+  margin: 24rpx 8rpx 4rpx;
+}
+
+.ms-item {
+  background: var(--color-bg-card);
+  border-radius: 24rpx;
+  border: 4rpx solid var(--color-line);
+  padding: 24rpx 40rpx;
+  margin: 12rpx 8rpx;
+}
+
+.ms-open:active {
+  background: var(--color-line);
+}
+
+.ms-locked {
+  opacity: 0.45;
+}
+
+.ms-title {
+  font-size: 44rpx;
+  font-weight: bold;
+}
+
+.ms-status {
+  font-size: 36rpx;
+  color: var(--color-text-light);
+  margin-top: 4rpx;
+}
+
+.ms-status-open {
+  color: var(--color-accent);
+}
+
+.btn-gap {
+  height: 40rpx;
+}

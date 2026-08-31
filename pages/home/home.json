@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "爸妈识字课",
+  "usingComponents": {
+    "big-button": "/components/big-button/big-button"
+  }
+}

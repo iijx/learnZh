@@ -1,0 +1,57 @@
+/* pages/home/home.wxss —— 首页布局（适老化：大目标、大字号、暖色） */
+
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 32rpx;
+}
+
+/* 顶部：问候语 + 右上角设置入口（仍 ≥120rpx 高、≥40rpx 字） */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.greeting {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+.settings-entry {
+  min-width: 160rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: var(--color-accent);
+  background: var(--color-bg-card);
+  border: 4rpx solid var(--color-accent);
+  border-radius: 24rpx;
+}
+.settings-entry-hover {
+  opacity: 0.85;
+}
+
+/* 主按钮容器：约 1/3 屏高，按钮撑满（ext-class 穿透组件样式） */
+.main-btn-wrap {
+  height: 33vh;
+  margin-top: 48rpx;
+  display: flex;
+  align-items: stretch;
+}
+.main-btn-wrap big-button {
+  flex: 1;
+  display: flex;
+}
+.home-start-btn {
+  width: 100% !important;
+  height: 100%;
+  margin: 0 !important;
+}
+
+/* 三个次级入口 */
+.sub-entries {
+  margin-top: 40rpx;
+}

@@ -1,0 +1,17 @@
+<!-- pages/home/home.wxml —— 首页：大字问候 + 主按钮（约 1/3 屏高）+ 次级入口 -->
+<view class="page {{fontClass}}">
+  <view class="top-bar">
+    <view class="greeting">{{greeting}}！</view>
+    <view class="settings-entry" hover-class="settings-entry-hover" bindtap="goSettings">设置</view>
+  </view>
+
+  <view class="main-btn-wrap">
+    <big-button ext-class="home-start-btn" text="开始学习" subText="点这里，开始今天的课" type="primary" bind:tap="onStart" />
+  </view>
+
+  <view class="sub-entries">
+    <big-button text="写名字" type="plain" bind:tap="goWriteName" />
+    <big-button text="场景课" type="plain" bind:tap="goScene" />
+    <big-button text="我的进度" type="plain" bind:tap="goProgress" />
+  </view>
+</view>

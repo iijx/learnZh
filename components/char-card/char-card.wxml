@@ -1,0 +1,14 @@
+<!-- components/char-card/char-card.wxml —— 听音选字 2×2 卡片组
+     适老化：卡片 ≥280rpx 见方、字 ≥160rpx；答错只抖动不显示 × -->
+<view class="cc-grid">
+  <view
+    wx:for="{{options}}"
+    wx:key="index"
+    class="cc-card {{item === answer && result === 'correct' ? 'cc-correct' : ''}} {{wrongChar === item ? 'cc-wrong' : ''}}"
+    hover-class="cc-hover"
+    data-index="{{index}}"
+    bindtap="onCardTap"
+  >
+    <text class="cc-char">{{item}}</text>
+  </view>
+</view>

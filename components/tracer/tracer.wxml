@@ -1,0 +1,14 @@
+<!-- components/tracer/tracer.wxml —— 描红画布
+     米字格背景 + canvas 2d（底字 / 笔顺动画 / 手指描红都画在这一层） -->
+<view class="tracer" style="width: {{size}}rpx; height: {{size}}rpx;">
+  <canvas
+    type="2d"
+    id="traceCanvas"
+    class="tracer-canvas"
+    style="width: {{size}}rpx; height: {{size}}rpx;"
+    disable-scroll="{{true}}"
+    bindtouchstart="onTouchStart"
+    bindtouchmove="onTouchMove"
+    bindtouchend="onTouchEnd"
+  ></canvas>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "设置",
+  "usingComponents": {
+    "big-button": "/components/big-button/big-button",
+    "speaker": "/components/speaker/speaker"
+  }
+}

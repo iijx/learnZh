@@ -1,0 +1,34 @@
+<view class="page">
+  <speaker id="speaker" />
+
+  <view class="page-title">帮爸妈设置</view>
+  <view class="for-kids">这页是给子女看的</view>
+
+  <view class="step">
+    <view class="step-num">1</view>
+    <view class="step-body">
+      <view class="step-title">点右上角「···」</view>
+      <view class="step-desc">在这个页面的右上角，有一个三个小点的按钮，点它一下。</view>
+    </view>
+  </view>
+
+  <view class="step">
+    <view class="step-num">2</view>
+    <view class="step-body">
+      <view class="step-title">选「添加到我的小程序」</view>
+      <view class="step-desc">在弹出的菜单里点「添加到我的小程序」，以后爸妈打开微信就能找到，不用再扫。</view>
+    </view>
+  </view>
+
+  <view class="step">
+    <view class="step-num">3</view>
+    <view class="step-body">
+      <view class="step-title">把手机给爸妈，点「开始学习」</view>
+      <view class="step-desc">把手机交到爸妈手里，告诉他们：点中间那个最大的按钮就行，别的都不用管。</view>
+    </view>
+  </view>
+
+  <view class="tip">以后每天打开学 5 分钟，坚持下来就能认识 500 个常用字。</view>
+
+  <big-button text="我都设置好了" bind:tap="onDone" />
+</view>

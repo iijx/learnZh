@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/learn/learn",
+    "pages/scene/scene",
+    "pages/milestone/milestone",
+    "pages/write-name/write-name",
+    "pages/progress/progress",
+    "pages/settings/settings",
+    "pages/guide/guide"
+  ],
+  "window": {
+    "backgroundColor": "#FAF0DC",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#4A3428",
+    "navigationBarTitleText": "爸妈识字课",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

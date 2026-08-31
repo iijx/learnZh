@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "里程碑课",
+  "usingComponents": {
+    "big-button": "/components/big-button/big-button",
+    "speaker": "/components/speaker/speaker"
+  }
+}

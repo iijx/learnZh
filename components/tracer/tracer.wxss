@@ -1,0 +1,24 @@
+/* components/tracer/tracer.wxss —— 描红画布
+   米字格用浅棕虚线渐变拼出，暖色系，无任何蓝紫灰 */
+
+.tracer {
+  position: relative;
+  margin: 0 auto;
+  background:
+    /* 对角虚线（两条对角线） */
+    linear-gradient(to top right, transparent 49.4%, var(--color-line) 49.4%, var(--color-line) 50.6%, transparent 50.6%),
+    linear-gradient(to bottom right, transparent 49.4%, var(--color-line) 49.4%, var(--color-line) 50.6%, transparent 50.6%),
+    /* 十字中线 */
+    linear-gradient(to right, transparent 49.4%, var(--color-line) 49.4%, var(--color-line) 50.6%, transparent 50.6%),
+    linear-gradient(to bottom, transparent 49.4%, var(--color-line) 49.4%, var(--color-line) 50.6%, transparent 50.6%),
+    var(--color-bg-card);
+  border: 4rpx solid var(--color-text-light);
+  border-radius: 24rpx;
+  box-sizing: border-box;
+}
+
+.tracer-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}

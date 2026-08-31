@@ -1,0 +1,4 @@
+{
+  "desc": "爸妈识字课页面配置",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

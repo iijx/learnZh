@@ -1,0 +1,36 @@
+<view class="page {{fontClass}}">
+  <speaker id="speaker" />
+
+  <!-- 超大字：已学字数 -->
+  <view class="stat-label">我已经认识的字</view>
+  <view class="stat-big">{{learnedCount}}<text class="stat-unit">个</text></view>
+
+  <view class="stat-row">
+    <view class="stat-item">
+      <view class="stat-num">{{streak}}</view>
+      <view class="stat-label">连续学习（天）</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-num">{{studiedToday ? '学了' : '没学'}}</view>
+      <view class="stat-label">今天</view>
+    </view>
+  </view>
+
+  <!-- 里程碑列表 -->
+  <view class="group-title">我的里程碑</view>
+  <view wx:for="{{groups}}" wx:key="name" wx:for-item="group">
+    <view class="ms-group-name">{{group.name}}</view>
+    <view wx:for="{{group.items}}" wx:key="key" wx:for-item="item"
+          class="ms-item {{item.unlocked ? 'ms-open' : 'ms-locked'}}"
+          data-type="{{item.type}}" data-id="{{item.id}}" data-unlocked="{{item.unlocked}}"
+          bindtap="onTapMilestone">
+      <view class="ms-title">{{item.label}}</view>
+      <view class="ms-status {{item.unlocked ? 'ms-status-open' : ''}}">
+        {{item.unlocked ? '已解锁，点我去看' : '还差 ' + item.need + ' 字'}}
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-gap"></view>
+  <big-button text="返回首页" type="plain" bind:tap="goHome" />
+</view>

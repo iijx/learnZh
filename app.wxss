@@ -1,0 +1,99 @@
+/* app.wxss —— 全局适老化样式
+ * 规范来源 PRD 5.1：
+ * - 暖色系：米黄底 #FAF0DC、深棕字 #4A3428、墨绿强调 #3E6B4F
+ * - 禁用蓝紫灰（老年眼晶状体黄化，蓝紫对比急剧下降）
+ * - 按钮高度 ≥120rpx，按钮文字 ≥40rpx，正文 ≥36rpx，教学汉字 ≥200rpx
+ * - 页面不允许出现 <32rpx 的文字
+ */
+
+page {
+  /* 颜色变量（全局统一，禁止引入蓝紫灰） */
+  --color-bg: #FAF0DC;          /* 米黄底 */
+  --color-bg-card: #FFF8E7;     /* 卡片底，比页面略亮，不刺眼 */
+  --color-text: #4A3428;        /* 深棕主文字 */
+  --color-text-light: #7A5C42;  /* 浅棕次要文字（与米黄底对比度仍 ≥4.5:1） */
+  --color-accent: #3E6B4F;      /* 墨绿强调（按钮、正确反馈） */
+  --color-accent-deep: #2F5340; /* 墨绿按下态 */
+  --color-warn: #B34A1F;        /* 砖红提醒（不用刺眼纯红） */
+  --color-line: #E3D3B3;        /* 分隔线浅棕 */
+
+  /* 字号变量（适老化下限） */
+  --font-btn: 44rpx;            /* 按钮文字 ≥40rpx */
+  --font-body: 40rpx;           /* 正文 ≥36rpx */
+  --font-small: 32rpx;          /* 最小允许字号 */
+  --font-teach-char: 220rpx;    /* 教学汉字 ≥200rpx */
+
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--font-body);
+  line-height: 1.6;
+}
+
+/* 全局字号档位：设置页「字体大小」切换时，给根容器加 class */
+/* .font-large = 大（默认档，与上面变量一致，显式声明便于切换） */
+.font-large {
+  font-size: 40rpx;
+}
+
+/* .font-xl = 特大，整体放大约 15% */
+.font-xl {
+  font-size: 46rpx; /* 40rpx × 1.15 */
+}
+.font-xl .btn,
+.font-xl button {
+  font-size: 50rpx !important; /* 44rpx × 1.15 */
+  min-height: 138rpx !important; /* 120rpx × 1.15 */
+}
+
+/* ===== 通用基类 ===== */
+
+/* 大按钮基类：高度 ≥120rpx、文字 ≥40rpx、圆角、深棕描边墨绿底 */
+.btn {
+  min-height: 120rpx;
+  line-height: 120rpx;
+  padding: 0 48rpx;
+  font-size: var(--font-btn);
+  color: #FFF8E7;
+  background: var(--color-accent);
+  border-radius: 24rpx;
+  text-align: center;
+}
+.btn:active {
+  background: var(--color-accent-deep);
+}
+
+/* 次级按钮：米白底、墨绿描边 */
+.btn-plain {
+  min-height: 120rpx;
+  line-height: 120rpx;
+  padding: 0 48rpx;
+  font-size: var(--font-btn);
+  color: var(--color-accent);
+  background: var(--color-bg-card);
+  border: 4rpx solid var(--color-accent);
+  border-radius: 24rpx;
+  text-align: center;
+}
+
+/* 教学用超大汉字（≥200rpx） */
+.teach-char {
+  font-size: var(--font-teach-char);
+  line-height: 1.2;
+  color: var(--color-text);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 卡片容器 */
+.card {
+  background: var(--color-bg-card);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin: 24rpx;
+}
+
+/* 次要说明文字（最小 32rpx，不许再小） */
+.text-sub {
+  font-size: var(--font-small);
+  color: var(--color-text-light);
+}

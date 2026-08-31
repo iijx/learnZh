@@ -1,0 +1,40 @@
+<view class="page {{fontClass}}">
+  <speaker id="speaker" />
+
+  <!-- 首次进入：子女代录名字 -->
+  <block wx:if="{{mode === 'input'}}">
+    <view class="page-title">让家里人帮你把名字写在这里</view>
+    <input class="name-input"
+           placeholder="点这里，让子女输入你的名字"
+           value="{{inputName}}"
+           confirm-type="done"
+           bindinput="onNameInput"
+           bindconfirm="onConfirmName" />
+    <big-button text="好了" bind:tap="onConfirmName" />
+    <view class="btn-gap"></view>
+    <big-button text="返回" type="plain" bind:tap="goHome" />
+  </block>
+
+  <!-- 逐字描红 -->
+  <block wx:elif="{{mode === 'practice'}}">
+    <view class="progress-text">你的名字：{{name}}　第 {{idx + 1}} 个字</view>
+    <view class="char-wrap">
+      <tracer id="tracer" char="{{currentChar}}" size="{{560}}" exam="{{false}}" bind:pass="onTracePass" />
+    </view>
+    <view class="trace-hint text-sub">用手指跟着上面的字描一遍，描完就过</view>
+    <big-button text="再看一遍笔顺" type="plain" bind:tap="onReplayStrokes" />
+  </block>
+
+  <!-- 全部完成 -->
+  <block wx:else>
+    <view class="praise-char">太棒了！</view>
+    <view class="praise-sub">你的名字「{{name}}」你会写啦</view>
+    <view class="praise-sub">以后领钱、看病，都能自己签名啦</view>
+    <big-button text="再写一遍" bind:tap="onRePractice" />
+    <view class="btn-gap"></view>
+    <big-button text="返回" type="plain" bind:tap="goHome" />
+  </block>
+
+  <!-- 底部小入口：换个名字 -->
+  <view wx:if="{{mode !== 'input'}}" class="change-name text-sub" bindtap="onChangeName">换个名字</view>
+</view>

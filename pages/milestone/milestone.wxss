@@ -1,0 +1,89 @@
+/* pages/milestone/milestone.wxss —— 里程碑课（古诗 + 故事） */
+.page {
+  padding: 24rpx 24rpx 60rpx;
+}
+
+.page-title {
+  font-size: 60rpx;
+  font-weight: bold;
+  text-align: center;
+  margin: 20rpx 0 24rpx;
+}
+
+.group-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin: 32rpx 8rpx 8rpx;
+  color: var(--color-text);
+}
+
+.pick-item {
+  background: var(--color-bg-card);
+  border-radius: 24rpx;
+  border: 4rpx solid var(--color-line);
+  padding: 32rpx 40rpx;
+  margin: 16rpx 8rpx;
+}
+
+.pick-item:active {
+  background: var(--color-line);
+}
+
+.pick-name {
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.pick-sub {
+  font-size: 36rpx;
+  color: var(--color-text-light);
+  margin-top: 8rpx;
+}
+
+.empty-hint {
+  margin: 16rpx 8rpx;
+}
+
+/* 内容态 */
+.work-title {
+  font-size: 72rpx;
+  font-weight: bold;
+  text-align: center;
+  margin: 24rpx 0 8rpx;
+}
+
+.work-author {
+  font-size: 44rpx;
+  text-align: center;
+  color: var(--color-text-light);
+  margin-bottom: 40rpx;
+}
+
+/* 逐句超大字（≥72rpx） */
+.line {
+  font-size: 76rpx;
+  line-height: 1.5;
+  font-weight: bold;
+  text-align: center;
+  color: var(--color-text-light);
+  padding: 16rpx 8rpx;
+  border-radius: 16rpx;
+}
+
+/* 正在朗读的句子：高亮墨绿 */
+.line-active {
+  color: var(--color-accent);
+  background: var(--color-bg-card);
+}
+
+.story-praise {
+  font-size: 52rpx;
+  font-weight: bold;
+  color: var(--color-accent);
+  text-align: center;
+  margin: 40rpx 0;
+}
+
+.btn-gap {
+  height: 24rpx;
+}

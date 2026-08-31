@@ -1,0 +1,82 @@
+/* pages/learn/learn.wxss —— 学习页布局（适老化：大字、居中、暖色） */
+
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 24rpx;
+  padding-bottom: 240rpx;
+}
+
+.center-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 阶段/步骤提示（次要信息，≥32rpx） */
+.stage-tip {
+  margin: 24rpx 0;
+  font-size: 36rpx;
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+
+/* SHOW / WORDS 插画（2:1 占位图） */
+.teach-img {
+  width: 640rpx;
+  height: 320rpx;
+  margin: 24rpx 0;
+  border-radius: 24rpx;
+}
+
+/* EXPLAIN / SENTENCE 口语文案 */
+.explain-text,
+.sentence-text {
+  margin: 32rpx;
+  font-size: 44rpx;
+  line-height: 1.8;
+}
+
+.mnemonic-text {
+  margin: 24rpx 32rpx;
+  font-size: 40rpx;
+  color: var(--color-accent);
+}
+
+/* WORDS 组词大字 */
+.word-line {
+  margin: 16rpx;
+  font-size: 72rpx;
+  font-weight: bold;
+}
+
+/* DONE */
+.praise-char {
+  margin-top: 10vh;
+  color: var(--color-accent);
+}
+
+.done-text {
+  margin: 40rpx 0;
+  font-size: 48rpx;
+  text-align: center;
+}
+
+.milestone-text {
+  margin-bottom: 24rpx;
+  font-size: 40rpx;
+  color: var(--color-accent);
+}
+
+/* 「继续」按钮：吸底居中，手动推进 */
+.next-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: 48rpx;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF7" />
+      <stop offset="100%" stop-color="#FFF3DC" />
+    </linearGradient>
+    <linearGradient id="roofGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E76F51" />
+      <stop offset="100%" stop-color="#D9534F" />
+    </linearGradient>
+    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE8D6" />
+      <stop offset="100%" stop-color="#FCD5B5" />
+    </linearGradient>
+    <linearGradient id="hillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E9F5DB" />
+      <stop offset="100%" stop-color="#CFE1B9" />
+    </linearGradient>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#D4A373" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- 卡片背景与边框 -->
+  <rect width="800" height="400" fill="url(#bgGrad)" />
+  <rect x="12" y="12" width="776" height="376" rx="28" fill="none" stroke="#F0DCB8" stroke-width="3" />
+
+  <!-- 远景柔和太阳与云朵 -->
+  <circle cx="640" cy="110" r="50" fill="#FFE5A3" opacity="0.85" />
+  <circle cx="640" cy="110" r="65" fill="#FFF2CC" opacity="0.4" />
+  
+  <!-- 装饰云朵 -->
+  <path d="M 130 110 Q 150 90 180 100 Q 210 90 230 110 Q 240 130 220 140 L 140 140 Q 120 130 130 110 Z" fill="#FFFFFF" opacity="0.8" />
+  <path d="M 520 85 Q 535 70 560 78 Q 580 70 595 85 Q 605 100 590 108 L 530 108 Q 515 100 520 85 Z" fill="#FFFFFF" opacity="0.7" />
+
+  <!-- 柔和草坪缓坡 -->
+  <path d="M 0 340 Q 220 290 480 320 Q 660 340 800 310 L 800 400 L 0 400 Z" fill="url(#hillGrad)" />
+  <path d="M 0 360 Q 300 330 600 355 Q 720 365 800 350 L 800 400 L 0 400 Z" fill="#B5C99A" opacity="0.6" />
+
+  <!-- 主体：温馨的小家（这是我的家） -->
+  <g filter="url(#cardShadow)">
+    <!-- 烟囱与爱心烟雾 -->
+    <rect x="470" y="145" width="28" height="55" rx="4" fill="#C97A5E" />
+    <path d="M 484 130 Q 476 115 484 105 Q 494 95 484 80" stroke="#E07A5F" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="4,6" opacity="0.7" />
+
+    <!-- 房屋主体墙面 -->
+    <rect x="300" y="180" width="210" height="150" rx="16" fill="url(#wallGrad)" stroke="#E0C3A0" stroke-width="2" />
+
+    <!-- 三角屋顶 -->
+    <polygon points="405,100 275,190 535,190" fill="url(#roofGrad)" />
+    <!-- 屋檐高光 -->
+    <polyline points="275,190 405,100 535,190" fill="none" stroke="#FFAAA6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- 圆形阁楼窗户 -->
+    <circle cx="405" cy="152" r="18" fill="#FFF8E7" stroke="#E76F51" stroke-width="3" />
+    <line x1="405" y1="134" x2="405" y2="170" stroke="#E76F51" stroke-width="2" />
+    <line x1="387" y1="152" x2="423" y2="152" stroke="#E76F51" stroke-width="2" />
+
+    <!-- 大门（温暖橘色） -->
+    <rect x="380" y="245" width="50" height="85" rx="8" fill="#E76F51" />
+    <circle cx="420" cy="290" r="4" fill="#FFD166" />
+    <rect x="370" y="326" width="70" height="8" rx="3" fill="#D4A373" />
+
+    <!-- 左右明亮窗户（暖光溢出） -->
+    <rect x="322" y="220" width="42" height="50" rx="6" fill="#FFEDA8" stroke="#E0A96D" stroke-width="2.5" />
+    <line x1="343" y1="220" x2="343" y2="270" stroke="#E0A96D" stroke-width="2" />
+    <line x1="322" y1="245" x2="364" y2="245" stroke="#E0A96D" stroke-width="2" />
+
+    <rect x="446" y="220" width="42" height="50" rx="6" fill="#FFEDA8" stroke="#E0A96D" stroke-width="2.5" />
+    <line x1="467" y1="220" x2="467" y2="270" stroke="#E0A96D" stroke-width="2" />
+    <line x1="446" y1="245" x2="488" y2="245" stroke="#E0A96D" stroke-width="2" />
+  </g>
+
+  <!-- 门前树木与花草 -->
+  <!-- 左侧大树 -->
+  <rect x="220" y="240" width="16" height="95" rx="4" fill="#A47148" />
+  <circle cx="228" cy="220" r="45" fill="#81B29A" />
+  <circle cx="220" cy="205" r="32" fill="#98C1D9" opacity="0.3" />
+  <circle cx="240" cy="210" r="28" fill="#A7C957" opacity="0.6" />
+
+  <!-- 右侧小树 -->
+  <rect x="565" y="260" width="12" height="75" rx="3" fill="#A47148" />
+  <polygon points="571,195 535,265 607,265" fill="#6B9080" />
+  <polygon points="571,175 542,235 600,235" fill="#A7C957" />
+
+  <!-- 门前鲜花灌木 -->
+  <circle cx="310" cy="328" r="14" fill="#F28482" />
+  <circle cx="295" cy="334" r="10" fill="#F77F00" />
+  <circle cx="322" cy="336" r="8" fill="#F4A261" />
+
+  <circle cx="498" cy="328" r="12" fill="#F28482" />
+  <circle cx="512" cy="334" r="10" fill="#E76F51" />
+
+  <!-- 右下角主题意境文字（轻柔印章感） -->
+  <rect x="635" y="325" width="120" height="38" rx="19" fill="#FFFFFF" opacity="0.9" stroke="#E9D8B6" stroke-width="1.5" />
+  <text x="695" y="350" font-size="20" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-weight="bold" fill="#B26A4D" text-anchor="middle">我的家</text>
+</svg>

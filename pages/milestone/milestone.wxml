@@ -1,0 +1,58 @@
+<view class="page {{fontClass}}">
+  <speaker id="speaker" />
+
+  <!-- 清单态：所有已解锁的古诗和故事 -->
+  <block wx:if="{{mode === 'list'}}">
+    <view class="page-title">古诗和故事</view>
+
+    <view class="group-title">古诗</view>
+    <view wx:for="{{poems}}" wx:key="id" class="pick-item"
+          data-id="{{item.id}}" bindtap="onPickPoem">
+      <view class="pick-name">《{{item.title}}》 {{item.author}}</view>
+      <view class="pick-sub">点我开始读</view>
+    </view>
+    <view wx:if="{{!poems.length}}" class="text-sub empty-hint">古诗还没解锁，多学一些字就有啦</view>
+
+    <view class="group-title">故事</view>
+    <view wx:for="{{stories}}" wx:key="id" class="pick-item"
+          data-id="{{item.id}}" bindtap="onPickStory">
+      <view class="pick-name">《{{item.title}}》</view>
+      <view class="pick-sub">点我开始读</view>
+    </view>
+    <view wx:if="{{!stories.length}}" class="text-sub empty-hint">故事还没解锁，多学一些字就有啦</view>
+
+    <big-button text="返回" type="plain" bind:tap="goBack" />
+  </block>
+
+  <!-- 古诗：逐句超大字认读 -->
+  <block wx:elif="{{mode === 'poem'}}">
+    <view class="work-title">{{title}}</view>
+    <view class="work-author">{{author}}</view>
+
+    <view wx:for="{{lines}}" wx:key="index"
+          class="line {{index === currentLine ? 'line-active' : ''}}">{{item}}</view>
+
+    <block wx:if="{{phase === 'done'}}">
+      <big-button text="跟着读一遍" bind:tap="onReplay" />
+      <view class="btn-gap"></view>
+      <big-button text="背给孙子听" type="plain" bind:tap="onCheckin" />
+      <view class="btn-gap"></view>
+      <big-button text="返回" type="plain" bind:tap="goBack" />
+    </block>
+  </block>
+
+  <!-- 故事：逐句大字朗读，读完展示全文 -->
+  <block wx:else>
+    <view class="work-title">{{title}}</view>
+
+    <view wx:for="{{lines}}" wx:key="index"
+          class="line {{index === currentLine ? 'line-active' : ''}}">{{item}}</view>
+
+    <block wx:if="{{phase === 'done'}}">
+      <view class="story-praise">你自己读完了一个故事，真了不起！</view>
+      <big-button text="再读一遍" bind:tap="onReplay" />
+      <view class="btn-gap"></view>
+      <big-button text="返回" type="plain" bind:tap="goBack" />
+    </block>
+  </block>
+</view>

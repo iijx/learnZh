@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "学新字",
+  "usingComponents": {
+    "big-button": "/components/big-button/big-button",
+    "char-card": "/components/char-card/char-card",
+    "tracer": "/components/tracer/tracer",
+    "speaker": "/components/speaker/speaker"
+  }
+}

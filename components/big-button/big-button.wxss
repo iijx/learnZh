@@ -1,0 +1,62 @@
+/* components/big-button/big-button.wxss —— 超大语音按钮
+   遵循 app.wxss 全局变量：暖色系、禁蓝紫灰、文字 ≥48rpx、高度 ≥160rpx */
+
+.bb {
+  box-sizing: border-box;
+  width: 620rpx;
+  min-height: 160rpx;
+  margin: 24rpx auto;
+  padding: 20rpx 32rpx;
+  border-radius: 24rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* primary：墨绿实心、米白字 */
+.bb-primary {
+  background: var(--color-accent);
+  border: 4rpx solid var(--color-accent);
+}
+
+/* plain：米白底、墨绿描边 */
+.bb-plain {
+  background: var(--color-bg-card);
+  border: 4rpx solid var(--color-accent);
+}
+
+.bb-hover {
+  opacity: 0.85;
+}
+
+.bb-text {
+  font-size: 48rpx;
+  font-weight: bold;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.bb-primary .bb-text {
+  color: #FFF8E7;
+}
+
+.bb-plain .bb-text {
+  color: var(--color-accent);
+}
+
+/* 副标题（最小允许字号 32rpx） */
+.bb-sub {
+  margin-top: 8rpx;
+  font-size: 32rpx;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.bb-primary .bb-sub {
+  color: #F0E2C4;
+}
+
+.bb-plain .bb-sub {
+  color: var(--color-text-light);
+}

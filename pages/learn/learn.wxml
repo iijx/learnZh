@@ -1,0 +1,55 @@
+<!-- pages/learn/learn.wxml —— 学习页：REVIEW（若有） → TEACH（七步闭环）→ DONE -->
+<view class="page {{fontClass}}" bindtap="onAnyTap" bindtouchstart="onAnyTap">
+  <speaker id="speaker" />
+  <!-- REVIEW 到期复习：听音选字 -->
+  <view wx:if="{{stage === 'REVIEW'}}" class="center-box">
+    <view class="stage-tip">复习时间：听一听，找一找（第 {{reviewIndex + 1}} 个，共 {{reviewTotal}} 个）</view>
+    <char-card id="reviewCard" options="{{reviewOptions}}" answer="{{reviewAnswer}}" bind:correct="onReviewCorrect" bind:wrong="onReviewWrong" />
+  </view>
+  <!-- TEACH 新字教学闭环 -->
+  <view wx:if="{{stage === 'TEACH'}}" class="center-box">
+    <view class="stage-tip">今天第 {{charIndex + 1}} 个新字，共 {{charTotal}} 个</view>
+    <!-- 1. SHOW 大字 + 插画 -->
+    <view wx:if="{{step === 'SHOW'}}" class="center-box">
+      <image class="teach-img" src="{{imgSrc}}" mode="aspectFit" binderror="onImgError" />
+      <view class="teach-char">{{teachChar}}</view>
+    </view>
+    <!-- 2. EXPLAIN 大白话讲解 + 记字诀 -->
+    <view wx:if="{{step === 'EXPLAIN'}}" class="center-box">
+      <view class="teach-char">{{teachChar}}</view>
+      <view class="explain-text">{{explain}}</view>
+      <view class="mnemonic-text">记字诀：{{mnemonic}}</view>
+    </view>
+    <!-- 3/4. STROKES 笔顺动画 → TRACE 描红（tracer 常驻这两步，避免重建画布） -->
+    <view wx:if="{{step === 'STROKES' || step === 'TRACE'}}" class="center-box">
+      <tracer id="tracer" char="{{teachChar}}" size="{{600}}" exam="{{writeExam}}" bind:pass="onTracePass" />
+      <view class="stage-tip">{{step === 'STROKES' ? '看一看，笔顺是这样写的' : '用手指跟着写一写'}}</view>
+    </view>
+    <!-- 5. WORDS 组词 -->
+    <view wx:if="{{step === 'WORDS'}}" class="center-box">
+      <image class="teach-img" src="{{imgSrc}}" mode="aspectFit" binderror="onImgError" />
+      <view class="word-line" wx:for="{{words}}" wx:key="*this">{{item}}</view>
+    </view>
+    <!-- 6. SENTENCE 生活例句 -->
+    <view wx:if="{{step === 'SENTENCE'}}" class="center-box">
+      <view class="teach-char">{{teachChar}}</view>
+      <view class="sentence-text">{{sentence}}</view>
+    </view>
+    <!-- 7. QUIZ 听音选字 ×2 -->
+    <view wx:if="{{step === 'QUIZ'}}" class="center-box">
+      <view class="stage-tip">听一听，是哪个字？（第 {{quizRound + 1}} 题，共 2 题）</view>
+      <char-card id="quizCard" options="{{quizOptions}}" answer="{{quizAnswer}}" bind:correct="onQuizCorrect" bind:wrong="onQuizWrong" />
+    </view>
+  </view>
+  <!-- DONE 结束表扬 -->
+  <view wx:if="{{stage === 'DONE'}}" class="center-box">
+    <view class="teach-char praise-char">你真棒！</view>
+    <view class="done-text">你已经认识 {{learnedCount}} 个字了！</view>
+    <view wx:if="{{milestoneTitle}}" class="milestone-text">新解锁：{{milestoneTitle}}</view>
+    <big-button text="{{doneBtnText}}" type="primary" bind:tap="onDoneBtn" />
+  </view>
+  <!-- 「继续」按钮：学习过程中常驻显示，点击直接往下走 -->
+  <view wx:if="{{stage !== 'DONE'}}" class="next-box">
+    <big-button text="继续" type="primary" speakFirst="{{false}}" bind:tap="onTapNext" />
+  </view>
+</view>

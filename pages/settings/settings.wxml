@@ -1,0 +1,59 @@
+<view class="page {{fontClass}}">
+  <speaker id="speaker" />
+
+  <view class="page-title">设置</view>
+
+  <!-- 每日新字数 -->
+  <view class="setting-group">
+    <view class="setting-name">每天学几个新字</view>
+    <view class="option-row">
+      <view wx:for="{{dailyOptions}}" wx:key="value"
+            class="option {{settings.dailyNewChars === item.value ? 'option-on' : ''}}"
+            data-group="dailyNewChars" data-value="{{item.value}}" data-name="{{item.name}}"
+            bindtap="onPick">{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 书写考核（默认关） -->
+  <view class="setting-group">
+    <view class="setting-name">写字要不要打分</view>
+    <view class="option-row">
+      <view wx:for="{{examOptions}}" wx:key="value"
+            class="option {{settings.writingExam === item.value ? 'option-on' : ''}}"
+            data-group="writingExam" data-value="{{item.value}}" data-name="{{item.name}}"
+            bindtap="onPick">{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 字体大小 -->
+  <view class="setting-group">
+    <view class="setting-name">字的大小</view>
+    <view class="option-row">
+      <view wx:for="{{fontOptions}}" wx:key="value"
+            class="option {{settings.fontSize === item.value ? 'option-on' : ''}}"
+            data-group="fontSize" data-value="{{item.value}}" data-name="{{item.name}}"
+            bindtap="onPick">{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 语速 -->
+  <view class="setting-group">
+    <view class="setting-name">说话的速度</view>
+    <view class="option-row">
+      <view wx:for="{{rateOptions}}" wx:key="value"
+            class="option {{settings.speechRate === item.value ? 'option-on' : ''}}"
+            data-group="speechRate" data-value="{{item.value}}" data-name="{{item.name}}"
+            bindtap="onPick">{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 音量 -->
+  <view class="setting-group">
+    <view class="setting-name">声音大小</view>
+    <view class="text-sub volume-hint">用手机的音量键调声音</view>
+    <big-button text="听一下声音" type="plain" bind:tap="onTestVolume" />
+  </view>
+
+  <view class="btn-gap"></view>
+  <big-button text="返回首页" type="plain" bind:tap="goHome" />
+</view>
