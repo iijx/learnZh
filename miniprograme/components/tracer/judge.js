@@ -64,12 +64,12 @@ function coverage(medians, trace, radius, step) {
 function judge(opts) {
   opts = opts || {};
   var trace = opts.trace || [];
-  var minPoints = opts.minPoints || 40;
+  var minPoints = opts.minPoints || 25;
   if (opts.exam === false || !opts.medians || opts.medians.length === 0) {
     return trace.length >= minPoints;
   }
-  var radius = opts.radius || 35;
-  var threshold = opts.threshold || 0.6;
+  var radius = opts.radius || 45;
+  var threshold = opts.threshold || 0.5;
   return coverage(opts.medians, trace, radius) >= threshold;
 }
 

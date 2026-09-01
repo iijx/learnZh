@@ -1,10 +1,17 @@
-// pages/progress/progress.js —— 我的进度（大字页）
-// 超大字展示已学字数、连续学习天数、今日是否已学；
-// 里程碑列表（场景课/古诗/故事）按 course.js 解锁判定展示进度，
-// 已解锁的可点击跳转（古诗/故事 → milestone 页，场景课 → scene 页）。
+// pages/progress/progress.js —— 我的进度（大字页 + 识字果树 + 荣誉奖状）
+// 视觉化展示识字果树阶段、大红奖状、已学字数、连续天数及里程碑列表。
 
 var storage = require('../../services/storage.js');
 var course = require('../../services/course.js');
+var tts = require('../../services/tts.js');
+
+function getTreeInfo(n) {
+  if (n < 5) return { icon: '🌱', levelName: '破土小幼苗', desc: '已经认识 ' + n + ' 个字，每天坚持，小幼苗很快长大！' };
+  if (n < 25) return { icon: '🌿', levelName: '茁壮小青树', desc: '已经认识 ' + n + ' 个字，枝叶正在快快舒展！' };
+  if (n < 50) return { icon: '🌳', levelName: '繁茂识字树', desc: '已经认识 ' + n + ' 个字，买菜看牌都不慌！' };
+  if (n < 100) return { icon: '🍎', levelName: '硕果累累果树', desc: '已经认识 ' + n + ' 个字，树上结出红苹果，能诵读唐诗啦！' };
+  return { icon: '🌟', levelName: '百字金光树', desc: '已经认识 ' + n + ' 个字，金灿灿的大金树，脱盲大状元！' };
+}
 
 Page({
   data: {
@@ -12,6 +19,9 @@ Page({
     learnedCount: 0,
     streak: 0,
     studiedToday: false,
+    treeInfo: { icon: '🌱', levelName: '破土小幼苗', desc: '' },
+    certificates: [],
+    activeCert: null,
     groups: []  // [{ name: '场景课', items: [{ key, type, id, label, unlocked, need }] }]
   },
 
@@ -49,6 +59,8 @@ Page({
       learnedCount: n,
       streak: storage.getStreak(),
       studiedToday: studiedToday,
+      treeInfo: getTreeInfo(n),
+      certificates: storage.getCertificates(),
       groups: groups
     });
   },
@@ -78,9 +90,40 @@ Page({
     if (this._spoken) return; // 每次进页只播报一次汇总
     this._spoken = true;
     this.speaker.speak(
-      '你已经认识 ' + this.data.learnedCount + ' 个字啦，连续学习 ' +
-      this.data.streak + ' 天，真厉害！'
+      '你已经认识 ' + this.data.learnedCount + ' 个字啦，识字树长成' +
+      this.data.treeInfo.levelName + '，真厉害！'
     );
+  },
+
+  // 点击奖状：已解锁展示光荣大奖状，未解锁播报还差多少字
+  onTapCert: function (e) {
+    this.speaker.resetIdle();
+    var d = e.currentTarget.dataset;
+    var cert = null;
+    for (var i = 0; i < this.data.certificates.length; i++) {
+      if (this.data.certificates[i].id === d.id) {
+        cert = this.data.certificates[i];
+        break;
+      }
+    }
+    if (!cert) return;
+
+    if (!cert.unlocked) {
+      var diff = cert.need - this.data.learnedCount;
+      this.speaker.speak('再学 ' + diff + ' 个字，就能获得' + cert.title + '大奖状啦！');
+      return;
+    }
+
+    this.setData({ activeCert: cert });
+    tts.speak('恭喜你获得' + cert.title + '！' + cert.desc);
+  },
+
+  closeCertModal: function () {
+    this.setData({ activeCert: null });
+  },
+
+  stopProp: function () {
+    // 阻止弹窗内点击关闭
   },
 
   // 点击里程碑：已解锁跳对应页，未解锁播报还差多少字
@@ -88,8 +131,7 @@ Page({
     this.speaker.resetIdle();
     var d = e.currentTarget.dataset;
     if (!d.unlocked) {
-      // dataset 布尔在 wxml 里传 true/false，兜底转一下
-      this.speaker.speak('再学一些字就能解锁啦');
+      this.speaker.speak('再学一些字就能解锁这节课啦');
       return;
     }
     if (d.type === 'scene') {
@@ -106,5 +148,16 @@ Page({
         wx.reLaunch({ url: '/pages/home/home' });
       }
     });
+  },
+
+  onShareAppMessage: function () {
+    var title = this.data.activeCert
+      ? '快来看！我刚刚荣获了「' + this.data.activeCert.title + '」大红奖状！'
+      : '我在爸妈识字课已经认识' + this.data.learnedCount + '个字了！识字果树长大啦！';
+    return {
+      title: title,
+      path: '/pages/home/home?from=share'
+    };
   }
 });
+

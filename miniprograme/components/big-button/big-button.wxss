@@ -6,18 +6,68 @@
   width: 620rpx;
   min-height: 160rpx;
   margin: 24rpx auto;
-  padding: 20rpx 32rpx;
-  border-radius: 24rpx;
+  padding: 24rpx 32rpx;
+  border-radius: 28rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6rpx 16rpx rgba(74, 52, 40, 0.08);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* 水平排版 */
+.bb-horizontal {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 24rpx 40rpx;
+}
+
+.bb-icon-wrap {
+  margin-bottom: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-horizontal .bb-icon-wrap {
+  margin-bottom: 0;
+  margin-right: 28rpx;
+}
+
+.bb-icon {
+  font-size: 64rpx;
+  line-height: 1;
+}
+
+.bb-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.bb-horizontal .bb-content {
+  align-items: flex-start;
+}
+
+.bb-text-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-speaker-icon {
+  font-size: 38rpx;
+  margin-left: 12rpx;
+  animation: speakerPulse 2.4s infinite ease-in-out;
+}
+
 /* primary：墨绿实心、米白字 */
 .bb-primary {
   background: var(--color-accent);
-  border: 4rpx solid var(--color-accent);
+  border: 4rpx solid var(--color-accent-deep);
 }
 
 /* plain：米白底、墨绿描边 */
@@ -27,7 +77,8 @@
 }
 
 .bb-hover {
-  opacity: 0.85;
+  opacity: 0.9;
+  transform: scale(0.98);
 }
 
 .bb-text {
@@ -48,7 +99,7 @@
 /* 副标题（最小允许字号 32rpx） */
 .bb-sub {
   margin-top: 8rpx;
-  font-size: 32rpx;
+  font-size: 34rpx;
   line-height: 1.4;
   text-align: center;
 }

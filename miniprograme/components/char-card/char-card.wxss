@@ -1,5 +1,5 @@
-/* components/char-card/char-card.wxss —— 听音选字卡片组
-   2×2 网格、每卡 ≥280rpx 见方、字 ≥160rpx、暖色系 */
+/* components/char-card/char-card.wxss —— 听音选字自适应卡片组
+   支持 2/3/4 选 1，卡片超大、字 ≥160rpx、暖色系 */
 
 .cc-grid {
   display: flex;
@@ -9,22 +9,54 @@
   margin: 0 auto;
 }
 
-.cc-card {
-  box-sizing: border-box;
+/* 2 选 1 超大并排 */
+.cc-grid-2 {
+  justify-content: space-between;
+}
+.cc-grid-2 .cc-card {
+  width: 304rpx;
+  height: 380rpx;
+}
+.cc-grid-2 .cc-char {
+  font-size: 190rpx;
+}
+
+/* 3 选 1 布局 */
+.cc-grid-3 {
+  justify-content: center;
+}
+.cc-grid-3 .cc-card {
+  width: 290rpx;
+  height: 290rpx;
+  margin: 12rpx;
+}
+.cc-grid-3 .cc-char {
+  font-size: 160rpx;
+}
+
+/* 4 选 1 网格 */
+.cc-grid-4 .cc-card {
   width: 300rpx;
   height: 300rpx;
   margin: 16rpx 0;
+}
+
+.cc-card {
+  position: relative;
+  box-sizing: border-box;
   background: var(--color-bg-card);
   border: 6rpx solid var(--color-line);
-  border-radius: 24rpx;
+  border-radius: 28rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 6rpx 16rpx rgba(74, 52, 40, 0.06);
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .cc-hover {
-  opacity: 0.85;
+  opacity: 0.9;
+  transform: scale(0.98);
 }
 
 .cc-char {
@@ -36,25 +68,38 @@
 
 /* 答对：墨绿底 + 轻微放大 */
 .cc-correct {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  transform: scale(1.08);
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent-deep) !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 10rpx 24rpx rgba(62, 107, 79, 0.3) !important;
 }
 
 .cc-correct .cc-char {
-  color: #FFF8E7;
+  color: #FFF8E7 !important;
 }
 
-/* 答错：砖红描边 + 抖动（不出现任何 × 符号） */
+/* 答错：砖红描边 + 柔和晃动（不出现任何 × 符号） */
 .cc-wrong {
-  border-color: var(--color-warn);
-  animation: cc-shake 0.4s ease;
+  border-color: var(--color-warn) !important;
+  animation: softShake 0.4s ease;
 }
 
-@keyframes cc-shake {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-14rpx); }
-  40% { transform: translateX(14rpx); }
-  60% { transform: translateX(-10rpx); }
-  80% { transform: translateX(10rpx); }
+/* 错2次兜底：金光呼吸高亮 */
+.cc-hint-glow {
+  background: var(--color-gold-bg) !important;
+  border-color: var(--color-gold) !important;
+  animation: goldGlow 1.8s infinite ease-in-out;
 }
+
+.cc-hint-badge {
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+  background: var(--color-gold);
+  color: #FFF;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 4rpx 14rpx;
+  border-radius: 16rpx;
+}
+

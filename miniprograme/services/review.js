@@ -14,11 +14,15 @@ var storage = require('./storage.js');
 // 复习间隔（天）：第 1/2/4/7/15 天
 var REVIEW_DAYS = [1, 2, 4, 7, 15];
 
+// 每日复习上限熔断阈值（防止后期复习量爆炸导致老人认知过载）
+var MAX_DAILY_REVIEW = 6;
+
 // 答错重排间隔：24 小时（毫秒）
 var WRONG_RETRY_MS = 24 * 60 * 60 * 1000;
 
 // 日期串转当天 0 点时间戳
 function dayStart(dateStr) {
+  if (!dateStr) return 0;
   var parts = dateStr.split('-');
   return new Date(+parts[0], +parts[1] - 1, +parts[2]).getTime();
 }
@@ -34,17 +38,48 @@ function nextDueAt(info) {
 
 var review = {
   REVIEW_DAYS: REVIEW_DAYS,
+  MAX_DAILY_REVIEW: MAX_DAILY_REVIEW,
 
   // 今日到期复习字列表（含 24 小时前答错重排回来的字）
+  // 机制：
+  // 1. 若断学 > 3 天，启动温和回归模式（最多挑选 3 个熟字温热信心，不惩罚不堆积）；
+  // 2. 正常排期时按优先级（错字优先 -> 早期生字优先）排序；
+  // 3. 严格限制每日上限不超过 MAX_DAILY_REVIEW (6字)，超额字自然顺延。
   getTodayReview: function () {
     var now = Date.now();
     var map = storage.getLearnedMap();
-    var due = [];
+    var daysSince = storage.getDaysSinceLastStudy();
+
+    var dueItems = [];
     for (var ch in map) {
-      var t = nextDueAt(map[ch]);
-      if (t !== null && t <= now) due.push(ch);
+      var info = map[ch];
+      var t = nextDueAt(info);
+      if (t !== null && t <= now) {
+        dueItems.push({
+          char: ch,
+          isWrong: !!info.wrongAt,
+          stage: info.reviewStage || 0,
+          learnDate: info.learnDate || ''
+        });
+      }
     }
-    return due;
+
+    // 断学回归温和模式（>3天断学）
+    if (daysSince > 3 && dueItems.length > 0) {
+      // 挑选至多 3 个已较为稳固的字或待复习字
+      return dueItems.slice(0, 3).map(function (item) { return item.char; });
+    }
+
+    // 优先级排序：错字最优先 -> 阶段较小的新近字优先
+    dueItems.sort(function (a, b) {
+      if (a.isWrong && !b.isWrong) return -1;
+      if (!a.isWrong && b.isWrong) return 1;
+      return a.stage - b.stage;
+    });
+
+    // 每日上限熔断
+    var capped = dueItems.slice(0, MAX_DAILY_REVIEW);
+    return capped.map(function (item) { return item.char; });
   },
 
   // 记录一次复习结果：答对推进到下一档；答错进错字本并 24 小时后重排

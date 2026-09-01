@@ -16,6 +16,9 @@ page {
   --color-accent-deep: #2F5340; /* 墨绿按下态 */
   --color-warn: #B34A1F;        /* 砖红提醒（不用刺眼纯红） */
   --color-line: #E3D3B3;        /* 分隔线浅棕 */
+  --color-gold: #D48806;        /* 荣耀金光（奖状、高亮引导） */
+  --color-gold-bg: #FFF3D6;     /* 金光浅底 */
+  --color-cert: #C93B2B;        /* 奖状红印色 */
 
   /* 字号变量（适老化下限） */
   --font-btn: 44rpx;            /* 按钮文字 ≥40rpx */
@@ -97,3 +100,33 @@ page {
   font-size: var(--font-small);
   color: var(--color-text-light);
 }
+
+/* ===== 适老化交互动画 ===== */
+
+/* 温柔微晃（答错时提示，不给老人刺激） */
+@keyframes softShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8rpx); }
+  75% { transform: translateX(8rpx); }
+}
+
+/* 金光呼吸高亮（二次答错时的温柔引导光芒） */
+@keyframes goldGlow {
+  0%, 100% {
+    box-shadow: 0 0 16rpx rgba(212, 136, 6, 0.4);
+    border-color: var(--color-gold);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 36rpx rgba(212, 136, 6, 0.85);
+    border-color: #FA8C16;
+    transform: scale(1.04);
+  }
+}
+
+/* 大喇叭/图标呼吸提示 */
+@keyframes speakerPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+

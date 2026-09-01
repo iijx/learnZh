@@ -26,20 +26,22 @@ Component({
 
   data: {
     result: '',      // '' | 'correct'（当前局是否已答对）
-    wrongChar: ''    // 最近一次答错的字（触发抖动动画用）
+    wrongChar: '',   // 最近一次答错的字（触发抖动动画用）
+    wrongCount: 0,   // 连续答错次数
+    showHint: false  // 是否开启金色微光引导（错2次后自动开启）
   },
 
   methods: {
     // 播报题目。promptText 可选，默认「听一听，找一找」；随后把答案读两遍
     start: function (promptText) {
       var answer = this.data.answer;
-      this.setData({ result: '', wrongChar: '' });
+      this.setData({ result: '', wrongChar: '', wrongCount: 0, showHint: false });
       tts.speakSequence([promptText || '听一听，找一找', answer, answer]);
     },
 
     // 复位：清掉对错状态（不播报）
     reset: function () {
-      this.setData({ result: '', wrongChar: '' });
+      this.setData({ result: '', wrongChar: '', wrongCount: 0, showHint: false });
     },
 
     onCardTap: function (e) {
@@ -48,18 +50,32 @@ Component({
       if (!char) return;
 
       if (char === this.data.answer) {
-        this.setData({ result: 'correct', wrongChar: '' });
+        this.setData({ result: 'correct', wrongChar: '', showHint: false, wrongCount: 0 });
         tts.speak(char);
         this.triggerEvent('correct', { char: char });
       } else {
         var self = this;
-        // 先读点错的字，再温柔提示并重读题目
-        this.setData({ wrongChar: char });
-        tts.speakSequence([char, '没关系，再听一遍', this.data.answer, this.data.answer], function () {
+        var nextWrongCount = this.data.wrongCount + 1;
+        var showHint = nextWrongCount >= 2;
+
+        this.setData({
+          wrongChar: char,
+          wrongCount: nextWrongCount,
+          showHint: showHint
+        });
+
+        var audioSeq;
+        if (showHint) {
+          audioSeq = [char, '看这里，点这个发光的字', this.data.answer];
+        } else {
+          audioSeq = [char, '没关系，再听一遍', this.data.answer, this.data.answer];
+        }
+
+        tts.speakSequence(audioSeq, function () {
           // 动画结束后清掉 wrongChar，便于下次再错同一字时重新触发抖动
           self.setData({ wrongChar: '' });
         });
-        this.triggerEvent('wrong', { char: char });
+        this.triggerEvent('wrong', { char: char, wrongCount: nextWrongCount });
       }
     }
   }

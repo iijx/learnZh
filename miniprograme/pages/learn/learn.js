@@ -29,18 +29,22 @@ function shuffle(arr) {
   return arr;
 }
 
-// 听音选字选项：正确字 + 3 个干扰字（优先已学字，不足从字表前部补），乱序
+// 听音选字选项：自适应 2 选 1（早期前 15 字，认知减负）/ 3 选 1（15~35 字）/ 4 选 1（35+ 字）
 function buildOptions(answer) {
+  var learnedTotal = storage.getLearnedCount();
+  var targetCount = learnedTotal < 15 ? 2 : (learnedTotal < 35 ? 3 : 4);
+  var distractCount = targetCount - 1;
+
   var picked = {};
   picked[answer] = true;
   var distract = [];
   var learned = shuffle(storage.getLearnedChars().filter(function (c) { return c !== answer; }));
-  for (var i = 0; i < learned.length && distract.length < 3; i++) {
+  for (var i = 0; i < learned.length && distract.length < distractCount; i++) {
     distract.push(learned[i]); picked[learned[i]] = true;
   }
-  if (distract.length < 3) {
+  if (distract.length < distractCount) {
     var front = course.loadChars().slice(0, 40);
-    for (var k = 0; k < front.length && distract.length < 3; k++) {
+    for (var k = 0; k < front.length && distract.length < distractCount; k++) {
       var c = front[k].char;
       if (!picked[c]) { distract.push(c); picked[c] = true; }
     }

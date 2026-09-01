@@ -14,6 +14,9 @@ Component({
   properties: {
     text: { type: String, value: '' },
     subText: { type: String, value: '' },
+    icon: { type: String, value: '' },           // 具象物象图标（如 ☀️、🈴、🧺、🌳）
+    showSpeaker: { type: Boolean, value: false }, // 是否显示大喇叭提示
+    layout: { type: String, value: 'vertical' }, // 'vertical' | 'horizontal'
     // primary 墨绿实心 / plain 米白描边
     type: { type: String, value: 'primary' },
     // 点击时先播报名字（语音提示，不阻塞事件）

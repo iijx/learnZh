@@ -1,6 +1,5 @@
-// data/audio-manifest.js —— 已生成的语音清单（audio-pipeline/index.js 每次运行后自动重写）
+// data/audio-manifest.js —— 已生成的本地语音清单（tools/gen-unified-audio.py 自动更新）
 // key 规则：单字读音 <字>；讲解 explain_<字>；组词 word_<字>_<i>；例句 sentence_<字>
-// 音频实际位置由 services/audio-config.js 的 BASE 决定（本地打包或 CDN）
 var KEYS = [
   "explain_一",
   "explain_了",
@@ -49,6 +48,8 @@ var KEYS = [
 
 module.exports = {
   has: function (key) { return KEYS.indexOf(key) !== -1; },
-  path: function (key) { return this.has(key) ? '/assets/audio/' + key + '.mp3' : null; },
+  path: function (key) {
+    return this.has(key) ? '/assets/audio/' + key + '.mp3' : null;
+  },
   keys: KEYS
 };

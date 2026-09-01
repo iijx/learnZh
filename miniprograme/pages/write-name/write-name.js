@@ -137,5 +137,12 @@ Page({
         wx.reLaunch({ url: '/pages/home/home' });
       }
     });
+  },
+
+  onShareAppMessage: function () {
+    return {
+      title: '我学会写自己的名字「' + (this.data.name || '') + '」啦！以后看病领钱都能自己签名！',
+      path: '/pages/home/home?from=share'
+    };
   }
 });

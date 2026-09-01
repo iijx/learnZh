@@ -36,6 +36,14 @@ function dateStr(d) {
   return date.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (day < 10 ? '0' + day : day);
 }
 
+// 日期串转当天 0 点时间戳
+function dayStart(str) {
+  if (!str) return 0;
+  var parts = str.split('-');
+  return new Date(+parts[0], +parts[1] - 1, +parts[2]).getTime();
+}
+
+
 // 设置项默认值（PRD 3.10）
 var DEFAULT_SETTINGS = {
   dailyNewChars: 5,      // 每日新字数：1 / 3 / 5
@@ -118,6 +126,36 @@ var storage = {
   },
   getStreak: function () {
     return rawGet(KEY.STREAK, { days: 0, lastStudyDate: '' }).days;
+  },
+  // 距上次学习间隔天数（用于判断是否断学回归）
+  getDaysSinceLastStudy: function () {
+    var s = rawGet(KEY.STREAK, { days: 0, lastStudyDate: '' });
+    if (!s.lastStudyDate) return 0;
+    var lastTs = dayStart(s.lastStudyDate);
+    var todayTs = dayStart(dateStr());
+    return Math.max(0, Math.floor((todayTs - lastTs) / 86400000));
+  },
+
+  // ===== 荣誉大奖状（适老化正反馈荣誉体系） =====
+  getCertificates: function () {
+    var n = this.getLearnedCount();
+    var all = [
+      { id: 'cert_5', need: 5, title: '初学启蒙奖', desc: '已认识 5 个生字，迈出识字第一步！', icon: '🌱' },
+      { id: 'cert_25', need: 25, title: '生活小能手', desc: '已认识 25 个常用字，买菜看牌更自如！', icon: '🧺' },
+      { id: 'cert_50', need: 50, title: '诗书达礼奖', desc: '已认识 50 个汉字，能独自诵读唐诗！', icon: '📜' },
+      { id: 'cert_100', need: 100, title: '百字脱盲状元', desc: '已认识 100 个大字，能读完整生活故事！', icon: '🏆' },
+      { id: 'cert_200', need: 200, title: '博闻强识学士', desc: '已认识 200 个汉字，畅行生活无障碍！', icon: '🌟' }
+    ];
+    return all.map(function (c) {
+      return {
+        id: c.id,
+        need: c.need,
+        title: c.title,
+        desc: c.desc,
+        icon: c.icon,
+        unlocked: n >= c.need
+      };
+    });
   },
 
   // ===== 设置项 =====

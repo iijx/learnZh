@@ -18,10 +18,11 @@ var judge = require('./judge.js');
 
 var STROKE_MS = 600;      // 每笔动画时长
 var TICK_MS = 16;         // 动画帧间隔
-var TRACE_LINE_W = 18;    // 描红轨迹线宽（px）
-var JUDGE_RADIUS = 35;    // 覆盖判定半径（px）
-var JUDGE_THRESHOLD = 0.6;
-var MIN_TRACE_POINTS = 40;
+var TRACE_LINE_W = 26;    // 描红轨迹线宽（px）——加粗至26px，提升触控与视觉质感
+var JUDGE_RADIUS = 45;    // 覆盖判定半径（px）——放宽至45px，适应老年人生理手抖
+var JUDGE_THRESHOLD = 0.5;// 覆盖率阈值——宽松至50%即过
+var MIN_TRACE_POINTS = 25;// 最少轨迹点数——降至25点，防慢速书写被卡
+
 
 Component({
   properties: {
@@ -110,6 +111,24 @@ Component({
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(this.data.char, sizePx / 2, sizePx / 2 + sizePx * 0.04);
+
+        // 描红起笔引导：若在描红阶段且尚未下笔，在第一笔起点绘制金色圆点引导
+        if (this._tracing && this._mediansPx && this._mediansPx.length && this._trace.length === 0) {
+          var startPt = this._mediansPx[0][0];
+          if (startPt) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(startPt[0], startPt[1], 10, 0, Math.PI * 2);
+            ctx.fillStyle = '#D48806';
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(startPt[0], startPt[1], 16, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(212, 136, 6, 0.6)';
+            ctx.lineWidth = 4;
+            ctx.stroke();
+            ctx.restore();
+          }
+        }
       } catch (e) {
         console.warn('[tracer] 底字 fillText 失败，降级为空白米字格', e);
       }

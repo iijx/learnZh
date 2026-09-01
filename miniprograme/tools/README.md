@@ -7,12 +7,12 @@
 - 命名规范：`audio/<key>.mp3`，key 规则：
   - 单字读音：`audio/的.mp3`、`audio/一.mp3`（key 就是字本身）
   - 讲解/组词/例句等长文本：建议 `audio/explain_的.mp3`、`audio/sentence_的.mp3`
-- 生成方式：`../audio-pipeline/`（豆包 TTS → 腾讯云 COS，用法见该目录 README）。
-  `node index.js` 生成本地 mp3 并自动重写 `data/audio-manifest.js`；
-  `--skip-upload` 只出本地，`--remote-only` 只传 COS。
-  全量 500 字 × 字音+讲解+组词+例句 ≈ 3000+ 条（见 PRD 6.2），
-  音色选亲和的中老年女声，语速调慢一档（管线默认 slow 档）。
-  （旧工具 `tools/gen-audio.js` 用本地 Fish Speech，已由管线取代，保留备用。）
+- 生成方式：
+  - **高拟真统一音色生成（推荐）**：运行 `python3 tools/gen-unified-audio.py --count 5`（采用 `zh-CN-XiaoxiaoNeural` 亲切温和女声，语速 -10%，自动重写清单）。
+  - **云端生产管线**：`../audio-pipeline/`（豆包 TTS → 腾讯云 COS，用法见该目录 README）。
+    `node index.js` 生成本地 mp3 并自动重写 `data/audio-manifest.js`；
+    `--skip-upload` 只出本地，`--remote-only` 只传 COS。
+  - 全量 500 字 × 字音+讲解+组词+例句 ≈ 3000+ 条（见 PRD 6.2）。
 - 代码侧改动（已就绪）：`services/tts.js` 的 `USE_LOCAL_AUDIO` 置为 `true`，
   音频位置由 `services/audio-config.js` 的 `BASE` 一处决定：
   - 本地打包：保持默认 `'/assets/audio/'`；

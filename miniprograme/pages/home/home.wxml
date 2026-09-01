@@ -1,17 +1,52 @@
-<!-- pages/home/home.wxml —— 首页：大字问候 + 主按钮（约 1/3 屏高）+ 次级入口 -->
+<!-- pages/home/home.wxml —— 首页：大字问候 + 具象视听主按钮 + 具象卡片入口 -->
 <view class="page {{fontClass}}">
   <view class="top-bar">
     <view class="greeting">{{greeting}}！</view>
-    <view class="settings-entry" hover-class="settings-entry-hover" bindtap="goSettings">设置</view>
+    <view class="settings-entry" hover-class="settings-entry-hover" bindtap="goSettings">
+      <text class="gear-icon">⚙️</text> 设置
+    </view>
   </view>
 
   <view class="main-btn-wrap">
-    <big-button ext-class="home-start-btn" text="开始学习" subText="点这里，开始今天的课" type="primary" bind:tap="onStart" />
+    <big-button
+      ext-class="home-start-btn"
+      icon="☀️"
+      text="开始学习"
+      subText="点这里，开始今天的识字课"
+      showSpeaker="{{true}}"
+      type="primary"
+      bind:tap="onStart"
+    />
   </view>
 
   <view class="sub-entries">
-    <big-button text="写名字" type="plain" bind:tap="goWriteName" />
-    <big-button text="场景课" type="plain" bind:tap="goScene" />
-    <big-button text="我的进度" type="plain" bind:tap="goProgress" />
+    <big-button
+      icon="🈴"
+      layout="horizontal"
+      text="写名字"
+      subText="练写自己和家人的名字"
+      showSpeaker="{{true}}"
+      type="plain"
+      bind:tap="goWriteName"
+    />
+    <big-button
+      icon="🧺"
+      layout="horizontal"
+      text="场景课"
+      subText="买菜、看药盒、认站牌"
+      showSpeaker="{{true}}"
+      type="plain"
+      bind:tap="goScene"
+    />
+    <big-button
+      icon="🌳"
+      layout="horizontal"
+      text="识字果树"
+      subText="看已学的字与大红奖状"
+      showSpeaker="{{true}}"
+      type="plain"
+      bind:tap="goProgress"
+    />
   </view>
 </view>
+

@@ -1,6 +1,17 @@
 <view class="page {{fontClass}}">
   <speaker id="speaker" />
 
+  <!-- 识字果树成长卡片 -->
+  <view class="tree-card">
+    <view class="tree-icon-wrap">
+      <text class="tree-icon">{{treeInfo.icon}}</text>
+    </view>
+    <view class="tree-info">
+      <view class="tree-level">{{treeInfo.levelName}}</view>
+      <view class="tree-desc">{{treeInfo.desc}}</view>
+    </view>
+  </view>
+
   <!-- 超大字：已学字数 -->
   <view class="stat-label">我已经认识的字</view>
   <view class="stat-big">{{learnedCount}}<text class="stat-unit">个</text></view>
@@ -11,13 +22,30 @@
       <view class="stat-label">连续学习（天）</view>
     </view>
     <view class="stat-item">
-      <view class="stat-num">{{studiedToday ? '学了' : '没学'}}</view>
-      <view class="stat-label">今天</view>
+      <view class="stat-num">{{studiedToday ? '已学' : '待学'}}</view>
+      <view class="stat-label">今天状态</view>
     </view>
   </view>
 
-  <!-- 里程碑列表 -->
-  <view class="group-title">我的里程碑</view>
+  <!-- 荣誉大红奖状 -->
+  <view class="group-title">我的光荣奖状</view>
+  <view class="cert-grid">
+    <view
+      wx:for="{{certificates}}"
+      wx:key="id"
+      class="cert-item {{item.unlocked ? 'cert-unlocked' : 'cert-locked'}}"
+      data-id="{{item.id}}"
+      data-unlocked="{{item.unlocked}}"
+      bindtap="onTapCert"
+    >
+      <text class="cert-icon">{{item.icon}}</text>
+      <view class="cert-name">{{item.title}}</view>
+      <view class="cert-badge">{{item.unlocked ? '点我领奖' : '差 ' + (item.need - learnedCount) + ' 字'}}</view>
+    </view>
+  </view>
+
+  <!-- 课程里程碑列表 -->
+  <view class="group-title">我的学习里程碑</view>
   <view wx:for="{{groups}}" wx:key="name" wx:for-item="group">
     <view class="ms-group-name">{{group.name}}</view>
     <view wx:for="{{group.items}}" wx:key="key" wx:for-item="item"
@@ -33,4 +61,29 @@
 
   <view class="btn-gap"></view>
   <big-button text="返回首页" type="plain" bind:tap="goHome" />
+
+  <!-- 奖状大弹窗 -->
+  <view wx:if="{{activeCert}}" class="cert-modal-mask" bindtap="closeCertModal">
+    <view class="cert-modal" catchtap="stopProp">
+      <view class="cert-paper">
+        <view class="cert-seal">光荣</view>
+        <view class="cert-top-title">📜 光荣奖状</view>
+        <view class="cert-sub-title">《{{activeCert.title}}》</view>
+        <view class="cert-body">
+          亲爱的学员：
+        </view>
+        <view class="cert-content">
+          {{activeCert.desc}} 勤勉笃学，持之以恒，特发此状，以资鼓励！
+        </view>
+        <view class="cert-footer">
+          <view class="cert-stamp">🈴 爸妈识字课</view>
+        </view>
+      </view>
+      <view class="cert-actions">
+        <button class="cert-share-btn" open-type="share">发给儿女看一看</button>
+        <view class="cert-close-btn" bindtap="closeCertModal">收下奖状</view>
+      </view>
+    </view>
+  </view>
 </view>
+

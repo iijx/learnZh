@@ -1,10 +1,19 @@
 <!-- components/big-button/big-button.wxml —— 超大语音按钮
-     适老化：高度 ≥160rpx、文字 ≥48rpx、点击区域大、点击即有语音提示 -->
+     适老化：高度 ≥160rpx、文字 ≥48rpx、点击区域大、具象图标、点击即有语音提示 -->
 <view
-  class="bb ext-class {{type === 'plain' ? 'bb-plain' : 'bb-primary'}}"
+  class="bb ext-class {{type === 'plain' ? 'bb-plain' : 'bb-primary'}} {{layout === 'horizontal' ? 'bb-horizontal' : ''}}"
   hover-class="bb-hover"
   bindtap="onTap"
 >
-  <view class="bb-text">{{text}}</view>
-  <view wx:if="{{subText}}" class="bb-sub">{{subText}}</view>
+  <view wx:if="{{icon}}" class="bb-icon-wrap">
+    <text class="bb-icon">{{icon}}</text>
+  </view>
+  <view class="bb-content">
+    <view class="bb-text-row">
+      <text class="bb-text">{{text}}</text>
+      <text wx:if="{{showSpeaker}}" class="bb-speaker-icon">🔊</text>
+    </view>
+    <view wx:if="{{subText}}" class="bb-sub">{{subText}}</view>
+  </view>
 </view>
+
