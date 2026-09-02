@@ -1,82 +1,577 @@
-/* pages/learn/learn.wxss —— 学习页布局（适老化：大字、居中、暖色） */
+/* pages/learn/learn.wxss —— 学习页样式（适老化极简卡片与米字格教学） */
 
-.page {
+.learn-page {
   min-height: 100vh;
   box-sizing: border-box;
-  padding: 24rpx;
-  padding-bottom: 240rpx;
+  background-color: #FAF7F2;
+  padding: 24rpx 36rpx 48rpx 36rpx;
+  display: flex;
+  flex-direction: column;
 }
 
-.center-box {
+/* 通用按钮按下态 */
+.btn-hover {
+  opacity: 0.85;
+  transform: scale(0.99);
+}
+
+/* ================= 1. 顶部进度条 ================= */
+.top-progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8rpx 0 20rpx 0;
+}
+
+.progress-label {
+  font-size: 32rpx;
+  color: #555555;
+  font-weight: 500;
+}
+
+.progress-info {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.bold-num {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: #000000;
+}
+
+/* ================= 2. 米字格汉字大展示框 ================= */
+.mizige-box {
+  width: 440rpx;
+  height: 440rpx;
+  margin: 20rpx auto 32rpx auto;
+  border: 4.5rpx solid #000000;
+  background-color: #FFFFFF;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+
+.mizige-hover {
+  opacity: 0.92;
+}
+
+.mizige-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* 米字格内红虚/实辅助线 */
+.grid-line.line-h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1rpx;
+  background-color: #F09E9E;
+  transform: translateY(-50%);
+}
+
+.grid-line.line-v {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 1rpx;
+  background-color: #F09E9E;
+  transform: translateX(-50%);
+}
+
+.grid-line.line-d1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, transparent calc(50% - 1rpx), #F09E9E 50%, transparent calc(50% + 1rpx));
+}
+
+.grid-line.line-d2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top right, transparent calc(50% - 1rpx), #F09E9E 50%, transparent calc(50% + 1rpx));
+}
+
+.mizige-char {
+  position: relative;
+  z-index: 2;
+  font-size: 260rpx;
+  line-height: 1;
+  color: #000000;
+  font-weight: bold;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", serif;
+  text-align: center;
+}
+
+/* ================= 3. 拼音与播放按钮 ================= */
+.pinyin-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36rpx;
+  gap: 20rpx;
+}
+
+.pinyin-text {
+  font-size: 46rpx;
+  font-weight: 700;
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: 2rpx;
+}
+
+.speaker-btn {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.speaker-icon {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+/* ================= 4. 内容板块（字义解读 / 书写练习） ================= */
+.content-section {
+  margin-bottom: 36rpx;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+
+.red-bar {
+  width: 8rpx;
+  height: 38rpx;
+  background-color: #B82A2A;
+  border-radius: 4rpx;
+  margin-right: 14rpx;
+}
+
+.section-title {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: 1rpx;
+}
+
+.explain-body {
+  font-size: 34rpx;
+  line-height: 1.8;
+  color: #222222;
+  text-align: justify;
+  word-break: break-all;
+  letter-spacing: 0.5rpx;
+}
+
+.mnemonic-body {
+  margin-top: 12rpx;
+  font-size: 32rpx;
+  color: #666666;
+  line-height: 1.6;
+}
+
+.mnemonic-tag {
+  color: #B82A2A;
+  font-weight: 700;
+}
+
+/* ================= 5. 图解拼音插画板块 ================= */
+.ill-section {
+  margin-bottom: 36rpx;
+}
+
+.ill-card {
+  background-color: #F7F5F0;
+  border-radius: 16rpx;
+  border: 1.5rpx solid #E6E0D6;
+  padding: 24rpx;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.ill-badge {
+  position: absolute;
+  top: 24rpx;
+  left: 24rpx;
+  background-color: #FFFFFF;
+  border: 2rpx solid #333333;
+  padding: 4rpx 14rpx;
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #111111;
+  z-index: 2;
+}
+
+.ill-image {
+  width: 100%;
+  height: 480rpx;
+  display: block;
+  border-radius: 8rpx;
+}
+
+/* ================= 6. 写一写步骤（teachStep 2） ================= */
+.write-step-body {
+  margin-top: 120rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* 阶段/步骤提示（次要信息，≥32rpx） */
-.stage-tip {
-  margin: 24rpx 0;
-  font-size: 36rpx;
-  color: var(--color-text-light);
+.write-step-tip {
+  font-size: 42rpx;
+  line-height: 1.7;
+  color: #222222;
   text-align: center;
+  margin-bottom: 56rpx;
+  padding: 0 24rpx;
 }
 
-
-/* SHOW / WORDS 插画（2:1 占位图） */
-.teach-img {
-  width: 640rpx;
-  height: 320rpx;
-  margin: 24rpx 0;
-  border-radius: 24rpx;
+.enter-write-btn {
+  width: 100%;
+  height: 114rpx;
+  background-color: #000000;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18rpx;
+  box-sizing: border-box;
 }
 
-/* EXPLAIN / SENTENCE 口语文案 */
-.explain-text,
-.sentence-text {
-  margin: 32rpx;
-  font-size: 44rpx;
-  line-height: 1.8;
+.write-icon {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 14rpx;
 }
 
-.mnemonic-text {
-  margin: 24rpx 32rpx;
-  font-size: 40rpx;
-  color: var(--color-accent);
+.write-btn-text {
+  color: #FFFFFF;
+  font-size: 38rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
 }
 
-/* WORDS 组词大字 */
-.word-line {
-  margin: 16rpx;
-  font-size: 72rpx;
-  font-weight: bold;
-}
-
-/* DONE */
-.praise-char {
-  margin-top: 10vh;
-  color: var(--color-accent);
-}
-
-.done-text {
-  margin: 40rpx 0;
-  font-size: 48rpx;
-  text-align: center;
-}
-
-.milestone-text {
-  margin-bottom: 24rpx;
-  font-size: 40rpx;
-  color: var(--color-accent);
-}
-
-/* 「继续」按钮：吸底居中，手动推进 */
-.next-box {
-  position: fixed;
+/* ================= 7. 底部固定按钮（下一个字） ================= */
+.bottom-action-bar {
+  position: sticky;
+  bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
-  bottom: 48rpx;
-  color: #fff;
+  background-color: #FAF7F2;
+  padding: 16rpx 0 36rpx 0;
+  margin-top: auto;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.next-step-btn {
+  width: 100%;
+  height: 120rpx;
+  background-color: #000000;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-text {
+  color: #FFFFFF;
+  font-size: 42rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+/* 次级文字按钮：跳过写字（明显小于主按钮，防误触） */
+.skip-write-btn {
+  margin-top: 20rpx;
+  padding: 16rpx 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skip-write-text {
+  font-size: 32rpx;
+  color: #999999;
+  text-decoration: underline;
+}
+
+/* teachStep 0「认一认」：认识/不认识 双按钮 */
+.know-hint {
+  text-align: center;
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 20rpx;
+}
+
+/* 「不认识」为次级按钮：米白底、墨绿描边（与全局次级按钮规范一致） */
+.unknown-btn {
+  width: 100%;
+  height: 120rpx;
+  margin-top: 20rpx;
+  background-color: #FFFFFF;
+  border: 3rpx solid #3E6B4F;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.unknown-text {
+  color: #3E6B4F;
+  font-size: 42rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+/* ================= 8. REVIEW 阶段卡片 ================= */
+.review-card-box {
+  background: #FFFFFF;
+  border-radius: 28rpx;
+  padding: 40rpx 32rpx;
+  margin-top: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.02);
+}
+
+.review-hint {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #111111;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+/* ================= 9. DONE 阶段卡片 ================= */
+.done-wrapper {
+  padding: 60rpx 32rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.praise-badge {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+}
+
+.praise-title {
+  font-size: 64rpx;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 24rpx;
+}
+
+.praise-desc {
+  font-size: 38rpx;
+  line-height: 1.8;
+  color: #333333;
+  margin-bottom: 48rpx;
+}
+
+.milestone-card {
+  background: #FFF8E7;
+  border: 4rpx solid #D48806;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 48rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.milestone-badge {
+  font-size: 32rpx;
+  color: #D48806;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.milestone-name {
+  font-size: 42rpx;
+  font-weight: 800;
+  color: #4A3428;
+}
+
+.done-action-btn {
+  width: 100%;
+  height: 116rpx;
+  background-color: #000000;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.done-btn-text {
+  color: #FFFFFF;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+/* ================= 10. 临摹练字弹窗（Modal） ================= */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.modal-body {
+  width: 100%;
+  max-width: 680rpx;
+  background-color: #FAF7F2;
+  border-radius: 28rpx;
+  padding: 40rpx 36rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.modal-title {
+  font-size: 44rpx;
+  font-weight: 800;
+  color: #111111;
+}
+
+.modal-close {
+  min-width: 88rpx;
+  min-height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rpx 16rpx;
+  box-sizing: border-box;
+}
+
+.modal-close-text {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #333333;
+}
+
+/* 退出确认条：「还没描完，要退出吗？」 */
+.exit-confirm {
+  width: 100%;
+}
+
+.exit-confirm-text {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #B82A2A;
+  text-align: center;
+  margin-bottom: 24rpx;
+}
+
+.modal-tracer-wrap {
+  margin: 16rpx 0 24rpx 0;
   display: flex;
   justify-content: center;
+}
+
+.modal-tip {
+  font-size: 34rpx;
+  color: #666666;
+  margin-bottom: 32rpx;
+  text-align: center;
+}
+
+.modal-buttons {
+  width: 100%;
+  display: flex;
+  gap: 20rpx;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 110rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
+.play-btn {
+  background-color: #FFFFFF;
+  border: 4rpx solid #333333;
+  color: #111111;
+}
+
+.finish-btn {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+/* ================= 特大字号适配（font-xl） ================= */
+.font-xl .progress-label,
+.font-xl .progress-info {
+  font-size: 36rpx;
+}
+
+.font-xl .mizige-char {
+  font-size: 280rpx;
+}
+
+.font-xl .pinyin-text {
+  font-size: 52rpx;
+}
+
+.font-xl .section-title {
+  font-size: 46rpx;
+}
+
+.font-xl .explain-body {
+  font-size: 40rpx;
+  line-height: 1.85;
+}
+
+.font-xl .write-btn-text,
+.font-xl .next-text {
+  font-size: 46rpx;
 }

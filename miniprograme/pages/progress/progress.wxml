@@ -80,7 +80,7 @@
         </view>
       </view>
       <view class="cert-actions">
-        <button class="cert-share-btn" open-type="share">发给儿女看一看</button>
+        <button class="cert-share-btn" open-type="share" bindtap="onShareTap">发给儿女看一看</button>
         <view class="cert-close-btn" bindtap="closeCertModal">收下奖状</view>
       </view>
     </view>

@@ -1,55 +1,179 @@
-<!-- pages/learn/learn.wxml —— 学习页：REVIEW（若有） → TEACH（七步闭环）→ DONE -->
-<view class="page {{fontClass}}" bindtap="onAnyTap" bindtouchstart="onAnyTap">
+<!-- pages/learn/learn.wxml —— 学习页：新字教学卡片与互动闭环 -->
+<view class="learn-page {{fontClass}}">
   <speaker id="speaker" />
-  <!-- REVIEW 到期复习：听音选字 -->
-  <view wx:if="{{stage === 'REVIEW'}}" class="center-box">
-    <view class="stage-tip">复习时间：听一听，找一找（第 {{reviewIndex + 1}} 个，共 {{reviewTotal}} 个）</view>
-    <char-card id="reviewCard" options="{{reviewOptions}}" answer="{{reviewAnswer}}" bind:correct="onReviewCorrect" bind:wrong="onReviewWrong" />
-  </view>
-  <!-- TEACH 新字教学闭环 -->
-  <view wx:if="{{stage === 'TEACH'}}" class="center-box">
-    <view class="stage-tip">今天第 {{charIndex + 1}} 个新字，共 {{charTotal}} 个</view>
-    <!-- 1. SHOW 大字 + 插画 -->
-    <view wx:if="{{step === 'SHOW'}}" class="center-box">
-      <image class="teach-img" src="{{imgSrc}}" mode="aspectFit" binderror="onImgError" />
-      <view class="teach-char">{{teachChar}}</view>
+
+  <!-- ================= 1. REVIEW 阶段（若有到期复习） ================= -->
+  <view wx:if="{{stage === 'REVIEW'}}" class="review-wrapper">
+    <view class="top-progress-bar">
+      <text class="progress-label">当前进度</text>
+      <view class="progress-info">
+        复习第 <text class="bold-num">{{reviewIndex + 1}}</text> / <text class="bold-num">{{reviewTotal}}</text> 个字
+      </view>
     </view>
-    <!-- 2. EXPLAIN 大白话讲解 + 记字诀 -->
-    <view wx:if="{{step === 'EXPLAIN'}}" class="center-box">
-      <view class="teach-char">{{teachChar}}</view>
-      <view class="explain-text">{{explain}}</view>
-      <view class="mnemonic-text">记字诀：{{mnemonic}}</view>
-    </view>
-    <!-- 3/4. STROKES 笔顺动画 → TRACE 描红（tracer 常驻这两步，避免重建画布） -->
-    <view wx:if="{{step === 'STROKES' || step === 'TRACE'}}" class="center-box">
-      <tracer id="tracer" char="{{teachChar}}" size="{{600}}" exam="{{writeExam}}" bind:pass="onTracePass" />
-      <view class="stage-tip">{{step === 'STROKES' ? '看一看，笔顺是这样写的' : '用手指跟着写一写'}}</view>
-    </view>
-    <!-- 5. WORDS 组词 -->
-    <view wx:if="{{step === 'WORDS'}}" class="center-box">
-      <image class="teach-img" src="{{imgSrc}}" mode="aspectFit" binderror="onImgError" />
-      <view class="word-line" wx:for="{{words}}" wx:key="*this">{{item}}</view>
-    </view>
-    <!-- 6. SENTENCE 生活例句 -->
-    <view wx:if="{{step === 'SENTENCE'}}" class="center-box">
-      <view class="teach-char">{{teachChar}}</view>
-      <view class="sentence-text">{{sentence}}</view>
-    </view>
-    <!-- 7. QUIZ 听音选字 ×2 -->
-    <view wx:if="{{step === 'QUIZ'}}" class="center-box">
-      <view class="stage-tip">听一听，是哪个字？（第 {{quizRound + 1}} 题，共 2 题）</view>
-      <char-card id="quizCard" options="{{quizOptions}}" answer="{{quizAnswer}}" bind:correct="onQuizCorrect" bind:wrong="onQuizWrong" />
+
+    <view class="review-card-box">
+      <view class="review-hint">听一听，是哪个字？</view>
+      <char-card id="reviewCard" options="{{reviewOptions}}" answer="{{reviewAnswer}}" bind:correct="onReviewCorrect" bind:wrong="onReviewWrong" />
     </view>
   </view>
-  <!-- DONE 结束表扬 -->
-  <view wx:if="{{stage === 'DONE'}}" class="center-box">
-    <view class="teach-char praise-char">你真棒！</view>
-    <view class="done-text">你已经认识 {{learnedCount}} 个字了！</view>
-    <view wx:if="{{milestoneTitle}}" class="milestone-text">新解锁：{{milestoneTitle}}</view>
-    <big-button text="{{doneBtnText}}" type="primary" bind:tap="onDoneBtn" />
+
+  <!-- ================= 2. TEACH 阶段（新字学习主界面，分步流：一屏一个动作） ================= -->
+  <view wx:if="{{stage === 'TEACH'}}" class="teach-wrapper">
+    <!-- 顶部进度条 -->
+    <view class="top-progress-bar">
+      <text class="progress-label">当前进度</text>
+      <view class="progress-info">
+        第 <text class="bold-num">{{charIndex + 1}}</text> / <text class="bold-num">{{charTotal}}</text> 个字
+      </view>
+    </view>
+
+    <!-- teachStep 0「认一认」：米字格大字 + 拼音 + 喇叭 -->
+    <block wx:if="{{teachStep === 0}}">
+      <!-- 米字格大字展示框（点按重播发音） -->
+      <view class="mizige-box" hover-class="mizige-hover" bindtap="onPlayVoice">
+        <view class="mizige-grid">
+          <view class="grid-line line-h"></view>
+          <view class="grid-line line-v"></view>
+          <view class="grid-line line-d1"></view>
+          <view class="grid-line line-d2"></view>
+        </view>
+        <text class="mizige-char">{{teachChar}}</text>
+      </view>
+
+      <!-- 拼音与发音播放按钮 -->
+      <view class="pinyin-row">
+        <text class="pinyin-text">{{teachCharPinyin}}</text>
+        <view class="speaker-btn" hover-class="btn-hover" bindtap="onPlayVoice">
+          <image class="speaker-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+        </view>
+      </view>
+    </block>
+
+    <!-- teachStep 1「看意思」：字义解读 + 记字诀 + 图解拼音插画 -->
+    <block wx:if="{{teachStep === 1}}">
+      <!-- 字义解读板块 -->
+      <view class="content-section">
+        <view class="section-header">
+          <view class="red-bar"></view>
+          <text class="section-title">字义解读</text>
+        </view>
+        <view class="explain-body">
+          <text>{{explain}}</text>
+        </view>
+        <view wx:if="{{mnemonic}}" class="mnemonic-body">
+          <text class="mnemonic-tag">记字诀：</text>
+          <text>{{mnemonic}}</text>
+        </view>
+      </view>
+
+      <!-- 图解拼音插画板块 -->
+      <view class="ill-section">
+        <view class="ill-card">
+          <view class="ill-badge">图解拼音</view>
+          <image class="ill-image" src="{{imgSrc}}" mode="aspectFit" binderror="onImgError" />
+        </view>
+      </view>
+    </block>
+
+    <!-- teachStep 2「写一写」：说明 + 大按钮（弹层在进入本步时自动打开） -->
+    <block wx:if="{{teachStep === 2}}">
+      <view class="write-step-body">
+        <text class="write-step-tip">{{traceDone ? '写得真好！这个字会写了' : (hasStroke ? '跟着金色的点，把字描一遍' : '这个字不用写，认识它就好')}}</text>
+        <view wx:if="{{hasStroke && !traceDone && !writeOpened}}" class="enter-write-btn" hover-class="btn-hover" bindtap="openWritingModal">
+          <image class="write-icon" src="/assets/img/icon-write-white.svg" mode="aspectFit" />
+          <text class="write-btn-text">开始临摹</text>
+        </view>
+      </view>
+    </block>
+
+    <!-- 底部固定吸底按钮：每个子步骤主按钮唯一（认一认除外：认识/不认识 双选） -->
+    <view class="bottom-action-bar">
+      <block wx:if="{{teachStep === 0}}">
+        <view class="know-hint">认识这个字吗？</view>
+        <view class="next-step-btn" hover-class="btn-hover" bindtap="onTapKnow">
+          <text class="next-text">认识</text>
+        </view>
+        <view class="unknown-btn" hover-class="btn-hover" bindtap="onTapUnknown">
+          <text class="unknown-text">不认识</text>
+        </view>
+      </block>
+      <block wx:elif="{{teachStep === 1}}">
+        <view class="next-step-btn" hover-class="btn-hover" bindtap="onTapToWrite">
+          <text class="next-text">写一写 →</text>
+        </view>
+      </block>
+      <block wx:else>
+        <!-- 描红完成 / 本字无笔顺：直接去下一个字 -->
+        <view wx:if="{{traceDone || !hasStroke}}" class="next-step-btn" hover-class="btn-hover" bindtap="onTapNext">
+          <text class="next-text">{{isLastChar ? '完成今日学习 →' : '下一个字 →'}}</text>
+        </view>
+        <!-- 已开过弹层但没描完：主按钮重开描红 + 次级小字跳过（防误触） -->
+        <block wx:elif="{{writeOpened}}">
+          <view class="next-step-btn" hover-class="btn-hover" bindtap="openWritingModal">
+            <text class="next-text">再描一遍</text>
+          </view>
+          <view class="skip-write-btn" hover-class="btn-hover" bindtap="onTapNext">
+            <text class="skip-write-text">跳过写字，下一个 →</text>
+          </view>
+        </block>
+      </block>
+    </view>
   </view>
-  <!-- 「继续」按钮：学习过程中常驻显示，点击直接往下走 -->
-  <view wx:if="{{stage !== 'DONE'}}" class="next-box">
-    <big-button text="继续" type="primary" speakFirst="{{false}}" bind:tap="onTapNext" />
+
+  <!-- ================= 3. DONE 阶段（学完表扬） ================= -->
+  <view wx:if="{{stage === 'DONE'}}" class="done-wrapper">
+    <view class="praise-badge">🏅</view>
+    <view class="praise-title">你真棒！</view>
+    <view class="praise-desc">今天已顺利完成新字学习，你已经认识 {{learnedCount}} 个字了！</view>
+
+    <view wx:if="{{milestoneTitle}}" class="milestone-card">
+      <view class="milestone-badge">🎉 新解锁</view>
+      <view class="milestone-name">{{milestoneTitle}}</view>
+    </view>
+
+    <view class="done-action-btn" hover-class="btn-hover" bindtap="onDoneBtn">
+      <text class="done-btn-text">{{doneBtnText}}</text>
+    </view>
+  </view>
+
+  <!-- ================= 4. 临摹练字浮层弹窗（Tracer 描红） ================= -->
+  <!-- 遮罩不绑定关闭，防误触丢进度；只能走右上角「✕ 退出」 -->
+  <view wx:if="{{isWritingOpen}}" class="modal-mask">
+    <view class="modal-body" catchtap="onPreventBubble">
+      <view class="modal-head">
+        <text class="modal-title">临摹练字 · {{teachChar}}</text>
+        <view class="modal-close" hover-class="btn-hover" bindtap="onTapExitWriting">
+          <text class="modal-close-text">✕ 退出</text>
+        </view>
+      </view>
+
+      <view class="modal-tracer-wrap">
+        <tracer id="tracer" char="{{teachChar}}" size="{{540}}" exam="{{writeExam}}" bind:pass="onTracePass" />
+      </view>
+
+      <view class="modal-tip">{{hasStroke ? '用手指跟着笔顺写一写' : '照着底字，用手指写一写'}}</view>
+
+      <!-- 有笔迹时点退出：确认条替换底部按钮，防误触丢进度 -->
+      <view wx:if="{{showExitConfirm}}" class="exit-confirm">
+        <view class="exit-confirm-text">还没描完，要退出吗？</view>
+        <view class="modal-buttons">
+          <view class="modal-btn finish-btn" hover-class="btn-hover" bindtap="onTapContinueTrace">
+            <text>继续描</text>
+          </view>
+          <view class="modal-btn play-btn" hover-class="btn-hover" bindtap="onTapConfirmExit">
+            <text>退出</text>
+          </view>
+        </view>
+      </view>
+
+      <view wx:else class="modal-buttons">
+        <view wx:if="{{hasStroke}}" class="modal-btn play-btn" hover-class="btn-hover" bindtap="playStrokesAnimation">
+          <text>笔顺演示 🔄</text>
+        </view>
+        <view class="modal-btn finish-btn" hover-class="btn-hover" bindtap="onTapExitWriting">
+          <text>完成练字 ✓</text>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

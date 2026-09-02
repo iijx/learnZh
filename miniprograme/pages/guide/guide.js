@@ -6,7 +6,6 @@ Page({
 
   onReady: function () {
     this.speaker = this.selectComponent('#speaker');
-    this.speaker.startIdleWatch();
   },
 
   // 「我都设置好了」→ 回首页

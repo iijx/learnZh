@@ -1,52 +1,52 @@
-<!-- pages/home/home.wxml —— 首页：大字问候 + 具象视听主按钮 + 具象卡片入口 -->
-<view class="page {{fontClass}}">
-  <view class="top-bar">
-    <view class="greeting">{{greeting}}！</view>
-    <view class="settings-entry" hover-class="settings-entry-hover" bindtap="goSettings">
-      <text class="gear-icon">⚙️</text> 设置
+<!-- pages/home/home.wxml —— 首页：适老化极简卡片式设计 -->
+<view class="home-container {{fontClass}}">
+  <!-- 顶部主卡片：开始学习 -->
+  <view class="card learn-card">
+    <view class="card-title">开始学习</view>
+
+    <!-- 具象太阳图标大徽章 -->
+    <view class="badge-wrapper">
+      <view class="sun-badge">
+        <image class="sun-icon" src="/assets/img/icon-sun.svg" mode="aspectFit" />
+      </view>
+    </view>
+
+    <!-- 问候与引导正文 -->
+    <view class="welcome-section">
+      <text class="lead-char">亲</text>
+      <text class="lead-text"> 爱的长辈，欢迎来到今天的课堂。今天我们将学习{{dailyCharsText}}与生活息息相关的常用汉字。保持每天阅读的好习惯，让生活更加丰富多彩。</text>
+    </view>
+
+    <!-- 主按钮：进入今日课堂 -->
+    <view class="cta-btn" hover-class="cta-btn-hover" bindtap="onStart">
+      <text class="cta-btn-text">进入今日课堂</text>
+      <text class="cta-btn-arrow">→</text>
     </view>
   </view>
 
-  <view class="main-btn-wrap">
-    <big-button
-      ext-class="home-start-btn"
-      icon="☀️"
-      text="开始学习"
-      subText="点这里，开始今天的识字课"
-      showSpeaker="{{true}}"
-      type="primary"
-      bind:tap="onStart"
-    />
-  </view>
+  <!-- 底部卡片：识字成果报告 -->
+  <view class="card report-card" hover-class="card-hover" bindtap="goProgress">
+    <view class="report-header">
+      <image class="report-icon" src="/assets/img/icon-report.svg" mode="aspectFit" />
+      <text class="report-title">识字成果报告</text>
+    </view>
 
-  <view class="sub-entries">
-    <big-button
-      icon="🈴"
-      layout="horizontal"
-      text="写名字"
-      subText="练写自己和家人的名字"
-      showSpeaker="{{true}}"
-      type="plain"
-      bind:tap="goWriteName"
-    />
-    <big-button
-      icon="🧺"
-      layout="horizontal"
-      text="场景课"
-      subText="买菜、看药盒、认站牌"
-      showSpeaker="{{true}}"
-      type="plain"
-      bind:tap="goScene"
-    />
-    <big-button
-      icon="🌳"
-      layout="horizontal"
-      text="识字果树"
-      subText="看已学的字与大红奖状"
-      showSpeaker="{{true}}"
-      type="plain"
-      bind:tap="goProgress"
-    />
+    <view class="report-metrics">
+      <view class="metric-item">
+        <view class="metric-label">累计识字</view>
+        <view class="metric-val-wrap">
+          <text class="metric-num">{{learnedCount}}</text>
+          <text class="metric-unit">字</text>
+        </view>
+      </view>
+
+      <view class="metric-item">
+        <view class="metric-label">连续学习</view>
+        <view class="metric-val-wrap">
+          <text class="metric-num">{{streak}}</text>
+          <text class="metric-unit">天</text>
+        </view>
+      </view>
+    </view>
   </view>
 </view>
-

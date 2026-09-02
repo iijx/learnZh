@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "写名字",
-  "usingComponents": {
-    "big-button": "/components/big-button/big-button",
-    "speaker": "/components/speaker/speaker",
-    "tracer": "/components/tracer/tracer"
-  }
-}

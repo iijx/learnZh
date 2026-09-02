@@ -30,16 +30,23 @@ Page({
       fontClass: storage.getSettings().fontSize === 'xl' ? 'font-xl' : 'font-large'
     });
     this._buildList();
+    // 从「我的」页跳转进来：switchTab 不能带参数，用 storage 传递待打开的课
+    var pending = 0;
+    try { pending = wx.getStorageSync('lz_pending_scene') || 0; } catch (e) {}
+    if (pending) {
+      try { wx.removeStorageSync('lz_pending_scene'); } catch (e) {}
+      this._tryOpen(Number(pending));
+    }
   },
 
   onReady: function () {
     this.speaker = this.selectComponent('#speaker');
-    this.speaker.startIdleWatch();
     if (this._openId) {
       var id = this._openId;
       this._openId = 0;
       this._tryOpen(id);
-    } else {
+    } else if (this.data.view !== 'lesson') {
+      // 已从 pending 课直接进入课内态时，不再播列表引导语
       this.speaker.speak('场景课。点一节课，找一找你认识的字。');
     }
   },
@@ -63,7 +70,6 @@ Page({
   },
 
   onTapScene: function (e) {
-    this.speaker.resetIdle();
     var id = Number(e.currentTarget.dataset.id);
     var item = null;
     for (var i = 0; i < this.data.scenes.length; i++) {
@@ -136,7 +142,6 @@ Page({
   },
 
   onTapCard: function (e) {
-    this.speaker.resetIdle();
     if (this.data.view !== 'lesson') return;
     var ch = e.currentTarget.dataset.char;
     var cards = this.data.lesson.cards;
@@ -177,17 +182,12 @@ Page({
   },
 
   backToList: function () {
-    this.speaker.resetIdle();
     this.setData({ view: 'list' });
     this._buildList();
   },
 
   goHome: function () {
-    this.speaker.resetIdle();
-    wx.navigateBack({
-      fail: function () {
-        wx.reLaunch({ url: '/pages/home/home' });
-      }
-    });
+    // 本页是 tab 页，返回首页用 switchTab
+    wx.switchTab({ url: '/pages/home/home' });
   }
 });

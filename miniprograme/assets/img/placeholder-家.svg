@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="600" height="500">
+  <defs>
+    <!-- Paper texture gradient -->
+    <radialGradient id="paperBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FBF9F5" />
+      <stop offset="85%" stop-color="#F0ECE4" />
+      <stop offset="100%" stop-color="#E5DFC0" />
+    </radialGradient>
+    <filter id="inkBlur" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="600" height="500" fill="url(#paperBg)" />
+  <!-- Outer double thin border -->
+  <rect x="16" y="16" width="568" height="468" fill="none" stroke="#D1C7B7" stroke-width="1.5" />
+  <rect x="22" y="22" width="556" height="456" fill="none" stroke="#E2D9CB" stroke-width="0.8" />
+
+  <!-- Seal / Stamp at upper right corner: 「家」 -->
+  <g transform="translate(480, 50)">
+    <rect width="44" height="44" rx="10" fill="#333333" />
+    <text x="22" y="32" font-size="24" font-family="'Songti SC', 'SimSun', serif" font-weight="bold" fill="#F7F4EC" text-anchor="middle">家</text>
+  </g>
+
+  <!-- Distant misty mountains (ink-wash) -->
+  <path d="M 320 280 Q 420 180 520 260 Q 560 210 600 290 L 600 380 L 300 380 Z" fill="#D3CBC0" opacity="0.35" filter="url(#inkBlur)" />
+  <path d="M 0 300 Q 120 200 280 270 Q 380 230 460 310 L 460 380 L 0 380 Z" fill="#C5BCB0" opacity="0.3" filter="url(#inkBlur)" />
+
+  <!-- Bamboo grove (left side) -->
+  <g stroke="#3A3835" stroke-linecap="round" fill="none">
+    <!-- Bamboo stems -->
+    <path d="M 120 380 L 120 310 M 120 306 L 120 230 M 120 226 L 120 160" stroke-width="4.5" />
+    <path d="M 155 380 L 155 300 M 155 296 L 155 210 M 155 206 L 155 140" stroke-width="5" />
+    <path d="M 190 380 L 190 320 M 190 316 L 190 240 M 190 236 L 190 170" stroke-width="4" />
+    <!-- Bamboo leaves (quick brush style) -->
+    <path d="M 120 230 Q 90 240 70 265 M 120 230 Q 100 220 80 230 M 120 160 Q 90 170 70 190 M 120 160 Q 140 145 160 160" stroke-width="2.5" fill="#3A3835" />
+    <path d="M 155 210 Q 130 195 110 205 M 155 210 Q 180 195 200 210 M 155 140 Q 135 125 115 135 M 155 140 Q 175 130 195 145" stroke-width="2.5" fill="#3A3835" />
+    <path d="M 190 240 Q 210 225 230 240 M 190 170 Q 170 155 150 165 M 190 170 Q 210 160 230 175" stroke-width="2.5" fill="#3A3835" />
+  </g>
+
+  <!-- Traditional thatched house (Cottage) -->
+  <!-- Thatched roof with ink texture -->
+  <g fill="#2B2927" stroke="#2B2927">
+    <!-- Roof outline -->
+    <polygon points="280,260 160,335 390,335" fill="#423E3B" stroke-width="2" />
+    <polygon points="280,260 390,335 440,310 330,245" fill="#312E2C" stroke-width="2" />
+    <!-- Roof ridge and texture lines -->
+    <path d="M 280 260 L 330 245" stroke="#1A1918" stroke-width="5" stroke-linecap="round" />
+    <path d="M 155 338 Q 275 330 395 338" stroke="#1A1918" stroke-width="4" fill="none" stroke-linecap="round" />
+    <path d="M 395 338 L 445 312" stroke="#1A1918" stroke-width="4" fill="none" stroke-linecap="round" />
+    
+    <!-- Roof straw texture lines -->
+    <line x1="260" y1="275" x2="190" y2="330" stroke="#5A5550" stroke-width="1.8" />
+    <line x1="280" y1="270" x2="230" y2="332" stroke="#5A5550" stroke-width="1.8" />
+    <line x1="300" y1="270" x2="270" y2="332" stroke="#5A5550" stroke-width="1.8" />
+    <line x1="320" y1="275" x2="310" y2="332" stroke="#5A5550" stroke-width="1.8" />
+    <line x1="340" y1="280" x2="350" y2="332" stroke="#5A5550" stroke-width="1.8" />
+    <!-- Side roof texture -->
+    <line x1="310" y1="250" x2="410" y2="320" stroke="#484440" stroke-width="1.5" />
+    <line x1="325" y1="247" x2="430" y2="312" stroke="#484440" stroke-width="1.5" />
+  </g>
+
+  <!-- Walls and Door -->
+  <g fill="#F7F3EB" stroke="#2B2927" stroke-width="2.5">
+    <!-- Front wall -->
+    <polygon points="180,335 375,335 375,395 180,395" fill="#EFE9DD" />
+    <!-- Door -->
+    <rect x="260" y="348" width="34" height="47" fill="#8C3B2D" stroke="#2B2927" stroke-width="2" />
+    <!-- Lanterns on eaves -->
+    <circle cx="215" cy="345" r="6" fill="#A83226" stroke="#2B2927" stroke-width="1.2" />
+    <circle cx="340" cy="345" r="6" fill="#A83226" stroke="#2B2927" stroke-width="1.2" />
+    <!-- Windows -->
+    <rect x="205" y="352" width="26" height="24" fill="#FFFFFF" stroke="#3A3835" stroke-width="1.8" />
+    <line x1="218" y1="352" x2="218" y2="376" stroke="#3A3835" stroke-width="1.2" />
+    <rect x="325" y="352" width="26" height="24" fill="#FFFFFF" stroke="#3A3835" stroke-width="1.8" />
+    <line x1="338" y1="352" x2="338" y2="376" stroke="#3A3835" stroke-width="1.2" />
+    <!-- Steps -->
+    <rect x="250" y="395" width="54" height="6" rx="2" fill="#D5CBB9" stroke="#2B2927" stroke-width="1.5" />
+  </g>
+
+  <!-- Wooden fence yard (Right side) -->
+  <g stroke="#4A443D" stroke-width="2" stroke-linecap="round">
+    <!-- Fence posts -->
+    <line x1="385" y1="375" x2="385" y2="420" />
+    <line x1="420" y1="375" x2="420" y2="425" />
+    <line x1="460" y1="370" x2="460" y2="420" />
+    <line x1="495" y1="365" x2="495" y2="415" />
+    <!-- Fence rails -->
+    <line x1="380" y1="385" x2="500" y2="375" />
+    <line x1="380" y1="405" x2="500" y2="395" />
+  </g>
+
+  <!-- Little pigs in the yard (豕) -->
+  <g fill="#EAD9CD" stroke="#3A3530" stroke-width="1.8">
+    <!-- Pig 1 -->
+    <ellipse cx="425" cy="395" rx="14" ry="10" />
+    <circle cx="413" cy="393" r="6" />
+    <ellipse cx="408" cy="394" rx="2.5" ry="3.5" fill="#F4A5AE" stroke="#3A3530" stroke-width="1" />
+    <!-- Pig 2 -->
+    <ellipse cx="455" cy="390" rx="12" ry="8" />
+    <circle cx="445" cy="388" r="5" />
+    <ellipse cx="441" cy="389" rx="2" ry="3" fill="#F4A5AE" stroke="#3A3530" stroke-width="1" />
+  </g>
+
+  <!-- Ground slope and ink texture (Foreground) -->
+  <path d="M 0 420 Q 140 370 260 410 Q 380 440 600 395 L 600 500 L 0 500 Z" fill="#EAE2D3" opacity="0.6" />
+  <path d="M 60 410 Q 180 395 240 420" stroke="#7A7265" stroke-width="2" fill="none" stroke-linecap="round" />
+  <path d="M 300 425 Q 400 410 520 420" stroke="#7A7265" stroke-width="2" fill="none" stroke-linecap="round" />
+</svg>

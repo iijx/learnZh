@@ -1,5 +1,8 @@
 {
   "navigationBarTitleText": "学新字",
+  "navigationBarBackgroundColor": "#FAF7F2",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#FAF7F2",
   "usingComponents": {
     "big-button": "/components/big-button/big-button",
     "char-card": "/components/char-card/char-card",

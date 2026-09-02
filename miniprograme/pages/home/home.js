@@ -1,18 +1,26 @@
-// pages/home/home.js —— 首页（PRD 4.1/4.2）
-// 大字问候 + 唯一主按钮「开始学习」+ 三个次级入口 + 右上角设置；
-// onShow 语音播报问候与今日任务（同一天只自动播一次）。
+// pages/home/home.js —— 首页逻辑
+// 极简适老化卡片首页：大字展示、具象图标、进入今日课堂主入口、识字成果展示、全语音引导
 
 var tts = require('../../services/tts.js');
 var storage = require('../../services/storage.js');
 var review = require('../../services/review.js');
 
-// 同一天只自动播报一次的记录键（存在本地即可，无需入 storage.js 接口）
+// 同一天只自动播报一次的记录键
 var GREET_DATE_KEY = 'lz_home_greet_date';
+
+var NUM_MAP = {
+  1: '一个',
+  3: '三个',
+  5: '五个'
+};
 
 Page({
   data: {
-    greeting: '',                    // 早上好 / 下午好 / 晚上好
-    fontClass: 'font-large'          // 跟随设置里的字号档位
+    greeting: '早上好',
+    learnedCount: 0,
+    streak: 0,
+    dailyCharsText: '五个',
+    fontClass: 'font-large'
   },
 
   onLoad: function (options) {
@@ -26,10 +34,18 @@ Page({
     var settings = storage.getSettings();
     var hour = new Date().getHours();
     var greeting = hour < 12 ? '早上好' : (hour < 18 ? '下午好' : '晚上好');
+    var learnedCount = storage.getLearnedCount();
+    var streak = storage.getStreak();
+    var dailyCharsText = NUM_MAP[settings.dailyNewChars] || (settings.dailyNewChars + '个');
+
     this.setData({
       greeting: greeting,
+      learnedCount: learnedCount,
+      streak: streak,
+      dailyCharsText: dailyCharsText,
       fontClass: settings.fontSize === 'xl' ? 'font-xl' : 'font-large'
     });
+
     this._speakTodayTask(greeting, settings);
   },
 
@@ -41,7 +57,7 @@ Page({
     if (last === today) return;
     try { wx.setStorageSync(GREET_DATE_KEY, today); } catch (e) {}
 
-    var text = greeting + '！今天我们要学' + settings.dailyNewChars + '个新字';
+    var text = greeting + '！亲爱的长辈，欢迎来到今天的课堂。今天我们要学' + settings.dailyNewChars + '个新字';
     text += review.getTodayReview().length > 0 ? '，先复习昨天学过的字。' : '。';
     tts.speak(text);
   },
@@ -49,22 +65,16 @@ Page({
   onStart: function () {
     wx.navigateTo({ url: '/pages/learn/learn' });
   },
-  goWriteName: function () {
-    wx.navigateTo({ url: '/pages/write-name/write-name' });
-  },
-  goScene: function () {
-    wx.navigateTo({ url: '/pages/scene/scene' });
-  },
+
   goProgress: function () {
-    wx.navigateTo({ url: '/pages/progress/progress' });
-  },
-  goSettings: function () {
-    wx.navigateTo({ url: '/pages/settings/settings' });
+    // 我的页是 tab 页，用 switchTab 跳转
+    wx.switchTab({ url: '/pages/progress/progress' });
   },
 
   onShareAppMessage: function () {
+    var count = storage.getLearnedCount();
     return {
-      title: '我爸妈已认识' + storage.getLearnedCount() + '个字！一天五个字，认遍生活',
+      title: '我爸妈已认识' + count + '个字！一天五个字，认遍生活',
       path: '/pages/home/home?from=share'
     };
   }

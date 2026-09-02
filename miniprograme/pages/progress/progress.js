@@ -1,4 +1,4 @@
-// pages/progress/progress.js —— 我的进度（大字页 + 识字果树 + 荣誉奖状）
+// pages/progress/progress.js —— 「我的」tab 页（识字果树 + 荣誉奖状 + 里程碑）
 // 视觉化展示识字果树阶段、大红奖状、已学字数、连续天数及里程碑列表。
 
 var storage = require('../../services/storage.js');
@@ -35,7 +35,6 @@ Page({
 
   onReady: function () {
     this.speaker = this.selectComponent('#speaker');
-    this.speaker.startIdleWatch();
     // onShow 可能先于 onReady 触发，这里补一次播报
     this._speakSummary();
   },
@@ -97,7 +96,6 @@ Page({
 
   // 点击奖状：已解锁展示光荣大奖状，未解锁播报还差多少字
   onTapCert: function (e) {
-    this.speaker.resetIdle();
     var d = e.currentTarget.dataset;
     var cert = null;
     for (var i = 0; i < this.data.certificates.length; i++) {
@@ -122,32 +120,34 @@ Page({
     this.setData({ activeCert: null });
   },
 
+  // 点「发给儿女看一看」：打开分享面板的同时语音引导（分享结果无可靠回调，不做成功提示）
+  onShareTap: function () {
+    tts.speak('选择儿女的微信，把奖状发给他们吧');
+  },
+
   stopProp: function () {
     // 阻止弹窗内点击关闭
   },
 
   // 点击里程碑：已解锁跳对应页，未解锁播报还差多少字
   onTapMilestone: function (e) {
-    this.speaker.resetIdle();
     var d = e.currentTarget.dataset;
     if (!d.unlocked) {
       this.speaker.speak('再学一些字就能解锁这节课啦');
       return;
     }
     if (d.type === 'scene') {
-      wx.navigateTo({ url: '/pages/scene/scene?id=' + d.id });
+      // 场景课是 tab 页，switchTab 不能带参数，用 storage 传递待打开的课
+      try { wx.setStorageSync('lz_pending_scene', d.id); } catch (e) {}
+      wx.switchTab({ url: '/pages/scene/scene' });
     } else {
       wx.navigateTo({ url: '/pages/milestone/milestone?type=' + d.type + '&id=' + d.id });
     }
   },
 
   goHome: function () {
-    this.speaker.resetIdle();
-    wx.navigateBack({
-      fail: function () {
-        wx.reLaunch({ url: '/pages/home/home' });
-      }
-    });
+    // 本页是 tab 页，返回首页用 switchTab
+    wx.switchTab({ url: '/pages/home/home' });
   },
 
   onShareAppMessage: function () {

@@ -1,11 +1,7 @@
-// pages/learn/learn.js —— 学习页（PRD 3.3/3.4，状态机，核心页面）
-//
-// 阶段机：GREET 问候 → REVIEW 到期复习（批量听音选字）→ TEACH 逐字教学闭环 → DONE 结束表扬
-// 单字闭环步骤：SHOW 大字+插画 → EXPLAIN 讲解+记字诀 → STROKES 笔顺动画×2
-//   → TRACE 描红 → WORDS 组词 → SENTENCE 例句 → QUIZ 听音选字×2 → 下一字
-// 除描红 / 答题停等操作外，其余步骤播完语音后显示「继续」按钮，点击手动推进（不自动跳转）。
-// 断点续学：每进入新 step 记 storage.saveResume；onLoad 恢复当天位置；DONE 时清除。
-// 30 秒无操作由 speaker 组件守望提醒；onUnload 统一清理定时器并停播报。
+// pages/learn/learn.js —— 学习页逻辑
+// 适老化全景新字教学：TEACH 拆成「认一认 → 看意思 → 写一写」三个子步骤（teachStep 0/1/2），
+// 一屏一个动作。「认一认」自动播字音后让用户选「认识 / 不认识」：
+// 认识直接学下一个字（跳过讲解和临摹），不认识才进入「看意思 → 写一写」完整教学。
 
 var tts = require('../../services/tts.js');
 var storage = require('../../services/storage.js');
@@ -14,11 +10,6 @@ var course = require('../../services/course.js');
 var strokesIndex = require('../../data/strokes/index.js');
 
 var STAGE = { REVIEW: 'REVIEW', TEACH: 'TEACH', DONE: 'DONE' };
-var STEP = {
-  SHOW: 'SHOW', EXPLAIN: 'EXPLAIN', STROKES: 'STROKES', TRACE: 'TRACE',
-  WORDS: 'WORDS', SENTENCE: 'SENTENCE', QUIZ: 'QUIZ'
-};
-
 var IMG_FALLBACK = '/assets/img/placeholder.svg';
 
 function shuffle(arr) {
@@ -29,7 +20,6 @@ function shuffle(arr) {
   return arr;
 }
 
-// 听音选字选项：自适应 2 选 1（早期前 15 字，认知减负）/ 3 选 1（15~35 字）/ 4 选 1（35+ 字）
 function buildOptions(answer) {
   var learnedTotal = storage.getLearnedCount();
   var targetCount = learnedTotal < 15 ? 2 : (learnedTotal < 35 ? 3 : 4);
@@ -55,62 +45,92 @@ function buildOptions(answer) {
 Page({
   data: {
     stage: STAGE.TEACH,
-    step: '',
     fontClass: 'font-large',
     writeExam: false,
-    showNext: true,   // 学习过程中「继续」按钮一直显示，点继续直接往下走
-    // REVIEW
-    reviewOptions: [], reviewAnswer: '', reviewIndex: 0, reviewTotal: 0,
-    // TEACH
-    teachChar: '', explain: '', mnemonic: '', words: [], sentence: '', imgSrc: '',
-    charIndex: 0, charTotal: 0,
-    quizOptions: [], quizAnswer: '', quizRound: 0,
-    // DONE
-    learnedCount: 0, doneBtnText: '回到首页', milestoneTitle: ''
+
+    // TEACH 状态数据
+    teachChar: '',
+    teachCharPinyin: '',
+    explain: '',
+    mnemonic: '',
+    words: [],
+    sentence: '',
+    imgSrc: '',
+    charIndex: 0,
+    charTotal: 0,
+    isLastChar: false,
+    hasStroke: false,
+    isWritingOpen: false,
+    teachStep: 0,        // TEACH 子步骤：0 认一认 / 1 看意思 / 2 写一写
+    traceDone: false,    // 当前字描红是否已完成
+    writeOpened: false,  // 当前字是否打开过描红弹层（决定「开始临摹」还是「再描一遍」）
+    showExitConfirm: false, // 描红弹层退出确认条
+
+    // REVIEW 状态数据
+    reviewOptions: [],
+    reviewAnswer: '',
+    reviewIndex: 0,
+    reviewTotal: 0,
+
+    // DONE 状态数据
+    learnedCount: 0,
+    doneBtnText: '回到首页',
+    milestoneTitle: ''
   },
 
   onLoad: function () {
     this.timers = [];
-    this._stepIndex = 0;
     this._reviewIndex = 0;
     var settings = storage.getSettings();
     this._unlockedBefore = course.getMilestones().unlocked.length;
     this.reviewList = review.getTodayReview();
     this.newChars = [];
     this._charList = null;
+
     this.setData({
       fontClass: settings.fontSize === 'xl' ? 'font-xl' : 'font-large',
       writeExam: !!settings.writingExam
     });
 
-    // 断点续学：当天有记录则直接跳到对应位置
+    // 断点续学
     var r = storage.getResume();
-    if (r && r.page === 'learn' && r.date === storage._dateStr()) {
+    var today = storage._dateStr();
+    if (r && r.page === 'learn' && r.date === today) {
       if (r.stage === STAGE.REVIEW) {
         this._enterReview(r.reviewIndex || 0);
         return;
       }
       if (r.stage === STAGE.TEACH) {
-        this._enterTeach(r.charIndex || 0, r.stepIndex || 0, r.charList);
+        this._enterTeach(r.charIndex || 0, r.charList, r.teachStep || 0);
         return;
       }
     }
 
-    if (this.reviewList && this.reviewList.length) {
-      this._enterReview(0);
+    // 隔天旧断点：语音告知后清除，从头开始今天的课
+    var startDelay = 0;
+    if (r && r.page === 'learn' && r.date !== today) {
+      startDelay = tts.speak('昨天的课没学完，今天我们重新开始') || 0;
+      storage.clearResume();
+    }
+
+    var self = this;
+    var begin = function () {
+      if (self.reviewList && self.reviewList.length) {
+        self._enterReview(0);
+      } else {
+        self._enterTeach(0);
+      }
+    };
+    // 有隔天提示时，等提示播完再进入第一阶段，避免播报互相打断
+    if (startDelay > 0) {
+      this._delay(begin, startDelay + 300);
     } else {
-      this._enterTeach(0, 0);
+      begin();
     }
   },
 
   onReady: function () {
-    // 30 秒无操作守望：speaker 自动播提示，这里再补一句页面级口播
     this.speaker = this.selectComponent('#speaker');
-    if (this.speaker) {
-      this.speaker.startIdleWatch(function () {
-        tts.speak('点一下屏幕，我们继续');
-      });
-    }
   },
 
   onUnload: function () {
@@ -118,16 +138,16 @@ Page({
     tts.stop();
   },
 
-  // 页面任意点击/触摸都重置无操作计时（事件自组件冒泡到根节点）
-  onAnyTap: function () {
-    if (this.speaker) this.speaker.resetIdle();
+  onPreventBubble: function () {
+    // 阻止弹窗事件冒泡关闭
   },
 
   onImgError: function () {
-    if (this.data.imgSrc !== IMG_FALLBACK) this.setData({ imgSrc: IMG_FALLBACK });
+    if (this.data.imgSrc !== IMG_FALLBACK) {
+      this.setData({ imgSrc: IMG_FALLBACK });
+    }
   },
 
-  // ===== 定时器统一管理（防跳转后乱播 / 内存泄漏）=====
   _delay: function (fn, ms) {
     var self = this;
     var t = setTimeout(function () {
@@ -138,31 +158,49 @@ Page({
     this.timers.push(t);
     return t;
   },
+
   _clearTimers: function () {
     (this.timers || []).forEach(function (t) { clearTimeout(t); });
     this.timers = [];
   },
 
-  // ===== 断点续学 =====
   _saveResume: function () {
     storage.saveResume({
       page: 'learn',
       stage: this.data.stage,
       charIndex: this.data.charIndex,
-      stepIndex: this._stepIndex,
       reviewIndex: this._reviewIndex,
       charList: this._charList,
+      teachStep: this.data.teachStep,
       date: storage._dateStr()
     });
   },
 
-  // ===== REVIEW =====
+  // ===== REVIEW 阶段 =====
   _enterReview: function (fromIndex) {
     if (!this.reviewList || !this.reviewList.length) {
-      this._enterTeach(0, 0);
+      this._enterTeach(0);
       return;
     }
-    this.setData({ stage: STAGE.REVIEW, reviewTotal: this.reviewList.length, showNext: true });
+    this.setData({
+      stage: STAGE.REVIEW,
+      reviewTotal: this.reviewList.length
+    });
+    // 首次进入复习：若队列里有之前答错重排的字，先播一句安抚提示（每次进页面只播一次）
+    if (!fromIndex && !this._wrongAnnounced) {
+      this._wrongAnnounced = true;
+      var map = storage.getLearnedMap();
+      var wrongCount = this.reviewList.filter(function (ch) {
+        return map[ch] && map[ch].wrongAt;
+      }).length;
+      if (wrongCount > 0) {
+        var self = this;
+        tts.speak('今天先复习之前没记住的' + wrongCount + '个字，没关系，我们再练一次', {
+          onDone: function () { self._showReviewQuestion(0); }
+        });
+        return;
+      }
+    }
     this._showReviewQuestion(fromIndex || 0);
   },
 
@@ -170,11 +208,6 @@ Page({
     var self = this;
     var ch = this.reviewList[i];
     this._reviewIndex = i;
-    var next = i + 1;
-    this._pendingNext = function () {
-      if (next < self.reviewList.length) self._showReviewQuestion(next);
-      else self._enterTeach(0, 0);
-    };
     this.setData({
       reviewIndex: i,
       reviewAnswer: ch,
@@ -191,23 +224,24 @@ Page({
     var self = this;
     review.markReviewResult(this.reviewList[this._reviewIndex], true);
     var next = self._reviewIndex + 1;
-    this._pendingNext = function () {
-      if (next < self.reviewList.length) self._showReviewQuestion(next);
-      else self._enterTeach(0, 0);
-    };
     tts.speak('答对啦！');
+    this._delay(function () {
+      if (next < self.reviewList.length) {
+        self._showReviewQuestion(next);
+      } else {
+        self._enterTeach(0);
+      }
+    }, 1200);
   },
 
   onReviewWrong: function () {
     if (this.data.stage !== STAGE.REVIEW) return;
-    // 答错 24 小时后重排；组件已播「没关系，再听一遍」，允许再答直到对
     review.rescheduleWrong(this.reviewList[this._reviewIndex]);
   },
 
-  // ===== TEACH =====
-  _enterTeach: function (charIndex, stepIndex, charList) {
+  // ===== TEACH 新字教学阶段 =====
+  _enterTeach: function (charIndex, charList, teachStep) {
     if (charList && charList.length) {
-      // 断点恢复：用当天进入学习时固定下来的新字列表，避免中途已学字导致列表漂移
       this._charList = charList;
       this.newChars = charList.map(function (ch) { return course.getChar(ch); })
         .filter(function (c) { return !!c; });
@@ -215,206 +249,188 @@ Page({
       this.newChars = course.getTodayNewChars();
       this._charList = this.newChars.map(function (c) { return c.char; });
     }
-    if (!this.newChars.length) { this._finish(); return; }
-    this.setData({ stage: STAGE.TEACH, charTotal: this.newChars.length, showNext: true });
-    this._startChar(charIndex || 0, stepIndex || 0);
+    if (!this.newChars.length) {
+      this._finish();
+      return;
+    }
+    this.setData({
+      stage: STAGE.TEACH,
+      charTotal: this.newChars.length
+    });
+    this._startChar(charIndex || 0, teachStep);
   },
 
-  _startChar: function (charIndex, stepIndex) {
+  _startChar: function (charIndex, teachStep) {
     var info = this.newChars[charIndex];
     this._charInfo = info;
     this._charIndex = charIndex;
-    // 无笔顺数据的字跳过笔顺动画步骤（描红步骤保留，静态底字照着写）
-    this._hasStroke = !!(info.hasStroke && strokesIndex.hasChar(info.char));
-    var steps = [STEP.SHOW, STEP.EXPLAIN];
-    if (this._hasStroke) steps.push(STEP.STROKES);
-    steps.push(STEP.TRACE, STEP.WORDS, STEP.SENTENCE, STEP.QUIZ);
-    this._steps = steps;
+    var hasStroke = !!(info.hasStroke && strokesIndex.hasChar(info.char));
+
     this.setData({
       teachChar: info.char,
-      explain: info.explain,
-      mnemonic: info.mnemonic,
+      teachCharPinyin: info.pinyin || '',
+      explain: info.explain || '',
+      mnemonic: info.mnemonic || '',
       words: (info.words || []).slice(0, 3),
-      sentence: info.sentence,
+      sentence: info.sentence || '',
       imgSrc: '/assets/img/placeholder-' + info.char + '.svg',
-      charIndex: charIndex
+      charIndex: charIndex,
+      charTotal: this.newChars.length,
+      isLastChar: charIndex === this.newChars.length - 1,
+      hasStroke: hasStroke,
+      isWritingOpen: false,
+      teachStep: 0,
+      traceDone: false,
+      writeOpened: false,
+      showExitConfirm: false
     });
-    this._runStep(stepIndex || 0);
+
+    // 每个字从「认一认」开始（断点续学可恢复到指定子步骤）
+    this._enterTeachStep(teachStep || 0);
   },
 
-  _runStep: function (stepIndex) {
+  // 进入 TEACH 的某个子步骤：一屏一个动作，每步播一句简短引导语
+  _enterTeachStep: function (step) {
     var self = this;
-    this._stepIndex = stepIndex;
-    var step = this._steps[stepIndex];
-    this._pendingNext = function () { self._nextStep(); };
-    this.setData({ step: step, showNext: true }, function () {
-      self._saveResume();
-      self._doStep(step);
-    });
-  },
+    this.setData({ teachStep: step });
+    this._saveResume();
 
-  _nextStep: function () {
-    var next = this._stepIndex + 1;
-    if (next < this._steps.length) {
-      this._runStep(next);
-    } else {
-      this._finishChar();
+    if (step === 0) {
+      // 认一认：自动播字音，再引导用户在底部选「认识 / 不认识」
+      tts.speakSequence([
+        this.data.teachChar,
+        '认识这个字吗？认识就点「认识」，不认识就点「不认识」'
+      ]);
+    } else if (step === 1) {
+      tts.speak('看看这个字的意思');
+    } else if (step === 2) {
+      if (this.data.hasStroke) {
+        // 写一写：自动打开描红弹层，引导语由 openWritingModal 播报
+        this._delay(function () {
+          self.openWritingModal();
+        }, 600);
+      } else {
+        // 无笔顺数据的字不安排描红，直接可去下一个字
+        tts.speak('这个字不用写，点下面的按钮，学下一个字');
+      }
     }
   },
 
-  _finishChar: function () {
+  // teachStep 0：点「认识」——本会，直接学下一个字（跳过讲解和临摹）
+  onTapKnow: function () {
+    this.onTapNext();
+  },
+
+  // teachStep 0：点「不认识」——进入「看意思」讲解，之后照常「写一写」
+  onTapUnknown: function () {
+    this._enterTeachStep(1);
+  },
+
+  // teachStep 1 → 2：写一写
+  onTapToWrite: function () {
+    this._enterTeachStep(2);
+  },
+
+  // 播放当前字的发音及字义解读
+  onPlayVoice: function () {
+    var info = this._charInfo;
+    if (!info) return;
+    var text = '这个字念' + info.char + '，' + info.char + '。' + info.explain;
+    tts.speak(text, {
+      audioKey: info.char
+    });
+  },
+
+  // 打开临摹练字浮层
+  openWritingModal: function () {
+    var self = this;
+    this.setData({ isWritingOpen: true, writeOpened: true, showExitConfirm: false });
+    tts.speak('跟着金色的点，把字描一遍');
+    this._delay(function () {
+      var tracer = self.selectComponent('#tracer');
+      if (tracer) {
+        if (self.data.hasStroke) {
+          tracer.playStrokes(function () {
+            tracer.startTrace();
+          });
+        } else {
+          tracer.startTrace();
+        }
+      }
+    }, 300);
+  },
+
+  // 播放笔顺动画
+  playStrokesAnimation: function () {
+    var tracer = this.selectComponent('#tracer');
+    if (tracer) {
+      tracer.playStrokes();
+    }
+  },
+
+  // 点「× 退出」：已有笔迹先弹确认条，无笔迹直接关闭
+  onTapExitWriting: function () {
+    var tracer = this.selectComponent('#tracer');
+    var traced = !!(tracer && tracer.hasTrace && tracer.hasTrace());
+    if (traced && !this.data.traceDone) {
+      this.setData({ showExitConfirm: true });
+      tts.speak('还没描完，要退出吗？');
+    } else {
+      this.closeWritingModal();
+    }
+  },
+
+  // 退出确认条：继续描（主按钮）
+  onTapContinueTrace: function () {
+    this.setData({ showExitConfirm: false });
+  },
+
+  // 退出确认条：确认退出（次按钮）
+  onTapConfirmExit: function () {
+    this.closeWritingModal();
+  },
+
+  // 关闭临摹练字浮层（仅内部/确认后调用）
+  closeWritingModal: function () {
+    this.setData({ isWritingOpen: false, showExitConfirm: false });
+    this._saveResume();
+  },
+
+  // 描红完成：播报鼓励，稍停让用户看一眼成果后自动关弹层
+  onTracePass: function () {
+    var self = this;
+    tts.speak('写得真好！');
+    this.setData({ traceDone: true });
+    this._delay(function () {
+      self.closeWritingModal();
+    }, 1200);
+  },
+
+  // 点击「下一个字 →」推进
+  onTapNext: function () {
+    tts.stop();
+    this._clearTimers();
     storage.markCharLearned(this._charInfo.char);
+
     var nextChar = this._charIndex + 1;
     if (nextChar < this.newChars.length) {
-      this._startChar(nextChar, 0);
+      this._startChar(nextChar);
     } else {
       this._finish();
     }
   },
 
-  // ===== 手动推进：直接往下走 =====
-  _offerNext: function (action) {
-    this._pendingNext = action;
-    this.setData({ showNext: true });
-  },
-
-  onTapNext: function () {
-    tts.stop();
-    this._clearTimers();
-    var fn = this._pendingNext;
-    this._pendingNext = null;
-    if (fn) {
-      fn();
-    } else {
-      this._nextStep();
-    }
-  },
-
-  _doStep: function (step) {
-    var self = this;
-    var info = this._charInfo;
-    this._pendingNext = function () { self._nextStep(); };
-    switch (step) {
-      case STEP.SHOW:
-        // 大字 + 插画展示，读音×2
-        tts.speak('这个字念' + info.char + '，' + info.char, {
-          audioKey: info.char
-        });
-        break;
-
-      case STEP.EXPLAIN:
-        // 讲解 + 记字诀合成一条播报
-        tts.speak(info.explain + '。记字诀：' + info.mnemonic, {
-          audioKey: 'explain_' + info.char
-        });
-        break;
-
-      case STEP.STROKES:
-        // tracer 随 wx:if 挂载，等一拍再调方法；笔顺动画连播两遍
-        this._delay(function () {
-          var tracer = self.selectComponent('#tracer');
-          if (!tracer) return;
-          tracer.playStrokes(function () {
-            tracer.playStrokes(function () {
-              tts.speak('现在，用手指跟着写一写');
-            });
-          });
-        }, 400);
-        break;
-
-      case STEP.TRACE:
-        // 描红步骤；无笔顺数据的字在这里补口播提示
-        this._delay(function () {
-          var tracer = self.selectComponent('#tracer');
-          if (!tracer) return;
-          if (self._hasStroke) {
-            tracer.startTrace();
-          } else {
-            tts.speak('现在，用手指跟着写一写', {
-              onDone: function () { tracer.startTrace(); }
-            });
-          }
-        }, 400);
-        break;
-
-      case STEP.WORDS:
-        tts.speakSequence(this.data.words);
-        break;
-
-      case STEP.SENTENCE:
-        tts.speak(info.sentence);
-        break;
-
-      case STEP.QUIZ:
-        this._showQuiz(0);
-        break;
-    }
-  },
-
-  onTracePass: function () {
-    if (this.data.stage !== STAGE.TEACH || this.data.step !== STEP.TRACE) return;
-    var self = this;
-    this._pendingNext = function () { self._nextStep(); };
-    tts.speak('写得真好！');
-  },
-
-  // 听音选字 ×2：第二题重新随机选项（干扰字与顺序都换）
-  _showQuiz: function (round) {
-    var self = this;
-    var ch = this._charInfo.char;
-    this._quizRound = round;
-    if (round === 0) {
-      this._pendingNext = function () { self._showQuiz(1); };
-    } else {
-      this._pendingNext = function () { self._finishChar(); };
-    }
-    this.setData({
-      quizRound: round,
-      quizAnswer: ch,
-      quizOptions: buildOptions(ch)
-    }, function () {
-      self._saveResume();
-      var card = self.selectComponent('#quizCard');
-      if (card) card.start('听一听，是哪个字？');
-    });
-  },
-
-  onQuizCorrect: function () {
-    if (this.data.stage !== STAGE.TEACH || this.data.step !== STEP.QUIZ) return;
-    var self = this;
-    if (this._quizRound === 0) {
-      this._pendingNext = function () { self._showQuiz(1); };
-      tts.speak('答对啦！');
-      return;
-    }
-    // 两题都答对：记录该字已学，进下一字
-    this._pendingNext = function () { self._finishChar(); };
-    var nextChar = this._charIndex + 1;
-    if (nextChar < this.newChars.length) {
-      tts.speak('太好了！我们学下一个字');
-    } else {
-      tts.speak('太好了！', {
-        onDone: function () { self._finish(); }
-      });
-    }
-  },
-
-  onQuizWrong: function () {
-    // 组件已播「没关系，再听一遍」并重读题目；永不显示「错」，允许再答直到对
-  },
-
-  // ===== DONE =====
+  // ===== DONE 结束表扬阶段 =====
   _finish: function () {
     storage.clearResume();
     var n = storage.getLearnedCount();
-    // 里程碑解锁判定：与进入学习页时对比，看本次学完后是否多解锁了课
     var unlocked = course.getMilestones().unlocked;
     var newly = unlocked.slice(this._unlockedBefore);
     var milestone = newly.length ? newly[newly.length - 1] : null;
     this._milestone = milestone;
+
     this.setData({
       stage: STAGE.DONE,
-      showNext: false,
       learnedCount: n,
       doneBtnText: milestone ? '去看看新解锁的课' : '回到首页',
       milestoneTitle: milestone ? milestone.title : ''
@@ -424,9 +440,12 @@ Page({
 
   onDoneBtn: function () {
     if (this._milestone) {
-      wx.redirectTo({
-        url: this._milestone.type === 'scene' ? '/pages/scene/scene' : '/pages/milestone/milestone'
-      });
+      // 场景课是 tab 页，只能 switchTab；古诗/故事仍是普通页
+      if (this._milestone.type === 'scene') {
+        wx.switchTab({ url: '/pages/scene/scene' });
+      } else {
+        wx.redirectTo({ url: '/pages/milestone/milestone' });
+      }
     } else {
       wx.navigateBack();
     }

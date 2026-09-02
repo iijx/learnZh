@@ -166,12 +166,20 @@ var FULL_CHARS = [
     hasStroke: true
   },
   {
-    char: '子', pinyin: 'zi',
+    char: '子', pinyin: 'zǐ',
     explain: '子，是孩子的子。桌子、椅子、日子、孙子，后面都爱带个「子」。',
     mnemonic: '「了」字添上一横，抱个娃娃就是「子」。',
     words: ['孩子', '桌子', '日子'],
     sentence: '孩子们都回来了，家里真热闹。',
     hasStroke: true
+  },
+  {
+    char: '家', pinyin: 'jiā',
+    explain: '家庭，住所。上面是“宀”（房屋），下面是“豕”（猪）。古代认为家里有猪，才算安居乐业。',
+    mnemonic: '宝盖头下一个豕，有屋有猪才是「家」。',
+    words: ['家庭', '回家', '家里'],
+    sentence: '这里是温暖的家。',
+    hasStroke: false
   }
 ];
 

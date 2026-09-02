@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "爸妈识字课",
-  "usingComponents": {
-    "big-button": "/components/big-button/big-button"
-  }
+  "backgroundColor": "#FAF7F2"
 }

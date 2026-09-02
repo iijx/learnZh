@@ -87,3 +87,72 @@
 .btn-gap {
   height: 24rpx;
 }
+
+/* 朗读中时给页面底部留白，避免最后几句被吸底控制条挡住 */
+.page-reading {
+  padding-bottom: 220rpx;
+}
+
+/* ===== 朗读控制条：吸底，暂停/继续 + 再读这句 ===== */
+.read-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  padding: 20rpx 32rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  background: var(--color-bg-card);
+  border-top: 4rpx solid var(--color-line);
+}
+
+.read-btn {
+  flex: 1;
+  min-height: 120rpx;
+  line-height: 120rpx;
+  margin: 0 12rpx;
+  font-size: var(--font-btn);
+  font-weight: bold;
+  text-align: center;
+  border-radius: 24rpx;
+  color: #FFF8E7;
+  background: var(--color-accent);
+}
+
+.read-btn:active {
+  background: var(--color-accent-deep);
+}
+
+/* 次级按钮：米白底、墨绿描边（与全局 .btn-plain 一致） */
+.read-btn-plain {
+  color: var(--color-accent);
+  background: var(--color-bg-card);
+  border: 4rpx solid var(--color-accent);
+}
+
+.read-btn-plain:active {
+  background: var(--color-line);
+}
+
+/* 暂停后的「继续」：金光呼吸，引导老人点它接着读 */
+.read-btn-glow {
+  color: var(--color-text);
+  background: var(--color-gold-bg);
+  border: 4rpx solid var(--color-gold);
+  animation: goldGlow 1.8s infinite ease-in-out;
+}
+
+/* ===== 打卡反馈 ===== */
+/* 累计打卡次数表扬（金色，正反馈） */
+.checkin-praise {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: var(--color-gold);
+  text-align: center;
+  margin: 24rpx 8rpx;
+}
+
+/* 今天已打卡：禁用态（降透明度，不可点） */
+.checkin-done {
+  opacity: 0.6;
+}

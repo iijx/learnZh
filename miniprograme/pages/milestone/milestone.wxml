@@ -1,4 +1,4 @@
-<view class="page {{fontClass}}">
+<view class="page {{fontClass}} {{mode !== 'list' && phase === 'reading' ? 'page-reading' : ''}}">
   <speaker id="speaker" />
 
   <!-- 清单态：所有已解锁的古诗和故事 -->
@@ -33,9 +33,11 @@
           class="line {{index === currentLine ? 'line-active' : ''}}">{{item}}</view>
 
     <block wx:if="{{phase === 'done'}}">
+      <view wx:if="{{checkinCount > 0}}" class="checkin-praise">真棒！这是你第 {{checkinCount}} 次背诗打卡</view>
       <big-button text="跟着读一遍" bind:tap="onReplay" />
       <view class="btn-gap"></view>
-      <big-button text="背给孙子听" type="plain" bind:tap="onCheckin" />
+      <view wx:if="{{checkedToday}}" class="btn-plain checkin-done">今天已打卡 ✓</view>
+      <big-button wx:else text="背给孙子听" type="plain" bind:tap="onCheckin" />
       <view class="btn-gap"></view>
       <big-button text="返回" type="plain" bind:tap="goBack" />
     </block>
@@ -55,4 +57,10 @@
       <big-button text="返回" type="plain" bind:tap="goBack" />
     </block>
   </block>
+
+  <!-- 朗读控制条：暂停/继续 + 再读这句（仅朗读中出现，吸底） -->
+  <view wx:if="{{mode !== 'list' && phase === 'reading'}}" class="read-bar">
+    <view class="read-btn {{paused ? 'read-btn-glow' : ''}}" bindtap="onTogglePause">{{paused ? '继续' : '暂停'}}</view>
+    <view class="read-btn read-btn-plain" bindtap="onRereadLine">再读这句</view>
+  </view>
 </view>

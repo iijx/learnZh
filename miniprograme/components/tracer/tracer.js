@@ -8,7 +8,7 @@
 //   3. 调用 startTrace() 进入描红，用户手指轨迹实时画深棕粗线，
 //      与笔顺中线做粗略覆盖度判定（judge.js，≥60% 即过；exam=false 时画满 40 点即过），
 //      通过后 triggerEvent('pass')；
-//   4. clear() 清空重来。
+//   4. clear() 清空重来；hasTrace() 查询是否已有笔迹。
 //
 // 坐标说明：笔顺数据是 hanzi-writer 的 1024×1024 坐标系（y 轴朝上、基准偏移 900），
 // 统一换算成 canvas 像素坐标后再使用：x' = x/1024*sizePx，y' = (900-y)/1024*sizePx。
@@ -214,6 +214,11 @@ Component({
     clear: function () {
       this._trace = [];
       this._drawBase();
+    },
+
+    // 是否已有描画笔迹（供外层弹层退出前确认用）
+    hasTrace: function () {
+      return !!(this._trace && this._trace.length);
     },
 
     onTouchStart: function (e) {

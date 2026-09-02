@@ -4,17 +4,41 @@
     "pages/learn/learn",
     "pages/scene/scene",
     "pages/milestone/milestone",
-    "pages/write-name/write-name",
     "pages/progress/progress",
-    "pages/settings/settings",
     "pages/guide/guide"
   ],
   "window": {
     "backgroundColor": "#FAF0DC",
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#4A3428",
+    "navigationBarBackgroundColor": "#FAF7F2",
     "navigationBarTitleText": "爸妈识字课",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#9C8E82",
+    "selectedColor": "#3E6B4F",
+    "backgroundColor": "#FAF7F2",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "assets/img/tab-home.png",
+        "selectedIconPath": "assets/img/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/scene/scene",
+        "text": "场景课",
+        "iconPath": "assets/img/tab-scene.png",
+        "selectedIconPath": "assets/img/tab-scene-active.png"
+      },
+      {
+        "pagePath": "pages/progress/progress",
+        "text": "我的",
+        "iconPath": "assets/img/tab-my.png",
+        "selectedIconPath": "assets/img/tab-my-active.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

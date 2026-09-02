@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "我的进度",
+  "navigationBarTitleText": "我的",
   "usingComponents": {
     "big-button": "/components/big-button/big-button",
     "speaker": "/components/speaker/speaker"
