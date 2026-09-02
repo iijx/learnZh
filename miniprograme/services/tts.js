@@ -45,10 +45,6 @@ function _getTextKeyMap() {
   charsData.forEach(function (c) {
     if (audioManifest.has(c.char)) {
       _textKeyMap[c.char] = c.char;
-      _textKeyMap[c.char + '，' + c.char] = c.char;
-    }
-    if (c.explain && c.explain !== '内容待补充' && audioManifest.has('explain_' + c.char)) {
-      _textKeyMap[c.explain + '。记字诀：' + c.mnemonic] = 'explain_' + c.char;
     }
     (c.words || []).forEach(function (w, i) {
       if (audioManifest.has('word_' + c.char + '_' + i)) _textKeyMap[w] = 'word_' + c.char + '_' + i;

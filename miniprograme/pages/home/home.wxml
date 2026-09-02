@@ -14,12 +14,12 @@
     <!-- 问候与引导正文 -->
     <view class="welcome-section">
       <text class="lead-char">亲</text>
-      <text class="lead-text"> 爱的长辈，欢迎来到今天的课堂。今天我们将学习{{dailyCharsText}}与生活息息相关的常用汉字。保持每天阅读的好习惯，让生活更加丰富多彩。</text>
+      <text class="lead-text"> 爱的长辈，欢迎来到课堂。五个字一组，学完一组接着下一组，都是与生活息息相关的常用汉字。保持每天阅读的好习惯，让生活更加丰富多彩。</text>
     </view>
 
-    <!-- 主按钮：进入今日课堂 -->
+    <!-- 主按钮：进入课堂 -->
     <view class="cta-btn" hover-class="cta-btn-hover" bindtap="onStart">
-      <text class="cta-btn-text">进入今日课堂</text>
+      <text class="cta-btn-text">开始学习</text>
       <text class="cta-btn-arrow">→</text>
     </view>
   </view>

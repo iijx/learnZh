@@ -3,23 +3,18 @@
 //
 // 【未来替换为服务端 REST API / CDN 课程包】
 // 课程包改为自有 CDN 托管（JSON + 音频 + 图片），启动时拉取并本地缓存：
-//   loadChars / loadScenes / loadPoems / loadStories -> GET {CDN}/course/v1/<type>.json
+//   loadChars / loadPoems / loadStories -> GET {CDN}/course/v1/<type>.json
 // 里程碑解锁规则不变，仍按已学字数在本地判定（已学字数来自服务端进度）。
 
 var storage = require('./storage.js');
 
 var _chars = null;
-var _scenes = null;
 var _poems = null;
 var _stories = null;
 
 function loadChars() {
   if (!_chars) _chars = require('../data/chars.js');
   return _chars;
-}
-function loadScenes() {
-  if (!_scenes) _scenes = require('../data/scenes.js');
-  return _scenes;
 }
 function loadPoems() {
   if (!_poems) _poems = require('../data/poems.js');
@@ -32,7 +27,6 @@ function loadStories() {
 
 var course = {
   loadChars: loadChars,
-  loadScenes: loadScenes,
   loadPoems: loadPoems,
   loadStories: loadStories,
 
@@ -45,25 +39,21 @@ var course = {
     return null;
   },
 
-  // 今日新字：按设置里的每日新字数，从字表前部跳过已学字选取
-  getTodayNewChars: function () {
-    var count = storage.getSettings().dailyNewChars;
+  // 下一组新字：每组固定 5 个，从字表前部跳过已学字选取；学完一组接着下一组
+  getNewCharsGroup: function () {
+    var GROUP_SIZE = 5;
     var learned = {};
     storage.getLearnedChars().forEach(function (c) { learned[c] = true; });
     var result = [];
     var list = loadChars();
-    for (var i = 0; i < list.length && result.length < count; i++) {
+    for (var i = 0; i < list.length && result.length < GROUP_SIZE; i++) {
       if (!learned[list[i].char]) result.push(list[i]);
     }
     return result;
   },
 
   // ===== 里程碑解锁判定（按已学字数）=====
-  // 每 25 字解锁一节场景课、每 50 字一首古诗、每 100 字一篇故事（数据里带 unlockAt）
-  getUnlockedScenes: function () {
-    var n = storage.getLearnedCount();
-    return loadScenes().filter(function (s) { return n >= s.unlockAt; });
-  },
+  // 每 50 字解锁一首古诗、每 100 字一篇故事（数据里带 unlockAt）
   getUnlockedPoems: function () {
     var n = storage.getLearnedCount();
     return loadPoems().filter(function (p) { return n >= p.unlockAt; });
@@ -77,7 +67,6 @@ var course = {
   getMilestones: function () {
     var n = storage.getLearnedCount();
     var all = [];
-    loadScenes().forEach(function (s) { all.push({ type: 'scene', title: s.title, unlockAt: s.unlockAt }); });
     loadPoems().forEach(function (p) { all.push({ type: 'poem', title: p.title, unlockAt: p.unlockAt }); });
     loadStories().forEach(function (s) { all.push({ type: 'story', title: s.title, unlockAt: s.unlockAt }); });
     all.sort(function (a, b) { return a.unlockAt - b.unlockAt; });

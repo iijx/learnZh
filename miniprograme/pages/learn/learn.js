@@ -1,7 +1,8 @@
 // pages/learn/learn.js —— 学习页逻辑
-// 适老化全景新字教学：TEACH 拆成「认一认 → 看意思 → 写一写」三个子步骤（teachStep 0/1/2），
-// 一屏一个动作。「认一认」自动播字音后让用户选「认识 / 不认识」：
-// 认识直接学下一个字（跳过讲解和临摹），不认识才进入「看意思 → 写一写」完整教学。
+// 适老化新字教学：TEACH 拆成「认一认 → 看意思 → 写一写」三个子步骤（teachStep 0/1/2）。
+// 「认一认」自动播字音后让用户在底部选「认识 / 不认识」：
+// 认识直接学下一个字（跳过讲解和临摹）；不认识则在字的下方直接展开字义解读，再进入「写一写」。
+// 新字按组学习：一组 5 个字，学完一组可接着学下一组（没有每日字数限制）。
 
 var tts = require('../../services/tts.js');
 var storage = require('../../services/storage.js');
@@ -46,7 +47,6 @@ Page({
   data: {
     stage: STAGE.TEACH,
     fontClass: 'font-large',
-    writeExam: false,
 
     // TEACH 状态数据
     teachChar: '',
@@ -61,9 +61,7 @@ Page({
     isLastChar: false,
     hasStroke: false,
     isWritingOpen: false,
-    teachStep: 0,        // TEACH 子步骤：0 认一认 / 1 看意思 / 2 写一写
-    traceDone: false,    // 当前字描红是否已完成
-    writeOpened: false,  // 当前字是否打开过描红弹层（决定「开始临摹」还是「再描一遍」）
+    teachStep: 0,        // TEACH 子步骤：0 认一认 / 1 看意思（写一写走弹层，不占子步骤）
     showExitConfirm: false, // 描红弹层退出确认条
 
     // REVIEW 状态数据
@@ -88,8 +86,7 @@ Page({
     this._charList = null;
 
     this.setData({
-      fontClass: settings.fontSize === 'xl' ? 'font-xl' : 'font-large',
-      writeExam: !!settings.writingExam
+      fontClass: settings.fontSize === 'xl' ? 'font-xl' : 'font-large'
     });
 
     // 断点续学
@@ -101,7 +98,8 @@ Page({
         return;
       }
       if (r.stage === STAGE.TEACH) {
-        this._enterTeach(r.charIndex || 0, r.charList, r.teachStep || 0);
+        // 断点续学保留到「第几个字」，但子步骤强制回到「认一认」（认识/不认识）重新开始
+        this._enterTeach(r.charIndex || 0, r.charList);
         return;
       }
     }
@@ -171,7 +169,6 @@ Page({
       charIndex: this.data.charIndex,
       reviewIndex: this._reviewIndex,
       charList: this._charList,
-      teachStep: this.data.teachStep,
       date: storage._dateStr()
     });
   },
@@ -246,7 +243,7 @@ Page({
       this.newChars = charList.map(function (ch) { return course.getChar(ch); })
         .filter(function (c) { return !!c; });
     } else {
-      this.newChars = course.getTodayNewChars();
+      this.newChars = course.getNewCharsGroup();
       this._charList = this.newChars.map(function (c) { return c.char; });
     }
     if (!this.newChars.length) {
@@ -280,18 +277,15 @@ Page({
       hasStroke: hasStroke,
       isWritingOpen: false,
       teachStep: 0,
-      traceDone: false,
-      writeOpened: false,
       showExitConfirm: false
     });
 
-    // 每个字从「认一认」开始（断点续学可恢复到指定子步骤）
+    // 每个字从「认一认」开始（断点续学也回到这一步）
     this._enterTeachStep(teachStep || 0);
   },
 
-  // 进入 TEACH 的某个子步骤：一屏一个动作，每步播一句简短引导语
+  // 进入 TEACH 的某个子步骤：每步播一句简短引导语（「看意思」的解读直接展开在字的下方）
   _enterTeachStep: function (step) {
-    var self = this;
     this.setData({ teachStep: step });
     this._saveResume();
 
@@ -303,16 +297,6 @@ Page({
       ]);
     } else if (step === 1) {
       tts.speak('看看这个字的意思');
-    } else if (step === 2) {
-      if (this.data.hasStroke) {
-        // 写一写：自动打开描红弹层，引导语由 openWritingModal 播报
-        this._delay(function () {
-          self.openWritingModal();
-        }, 600);
-      } else {
-        // 无笔顺数据的字不安排描红，直接可去下一个字
-        tts.speak('这个字不用写，点下面的按钮，学下一个字');
-      }
     }
   },
 
@@ -326,9 +310,9 @@ Page({
     this._enterTeachStep(1);
   },
 
-  // teachStep 1 → 2：写一写
+  // teachStep 1：点「写一写」直接打开描红弹层（不切换页面内容）
   onTapToWrite: function () {
-    this._enterTeachStep(2);
+    this.openWritingModal();
   },
 
   // 播放当前字的发音及字义解读
@@ -344,7 +328,7 @@ Page({
   // 打开临摹练字浮层
   openWritingModal: function () {
     var self = this;
-    this.setData({ isWritingOpen: true, writeOpened: true, showExitConfirm: false });
+    this.setData({ isWritingOpen: true, showExitConfirm: false });
     tts.speak('跟着金色的点，把字描一遍');
     this._delay(function () {
       var tracer = self.selectComponent('#tracer');
@@ -372,7 +356,7 @@ Page({
   onTapExitWriting: function () {
     var tracer = this.selectComponent('#tracer');
     var traced = !!(tracer && tracer.hasTrace && tracer.hasTrace());
-    if (traced && !this.data.traceDone) {
+    if (traced) {
       this.setData({ showExitConfirm: true });
       tts.speak('还没描完，要退出吗？');
     } else {
@@ -396,14 +380,10 @@ Page({
     this._saveResume();
   },
 
-  // 描红完成：播报鼓励，稍停让用户看一眼成果后自动关弹层
-  onTracePass: function () {
-    var self = this;
-    tts.speak('写得真好！');
-    this.setData({ traceDone: true });
-    this._delay(function () {
-      self.closeWritingModal();
-    }, 1200);
+  // 点「完成练字 ✓」：不做书写完成度判定，关闭弹层直接学下一个字
+  onTapFinishWriting: function () {
+    this.closeWritingModal();
+    this.onTapNext();
   },
 
   // 点击「下一个字 →」推进
@@ -432,22 +412,36 @@ Page({
     this.setData({
       stage: STAGE.DONE,
       learnedCount: n,
-      doneBtnText: milestone ? '去看看新解锁的课' : '回到首页',
+      doneBtnText: milestone ? '去看看新解锁的课' : '再学一组 →',
       milestoneTitle: milestone ? milestone.title : ''
     });
-    tts.speak('今天学完啦！你真棒！你已经认识' + n + '个字了！');
+    tts.speak('这一组学完啦！你真棒！你已经认识' + n + '个字了！');
   },
 
+  // DONE 主按钮：有新解锁去里程碑页，否则接着学下一组
   onDoneBtn: function () {
     if (this._milestone) {
-      // 场景课是 tab 页，只能 switchTab；古诗/故事仍是普通页
-      if (this._milestone.type === 'scene') {
-        wx.switchTab({ url: '/pages/scene/scene' });
-      } else {
-        wx.redirectTo({ url: '/pages/milestone/milestone' });
-      }
+      // 里程碑（古诗/故事）是普通页，直接跳转
+      wx.redirectTo({ url: '/pages/milestone/milestone' });
     } else {
-      wx.navigateBack();
+      this.onLearnMore();
     }
+  },
+
+  // 再学一组：取下一组 5 个新字，重新进入 TEACH；字表学完则语音提示
+  onLearnMore: function () {
+    var group = course.getNewCharsGroup();
+    if (!group.length) {
+      tts.speak('字表里的字都学完啦，你真了不起！');
+      return;
+    }
+    this._unlockedBefore = course.getMilestones().unlocked.length;
+    this._milestone = null;
+    this._enterTeach(0);
+  },
+
+  // DONE 次按钮：回到首页
+  onTapHome: function () {
+    wx.navigateBack();
   }
 });

@@ -22,7 +22,7 @@ Page({
     treeInfo: { icon: '🌱', levelName: '破土小幼苗', desc: '' },
     certificates: [],
     activeCert: null,
-    groups: []  // [{ name: '场景课', items: [{ key, type, id, label, unlocked, need }] }]
+    groups: []  // [{ name: '古诗', items: [{ key, type, id, label, unlocked, need }] }]
   },
 
   onShow: function () {
@@ -49,7 +49,6 @@ Page({
     }
 
     var groups = [
-      { name: '场景课', items: this._buildItems(course.loadScenes(), 'scene', n, '课') },
       { name: '古诗', items: this._buildItems(course.loadPoems(), 'poem', n, '首') },
       { name: '故事', items: this._buildItems(course.loadStories(), 'story', n, '个') }
     ];
@@ -69,8 +68,7 @@ Page({
     return list.map(function (item, i) {
       var unlocked = learnedCount >= item.unlockAt;
       var label;
-      if (type === 'scene') label = '第' + (i + 1) + '课 ' + item.title;
-      else if (type === 'poem') label = '第' + (i + 1) + '首古诗《' + item.title + '》';
+      if (type === 'poem') label = '第' + (i + 1) + '首古诗《' + item.title + '》';
       else label = '第' + (i + 1) + '个故事《' + item.title + '》';
       return {
         key: type + '_' + item.id,
@@ -136,13 +134,7 @@ Page({
       this.speaker.speak('再学一些字就能解锁这节课啦');
       return;
     }
-    if (d.type === 'scene') {
-      // 场景课是 tab 页，switchTab 不能带参数，用 storage 传递待打开的课
-      try { wx.setStorageSync('lz_pending_scene', d.id); } catch (e) {}
-      wx.switchTab({ url: '/pages/scene/scene' });
-    } else {
-      wx.navigateTo({ url: '/pages/milestone/milestone?type=' + d.type + '&id=' + d.id });
-    }
+    wx.navigateTo({ url: '/pages/milestone/milestone?type=' + d.type + '&id=' + d.id });
   },
 
   goHome: function () {

@@ -14,9 +14,9 @@ var ROOT = path.join(__dirname, '..');
 var IMG_DIR = path.join(ROOT, 'assets', 'img');
 var AUDIO_DIR = path.join(ROOT, 'assets', 'audio');
 
-// 需要生成占位插画的字：前 20 个示范字 + 场景课封面用字 + 通用占位
+// 需要生成占位插画的字：前 20 个示范字 + 其余需要占位插画的教学字 + 通用占位
 var DEMO_CHARS = '的一是了 我人 在他 有 这个 大 们 来 上 到 时 地 为 子'.replace(/\s/g, '').split('');
-var SCENE_CHARS = '场站药菜信号超医果早件视区园店钱天日票楼'.split('');
+var EXTRA_CHARS = '场站药菜信号超医果早件视区园店钱天日票楼'.split('');
 
 // ===== SVG 占位插画：暖色底（米黄）+ 居中深棕大字，2:1 尺寸 =====
 function makeSvg(label) {
@@ -52,7 +52,7 @@ function main() {
   fs.mkdirSync(IMG_DIR, { recursive: true });
   fs.mkdirSync(AUDIO_DIR, { recursive: true });
 
-  var chars = DEMO_CHARS.concat(SCENE_CHARS);
+  var chars = DEMO_CHARS.concat(EXTRA_CHARS);
   var seen = {};
   var count = 0;
   chars.forEach(function (ch) {

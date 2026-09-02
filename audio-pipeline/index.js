@@ -17,7 +17,7 @@
 //   state.json                            本次运行统计（含失败清单，供续跑排查）
 //
 // key 规则与 miniprograme/tools/README.md 第 1 节一致：
-//   单字读音 <字>；讲解 explain_<字>；组词 word_<字>_<i>；例句 sentence_<字>
+//   单字读音 <字>；组词 word_<字>_<i>；例句 sentence_<字>（讲解不合成音频）
 
 var fs = require('fs');
 var path = require('path');
@@ -100,7 +100,7 @@ function synthWithRetry(text, cfg) {
 function writeManifest(keys) {
   keys = keys.slice().sort();
   var out = '// data/audio-manifest.js —— 已生成的语音清单（audio-pipeline/index.js 每次运行后自动重写）\n' +
-    '// key 规则：单字读音 <字>；讲解 explain_<字>；组词 word_<字>_<i>；例句 sentence_<字>\n' +
+    '// key 规则：单字读音 <字>；组词 word_<字>_<i>；例句 sentence_<字>（讲解不合成音频）\n' +
     '// 音频实际位置由 services/audio-config.js 的 BASE 决定（本地打包或 CDN）\n' +
     'var KEYS = ' + JSON.stringify(keys, null, 2) + ';\n\n' +
     'module.exports = {\n' +

@@ -16,6 +16,29 @@
 }
 
 /* ================= 1. 顶部进度条 ================= */
+/* TEACH 阶段：五条短横，每学完一个字点亮一格 */
+.progress-bars {
+  display: flex;
+  gap: 16rpx;
+  padding: 8rpx 0 20rpx 0;
+}
+
+.progress-seg {
+  flex: 1;
+  height: 12rpx;
+  border-radius: 6rpx;
+  background-color: #E6E0D6;
+}
+
+.progress-seg.seg-current {
+  background-color: #A8C5B0;
+}
+
+.progress-seg.seg-done {
+  background-color: #3E6B4F;
+}
+
+/* REVIEW 阶段：文字进度（复习字数不固定，不用短横） */
 .top-progress-bar {
   display: flex;
   align-items: center;
@@ -233,58 +256,19 @@
   border-radius: 8rpx;
 }
 
-/* ================= 6. 写一写步骤（teachStep 2） ================= */
-.write-step-body {
-  margin-top: 120rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ================= 6. 底部固定按钮（固定在屏幕最底部，不随内容滚动） ================= */
+.teach-wrapper {
+  /* 给吸底按钮栏留出空间，防止长内容被遮住 */
+  padding-bottom: 300rpx;
 }
 
-.write-step-tip {
-  font-size: 42rpx;
-  line-height: 1.7;
-  color: #222222;
-  text-align: center;
-  margin-bottom: 56rpx;
-  padding: 0 24rpx;
-}
-
-.enter-write-btn {
-  width: 100%;
-  height: 114rpx;
-  background-color: #000000;
-  border-radius: 16rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 18rpx;
-  box-sizing: border-box;
-}
-
-.write-icon {
-  width: 42rpx;
-  height: 42rpx;
-  margin-right: 14rpx;
-}
-
-.write-btn-text {
-  color: #FFFFFF;
-  font-size: 38rpx;
-  font-weight: 700;
-  letter-spacing: 2rpx;
-}
-
-/* ================= 7. 底部固定按钮（下一个字） ================= */
 .bottom-action-bar {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100%;
   background-color: #FAF7F2;
-  padding: 16rpx 0 36rpx 0;
-  margin-top: auto;
+  padding: 16rpx 36rpx calc(36rpx + env(safe-area-inset-bottom)) 36rpx;
   box-sizing: border-box;
   z-index: 10;
 }
@@ -306,22 +290,7 @@
   letter-spacing: 2rpx;
 }
 
-/* 次级文字按钮：跳过写字（明显小于主按钮，防误触） */
-.skip-write-btn {
-  margin-top: 20rpx;
-  padding: 16rpx 24rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.skip-write-text {
-  font-size: 32rpx;
-  color: #999999;
-  text-decoration: underline;
-}
-
-/* teachStep 0「认一认」：认识/不认识 双按钮 */
+/* teachStep 0「认一认」：不认识/认识 左右双按钮（无主次之分，同款黑底白字） */
 .know-hint {
   text-align: center;
   font-size: 38rpx;
@@ -330,22 +299,23 @@
   margin-bottom: 20rpx;
 }
 
-/* 「不认识」为次级按钮：米白底、墨绿描边（与全局次级按钮规范一致） */
-.unknown-btn {
-  width: 100%;
+.know-btn-row {
+  display: flex;
+  gap: 20rpx;
+}
+
+.know-btn {
+  flex: 1;
   height: 120rpx;
-  margin-top: 20rpx;
-  background-color: #FFFFFF;
-  border: 3rpx solid #3E6B4F;
+  background-color: #000000;
   border-radius: 16rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
 }
 
-.unknown-text {
-  color: #3E6B4F;
+.know-text {
+  color: #FFFFFF;
   font-size: 42rpx;
   font-weight: 700;
   letter-spacing: 2rpx;
@@ -433,6 +403,21 @@
   color: #FFFFFF;
   font-size: 40rpx;
   font-weight: 700;
+}
+
+/* DONE 次级文字按钮：回到首页（明显小于主按钮，防误触） */
+.done-home-btn {
+  margin-top: 20rpx;
+  padding: 16rpx 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.done-home-text {
+  font-size: 32rpx;
+  color: #999999;
+  text-decoration: underline;
 }
 
 /* ================= 10. 临摹练字弹窗（Modal） ================= */
@@ -571,7 +556,7 @@
   line-height: 1.85;
 }
 
-.font-xl .write-btn-text,
-.font-xl .next-text {
+.font-xl .next-text,
+.font-xl .know-text {
   font-size: 46rpx;
 }

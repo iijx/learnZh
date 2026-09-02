@@ -6,7 +6,7 @@
 
 - 命名规范：`audio/<key>.mp3`，key 规则：
   - 单字读音：`audio/的.mp3`、`audio/一.mp3`（key 就是字本身）
-  - 讲解/组词/例句等长文本：建议 `audio/explain_的.mp3`、`audio/sentence_的.mp3`
+  - 组词/例句：`audio/word_的_0.mp3`、`audio/sentence_的.mp3`（讲解不合成音频，由小程序端另行处理）
 - 生成方式：
   - **高拟真统一音色生成（推荐）**：运行 `python3 tools/gen-unified-audio.py --count 5`（采用 `zh-CN-XiaoxiaoNeural` 亲切温和女声，语速 -10%，自动重写清单）。
   - **云端生产管线**：`../audio-pipeline/`（豆包 TTS → 腾讯云 COS，用法见该目录 README）。
@@ -23,10 +23,10 @@
 
 ## 2. AI 插画（替换 assets/img/placeholder-<字>.svg）
 
-- 命名规范：`img/<char>.png`（2:1 尺寸，如 800×400），场景课大图 `img/scene_<id>.png`。
+- 命名规范：`img/<char>.png`（2:1 尺寸，如 800×400）。
 - 风格：暖色简笔画、主体突出、无多余细节（PRD 6.3）；抽象虚词配生活场景插画。
 - 流程：批量 AI 生成 → 人工审核（无细节错误、无恐怖谷、主体明确）→ 压缩入库。
-- 代码侧改动：数据文件里引用图片的字段（如 scenes.js 的 `image`）改指新路径即可。
+- 代码侧改动：数据文件里引用图片的字段改指新路径即可。
 
 ## 3. 笔顺数据（扩充 data/strokes/）
 

@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "场景课",
-  "usingComponents": {
-    "big-button": "/components/big-button/big-button",
-    "speaker": "/components/speaker/speaker"
-  }
-}

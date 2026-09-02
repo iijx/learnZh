@@ -30,7 +30,7 @@ node index.js --limit N       # 最多处理 N 条（试跑用）
 - COS `course/v1/audio/<key>.mp3` + `manifest.json`（上传模式）
 - `state.json` —— 最近一次运行统计与失败清单
 
-key 规则（与 `miniprograme/tools/README.md` 第 1 节一致）：单字 `<字>`；讲解 `explain_<字>`；组词 `word_<字>_<i>`；例句 `sentence_<字>`。
+key 规则（与 `miniprograme/tools/README.md` 第 1 节一致）：单字 `<字>`；组词 `word_<字>_<i>`；例句 `sentence_<字>`。讲解不合成音频，由小程序端另行处理。
 
 ## 小程序端部署切换
 

@@ -2,7 +2,6 @@
   "pages": [
     "pages/home/home",
     "pages/learn/learn",
-    "pages/scene/scene",
     "pages/milestone/milestone",
     "pages/progress/progress",
     "pages/guide/guide"
@@ -25,12 +24,6 @@
         "text": "首页",
         "iconPath": "assets/img/tab-home.png",
         "selectedIconPath": "assets/img/tab-home-active.png"
-      },
-      {
-        "pagePath": "pages/scene/scene",
-        "text": "场景课",
-        "iconPath": "assets/img/tab-scene.png",
-        "selectedIconPath": "assets/img/tab-scene-active.png"
       },
       {
         "pagePath": "pages/progress/progress",

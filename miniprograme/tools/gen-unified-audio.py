@@ -40,22 +40,14 @@ def build_jobs_for_chars(char_list):
     jobs = []
     for c in char_list:
         ch = c["char"]
-        # 1. 单字读两遍
+        # 1. 单字读音（读一遍）
         jobs.append({
             "key": ch,
             "filename": f"{ch}.mp3",
-            "text": f"{ch}，{ch}",
+            "text": ch,
             "desc": f"单字读音「{ch}」"
         })
-        # 2. 大白话讲解 + 记字诀
-        explain_text = f"{c['explain']}。记字诀：{c['mnemonic']}"
-        jobs.append({
-            "key": f"explain_{ch}",
-            "filename": f"explain_{ch}.mp3",
-            "text": explain_text,
-            "desc": f"字义讲解「{ch}」"
-        })
-        # 3. 组词
+        # 2. 组词
         for i, w in enumerate(c.get("words", [])):
             jobs.append({
                 "key": f"word_{ch}_{i}",
@@ -63,7 +55,7 @@ def build_jobs_for_chars(char_list):
                 "text": w,
                 "desc": f"组词「{ch} - {w}」"
             })
-        # 4. 例句
+        # 3. 例句
         if c.get("sentence"):
             jobs.append({
                 "key": f"sentence_{ch}",
@@ -103,7 +95,7 @@ def update_manifest():
 
     manifest_code = (
         "// data/audio-manifest.js —— 已生成的本地语音清单（tools/gen-unified-audio.py 自动更新）\n"
-        "// key 规则：单字读音 <字>；讲解 explain_<字>；组词 word_<字>_<i>；例句 sentence_<字>\n"
+        "// key 规则：单字读音 <字>；组词 word_<字>_<i>；例句 sentence_<字>（讲解不合成音频）\n"
         f"var KEYS = {keys_json};\n\n"
         "module.exports = {\n"
         "  has: function (key) { return KEYS.indexOf(key) !== -1; },\n"

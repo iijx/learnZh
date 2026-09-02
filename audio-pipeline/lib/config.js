@@ -14,7 +14,7 @@ var DEFAULTS = {
     appId: '',
     accessToken: '',
     resourceId: 'seed-tts-2.0',
-    voice: 'zh_female_wenroumama_uranus_bigtts',
+    voice: 'zh_female_yingyujiaoxue_uranus_bigtts',
     speechRate: null,           // null = 用 run.rateMap[run.rate]
     sampleRate: 24000,
     format: 'mp3',
@@ -85,11 +85,14 @@ function load() {
     try { merge(cfg, JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'))); }
     catch (e) { throw new Error('config.json 解析失败：' + e.message); }
   }
-  merge(cfg, parseEnvFile(ENV_FILE));
+  var fileEnv = parseEnvFile(ENV_FILE);
   Object.keys(ENV_KEYS).forEach(function (env) {
-    if (process.env[env] !== undefined && process.env[env] !== '') {
+    // process.env 优先，其次 .env 文件（与文件头注释的覆盖顺序一致）
+    var v = (process.env[env] !== undefined && process.env[env] !== '')
+      ? process.env[env]
+      : fileEnv[env];
+    if (v !== undefined && v !== '') {
       var p = ENV_KEYS[env];
-      var v = process.env[env];
       cfg[p[0]][p[1]] = /^-?\d+$/.test(v) ? parseInt(v, 10) : v;
     }
   });

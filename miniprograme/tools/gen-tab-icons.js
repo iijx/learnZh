@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // tools/gen-tab-icons.js —— 生成 tabBar 图标（微信 tabBar 的 iconPath 不支持 svg，需 png）
 // 用法：node tools/gen-tab-icons.js
-// 输出：assets/img/tab-{home,scene,my}[-active].png（81×81，4 倍超采样抗锯齿）
+// 输出：assets/img/tab-{home,my}[-active].png（81×81，4 倍超采样抗锯齿）
 
 var fs = require('fs');
 var path = require('path');
@@ -108,7 +108,7 @@ function drawCircle(cv, cx, cy, r) {
   drawArc(cv, cx, cy, r, 0, Math.PI * 2);
 }
 
-// ---------- 三个图标的形状定义 ----------
+// ---------- 两个图标的形状定义 ----------
 var PI = Math.PI;
 var SHAPES = {
   home: function (cv) {
@@ -117,14 +117,6 @@ var SHAPES = {
     drawLine(cv, 22, 33, 22, 64);   // 左墙
     drawLine(cv, 59, 33, 59, 64);   // 右墙
     drawLine(cv, 22, 64, 59, 64);   // 底边
-  },
-  scene: function (cv) {
-    // 菜篮：上半圆提手 + 梯形篮身
-    drawArc(cv, 40.5, 36, 13, PI, PI * 2);
-    drawLine(cv, 21, 36, 60, 36);
-    drawLine(cv, 21, 36, 27, 62);
-    drawLine(cv, 60, 36, 54, 62);
-    drawLine(cv, 27, 62, 54, 62);
   },
   my: function (cv) {
     // 人像：头（圆）+ 肩（上半圆）

@@ -46,8 +46,6 @@ function dayStart(str) {
 
 // 设置项默认值（PRD 3.10）
 var DEFAULT_SETTINGS = {
-  dailyNewChars: 5,      // 每日新字数：1 / 3 / 5
-  writingExam: false,    // 书写考核：默认关
   fontSize: 'large',     // 字号：'large' 大 / 'xl' 特大
   speechRate: 'slow'     // 语速：'slow' 慢 / 'normal' 正常
 };
