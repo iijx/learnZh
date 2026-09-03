@@ -6,42 +6,11 @@
 
 var tts = require('../../services/tts.js');
 var storage = require('../../services/storage.js');
-var review = require('../../services/review.js');
 var course = require('../../services/course.js');
 var strokesIndex = require('../../data/strokes/index.js');
 
-var STAGE = { REVIEW: 'REVIEW', TEACH: 'TEACH', DONE: 'DONE' };
+var STAGE = { TEACH: 'TEACH', DONE: 'DONE' };
 var IMG_FALLBACK = '/assets/img/placeholder.svg';
-
-function shuffle(arr) {
-  for (var i = arr.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
-  }
-  return arr;
-}
-
-function buildOptions(answer) {
-  var learnedTotal = storage.getLearnedCount();
-  var targetCount = learnedTotal < 15 ? 2 : (learnedTotal < 35 ? 3 : 4);
-  var distractCount = targetCount - 1;
-
-  var picked = {};
-  picked[answer] = true;
-  var distract = [];
-  var learned = shuffle(storage.getLearnedChars().filter(function (c) { return c !== answer; }));
-  for (var i = 0; i < learned.length && distract.length < distractCount; i++) {
-    distract.push(learned[i]); picked[learned[i]] = true;
-  }
-  if (distract.length < distractCount) {
-    var front = course.loadChars().slice(0, 40);
-    for (var k = 0; k < front.length && distract.length < distractCount; k++) {
-      var c = front[k].char;
-      if (!picked[c]) { distract.push(c); picked[c] = true; }
-    }
-  }
-  return shuffle(distract.concat([answer]));
-}
 
 Page({
   data: {
@@ -64,12 +33,6 @@ Page({
     teachStep: 0,        // TEACH 子步骤：0 认一认 / 1 看意思（写一写走弹层，不占子步骤）
     showExitConfirm: false, // 描红弹层退出确认条
 
-    // REVIEW 状态数据
-    reviewOptions: [],
-    reviewAnswer: '',
-    reviewIndex: 0,
-    reviewTotal: 0,
-
     // DONE 状态数据
     learnedCount: 0,
     doneBtnText: '回到首页',
@@ -78,10 +41,8 @@ Page({
 
   onLoad: function () {
     this.timers = [];
-    this._reviewIndex = 0;
     var settings = storage.getSettings();
     this._unlockedBefore = course.getMilestones().unlocked.length;
-    this.reviewList = review.getTodayReview();
     this.newChars = [];
     this._charList = null;
 
@@ -92,16 +53,10 @@ Page({
     // 断点续学
     var r = storage.getResume();
     var today = storage._dateStr();
-    if (r && r.page === 'learn' && r.date === today) {
-      if (r.stage === STAGE.REVIEW) {
-        this._enterReview(r.reviewIndex || 0);
-        return;
-      }
-      if (r.stage === STAGE.TEACH) {
-        // 断点续学保留到「第几个字」，但子步骤强制回到「认一认」（认识/不认识）重新开始
-        this._enterTeach(r.charIndex || 0, r.charList);
-        return;
-      }
+    if (r && r.page === 'learn' && r.date === today && r.stage === STAGE.TEACH) {
+      // 断点续学保留到「第几个字」，但子步骤强制回到「认一认」（认识/不认识）重新开始
+      this._enterTeach(r.charIndex || 0, r.charList);
+      return;
     }
 
     // 隔天旧断点：语音告知后清除，从头开始今天的课
@@ -113,11 +68,7 @@ Page({
 
     var self = this;
     var begin = function () {
-      if (self.reviewList && self.reviewList.length) {
-        self._enterReview(0);
-      } else {
-        self._enterTeach(0);
-      }
+      self._enterTeach(0);
     };
     // 有隔天提示时，等提示播完再进入第一阶段，避免播报互相打断
     if (startDelay > 0) {
@@ -167,73 +118,9 @@ Page({
       page: 'learn',
       stage: this.data.stage,
       charIndex: this.data.charIndex,
-      reviewIndex: this._reviewIndex,
       charList: this._charList,
       date: storage._dateStr()
     });
-  },
-
-  // ===== REVIEW 阶段 =====
-  _enterReview: function (fromIndex) {
-    if (!this.reviewList || !this.reviewList.length) {
-      this._enterTeach(0);
-      return;
-    }
-    this.setData({
-      stage: STAGE.REVIEW,
-      reviewTotal: this.reviewList.length
-    });
-    // 首次进入复习：若队列里有之前答错重排的字，先播一句安抚提示（每次进页面只播一次）
-    if (!fromIndex && !this._wrongAnnounced) {
-      this._wrongAnnounced = true;
-      var map = storage.getLearnedMap();
-      var wrongCount = this.reviewList.filter(function (ch) {
-        return map[ch] && map[ch].wrongAt;
-      }).length;
-      if (wrongCount > 0) {
-        var self = this;
-        tts.speak('今天先复习之前没记住的' + wrongCount + '个字，没关系，我们再练一次', {
-          onDone: function () { self._showReviewQuestion(0); }
-        });
-        return;
-      }
-    }
-    this._showReviewQuestion(fromIndex || 0);
-  },
-
-  _showReviewQuestion: function (i) {
-    var self = this;
-    var ch = this.reviewList[i];
-    this._reviewIndex = i;
-    this.setData({
-      reviewIndex: i,
-      reviewAnswer: ch,
-      reviewOptions: buildOptions(ch)
-    }, function () {
-      self._saveResume();
-      var card = self.selectComponent('#reviewCard');
-      if (card) card.start();
-    });
-  },
-
-  onReviewCorrect: function () {
-    if (this.data.stage !== STAGE.REVIEW) return;
-    var self = this;
-    review.markReviewResult(this.reviewList[this._reviewIndex], true);
-    var next = self._reviewIndex + 1;
-    tts.speak('答对啦！');
-    this._delay(function () {
-      if (next < self.reviewList.length) {
-        self._showReviewQuestion(next);
-      } else {
-        self._enterTeach(0);
-      }
-    }, 1200);
-  },
-
-  onReviewWrong: function () {
-    if (this.data.stage !== STAGE.REVIEW) return;
-    review.rescheduleWrong(this.reviewList[this._reviewIndex]);
   },
 
   // ===== TEACH 新字教学阶段 =====

@@ -38,32 +38,6 @@
   background-color: #3E6B4F;
 }
 
-/* REVIEW 阶段：文字进度（复习字数不固定，不用短横） */
-.top-progress-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8rpx 0 20rpx 0;
-}
-
-.progress-label {
-  font-size: 32rpx;
-  color: #555555;
-  font-weight: 500;
-}
-
-.progress-info {
-  font-size: 32rpx;
-  color: #333333;
-  font-weight: 500;
-}
-
-.bold-num {
-  font-size: 36rpx;
-  font-weight: 800;
-  color: #000000;
-}
-
 /* ================= 2. 米字格汉字大展示框 ================= */
 .mizige-box {
   width: 440rpx;
@@ -267,8 +241,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #FAF7F2;
-  padding: 16rpx 36rpx calc(36rpx + env(safe-area-inset-bottom)) 36rpx;
+  padding: 16rpx 36rpx calc(12rpx + env(safe-area-inset-bottom)) 36rpx;
   box-sizing: border-box;
   z-index: 10;
 }
@@ -321,24 +294,7 @@
   letter-spacing: 2rpx;
 }
 
-/* ================= 8. REVIEW 阶段卡片 ================= */
-.review-card-box {
-  background: #FFFFFF;
-  border-radius: 28rpx;
-  padding: 40rpx 32rpx;
-  margin-top: 24rpx;
-  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.02);
-}
-
-.review-hint {
-  font-size: 38rpx;
-  font-weight: 700;
-  color: #111111;
-  text-align: center;
-  margin-bottom: 32rpx;
-}
-
-/* ================= 9. DONE 阶段卡片 ================= */
+/* ================= 8. DONE 阶段卡片 ================= */
 .done-wrapper {
   padding: 60rpx 32rpx;
   text-align: center;
@@ -420,7 +376,7 @@
   text-decoration: underline;
 }
 
-/* ================= 10. 临摹练字弹窗（Modal） ================= */
+/* ================= 9. 临摹练字弹窗（Modal） ================= */
 .modal-mask {
   position: fixed;
   top: 0;
@@ -534,11 +490,6 @@
 }
 
 /* ================= 特大字号适配（font-xl） ================= */
-.font-xl .progress-label,
-.font-xl .progress-info {
-  font-size: 36rpx;
-}
-
 .font-xl .mizige-char {
   font-size: 280rpx;
 }
