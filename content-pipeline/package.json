@@ -1,0 +1,12 @@
+{
+  "name": "learnzh-content-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "爸妈识字课文案生产管线：LLM 批量生成单字讲解 → 校验 → 人工审校 → 写回字表",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

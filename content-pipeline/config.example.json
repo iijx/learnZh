@@ -1,0 +1,16 @@
+{
+  "_说明": "复制本文件为 config.json 并填入真实凭证（config.json 已被 .gitignore 忽略，勿提交）。凭证也可改用环境变量注入（见 .env.example），环境变量优先级最高，CI 场景推荐。",
+  "llm": {
+    "_说明": "任意 OpenAI 兼容的 chat/completions 服务。用火山引擎方舟（豆包）时：baseUrl 保持默认，model 填控制台创建的推理接入点 ID（形如 ep-2024xxxx）。用 DeepSeek 时 baseUrl 填 https://api.deepseek.com，model 填 deepseek-chat。temperature 控制文案发散度，0.7 兼顾顺口溜的创造性和格式稳定。",
+    "baseUrl": "https://ark.cn-beijing.volces.com/api/v3",
+    "apiKey": "",
+    "model": "",
+    "temperature": 0.7,
+    "timeoutMs": 60000
+  },
+  "run": {
+    "_说明": "concurrency：生成并发数（按服务商 QPS 限额调整，建议 ≤4）。retries：单字失败重试次数（指数退避，校验失败的自动修正重试不占用此额度）。",
+    "concurrency": 3,
+    "retries": 2
+  }
+}
