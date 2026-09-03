@@ -62,12 +62,14 @@ function load() {
     try { merge(cfg, JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'))); }
     catch (e) { throw new Error('config.json 解析失败：' + e.message); }
   }
-  merge(cfg, parseEnvFile(ENV_FILE));
+  // .env 与 process.env 共用 ENV_KEYS 映射写回嵌套配置；process.env 优先级最高
+  var envFile = parseEnvFile(ENV_FILE);
   Object.keys(ENV_KEYS).forEach(function (env) {
-    if (process.env[env] !== undefined && process.env[env] !== '') {
-      var p = ENV_KEYS[env];
-      cfg[p[0]][p[1]] = process.env[env];
-    }
+    var p = ENV_KEYS[env];
+    var fromFile = envFile[env];
+    if (fromFile !== undefined && fromFile !== '') cfg[p[0]][p[1]] = fromFile;
+    var fromProc = process.env[env];
+    if (fromProc !== undefined && fromProc !== '') cfg[p[0]][p[1]] = fromProc;
   });
   cfg.llm.baseUrl = String(cfg.llm.baseUrl || '').replace(/\/+$/, '');
   return cfg;

@@ -1,0 +1,17 @@
+{
+  "char": "不",
+  "pinyin": "bù",
+  "explain": "不，就是说不行、不对的意思。平时买菜嫌贵说不要，孙子闹着买玩具你说不行，都用这个字。",
+  "mnemonic": "歪戴帽，叉着腰，摇头说「不」往后跑。",
+  "words": [
+    "不要",
+    "不是",
+    "不行"
+  ],
+  "sentence": "今天不下雨。",
+  "status": "draft",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-03T13:37:51.840Z"
+}

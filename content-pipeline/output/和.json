@@ -1,0 +1,17 @@
+{
+  "char": "和",
+  "pinyin": "hé",
+  "explain": "和，就是把俩人、俩东西凑一块儿说的字。比如你和老伴去买菜，黄瓜和番茄都是常吃的菜，都用它。",
+  "mnemonic": "左边禾，右边口，和和气气乐悠悠——「和」",
+  "words": [
+    "和平",
+    "和气",
+    "和好"
+  ],
+  "sentence": "我和老伴去买菜。",
+  "status": "draft",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-03T13:38:58.823Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "国",
+  "pinyin": "guó",
+  "explain": "国，就是咱们的国家呀。咱们都是中国人，升国旗、过国庆都有这个字。",
+  "mnemonic": "大口框围城墙，里头有玉是咱「国」",
+  "words": [
+    "中国",
+    "国家",
+    "国旗"
+  ],
+  "sentence": "我是中国人。",
+  "status": "draft",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-03T13:38:49.890Z"
+}

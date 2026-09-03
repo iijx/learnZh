@@ -1,0 +1,17 @@
+{
+  "char": "说",
+  "pinyin": "shuō",
+  "explain": "说，就是张嘴讲话的意思。你去菜场跟摊主砍价，在家跟孙子唠嗑，都是在说。",
+  "mnemonic": "言字旁，兑字边，开口讲话就是「说」。",
+  "words": [
+    "说话",
+    "听说",
+    "说明"
+  ],
+  "sentence": "妈妈说要去买菜。",
+  "status": "draft",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-03T13:38:50.519Z"
+}
