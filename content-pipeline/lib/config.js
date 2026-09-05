@@ -1,5 +1,5 @@
 // lib/config.js —— 配置加载：默认值 ← config.json ← .env ← process.env（后者覆盖前者）
-// 输出结构 { llm, run }，字段说明见 config.example.json。
+// 输出结构 { llm, cos, run }，字段说明见 config.example.json。
 
 var fs = require('fs');
 var path = require('path');
@@ -14,7 +14,17 @@ var DEFAULTS = {
     apiKey: '',
     model: '',
     temperature: 0.7,
-    timeoutMs: 60000
+    timeoutMs: 60000,
+    // 思考型模型（doubao-seed 等）默认深度思考，单次要 2 分钟以上；文案生成不需要，关掉提速 60 倍
+    thinking: { type: 'disabled' }
+  },
+  cos: {
+    secretId: '',
+    secretKey: '',
+    bucket: '',
+    region: 'ap-guangzhou',
+    prefix: 'learn-zh',
+    publicBaseUrl: ''
   },
   run: {
     concurrency: 3,
@@ -53,8 +63,27 @@ function parseEnvFile(file) {
 var ENV_KEYS = {
   LLM_BASE_URL: ['llm', 'baseUrl'],
   LLM_API_KEY: ['llm', 'apiKey'],
-  LLM_MODEL: ['llm', 'model']
+  LLM_MODEL: ['llm', 'model'],
+  COS_SECRET_ID: ['cos', 'secretId'],
+  COS_SECRET_KEY: ['cos', 'secretKey'],
+  COS_BUCKET: ['cos', 'bucket'],
+  COS_REGION: ['cos', 'region'],
+  COS_PREFIX: ['cos', 'prefix'],
+  COS_PUBLIC_BASE_URL: ['cos', 'publicBaseUrl']
 };
+
+// COS 凭证缺省时回退读 audio-pipeline/.env（两条管线共用同一个桶；prefix 不回退，各自独立）
+function fillCosFromAudioPipeline(cfg) {
+  if (cfg.cos.secretId) return;
+  var ap = parseEnvFile(path.join(ROOT, '..', 'audio-pipeline', '.env'));
+  var map = {
+    COS_SECRET_ID: 'secretId', COS_SECRET_KEY: 'secretKey', COS_BUCKET: 'bucket',
+    COS_REGION: 'region', COS_PUBLIC_BASE_URL: 'publicBaseUrl'
+  };
+  Object.keys(map).forEach(function (k) {
+    if (ap[k] && !cfg.cos[map[k]]) cfg.cos[map[k]] = ap[k];
+  });
+}
 
 function load() {
   var cfg = JSON.parse(JSON.stringify(DEFAULTS));
@@ -71,7 +100,9 @@ function load() {
     var fromProc = process.env[env];
     if (fromProc !== undefined && fromProc !== '') cfg[p[0]][p[1]] = fromProc;
   });
+  fillCosFromAudioPipeline(cfg);
   cfg.llm.baseUrl = String(cfg.llm.baseUrl || '').replace(/\/+$/, '');
+  cfg.cos.prefix = String(cfg.cos.prefix || '').replace(/^\/+|\/+$/g, '');
   return cfg;
 }
 
@@ -88,4 +119,14 @@ function validate(cfg) {
   if (errs.length) throw new Error('配置不完整：\n  - ' + errs.join('\n  - '));
 }
 
-module.exports = { load: load, validate: validate, ROOT: ROOT };
+// publish --upload 前校验 COS 配置
+function validateCos(cfg) {
+  var errs = [];
+  if (!cfg.cos.secretId || !cfg.cos.secretKey) {
+    errs.push('缺少 COS 凭证：请设环境变量 COS_SECRET_ID / COS_SECRET_KEY（或在 audio-pipeline/.env 配置，本管线会自动回退读取）');
+  }
+  if (!cfg.cos.bucket) errs.push('缺少 COS 桶名：请设 COS_BUCKET（格式如 learnzh-1250000000）');
+  if (errs.length) throw new Error('配置不完整：\n  - ' + errs.join('\n  - '));
+}
+
+module.exports = { load: load, validate: validate, validateCos: validateCos, ROOT: ROOT };

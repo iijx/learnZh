@@ -1,0 +1,17 @@
+{
+  "char": "法",
+  "pinyin": "fǎ",
+  "explain": "法，就是规矩、办法的意思。出门要守交通法，买菜碰到难事要想办法。",
+  "mnemonic": "三点水旁加个去，有了办法好办事，是「法」。",
+  "words": [
+    "办法",
+    "方法",
+    "法子"
+  ],
+  "sentence": "我有好办法。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:28.761Z"
+}

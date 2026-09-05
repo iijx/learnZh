@@ -1,0 +1,17 @@
+{
+  "char": "超",
+  "pinyin": "chāo",
+  "explain": "超，就是比一般的还多、还厉害的意思。超市里东西比小店多，超好用就是特别好用。",
+  "mnemonic": "走字旁加个召，走路走得超前面。",
+  "words": [
+    "超市",
+    "超过",
+    "超好用"
+  ],
+  "sentence": "我和妈妈去超市。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:35:56.203Z"
+}

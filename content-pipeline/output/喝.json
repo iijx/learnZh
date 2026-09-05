@@ -1,0 +1,19 @@
+{
+  "char": "喝",
+  "pinyin": "hē",
+  "explain": "喝，就是把水、汤、茶这些液体咽到肚子里。早上喝豆浆、平时喝开水，都用这个字。",
+  "mnemonic": "左边一张口（口字旁），右边渴了要喝水——张口就「喝」。",
+  "words": [
+    "喝水",
+    "喝茶",
+    "喝汤"
+  ],
+  "sentence": "我每天喝开水。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（每天水），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:16.868Z"
+}

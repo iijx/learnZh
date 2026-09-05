@@ -1,0 +1,17 @@
+{
+  "char": "柿",
+  "pinyin": "shì",
+  "explain": "柿，就是我们常吃的柿子，秋天成熟、红通通的那种甜果子。去水果摊买柿子、柿饼，都能见到这个字。",
+  "mnemonic": "左边木字旁是果树，右边市字挂红果——「柿」。",
+  "words": [
+    "柿子",
+    "柿饼",
+    "西红柿"
+  ],
+  "sentence": "我爱吃甜柿子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:37.965Z"
+}

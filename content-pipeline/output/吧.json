@@ -1,0 +1,17 @@
+{
+  "char": "吧",
+  "pinyin": "ba",
+  "explain": "吧，说话末尾带的软乎乎的小尾巴。咱们常说“走吧”“吃吧”，都是用它商量事儿、给人递话儿。",
+  "mnemonic": "口字在左巴在右，凑到嘴边说“好「吧」”。",
+  "words": [
+    "好吧",
+    "走吧",
+    "吃吧"
+  ],
+  "sentence": "咱们一起走吧。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:59.632Z"
+}

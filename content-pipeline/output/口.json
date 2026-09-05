@@ -1,0 +1,17 @@
+{
+  "char": "口",
+  "pinyin": "kǒu",
+  "explain": "口，就是咱们的嘴。吃饭说话都靠它，数人也用它，比如三口人。",
+  "mnemonic": "一个方框像张嘴，吃饭说话全靠「口」。",
+  "words": [
+    "口水",
+    "门口",
+    "人口"
+  ],
+  "sentence": "门口有一个人。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:33.045Z"
+}

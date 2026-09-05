@@ -1,0 +1,17 @@
+{
+  "char": "片",
+  "pinyin": "piàn",
+  "explain": "片，数数薄的东西用它。吃药时一片两片，切菜切个土豆片，都用它。",
+  "mnemonic": "半张桌子少一边，薄薄一片就是「片」。",
+  "words": [
+    "一片",
+    "片子",
+    "肉片"
+  ],
+  "sentence": "我吃了一片药。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:35.087Z"
+}

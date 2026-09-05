@@ -1,0 +1,17 @@
+{
+  "char": "拿",
+  "pinyin": "ná",
+  "explain": "拿，就是用手抓着、提着的意思。买菜拿袋子、出门拿钥匙、吃药拿水杯，都用这个字。",
+  "mnemonic": "合起手来抓东西，合上加手就是「拿」。",
+  "words": [
+    "拿东西",
+    "拿手",
+    "拿走"
+  ],
+  "sentence": "我拿水给你喝。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:01.032Z"
+}

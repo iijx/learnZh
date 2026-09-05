@@ -1,0 +1,17 @@
+{
+  "char": "嘴",
+  "pinyin": "zuǐ",
+  "explain": "嘴，就是咱们吃饭说话的嘴巴。喝水、吃药、跟老姐妹聊天，都用它。",
+  "mnemonic": "口字旁边有此字，张嘴说话全靠「嘴」。",
+  "words": [
+    "嘴巴",
+    "张嘴",
+    "嘴角"
+  ],
+  "sentence": "我张嘴吃药。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:32:51.503Z"
+}

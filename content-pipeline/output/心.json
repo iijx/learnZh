@@ -1,0 +1,17 @@
+{
+  "char": "心",
+  "pinyin": "xīn",
+  "explain": "心，就是胸口里跳的那个心。我们说小心、开心、心里想事儿，都用这个字。",
+  "mnemonic": "一个小勺子，装着三颗豆——就是「心」。",
+  "words": [
+    "开心",
+    "小心",
+    "心里"
+  ],
+  "sentence": "我今天很开心。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:51.574Z"
+}

@@ -1,0 +1,19 @@
+{
+  "char": "鼻",
+  "pinyin": "bí",
+  "explain": "鼻，就是脸上用来喘气、闻味道的鼻子。闻花香、闻饭菜香都靠它。",
+  "mnemonic": "自字下面加个畀，脸上闻味就是「鼻」。",
+  "words": [
+    "鼻子",
+    "鼻孔",
+    "鼻涕"
+  ],
+  "sentence": "我的鼻子很灵。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（子很灵），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:13.601Z"
+}

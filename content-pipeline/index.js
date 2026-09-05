@@ -2,21 +2,26 @@
 // index.js —— 文案生产管线主入口
 //
 // 用法：
-//   node index.js generate                 # 为字表中没有产物的占位字生成文案（增量）
+//   node index.js generate                 # 为 syllabus 大纲中没有完整文案的字生成（按学习顺序，增量）
 //   node index.js generate --chars 药医病   # 只生成指定的字
-//   node index.js generate --force         # 连已有产物的占位字也重新生成
+//   node index.js generate --force         # 连已有产物的字也重新生成
 //   node index.js generate --limit N       # 最多生成 N 个（试跑用）
 //   node index.js generate --dry-run       # 不调用 LLM，打印目标清单与完整提示词
-//   node index.js stats                    # 生产进度统计
+//   node index.js stats                    # 生产进度统计（按大纲级别）
 //   node index.js approve --chars 药医病    # 审校通过后标记 approved（会先跑机器校验）
 //   node index.js approve --all            # 全部 draft 中校验通过的标记 approved
-//   node index.js apply                    # 把 approved 写回 miniprograme/data/chars.js
+//   node index.js apply                    # 把 approved 写回 miniprograme/data/chars.js（按 syllabus 顺序重排）
+//   node index.js publish                  # 构建课程包到 dist/<prefix>/（manifest.json + chars.L{n}.json 按级拆包）
+//   node index.js publish --upload         # 构建并上传 COS（{prefix}/ 前缀，默认 learn-zh）
 //
-// 工作流：generate → 人工审校 output/<字>.json → approve → apply → 跑 audio-pipeline 合成音频
+// 工作流：generate → 人工审校 output/<字>.json → approve → apply → publish --upload（+ audio-pipeline 合成音频）
+//
+// 真相源：syllabus.json 管字序（第几个学什么），output/ 管文案，chars.js 是合并产物
 //
 // 产物：
 //   output/<字>.json   一字一文件，status: draft | invalid | approved | applied
-//   miniprograme/data/chars.js   apply 时重写（保持学习顺序，去重）
+//   miniprograme/data/chars.js   apply 时重写（按 syllabus 顺序）
+//   dist/<prefix>/       publish 构建的线上课程包
 
 var path = require('path');
 
@@ -26,6 +31,8 @@ var prompt = require('./lib/prompt.js');
 var store = require('./lib/store.js');
 var validator = require('./lib/validate.js');
 var applyLib = require('./lib/apply.js');
+var publishLib = require('./lib/publish.js');
+var syllabus = require('./lib/syllabus.js');
 
 var MINIPROG = path.join(__dirname, '..', 'miniprograme');
 var CHARS_FILE = path.join(MINIPROG, 'data', 'chars.js');
@@ -43,6 +50,17 @@ function optValue(name) {
 function loadChars() {
   delete require.cache[require.resolve(CHARS_FILE)];
   return require(CHARS_FILE);
+}
+
+function isFull(c) { return !!(c && c.explain && c.explain !== PLACEHOLDER); }
+
+// 学习顺序上下文工厂：ctxFor(char) → { position, posOf }（位置以 syllabus.json 为准），
+// 供 validate 的例句已学字提醒使用
+function buildCtx() {
+  var pos = syllabus.posOf();
+  return function (targetChar) {
+    return { position: pos[targetChar] || 0, posOf: pos };
+  };
 }
 
 function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
@@ -73,7 +91,7 @@ function runPool(items, worker, concurrency) {
 }
 
 // 生成单个字：LLM 调用（重试）→ 解析 → 校验 → 校验失败自动修正一轮 → 落盘
-function generateOne(char, cfg) {
+function generateOne(char, cfg, ctx) {
   var attempts = (cfg.run.retries || 0) + 1;
   var attempt = 0;
   var messages = prompt.buildMessages(char);
@@ -90,14 +108,14 @@ function generateOne(char, cfg) {
 
   return tryChat().then(function (raw) {
     var data = llm.parseJson(raw);
-    var result = validator.validate(char, data);
+    var result = validator.validate(char, data, ctx);
     if (!result.errors.length) return { data: data, result: result };
     // 校验失败：把错误反馈给模型，自我修正一轮
     messages.push({ role: 'assistant', content: raw });
     messages.push({ role: 'user', content: prompt.fixMessage(result.errors) });
     return llm.chat(messages, cfg.llm).then(function (raw2) {
       var data2 = llm.parseJson(raw2);
-      return { data: data2, result: validator.validate(char, data2) };
+      return { data: data2, result: validator.validate(char, data2, ctx) };
     });
   }).then(function (out) {
     var ok = !out.result.errors.length;
@@ -119,25 +137,27 @@ async function cmdGenerate() {
   var chars = loadChars();
   var inTable = {};
   chars.forEach(function (c) { if (!inTable[c.char]) inTable[c.char] = c; });
+  var syllabusOrder = syllabus.order().map(function (o) { return o.char; });
+  var inSyllabus = {};
+  syllabusOrder.forEach(function (ch) { inSyllabus[ch] = true; });
 
   var targets;
   var charsArg = optValue('--chars');
   if (charsArg) {
     targets = charsArg.split('');
-    var unknown = targets.filter(function (ch) { return !inTable[ch]; });
+    var unknown = targets.filter(function (ch) { return !inTable[ch] && !inSyllabus[ch]; });
     if (unknown.length) {
-      console.error('这些字不在字表里：' + unknown.join(' '));
+      console.error('这些字不在大纲也不在字表里：' + unknown.join(' '));
       process.exit(2);
     }
-    var full = targets.filter(function (ch) { return inTable[ch].explain !== PLACEHOLDER; });
+    var full = targets.filter(function (ch) { return isFull(inTable[ch]); });
     if (full.length) {
-      console.log('跳过已有完整文案的字（手写字不覆盖）：' + full.join(' '));
+      console.log('跳过已有完整文案的字（不覆盖）：' + full.join(' '));
       targets = targets.filter(function (ch) { return full.indexOf(ch) === -1; });
     }
   } else {
-    targets = chars
-      .filter(function (c) { return c.explain === PLACEHOLDER; })
-      .map(function (c) { return c.char; });
+    // 默认：大纲中还没有完整文案的字，按学习顺序
+    targets = syllabusOrder.filter(function (ch) { return !isFull(inTable[ch]); });
     if (!flag('--force')) {
       var before = targets.length;
       targets = targets.filter(function (ch) { return !store.has(ch); });
@@ -171,8 +191,9 @@ async function cmdGenerate() {
   console.log('模型 ' + cfg.llm.model + '，并发 ' + cfg.run.concurrency + '，目标 ' + targets.length + ' 字');
 
   var done = 0, okCount = 0, invalid = [], failed = [];
+  var ctxFor = buildCtx();
   await runPool(targets, function (ch) {
-    return generateOne(ch, cfg).then(function (r) {
+    return generateOne(ch, cfg, ctxFor(ch)).then(function (r) {
       done++;
       if (r.ok) {
         okCount++;
@@ -194,19 +215,28 @@ async function cmdGenerate() {
   console.log('\n完成：成功 ' + okCount + ' 字（draft，待审校）' +
     (invalid.length ? '，校验未过 ' + invalid.length + ' 字：' + invalid.join('') : '') +
     (failed.length ? '，调用失败 ' + failed.length + ' 字：' + failed.join('、') : ''));
-  console.log('下一步：人工审校 output/<字>.json，然后 node index.js approve --all，再 node index.js apply');
+  console.log('下一步：人工审校 output/<字>.json，然后 node index.js approve --all，再 node index.js apply && node index.js publish --upload');
   if (failed.length) process.exitCode = 1;
 }
 
 // ===== stats =====
 function cmdStats() {
   var chars = loadChars();
-  var full = chars.filter(function (c) { return c.explain !== PLACEHOLDER; }).length;
+  var inTable = {};
+  chars.forEach(function (c) { if (!inTable[c.char]) inTable[c.char] = c; });
+
+  console.log('大纲（syllabus.json）：');
+  syllabus.levels().forEach(function (lv) {
+    var list = syllabus.charsOfLevel(lv.level);
+    if (!list.length) {
+      console.log('  L' + lv.level + ' ' + lv.name + '：未定稿（规划 ' + lv.size + ' 字）');
+      return;
+    }
+    var full = list.filter(function (ch) { return isFull(inTable[ch]); }).length;
+    console.log('  L' + lv.level + ' ' + lv.name + '：' + list.length + ' 字，已完整 ' + full + '，待生产 ' + (list.length - full));
+  });
   var c = store.counts();
-  console.log('字表：共 ' + chars.length + ' 字，已完整 ' + full + '，占位 ' + (chars.length - full));
   console.log('产物：draft ' + c.draft + '，invalid ' + c.invalid + '，approved ' + c.approved + '，applied ' + c.applied);
-  var remaining = chars.length - full - c.draft - c.approved;
-  console.log('待生成：约 ' + Math.max(remaining, 0) + ' 字');
 }
 
 // ===== approve =====
@@ -224,8 +254,9 @@ function cmdApprove() {
   }
 
   var ok = 0, refused = [];
+  var ctxFor = buildCtx();
   entries.forEach(function (e) {
-    var result = validator.validate(e.char, e);
+    var result = validator.validate(e.char, e, ctxFor(e.char));
     if (result.errors.length) {
       refused.push(e.char + '（' + result.errors.join('；') + '）');
       return;
@@ -241,23 +272,48 @@ function cmdApprove() {
 function cmdApply() {
   var r = applyLib.apply();
   console.log('已写回 miniprograme/data/chars.js：');
-  console.log('  总字数 ' + r.total + '（去重剔除 ' + r.dropped.length + ' 个' +
-    (r.dropped.length ? '：' + r.dropped.join('') : '') + '）');
-  console.log('  保留手写完整 ' + r.kept + ' 字，本次水合 ' + r.hydrated + ' 字，仍为占位 ' + r.placeholder + ' 字');
+  console.log('  总字数 ' + r.total + '（大纲外旧字 ' + r.extra + ' 个排在大纲之后）');
+  console.log('  保留完整 ' + r.kept + ' 字，本次水合 ' + r.hydrated + ' 字，大纲新增补位 ' + r.added + ' 字，仍为占位 ' + r.placeholder + ' 字');
   if (r.hydrated > 0) {
-    console.log('下一步：运行 audio-pipeline 合成新增字的音频（node ../audio-pipeline/index.js）');
+    console.log('下一步：node index.js publish --upload 发布课程包；音频跑 audio-pipeline');
   }
+}
+
+// ===== publish =====
+async function cmdPublish() {
+  var cfg = config.load();
+  var built = publishLib.build(cfg);
+  var files = publishLib.writeDist(cfg, built);
+  files.forEach(function (f) {
+    console.log('已生成 ' + f.path + '（' + (f.bytes / 1024).toFixed(1) + ' KB）');
+  });
+  console.log('manifest：版本 ' + built.manifest.version);
+  built.manifest.levels.forEach(function (lv) {
+    console.log('  L' + lv.level + ' ' + lv.name + '：' + lv.count + ' 字，contentVersion ' + lv.contentVersion);
+  });
+
+  if (!flag('--upload')) {
+    console.log('未上传（上传请加 --upload）');
+    return;
+  }
+  config.validateCos(cfg);
+  await publishLib.upload(cfg, files);
+  files.forEach(function (f) {
+    var url = publishLib.publicUrl(cfg, f.name);
+    console.log('已上传 ' + cfg.cos.prefix + '/' + f.name + (url ? '  →  ' + url : ''));
+  });
 }
 
 var handlers = {
   generate: cmdGenerate,
   stats: cmdStats,
   approve: cmdApprove,
-  apply: cmdApply
+  apply: cmdApply,
+  publish: cmdPublish
 };
 
 if (!handlers[CMD]) {
-  console.log('用法：node index.js <generate|stats|approve|apply> [选项]，详见文件头注释');
+  console.log('用法：node index.js <generate|stats|approve|apply|publish> [选项]，详见文件头注释');
   process.exit(CMD ? 2 : 0);
 }
 

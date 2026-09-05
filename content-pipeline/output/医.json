@@ -1,0 +1,17 @@
+{
+  "char": "医",
+  "pinyin": "yī",
+  "explain": "医，就是给人看病的。去医院找医生，拿药打针都靠他们。",
+  "mnemonic": "左框里面一个矢，治病救人就是「医」。",
+  "words": [
+    "医生",
+    "医院",
+    "中医"
+  ],
+  "sentence": "我去医院看医生。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:26.921Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "火",
+  "pinyin": "huǒ",
+  "explain": "火，就是点火做饭的火，火苗往上窜的那个。做饭、点蚊香都用它，要小心别烫着。",
+  "mnemonic": "人字两边冒火苗，就是「火」。",
+  "words": [
+    "火车",
+    "大火",
+    "着火"
+  ],
+  "sentence": "火车开得快。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:18.096Z"
+}

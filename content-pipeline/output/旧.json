@@ -1,0 +1,17 @@
+{
+  "char": "旧",
+  "pinyin": "jiù",
+  "explain": "旧，就是用过的、不新的东西。比如旧衣服、旧手机，不是刚买的。",
+  "mnemonic": "左边一竖右边日，日子过久就是「旧」。",
+  "words": [
+    "旧的",
+    "旧衣服",
+    "旧手机"
+  ],
+  "sentence": "这件衣服是旧的。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:20.459Z"
+}

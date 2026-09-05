@@ -1,0 +1,17 @@
+{
+  "char": "云",
+  "pinyin": "yún",
+  "explain": "云，就是天上飘的云，白白软软的。晴天有白云，阴天有乌云。",
+  "mnemonic": "「去」字少一竖，天上飘的就是「云」。",
+  "words": [
+    "白云",
+    "乌云",
+    "云朵"
+  ],
+  "sentence": "天上有白云。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:40.348Z"
+}

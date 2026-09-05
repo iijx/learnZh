@@ -1,0 +1,19 @@
+{
+  "char": "信",
+  "pinyin": "xìn",
+  "explain": "信，就是真心话、不骗人的意思。咱们跟人说话要算数，还有手机发的消息也叫信。",
+  "mnemonic": "左边站个人，右边是言字，人言为「信」。",
+  "words": [
+    "信息",
+    "相信",
+    "写信"
+  ],
+  "sentence": "我给你发信息。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（给发息），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:07.245Z"
+}

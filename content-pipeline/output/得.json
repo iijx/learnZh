@@ -1,0 +1,17 @@
+{
+  "char": "得",
+  "pinyin": "dé",
+  "explain": "得，就是拿到手、落到自己这儿的意思。比如买菜抽中了奖、领了退休工资、孙子考了一百分，都是你得到的好事。",
+  "mnemonic": "双人旁（彳）加个旦，底下再加寸，拿到好东西就是「得」。",
+  "words": [
+    "得到",
+    "获得",
+    "得奖"
+  ],
+  "sentence": "我得到一个大苹果。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:45.412Z"
+}

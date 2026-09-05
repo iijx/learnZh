@@ -101,6 +101,8 @@ function load() {
     var map = cfg.run.rateMap || {};
     cfg.doubao.speechRate = (cfg.run.rate in map) ? map[cfg.run.rate] : 0;
   }
+  // prefix 归一化：去掉前后斜杠（对象 Key 不该有前导斜杠，否则与无前缀 Key 是两套命名空间却在 CDN 同 URL 下互相遮挡）
+  cfg.cos.prefix = String(cfg.cos.prefix || '').replace(/^\/+|\/+$/g, '');
   return cfg;
 }
 

@@ -1,0 +1,17 @@
+{
+  "char": "号",
+  "pinyin": "hào",
+  "explain": "号，就是编号、数字的意思。坐公交看几路车的号，买药看批号，挂号看病都用它。",
+  "mnemonic": "口字下面加个丂，排队叫号就喊「号」。",
+  "words": [
+    "号码",
+    "挂号",
+    "几号"
+  ],
+  "sentence": "你坐的车是几号？",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:14.189Z"
+}

@@ -1,32 +1,33 @@
-// data/poems.js —— 古诗里程碑课（共 10 首，每学满 50 字解锁一首）
-// 选材序列按 PRD 3.8；以五言为主，允许 ≤20% 未学字（课内语音顺带讲解，不考核）。
-// 字段：id / title（诗名）/ author（作者）/ unlockAt（解锁所需已学字数）/ lines（全文，逐句）
-// 【未来替换为服务端 REST API】课程包改由 CDN 下发（GET {CDN}/course/v1/poems.json）。
+// data/poems.js —— 里程碑诵读课（L1 每学满 50 字解锁一首）
+// L1（unlockAt ≤300）用原创童谣：经典古诗在低级别生字率必然超标（syllabus.md §6 规则3），
+// L3 脱盲篇起再引入浅近古诗。L1 六首按字表手写，验收：生字 0（tools/check-syllabus.js 规则3）。
+// unlockAt >300 的条目属 L2 范围，待 L2 定稿后按同样规则重做。
+// 字段：id / title / author / unlockAt（解锁所需已学字数）/ lines（全文，逐句）
 
 module.exports = [
   {
-    id: 1, title: '一去二三里', author: '（宋代）邵雍', unlockAt: 50,
-    lines: ['一去二三里，', '烟村四五家。', '亭台六七座，', '八九十枝花。']
+    id: 1, title: '今日特价', author: '识字课童谣', unlockAt: 50,
+    lines: ['今日有特价：', '白菜一元一斤，', '豆腐一元一斤，', '鸡蛋一元一斤。']
   },
   {
-    id: 2, title: '咏鹅', author: '（唐代）骆宾王', unlockAt: 100,
-    lines: ['鹅，鹅，鹅，', '曲项向天歌。', '白毛浮绿水，', '红掌拨清波。']
+    id: 2, title: '买白菜', author: '识字课童谣', unlockAt: 100,
+    lines: ['今日白菜特价，', '我买了一斤。', '微信支付一元，', '谢谢，欢迎再来。']
   },
   {
-    id: 3, title: '画', author: '（唐代）王维', unlockAt: 150,
-    lines: ['远看山有色，', '近听水无声。', '春去花还在，', '人来鸟不惊。']
+    id: 3, title: '星期四', author: '识字课童谣', unlockAt: 150,
+    lines: ['今日星期四，', '白菜新，肉不旧。', '爸爸买猪肉，', '妈妈买豆腐。']
   },
   {
-    id: 4, title: '悯农', author: '（唐代）李绅', unlockAt: 200,
-    lines: ['锄禾日当午，', '汗滴禾下土。', '谁知盘中餐，', '粒粒皆辛苦。']
+    id: 4, title: '上医院', author: '识字课童谣', unlockAt: 200,
+    lines: ['今日上医院，', '一楼挂个号，', '二楼看门诊，', '药房拿药片。']
   },
   {
-    id: 5, title: '春晓', author: '（唐代）孟浩然', unlockAt: 250,
-    lines: ['春眠不觉晓，', '处处闻啼鸟。', '夜来风雨声，', '花落知多少。']
+    id: 5, title: '买米', author: '识字课童谣', unlockAt: 250,
+    lines: ['东北大米新上市，', '一袋五十斤。', '我给店员两百元，', '找我五十元。']
   },
   {
-    id: 6, title: '静夜思', author: '（唐代）李白', unlockAt: 300,
-    lines: ['床前明月光，', '疑是地上霜。', '举头望明月，', '低头思故乡。']
+    id: 6, title: '带伞', author: '识字课童谣', unlockAt: 300,
+    lines: ['今晚多云转阵雨，', '明天出门记得带伞。', '有伞不怕天下雨，', '晴天雨天都能走。']
   },
   {
     id: 7, title: '登鹳雀楼', author: '（唐代）王之涣', unlockAt: 350,

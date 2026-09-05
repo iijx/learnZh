@@ -1,0 +1,17 @@
+{
+  "char": "调",
+  "pinyin": "tiáo",
+  "explain": "调，就是把东西改得合心意。调电视音量、调药的味道、调空调温度，都用它。",
+  "mnemonic": "言字旁加周，说话商量调一「调」。",
+  "words": [
+    "调节",
+    "空调",
+    "调料"
+  ],
+  "sentence": "我调一下空调。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:00.283Z"
+}

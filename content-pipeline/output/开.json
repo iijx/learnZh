@@ -1,0 +1,17 @@
+{
+  "char": "开",
+  "pinyin": "kāi",
+  "explain": "开，跟「关」相反。开门、开电视、开瓶盖，都用这个字。",
+  "mnemonic": "两横一竖两扇门，一推就开了。",
+  "words": [
+    "开门",
+    "打开",
+    "开水"
+  ],
+  "sentence": "请你开一下门。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:15.272Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "风",
+  "pinyin": "fēng",
+  "explain": "风，就是咱们脸上能感觉到、摸不着的气。春天的暖风、冬天的冷风，都叫风。",
+  "mnemonic": "外面框框像风口，里面叉叉像风刮过的纹路，这就是「风」。",
+  "words": [
+    "大风",
+    "冷风",
+    "吹风"
+  ],
+  "sentence": "今天风好大。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:07.457Z"
+}

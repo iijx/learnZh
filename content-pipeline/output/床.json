@@ -1,0 +1,19 @@
+{
+  "char": "床",
+  "pinyin": "chuáng",
+  "explain": "床，就是咱们每天睡觉的地方。累了往床上一躺，歇着就舒服了。",
+  "mnemonic": "广字像间房，木字在里躺，房里有木就是「床」。",
+  "words": [
+    "床上",
+    "起床",
+    "大床"
+  ],
+  "sentence": "我每天早上六点起床。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 6 个更晚才学的字（每天早六点起），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:23.138Z"
+}

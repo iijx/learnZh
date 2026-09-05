@@ -1,0 +1,17 @@
+{
+  "char": "快",
+  "pinyin": "kuài",
+  "explain": "快，跟「慢」相反。走路快、吃饭快、车开得快，都用它。",
+  "mnemonic": "左边竖心旁，右边缺个小横块，走路真叫快。",
+  "words": [
+    "快点",
+    "快乐",
+    "快慢"
+  ],
+  "sentence": "你快点过来。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:20.463Z"
+}

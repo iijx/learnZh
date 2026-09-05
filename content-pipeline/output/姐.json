@@ -1,0 +1,17 @@
+{
+  "char": "姐",
+  "pinyin": "jiě",
+  "explain": "姐，就是比自己大的女的，家里外头都能叫。你家大姐、小区的张姐，都用这个字。",
+  "mnemonic": "左边女字旁，右边且字站，就是「姐」。",
+  "words": [
+    "姐姐",
+    "大姐",
+    "姐妹"
+  ],
+  "sentence": "我大姐来我家吃饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:47.219Z"
+}

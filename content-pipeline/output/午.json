@@ -1,0 +1,17 @@
+{
+  "char": "午",
+  "pinyin": "wǔ",
+  "explain": "午，就是中午的意思。太阳正头顶、该吃午饭的那段时间，就叫午。",
+  "mnemonic": "「牛」字不出头，就是中午的「午」。",
+  "words": [
+    "中午",
+    "午饭",
+    "下午"
+  ],
+  "sentence": "中午我吃了饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:30.605Z"
+}

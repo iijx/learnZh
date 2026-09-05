@@ -6,7 +6,17 @@
     "apiKey": "",
     "model": "",
     "temperature": 0.7,
-    "timeoutMs": 60000
+    "timeoutMs": 60000,
+    "thinking": { "type": "disabled", "_说明": "思考型模型（doubao-seed-2.1 等）默认深度思考单次要 2 分钟以上，文案生成不需要，关掉提速约 60 倍；不支持此参数的服务商删掉本字段" }
+  },
+  "cos": {
+    "_说明": "腾讯云 COS，publish --upload 用。可全部留空——缺省时自动回退读取 ../audio-pipeline/.env 的 COS_* 配置（两条管线共用同一个桶）。prefix 是课程包对象前缀，默认 learn-zh；publicBaseUrl 用于拼客户端直读地址。",
+    "secretId": "",
+    "secretKey": "",
+    "bucket": "",
+    "region": "ap-guangzhou",
+    "prefix": "learn-zh",
+    "publicBaseUrl": ""
   },
   "run": {
     "_说明": "concurrency：生成并发数（按服务商 QPS 限额调整，建议 ≤4）。retries：单字失败重试次数（指数退避，校验失败的自动修正重试不占用此额度）。",

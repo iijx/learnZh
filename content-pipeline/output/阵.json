@@ -1,0 +1,17 @@
+{
+  "char": "阵",
+  "pinyin": "zhèn",
+  "explain": "阵，说刮风下雨一阵一阵的。比如出门碰到一阵风，下了一阵雨，都用它。",
+  "mnemonic": "左耳旁搭个车，风吹一阵过「阵」。",
+  "words": [
+    "一阵",
+    "阵雨",
+    "阵风"
+  ],
+  "sentence": "外面刮了一阵风。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:11.258Z"
+}

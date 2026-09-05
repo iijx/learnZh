@@ -1,0 +1,17 @@
+{
+  "char": "内",
+  "pinyin": "nèi",
+  "explain": "内，就是里头、里面的意思。你去公园要走内道，吃药看说明书的内文，都用它。",
+  "mnemonic": "一个门框（冂）里头站个人，就是「内」。",
+  "words": [
+    "内道",
+    "内文",
+    "室内"
+  ],
+  "sentence": "公园内有花。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:09.498Z"
+}

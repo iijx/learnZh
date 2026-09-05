@@ -14,12 +14,12 @@
     "timeoutMs": 60000
   },
   "cos": {
-    "_说明": "腾讯云 COS。建议用子账号密钥并只授权目标桶 prefix 的 PutObject/HeadObject 权限。region 必须与桶所在地一致；publicBaseUrl 用于生成可直读的公开地址（小程序端 services/audio-config.js 也填这个域名）。",
+    "_说明": "腾讯云 COS。建议用子账号密钥并只授权目标桶 prefix 的 PutObject/HeadObject 权限。region 必须与桶所在地一致；publicBaseUrl 用于生成可直读的公开地址（小程序端 services/audio-config.js 也填这个域名）。prefix 是桶内目录（不要带前导斜杠），音频实际落在 <prefix>/audio/ 下，与课程包对象隔离；与 content-pipeline 共用桶时 prefix 保持一致（learn-zh）。",
     "secretId": "",
     "secretKey": "",
     "bucket": "",
     "region": "ap-guangzhou",
-    "prefix": "course/v1/audio",
+    "prefix": "learn-zh",
     "publicBaseUrl": ""
   },
   "run": {

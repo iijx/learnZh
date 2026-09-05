@@ -1,0 +1,17 @@
+{
+  "char": "已",
+  "pinyin": "yǐ",
+  "explain": "已，就是事情做完了、过去了的意思。比如饭吃过了、药吃过了，都能用它。",
+  "mnemonic": "巳字堵满已半开，半开就是「已」。",
+  "words": [
+    "已经",
+    "早已",
+    "已过"
+  ],
+  "sentence": "我已经吃过了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:48:19.664Z"
+}

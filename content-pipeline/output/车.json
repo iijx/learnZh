@@ -1,0 +1,17 @@
+{
+  "char": "车",
+  "pinyin": "chē",
+  "explain": "车，就是咱们出门坐的交通工具。公交车、自行车、小汽车，都叫车。",
+  "mnemonic": "一横像车把，中间像车身，底下一横加一竖像两个车轮，就是「车」。",
+  "words": [
+    "汽车",
+    "火车",
+    "开车"
+  ],
+  "sentence": "我坐大车去买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:17.073Z"
+}

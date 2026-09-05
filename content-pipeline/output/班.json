@@ -1,0 +1,17 @@
+{
+  "char": "班",
+  "pinyin": "bān",
+  "explain": "班，就是一群人凑在一块儿做事、学东西。比如咱们上识字班，年轻人上班，孙子上小学班。",
+  "mnemonic": "左边王，右边王，中间一竖划两旁，大伙凑齐上「班」忙。",
+  "words": [
+    "上班",
+    "班级",
+    "下班"
+  ],
+  "sentence": "我儿子早上上班去。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:20.242Z"
+}

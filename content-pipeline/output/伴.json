@@ -1,0 +1,17 @@
+{
+  "char": "伴",
+  "pinyin": "bàn",
+  "explain": "伴，就是跟你一起的人。老两口是老伴，一起遛弯的是伙伴，都用这个字。",
+  "mnemonic": "单人旁加半个，半个人陪你走，就是「伴」。",
+  "words": [
+    "伙伴",
+    "老伴",
+    "陪伴"
+  ],
+  "sentence": "我和老伴去买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:14.623Z"
+}

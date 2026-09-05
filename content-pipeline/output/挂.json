@@ -1,0 +1,19 @@
+{
+  "char": "挂",
+  "pinyin": "guà",
+  "explain": "挂，就是把东西吊在高处。比如挂衣服、挂窗帘、墙上挂照片，都是这个「挂」。",
+  "mnemonic": "左手提俩上下叠的土堆，就是「挂」。",
+  "words": [
+    "挂着",
+    "挂号",
+    "挂衣服"
+  ],
+  "sentence": "墙上挂着画。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（墙着画），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:26.248Z"
+}

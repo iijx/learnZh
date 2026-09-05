@@ -1,0 +1,17 @@
+{
+  "char": "市",
+  "pinyin": "shì",
+  "explain": "市，就是咱们常去的市场、超市。买菜买米、赶大集，都在市里面。",
+  "mnemonic": "一点一横长，巾字底下藏——闹哄哄的赶大「市」。",
+  "words": [
+    "市场",
+    "超市",
+    "城市"
+  ],
+  "sentence": "我去市场买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:29.064Z"
+}

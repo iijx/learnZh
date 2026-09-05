@@ -1,0 +1,17 @@
+{
+  "char": "首",
+  "pinyin": "shǒu",
+  "explain": "首，就是头、开头的意思。你去医院挂号看的第一个医生叫首诊，排第一的叫首要。",
+  "mnemonic": "「自」字少一横，下面加个「儿」，就是「首」。",
+  "words": [
+    "首先",
+    "首都",
+    "首要"
+  ],
+  "sentence": "上车首先要坐好。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:20.214Z"
+}

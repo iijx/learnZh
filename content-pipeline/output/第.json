@@ -1,0 +1,17 @@
+{
+  "char": "第",
+  "pinyin": "dì",
+  "explain": "第，是排顺序用的。比如排队第一个、坐公交第几站、吃药第几天，都用它。",
+  "mnemonic": "竹字头下像弟弟，排队数数用「第」字。",
+  "words": [
+    "第一",
+    "第几",
+    "第几"
+  ],
+  "sentence": "我排第一个。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:11.852Z"
+}

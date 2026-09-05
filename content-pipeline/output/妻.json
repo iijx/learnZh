@@ -1,0 +1,19 @@
+{
+  "char": "妻",
+  "pinyin": "qī",
+  "explain": "妻，就是老婆、老伴儿。大爷的老伴儿，就叫妻，也叫妻子。",
+  "mnemonic": "女字头上顶彐山，中间一横就是「妻」。",
+  "words": [
+    "妻子",
+    "夫妻",
+    "妻儿"
+  ],
+  "sentence": "他和妻子去买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（和子去），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:20.737Z"
+}

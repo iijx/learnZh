@@ -1,0 +1,17 @@
+{
+  "char": "哥",
+  "pinyin": "gē",
+  "explain": "哥，就是比你大的男的同辈人。家里有哥哥，外面问路喊大哥，都用这个字。",
+  "mnemonic": "两个可字上下排，大哥二哥站成排「哥」。",
+  "words": [
+    "哥哥",
+    "大哥",
+    "表哥"
+  ],
+  "sentence": "我大哥去买菜了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:44.516Z"
+}

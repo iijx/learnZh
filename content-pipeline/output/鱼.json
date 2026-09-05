@@ -1,0 +1,17 @@
+{
+  "char": "鱼",
+  "pinyin": "yú",
+  "explain": "鱼，就是水里游的那种鱼。咱们买菜买的草鱼、鲤鱼，熬汤喝的鱼汤，都有这个字。",
+  "mnemonic": "上面鱼头下面尾，中间一横是鱼身，就是「鱼」。",
+  "words": [
+    "大鱼",
+    "小鱼",
+    "鱼儿"
+  ],
+  "sentence": "我今天买了鱼。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:05.056Z"
+}

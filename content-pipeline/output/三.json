@@ -1,0 +1,17 @@
+{
+  "char": "三",
+  "pinyin": "sān",
+  "explain": "三，就是数数的第三个，比二多一个。买三斤菜、吃三粒药、坐三站路，都用它。",
+  "mnemonic": "一横短，一横中，一横长，三横叠起就是「三」。",
+  "words": [
+    "三个",
+    "三人",
+    "三天"
+  ],
+  "sentence": "我买了三个苹果。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:02.799Z"
+}

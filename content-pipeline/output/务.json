@@ -1,0 +1,17 @@
+{
+  "char": "务",
+  "pinyin": "wù",
+  "explain": "务，就是要办的事儿、该做的活儿。去社区办事叫办业务，家里要干的活儿叫家务。",
+  "mnemonic": "折文下面加个力，出力办事就是「务」。",
+  "words": [
+    "家务",
+    "业务",
+    "任务"
+  ],
+  "sentence": "妈妈在家做家务。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:41.458Z"
+}

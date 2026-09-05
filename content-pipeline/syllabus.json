@@ -1,0 +1,1838 @@
+{
+  "version": 1,
+  "note": "学习大纲（syllabus.md 的机器可读版）。order 即学习顺序：level → unit → 单元内顺序；unit 与场景课一一绑定。",
+  "levels": [
+    {
+      "level": 1,
+      "name": "生存篇",
+      "size": 300,
+      "promise": "看懂价签、药盒、站牌、钱数、日期"
+    },
+    {
+      "level": 2,
+      "name": "生活篇",
+      "size": 500,
+      "promise": "读懂手机短信、小区通知、菜单、快递信息"
+    },
+    {
+      "level": 3,
+      "name": "脱盲篇",
+      "size": 700,
+      "promise": "读小故事、浅近古诗、说明书全文（国家脱盲标准）"
+    },
+    {
+      "level": 4,
+      "name": "报刊篇",
+      "size": 500,
+      "promise": "读报纸标题、微信文章大意、天气预报"
+    },
+    {
+      "level": 5,
+      "name": "自由篇",
+      "size": 500,
+      "promise": "自由阅读一般书面语（99% 覆盖）"
+    }
+  ],
+  "order": [
+    {
+      "char": "大",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "白",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "菜",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "元",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "一",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "斤",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "西",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "红",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "柿",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "鸡",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "蛋",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "猪",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "肉",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "今",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "日",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "特",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "价",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "豆",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "腐",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "块",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "的",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "我",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "你",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "他",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "她",
+      "level": 1,
+      "unit": 1,
+      "sceneId": 1
+    },
+    {
+      "char": "路",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "开",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "往",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "火",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "车",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "站",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "首",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "班",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "末",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "本",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "人",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "民",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "公",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "园",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "下",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "中",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "医",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "院",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "了",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "是",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "有",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "在",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "不",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "这",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "那",
+      "level": 1,
+      "unit": 2,
+      "sceneId": 2
+    },
+    {
+      "char": "用",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "法",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "量",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "口",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "服",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "次",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "片",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "饭",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "后",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "个",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "们",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "吃",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "喝",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "买",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "看",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "说",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "走",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "少",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "家",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "卖",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "听",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "坐",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "睡",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "洗",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "穿",
+      "level": 1,
+      "unit": 3,
+      "sceneId": 3
+    },
+    {
+      "char": "微",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "信",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "支",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "付",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "收",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "款",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "金",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "额",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "谢",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "欢",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "迎",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "再",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "来",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "拿",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "放",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "找",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "给",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "送",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "帮",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "问",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "答",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "想",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "爱",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "怕",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "新",
+      "level": 1,
+      "unit": 4,
+      "sceneId": 4
+    },
+    {
+      "char": "楼",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "门",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "诊",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "厅",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "内",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "科",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "外",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "住",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "部",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "旧",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "快",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "慢",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "冷",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "热",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "高",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "矮",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "胖",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "瘦",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "长",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "短",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "远",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "近",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "轻",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "重",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "上",
+      "level": 1,
+      "unit": 5,
+      "sceneId": 5
+    },
+    {
+      "char": "月",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "星",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "期",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "四",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "宜",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "会",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "友",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "出",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "行",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "左",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "右",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "爸",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "妈",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "爷",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "奶",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "哥",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "姐",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "弟",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "妹",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "夫",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "妻",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "绿",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "黄",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "蓝",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "黑",
+      "level": 1,
+      "unit": 6,
+      "sceneId": 6
+    },
+    {
+      "char": "调",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "和",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "油",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "桶",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "东",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "北",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "米",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "袋",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "员",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "更",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "优",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "水",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "茶",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "汤",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "面",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "鱼",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "花",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "草",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "树",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "风",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "雪",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "山",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "田",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "土",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "河",
+      "level": 1,
+      "unit": 7,
+      "sceneId": 7
+    },
+    {
+      "char": "挂",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "号",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "处",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "费",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "药",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "房",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "二",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "骨",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "三",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "眼",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "腔",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "海",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "桥",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "街",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "村",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "镇",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "县",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "市",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "店",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "场",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "桌",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "椅",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "床",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "灯",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "手",
+      "level": 1,
+      "unit": 8,
+      "sceneId": 8
+    },
+    {
+      "char": "请",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "到",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "窗",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "办",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "理",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "业",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "务",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "保",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "管",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "好",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "您",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "现",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "证",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "件",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "脚",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "头",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "心",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "耳",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "鼻",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "牙",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "嘴",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "五",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "六",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "七",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "八",
+      "level": 1,
+      "unit": 9,
+      "sceneId": 9
+    },
+    {
+      "char": "包",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "裹",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "已",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "鸟",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "取",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "码",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "凭",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "超",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "过",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "天",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "未",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "将",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "退",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "回",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "九",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "十",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "百",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "千",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "万",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "零",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "两",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "半",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "双",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "第",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "张",
+      "level": 1,
+      "unit": 10,
+      "sceneId": 10
+    },
+    {
+      "char": "老",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "伴",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "儿",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "子",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "王",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "建",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "国",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "女",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "芬",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "孙",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "小",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "宝",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "条",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "瓶",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "盒",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "年",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "昨",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "早",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "晚",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "午",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "点",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "分",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "秒",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "春",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "夏",
+      "level": 1,
+      "unit": 11,
+      "sceneId": 11
+    },
+    {
+      "char": "晴",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "度",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "明",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "多",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "云",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "转",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "阵",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "雨",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "记",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "得",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "带",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "伞",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "秋",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "冬",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "也",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "都",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "能",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "吗",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "呢",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "吧",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "很",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "没",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "又",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "还",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    },
+    {
+      "char": "就",
+      "level": 1,
+      "unit": 12,
+      "sceneId": 12
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "char": "睡",
+  "pinyin": "shuì",
+  "explain": "睡，就是躺床上闭眼休息。晚上要睡觉，中午也能睡一会儿。",
+  "mnemonic": "目字在左边，垂字在右边，眼皮垂下就想「睡」。",
+  "words": [
+    "睡觉",
+    "午睡",
+    "早睡"
+  ],
+  "sentence": "我晚上睡得早。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 4 个更晚才学的字（晚上得早），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:42.672Z"
+}

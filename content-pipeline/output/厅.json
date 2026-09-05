@@ -1,0 +1,17 @@
+{
+  "char": "厅",
+  "pinyin": "tīng",
+  "explain": "厅，就是家里待客、吃饭的大房间。像客厅、餐厅，咱们天天都待的地方。",
+  "mnemonic": "「厂」字像屋顶，下面有个丁，屋里坐人就是「厅」。",
+  "words": [
+    "客厅",
+    "餐厅",
+    "大厅"
+  ],
+  "sentence": "我在客厅喝水。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:14.906Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "双",
+  "pinyin": "shuāng",
+  "explain": "双，就是两个、一对的意思。咱们穿的一双鞋、一双袜子，还有一双手，都用这个字。",
+  "mnemonic": "两个又字肩并肩，凑成一对就是「双」。",
+  "words": [
+    "一双",
+    "双手",
+    "双鞋"
+  ],
+  "sentence": "我有一双手。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:11.450Z"
+}

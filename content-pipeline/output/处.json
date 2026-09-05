@@ -1,0 +1,19 @@
+{
+  "char": "处",
+  "pinyin": "chù",
+  "explain": "处，就是地方的意思。你买菜的菜市场、跳广场舞的小广场、住的小区，都是一个「处」。",
+  "mnemonic": "反文旁儿撇出头，加个卜字站地方。",
+  "words": [
+    "到处",
+    "住处",
+    "去处"
+  ],
+  "sentence": "公园里到处是人。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "mnemonic 没有点出该字，记字诀结尾建议用「」带出字形"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:16.176Z"
+}

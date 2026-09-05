@@ -1,0 +1,17 @@
+{
+  "char": "脚",
+  "pinyin": "jiǎo",
+  "explain": "脚，就是咱们走路用的脚。每天穿鞋、洗脚、走路，都靠它。",
+  "mnemonic": "月字旁加个却，走路全靠它——「脚」。",
+  "words": [
+    "脚下",
+    "手脚",
+    "大脚"
+  ],
+  "sentence": "我的脚很大。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:53.628Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "夏",
+  "pinyin": "xià",
+  "explain": "夏，就是夏天，一年里最热的那个季节。夏天要吃西瓜、扇扇子，还爱下大雨。",
+  "mnemonic": "上边像个歪脑袋的人，下边两只脚，热得张开手，就是「夏」。",
+  "words": [
+    "夏天",
+    "夏装",
+    "立夏"
+  ],
+  "sentence": "夏天我爱吃西瓜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:34.684Z"
+}

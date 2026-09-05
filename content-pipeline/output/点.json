@@ -1,0 +1,17 @@
+{
+  "char": "点",
+  "pinyin": "diǎn",
+  "explain": "点，就是小小的一滴、一小块。吃饭撒了点饭粒、吃药要按点吃，都是这个点。",
+  "mnemonic": "占字脚下四个小水滴，就是「点」。",
+  "words": [
+    "一点",
+    "点头",
+    "点心"
+  ],
+  "sentence": "我吃了一点饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:30.950Z"
+}

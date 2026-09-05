@@ -1,0 +1,17 @@
+{
+  "char": "春",
+  "pinyin": "chūn",
+  "explain": "春，就是一年四季的头一个季节。春天天气暖了，花儿开了，燕子也飞回来了。",
+  "mnemonic": "三人日头底下坐，春暖花开就是「春」。",
+  "words": [
+    "春天",
+    "春节",
+    "春风"
+  ],
+  "sentence": "春天来了，花开了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:32.855Z"
+}

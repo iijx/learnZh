@@ -1,0 +1,17 @@
+{
+  "char": "管",
+  "pinyin": "guǎn",
+  "explain": "管，就是操心、照管的意思。你在家管孙子吃饭，管买菜的钱，都是这个管。",
+  "mnemonic": "竹字头在上官在下，管事的官戴竹帽，就是「管」。",
+  "words": [
+    "管用",
+    "管事",
+    "管钱"
+  ],
+  "sentence": "我管孙子吃饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:41.766Z"
+}

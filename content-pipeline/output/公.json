@@ -1,0 +1,17 @@
+{
+  "char": "公",
+  "pinyin": "gōng",
+  "explain": "公，就是公家的、大家一起用的。像公园是大伙都能逛的，公车是大伙都能坐的。",
+  "mnemonic": "上面八分开，下面小厶托着，大伙共用就是「公」。",
+  "words": [
+    "公园",
+    "公交车",
+    "公共"
+  ],
+  "sentence": "我每天去公园。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:23.754Z"
+}

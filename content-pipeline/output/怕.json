@@ -1,0 +1,17 @@
+{
+  "char": "怕",
+  "pinyin": "pà",
+  "explain": "怕，就是心里发慌、不敢的意思。天黑一个人在家怕，见了大狗也怕。",
+  "mnemonic": "左边竖心旁，右边是白——白着个脸心跳快，心里发「怕」。",
+  "words": [
+    "害怕",
+    "不怕",
+    "怕人"
+  ],
+  "sentence": "我不怕黑。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:09.023Z"
+}

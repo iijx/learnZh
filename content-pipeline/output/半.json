@@ -1,0 +1,17 @@
+{
+  "char": "半",
+  "pinyin": "bàn",
+  "explain": "半，就是整个东西分成两份，其中的一份。比如买半斤菜、吃半个馒头、过半小时，都用它。",
+  "mnemonic": "立字少一点，中间两横短，半个西瓜甜又鲜——这就是「半」。",
+  "words": [
+    "一半",
+    "半天",
+    "半个"
+  ],
+  "sentence": "我吃半个苹果。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:10.062Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "蛋",
+  "pinyin": "dàn",
+  "explain": "蛋，就是咱们常吃的鸡蛋、鸭蛋。还有孙子爱吃的蛋糕，也带这个字。",
+  "mnemonic": "上边疋字站，下边虫儿躺，凑成圆滚滚的「蛋」。",
+  "words": [
+    "鸡蛋",
+    "蛋糕",
+    "鸭蛋"
+  ],
+  "sentence": "我早上吃鸡蛋。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:36.435Z"
+}

@@ -1,0 +1,19 @@
+{
+  "char": "用",
+  "pinyin": "yòng",
+  "explain": "用，就是拿东西干活、使唤的意思。比如买菜用袋子装，吃药用水送，出门用钥匙开门。",
+  "mnemonic": "一个月字竖两竖，用手拿物不犯难「用」。",
+  "words": [
+    "不用",
+    "有用",
+    "好用"
+  ],
+  "sentence": "我用大碗吃饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（碗吃饭），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:38.578Z"
+}

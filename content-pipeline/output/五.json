@@ -1,0 +1,17 @@
+{
+  "char": "五",
+  "pinyin": "wǔ",
+  "explain": "五，就是咱们数1、2、3、4、5里的第五个数字。买菜买五斤、吃药吃五片，都用它。",
+  "mnemonic": "上下两横中间拐，数到第五就是「五」。",
+  "words": [
+    "五个",
+    "五斤",
+    "五月"
+  ],
+  "sentence": "我有五个苹果。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:32:51.322Z"
+}

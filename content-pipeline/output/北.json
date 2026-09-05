@@ -1,0 +1,19 @@
+{
+  "char": "北",
+  "pinyin": "běi",
+  "explain": "北，就是咱们说的北边、北方。出门看路、买菜认方向，都能用着这个字。",
+  "mnemonic": "左边一竖右边匕，北边方向就是「北」。",
+  "words": [
+    "北方",
+    "北边",
+    "北京"
+  ],
+  "sentence": "北边的风真大。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（边风真），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:11.454Z"
+}

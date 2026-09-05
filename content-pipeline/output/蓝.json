@@ -1,0 +1,17 @@
+{
+  "char": "蓝",
+  "pinyin": "lán",
+  "explain": "蓝，是天空的那种颜色。买菜见着的蓝袋子、穿的蓝外套，都是这个字。",
+  "mnemonic": "草字头下加个监，天空的颜色就是「蓝」。",
+  "words": [
+    "蓝色",
+    "蓝天",
+    "深蓝"
+  ],
+  "sentence": "今天的天很蓝。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:52.833Z"
+}

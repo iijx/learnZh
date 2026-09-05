@@ -1,0 +1,19 @@
+{
+  "char": "转",
+  "pinyin": "zhuǎn",
+  "explain": "转，就是换个方向、挪个地方。出门转个弯、坐车转车、电视转台，都用这个字。",
+  "mnemonic": "左边车字旁，右边像个专，车子改方向就叫「转」。",
+  "words": [
+    "转弯",
+    "转车",
+    "转头"
+  ],
+  "sentence": "前面路口要转弯。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（前要弯），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:02.343Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "腐",
+  "pinyin": "fǔ",
+  "explain": "腐，就是东西放坏了、变味了。天热菜放久了会腐，不能吃。",
+  "mnemonic": "上是府下是肉，肉放久坏了就是「腐」。",
+  "words": [
+    "豆腐",
+    "腐烂",
+    "腐竹"
+  ],
+  "sentence": "天热菜容易腐。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:44.822Z"
+}

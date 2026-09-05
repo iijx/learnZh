@@ -1,0 +1,17 @@
+{
+  "char": "河",
+  "pinyin": "hé",
+  "explain": "河，就是地上长流水的地方，比如咱们村东边那条河。平时去河边遛弯、看别人钓鱼，都能见到这个字。",
+  "mnemonic": "三点水在左边站，旁边一个可，河水哗哗过「河」。",
+  "words": [
+    "河水",
+    "河边",
+    "小河"
+  ],
+  "sentence": "我在河边走。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:14.110Z"
+}

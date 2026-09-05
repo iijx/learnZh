@@ -1,0 +1,19 @@
+{
+  "char": "过",
+  "pinyin": "guò",
+  "explain": "过，就是走过去了、过去了的意思。过马路、过年、吃过饭，都用它。",
+  "mnemonic": "走之底像走路，寸字像脚迈一步，走过去就是「过」。",
+  "words": [
+    "过去",
+    "过年",
+    "过来"
+  ],
+  "sentence": "过马路要小心。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（马要小），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:04.695Z"
+}

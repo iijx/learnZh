@@ -1,0 +1,17 @@
+{
+  "char": "部",
+  "pinyin": "bù",
+  "explain": "部，就是一块地方、一个小单位的意思。小区里的物业部，医院的门诊部，说的都是这个字。",
+  "mnemonic": "「咅」字右边挂耳朵，一块一片分开就是「部」。",
+  "words": [
+    "部分",
+    "部门",
+    "全部"
+  ],
+  "sentence": "这些菜我全部买了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:16.756Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "花",
+  "pinyin": "huā",
+  "explain": "花，就是公园里开的、香香的那种东西。买菜买花、给孙子买花裙子，都用这个字。",
+  "mnemonic": "草字头下一个化，草里开的就是「花」。",
+  "words": [
+    "花朵",
+    "开花",
+    "鲜花"
+  ],
+  "sentence": "公园里的花好看。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:56.435Z"
+}

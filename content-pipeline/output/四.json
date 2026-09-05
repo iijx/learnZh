@@ -1,0 +1,17 @@
+{
+  "char": "四",
+  "pinyin": "sì",
+  "explain": "四，就是数到三之后的那个数，比三多一个。买四斤菜、吃四个包子、坐四路车，都用它。",
+  "mnemonic": "一个方框像窗户，里面两扇小窗格，合起来就是「四」。",
+  "words": [
+    "四个",
+    "四十",
+    "四月"
+  ],
+  "sentence": "我买了四个包子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:35.537Z"
+}

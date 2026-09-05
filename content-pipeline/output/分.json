@@ -1,0 +1,17 @@
+{
+  "char": "分",
+  "pinyin": "fēn",
+  "explain": "分，就是把东西拆成几份。买水果分一半给孙子，吃药分两次吃，都用它。",
+  "mnemonic": "上面八，下面刀，切开东西就是「分」。",
+  "words": [
+    "分开",
+    "分别",
+    "分工"
+  ],
+  "sentence": "我分你一个苹果。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:32.883Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "二",
+  "pinyin": "èr",
+  "explain": "二，就是数字两，数东西用的。买二斤菜、二月二龙抬头，都用它。",
+  "mnemonic": "上下两横一样长，数完第一数第二「二」。",
+  "words": [
+    "二月",
+    "二人",
+    "二十"
+  ],
+  "sentence": "二月二，吃包子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:20.974Z"
+}

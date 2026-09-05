@@ -1,0 +1,19 @@
+{
+  "char": "就",
+  "pinyin": "jiù",
+  "explain": "就，是咱们平时挂嘴边的字。比如买菜就买白菜，吃药就吃一片，说的就是它。",
+  "mnemonic": "左边北京的京，右边尤字多一点，凑一起就是「就」。",
+  "words": [
+    "就是",
+    "就好",
+    "就来"
+  ],
+  "sentence": "我就来。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 不足 4 字，语境太少"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:37:04.585Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "灯",
+  "pinyin": "dēng",
+  "explain": "灯，就是晚上照亮的东西。家里的电灯、路边的路灯、过年的红灯笼，都用这个字。",
+  "mnemonic": "左边火发光，右边丁站岗，天黑它就亮——「灯」。",
+  "words": [
+    "电灯",
+    "路灯",
+    "台灯"
+  ],
+  "sentence": "晚上出门要开灯。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:34.547Z"
+}

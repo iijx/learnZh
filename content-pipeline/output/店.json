@@ -1,0 +1,19 @@
+{
+  "char": "店",
+  "pinyin": "diàn",
+  "explain": "店，就是咱们买东西的地方。买菜去菜店，买药去药店，吃饭去饭店。",
+  "mnemonic": "广字像个大屋顶，里面占着买卖人——就是「店」。",
+  "words": [
+    "商店",
+    "饭店",
+    "药店"
+  ],
+  "sentence": "我去商店买盐。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（去商盐），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:23.139Z"
+}

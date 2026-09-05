@@ -1,0 +1,17 @@
+{
+  "char": "好",
+  "pinyin": "hǎo",
+  "explain": "好，跟「坏」相反。东西不错叫做好，人不错也叫做好。",
+  "mnemonic": "左边一个女，右边一个子，女加子就是「好」。",
+  "words": [
+    "你好",
+    "好人",
+    "好看"
+  ],
+  "sentence": "你好，我是老王。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:43.297Z"
+}

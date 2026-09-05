@@ -1,0 +1,17 @@
+{
+  "char": "冬",
+  "pinyin": "dōng",
+  "explain": "冬，就是冬天的冬。一年最后那个冷的季节，下雪、穿厚棉袄的时候，就叫冬天。",
+  "mnemonic": "折文下面两个点，像冬天落的两朵小雪花「冬」。",
+  "words": [
+    "冬天",
+    "冬瓜",
+    "冬装"
+  ],
+  "sentence": "冬天我穿大棉袄。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:51.247Z"
+}

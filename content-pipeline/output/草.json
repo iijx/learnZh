@@ -1,0 +1,17 @@
+{
+  "char": "草",
+  "pinyin": "cǎo",
+  "explain": "草，就是地上长的绿绿的小草。小区路边的草、公园的草、带孙子摘的狗尾巴草，都用这个字。",
+  "mnemonic": "草字头下一个早，早上出门去割「草」。",
+  "words": [
+    "小草",
+    "草地",
+    "花草"
+  ],
+  "sentence": "草地上有小花。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:05.715Z"
+}

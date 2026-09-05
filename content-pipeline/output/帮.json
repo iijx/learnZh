@@ -1,0 +1,17 @@
+{
+  "char": "帮",
+  "pinyin": "bāng",
+  "explain": "帮，就是搭把手、给人出力。比如买菜帮人提袋子，在家帮老伴儿做饭。",
+  "mnemonic": "三横一竖撇加耳，底下有巾来帮忙「帮」。",
+  "words": [
+    "帮忙",
+    "帮手",
+    "帮工"
+  ],
+  "sentence": "我帮你拿东西。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:06.120Z"
+}

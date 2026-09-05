@@ -1,0 +1,19 @@
+{
+  "char": "服",
+  "pinyin": "fú",
+  "explain": "服，就是咱们穿的衣裳。平时说的衣服，就是身上穿的。",
+  "mnemonic": "左边肉月右边卩，穿在身上是衣「服」。",
+  "words": [
+    "衣服",
+    "舒服",
+    "服务"
+  ],
+  "sentence": "这件衣服真好看。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 5 个更晚才学的字（件衣真好看），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:29.708Z"
+}

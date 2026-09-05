@@ -1,0 +1,17 @@
+{
+  "char": "条",
+  "pinyin": "tiáo",
+  "explain": "条，是数长东西用的。买鱼、买面条、系腰带，都用它数。",
+  "mnemonic": "「夂」像弯腰人，下面「木」顶长扁担，挑着长东西就是「条」。",
+  "words": [
+    "一条",
+    "面条",
+    "油条"
+  ],
+  "sentence": "我早上吃了一条油条。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:24.849Z"
+}

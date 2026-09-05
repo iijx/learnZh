@@ -1,0 +1,17 @@
+{
+  "char": "胖",
+  "pinyin": "pàng",
+  "explain": "胖，就是身上肉多、圆滚滚的。咱们常说胖孙子、胖娃娃，还有人上了年纪容易发胖。",
+  "mnemonic": "左边半拉月，右边半个月，吃俩月就变「胖」。",
+  "words": [
+    "胖子",
+    "肥胖",
+    "长胖"
+  ],
+  "sentence": "他是个小胖子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:50.252Z"
+}

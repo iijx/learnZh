@@ -1,0 +1,17 @@
+{
+  "char": "绿",
+  "pinyin": "lǜ",
+  "explain": "绿，是树叶、青菜那种颜色。买青菜要挑绿的，公园的草也是绿的。",
+  "mnemonic": "左边丝线右边录，青青翠翠就是「绿」。",
+  "words": [
+    "绿色",
+    "绿叶",
+    "绿灯"
+  ],
+  "sentence": "我爱吃绿青菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:53.638Z"
+}

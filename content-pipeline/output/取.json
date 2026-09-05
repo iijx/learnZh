@@ -1,0 +1,17 @@
+{
+  "char": "取",
+  "pinyin": "qǔ",
+  "explain": "取，就是把东西拿到手的意思。去快递站取包裹、去药店取药、去银行取钱，都用它。",
+  "mnemonic": "左边耳朵右边手，伸手把东西拿到手就是「取」。",
+  "words": [
+    "取药",
+    "取快递",
+    "取钱"
+  ],
+  "sentence": "我去取快递。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:35:53.046Z"
+}

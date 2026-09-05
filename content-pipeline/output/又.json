@@ -1,0 +1,17 @@
+{
+  "char": "又",
+  "pinyin": "yòu",
+  "explain": "又，就是再一次、还的意思。饭又吃完了，孙子又长高了，都用这个字。",
+  "mnemonic": "一撇一捺交叉站，再来一次就是「又」。",
+  "words": [
+    "又是",
+    "又来",
+    "又有"
+  ],
+  "sentence": "今天又下雨了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:37:01.934Z"
+}

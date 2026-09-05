@@ -1,0 +1,19 @@
+{
+  "char": "优",
+  "pinyin": "yōu",
+  "explain": "优，就是好、很棒的意思。买水果挑优的，孙子考得优，都是这个优。",
+  "mnemonic": "单人旁加个尤，人人夸好就是「优」。",
+  "words": [
+    "优秀",
+    "优点",
+    "优等"
+  ],
+  "sentence": "这个苹果很优。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（苹果很），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:04.500Z"
+}

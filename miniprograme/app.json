@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/learn/learn",
+    "pages/write/write",
     "pages/milestone/milestone",
     "pages/progress/progress",
     "pages/guide/guide"

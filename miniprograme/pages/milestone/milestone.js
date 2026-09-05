@@ -9,7 +9,6 @@ var storage = require('../../services/storage.js');
 var course = require('../../services/course.js');
 
 // { poemId: { last: 'YYYY-MM-DD', count: 累计次数 }, ... }
-// 兼容旧数据：值直接是日期字符串，视为已打过 1 次
 var CHECKIN_KEY = 'lz_poem_checkin';
 
 // 今天日期串 YYYY-MM-DD（本地时区）
@@ -20,11 +19,10 @@ function todayStr() {
   return d.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (day < 10 ? '0' + day : day);
 }
 
-// 取某作品的打卡记录；旧结构（日期字符串）统一升级为 { last, count }
+// 取某作品的打卡记录
 function getCheckin(map, id) {
   var v = map[id];
   if (!v) return null;
-  if (typeof v === 'string') return { last: v, count: 1 };
   return { last: v.last || '', count: v.count || 0 };
 }
 

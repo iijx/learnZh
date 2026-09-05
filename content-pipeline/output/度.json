@@ -1,0 +1,17 @@
+{
+  "char": "度",
+  "pinyin": "dù",
+  "explain": "度，常说的温度、度数，就是这个字。看天气预报、量体温、吃药看剂量，都用得上它。",
+  "mnemonic": "广字头下坐廿又，量温量尺都靠「度」。",
+  "words": [
+    "温度",
+    "度数",
+    "年度"
+  ],
+  "sentence": "今天温度不低。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:34.980Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "晚",
+  "pinyin": "wǎn",
+  "explain": "晚，就是太阳落山、天要黑的时候。晚饭、晚上出门遛弯，都用它。",
+  "mnemonic": "日字旁加个免，太阳躲起来天就黑了，就是「晚」。",
+  "words": [
+    "晚上",
+    "晚饭",
+    "夜晚"
+  ],
+  "sentence": "晚上我吃了一大碗饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:29.704Z"
+}

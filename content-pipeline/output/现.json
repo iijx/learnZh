@@ -1,0 +1,17 @@
+{
+  "char": "现",
+  "pinyin": "xiàn",
+  "explain": "现，就是当下、眼前的意思。现在几点了、现在该吃药了，咱们说的当下的事都用它。",
+  "mnemonic": "左边王字旁，右边是看见的见，见王就在眼前「现」。",
+  "words": [
+    "现在",
+    "出现",
+    "发现"
+  ],
+  "sentence": "现在我要吃饭了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:43.815Z"
+}

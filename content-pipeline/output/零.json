@@ -1,0 +1,17 @@
+{
+  "char": "零",
+  "pinyin": "líng",
+  "explain": "零，就是啥也没有的那个数。买菜找零、手机尾号、药盒上的数字里，都能见到它。",
+  "mnemonic": "雨字盖着横木台，一个没有就是「零」。",
+  "words": [
+    "零头",
+    "零钱",
+    "一百零一"
+  ],
+  "sentence": "我口袋有零钱。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:11.675Z"
+}

@@ -1,0 +1,19 @@
+{
+  "char": "保",
+  "pinyin": "bǎo",
+  "explain": "保，就是看好、护着的意思。比如带孙子要保他安全，出门坐车要保好自己的东西。",
+  "mnemonic": "左边站个人，右边呆上加一撇——有人护着不受伤，就是「保」。",
+  "words": [
+    "保护",
+    "保重",
+    "保安"
+  ],
+  "sentence": "我天天保护小孙子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 5 个更晚才学的字（天护小孙子），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:04.955Z"
+}

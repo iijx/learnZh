@@ -16,7 +16,7 @@
 // 坐标说明：笔顺数据是 hanzi-writer 的 1024×1024 坐标系（y 轴朝上、基准偏移 900），
 // 统一换算成 canvas 像素坐标后再使用：x' = x/1024*sizePx，y' = (900-y)/1024*sizePx。
 
-var strokesIndex = require('../../data/strokes/index.js');
+var course = require('../../services/course.js');
 
 var STROKE_MS = 600;      // 每笔动画时长
 var TICK_MS = 16;         // 动画帧间隔
@@ -75,13 +75,26 @@ Component({
     },
 
     // 加载当前字的笔顺数据并画底字（char 变化时也走这里）
+    // 笔顺数据走 course 服务（CDN + 本地缓存），异步到达；到达前先画降级底字
     _setup: function () {
       this._cancelAnim();
       this._tracing = false;
       this._trace = [];
-      this._strokeData = strokesIndex.getChar(this.data.char);
-      this._mediansPx = this._toCanvasMedians(this._strokeData && this._strokeData.medians);
-      this._outlines = (this._strokeData && this._strokeData.strokes || []).map(parsePath);
+      this._applyStrokeData(null);
+      var self = this;
+      var ch = this.data.char;
+      this._dataReady = ch
+        ? course.getStroke(ch).then(function (data) {
+            if (self.data.char !== ch) return; // 期间字已切换，丢弃过期数据
+            self._applyStrokeData(data);
+          })
+        : Promise.resolve();
+    },
+
+    _applyStrokeData: function (data) {
+      this._strokeData = data;
+      this._mediansPx = this._toCanvasMedians(data && data.medians);
+      this._outlines = (data && data.strokes || []).map(parsePath);
       this._drawBase();
     },
 
@@ -169,7 +182,7 @@ Component({
 
     // 画一条（部分）折线，深棕粗圆头线
     _strokePath: function (pts, width) {
-      if (!pts || pts.length < 2) return;
+      if (!this._ctx || !pts || pts.length < 2) return;
       var ctx = this._ctx;
       ctx.beginPath();
       ctx.moveTo(pts[0][0], pts[0][1]);
@@ -186,7 +199,23 @@ Component({
     // 按 medians 逐笔动画描画（每笔 0.6s，全部播完算一遍）；无数据则只显示静态底字。
     // 有轮廓数据时：已完成笔画实心填充，当前笔用「轮廓裁剪 + 中线揭示」——
     // 揭示出的就是真实字形，与底字/描红轨迹完全一致（hanzi-writer 同款做法）。
+    // 笔顺数据可能还在下载中，等 _dataReady 再开播；canvas 未就绪时短暂重试
     playStrokes: function (onDone) {
+      var self = this;
+      (this._dataReady || Promise.resolve()).then(function () {
+        if (self._canvasReady) { self._playStrokesNow(onDone); return; }
+        var tries = 0;
+        var t = setInterval(function () {
+          if (self._canvasReady || ++tries > 30) {
+            clearInterval(t);
+            if (self._canvasReady) self._playStrokesNow(onDone);
+            else if (onDone) onDone();
+          }
+        }, 100);
+      });
+    },
+
+    _playStrokesNow: function (onDone) {
       this._cancelAnim();
       this._tracing = false;
       this._trace = [];

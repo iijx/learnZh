@@ -9,7 +9,7 @@
     "不行"
   ],
   "sentence": "今天不下雨。",
-  "status": "draft",
+  "status": "applied",
   "errors": [],
   "warnings": [],
   "model": "doubao-seed-2.1-turbo",

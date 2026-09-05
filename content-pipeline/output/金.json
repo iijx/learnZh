@@ -1,0 +1,17 @@
+{
+  "char": "金",
+  "pinyin": "jīn",
+  "explain": "金，就是金子、黄金，也说金色的东西。金戒指、金耳环，老人戴的首饰常带它。",
+  "mnemonic": "人字头下藏俩点，下面王字加一横「金」。",
+  "words": [
+    "金子",
+    "金色",
+    "黄金"
+  ],
+  "sentence": "我有一个金戒指。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:54.754Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "爷",
+  "pinyin": "yé",
+  "explain": "爷，就是爷爷，家里的长辈。爷爷带你去买菜、遛弯，都是这个「爷」。",
+  "mnemonic": "上面父字头下面单耳旁，爸爸的爸爸是「爷」爷。",
+  "words": [
+    "爷爷",
+    "大爷",
+    "姥爷"
+  ],
+  "sentence": "爷爷和我去公园。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:44.850Z"
+}

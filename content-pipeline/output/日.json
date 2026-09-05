@@ -1,0 +1,17 @@
+{
+  "char": "日",
+  "pinyin": "rì",
+  "explain": "日，就是太阳，也指一天的日子。早上出太阳叫日出，过一天叫一日。",
+  "mnemonic": "一个方框像太阳，中间一点是光，就是「日」。",
+  "words": [
+    "日子",
+    "今日",
+    "生日"
+  ],
+  "sentence": "今日天气好。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:41.548Z"
+}

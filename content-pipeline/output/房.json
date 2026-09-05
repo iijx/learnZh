@@ -1,0 +1,17 @@
+{
+  "char": "房",
+  "pinyin": "fáng",
+  "explain": "房，就是咱们住的屋子。小区里的楼房、买菜的门面房、睡觉的房间，都用这个字。",
+  "mnemonic": "户字头像家门，方方正正一间屋——户加方，就是「房」。",
+  "words": [
+    "房子",
+    "房间",
+    "住房"
+  ],
+  "sentence": "我家房子大。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:18.832Z"
+}

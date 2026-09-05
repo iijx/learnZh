@@ -1,0 +1,17 @@
+{
+  "char": "儿",
+  "pinyin": "ér",
+  "explain": "儿，就是孩子、小孩子。咱们带孙儿、喊儿子回家吃饭，说的都是这个字。",
+  "mnemonic": "撇像小脑袋，竖弯钩像小腿跑——小孩儿就是「儿」。",
+  "words": [
+    "儿子",
+    "女儿",
+    "这儿"
+  ],
+  "sentence": "我的儿子在上班。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:14.918Z"
+}

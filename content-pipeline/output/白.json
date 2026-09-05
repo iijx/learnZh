@@ -1,0 +1,17 @@
+{
+  "char": "白",
+  "pinyin": "bái",
+  "explain": "白，就是白颜色的白。白头发、白米饭、白墙，都用这个字。",
+  "mnemonic": "日字头上加一撇，就是白头发的「白」。",
+  "words": [
+    "白色",
+    "白天",
+    "明白"
+  ],
+  "sentence": "我有白头发了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:32.161Z"
+}

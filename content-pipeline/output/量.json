@@ -1,0 +1,19 @@
+{
+  "char": "量",
+  "pinyin": "liàng",
+  "explain": "量，就是说东西有多少、多重的意思。买米问量够不够，吃药按量来吃，不能多也不能少。",
+  "mnemonic": "旦在上，里在下，数清多少就是「量」。",
+  "words": [
+    "数量",
+    "重量",
+    "饭量"
+  ],
+  "sentence": "这袋米的量够大。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（袋米够），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:08.068Z"
+}

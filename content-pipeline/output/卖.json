@@ -1,0 +1,19 @@
+{
+  "char": "卖",
+  "pinyin": "mài",
+  "explain": "卖，就是把东西换成钱的意思。菜市场卖菜的叔叔、药店卖药的阿姨，都用这个字。",
+  "mnemonic": "「买」字头上顶个十，摆摊卖货换银子「卖」。",
+  "words": [
+    "卖菜",
+    "卖东西",
+    "买卖"
+  ],
+  "sentence": "爷爷在市场卖菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（爷市场），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:12.568Z"
+}

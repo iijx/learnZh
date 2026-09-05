@@ -1,0 +1,17 @@
+{
+  "char": "找",
+  "pinyin": "zhǎo",
+  "explain": "找，就是东西不见了，到处翻找的意思。买菜找钱包、找钥匙、找孙子，都用它。",
+  "mnemonic": "提手旁加个短戈，伸手到处寻东西，就是「找」。",
+  "words": [
+    "找到",
+    "找人",
+    "找钱"
+  ],
+  "sentence": "我找我的钥匙。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:25.573Z"
+}

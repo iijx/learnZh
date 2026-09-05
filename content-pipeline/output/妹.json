@@ -1,0 +1,17 @@
+{
+  "char": "妹",
+  "pinyin": "mèi",
+  "explain": "妹，就是比自己年纪小的女孩子。家里的妹妹、堂妹，都用这个字。",
+  "mnemonic": "左边站个女，右边是个未，年纪小的姑娘就是「妹」。",
+  "words": [
+    "妹妹",
+    "姐妹",
+    "表妹"
+  ],
+  "sentence": "我的妹妹爱唱歌。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:47.220Z"
+}

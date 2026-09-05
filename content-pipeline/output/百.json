@@ -1,0 +1,17 @@
+{
+  "char": "百",
+  "pinyin": "bǎi",
+  "explain": "百，就是一百块钱的百，是个数字。买菜、买米算账的时候，经常用到它。",
+  "mnemonic": "白字上面加一横，就是一百的「百」。",
+  "words": [
+    "一百",
+    "百年",
+    "百货"
+  ],
+  "sentence": "我有一百块钱。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:05.203Z"
+}

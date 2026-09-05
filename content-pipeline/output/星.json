@@ -1,0 +1,17 @@
+{
+  "char": "星",
+  "pinyin": "xīng",
+  "explain": "星，就是天上一闪一闪的星星。晚上抬头能看到，还有咱们说的明星，也是这个字。",
+  "mnemonic": "上面日头像太阳，下面生字凑成帮，日加生，是「星」。",
+  "words": [
+    "星星",
+    "明星",
+    "星期"
+  ],
+  "sentence": "天上有小星星。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:33.525Z"
+}

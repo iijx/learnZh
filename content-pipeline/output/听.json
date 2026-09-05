@@ -1,0 +1,17 @@
+{
+  "char": "听",
+  "pinyin": "tīng",
+  "explain": "听，就是用耳朵接声音。比如听戏、听广播、听孙子喊爷爷，都用这个字。",
+  "mnemonic": "口在左，斤在右，张嘴听声就是「听」。",
+  "words": [
+    "听话",
+    "听见",
+    "好听"
+  ],
+  "sentence": "我在听戏。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:42.685Z"
+}

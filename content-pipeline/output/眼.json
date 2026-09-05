@@ -1,0 +1,17 @@
+{
+  "char": "眼",
+  "pinyin": "yǎn",
+  "explain": "眼，就是咱们脸上的眼睛，用来看东西的。看路、看孙子、看药盒都靠它。",
+  "mnemonic": "左边目字像眼睛，右边艮字站旁边，合起来就是「眼」。",
+  "words": [
+    "眼睛",
+    "双眼",
+    "眼光"
+  ],
+  "sentence": "我的眼睛花了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:24.253Z"
+}

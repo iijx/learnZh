@@ -1,0 +1,17 @@
+{
+  "char": "千",
+  "pinyin": "qiān",
+  "explain": "千，就是一千块钱、一千米路的千，比一百多，比一万少。买菜花几千、走几千步，都用得上。",
+  "mnemonic": "「十」字头上加一撇，一千两千就是「千」。",
+  "words": [
+    "一千",
+    "千万",
+    "几千"
+  ],
+  "sentence": "我今天走了三千步。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:05.097Z"
+}

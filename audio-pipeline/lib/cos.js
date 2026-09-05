@@ -10,8 +10,9 @@ function makeCos(cfg) {
   });
 }
 
+// 音频统一放 <prefix>/audio/ 子目录，避免与课程包（content-pipeline 的 manifest.json / chars.Ln.json）撞名
 function objectKey(cfg, name) {
-  return cfg.prefix.replace(/\/+$/, '') + '/' + name;
+  return cfg.prefix.replace(/\/+$/, '') + '/audio/' + name;
 }
 
 // 上传 mp3（public-read，课程音频公开可读）

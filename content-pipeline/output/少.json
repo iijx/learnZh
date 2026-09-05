@@ -1,0 +1,17 @@
+{
+  "char": "少",
+  "pinyin": "shǎo",
+  "explain": "少，就是不多的意思。买菜买得少、吃药吃几片量少、出门带的东西少，都用它。",
+  "mnemonic": "「小」字少一点，就是「少」。",
+  "words": [
+    "多少",
+    "少点",
+    "很少"
+  ],
+  "sentence": "今天菜买少了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:39.566Z"
+}

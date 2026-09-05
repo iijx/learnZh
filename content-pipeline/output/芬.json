@@ -1,0 +1,17 @@
+{
+  "char": "芬",
+  "pinyin": "fēn",
+  "explain": "芬，就是花呀草呀散出来的好闻味儿。公园里花开了，闻着香，就说有芬香。",
+  "mnemonic": "草字头下一个分，草花飘香就是「芬」。",
+  "words": [
+    "芬芳",
+    "芬香",
+    "芬兰"
+  ],
+  "sentence": "公园里的花有芬芳。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:56.289Z"
+}

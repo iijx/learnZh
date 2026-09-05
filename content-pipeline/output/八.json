@@ -1,0 +1,17 @@
+{
+  "char": "八",
+  "pinyin": "bā",
+  "explain": "八，是数数用的，比七多一个，比九少一个。买八斤菜、吃八个包子，都用它。",
+  "mnemonic": "一撇一捺分开站，像个八字胡的「八」。",
+  "words": [
+    "八个",
+    "八十",
+    "八月"
+  ],
+  "sentence": "我有八个大苹果。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:32:54.081Z"
+}

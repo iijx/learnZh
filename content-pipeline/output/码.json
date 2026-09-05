@@ -1,0 +1,17 @@
+{
+  "char": "码",
+  "pinyin": "mǎ",
+  "explain": "码，有俩常用意思：一个是出门扫的方格子图案，买菜、坐公交都能用；另一个是一串数字编号，比如手机号、开门的密码都有它。",
+  "mnemonic": "石字旁加个马，扫码输号都用「码」。",
+  "words": [
+    "扫码",
+    "号码",
+    "密码"
+  ],
+  "sentence": "我扫码付菜钱。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:35:53.641Z"
+}

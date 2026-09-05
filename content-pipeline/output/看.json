@@ -1,0 +1,17 @@
+{
+  "char": "看",
+  "pinyin": "kàn",
+  "explain": "看，就是用眼睛瞧东西。看电视、看孙子、看路牌，都用这个「看」。",
+  "mnemonic": "手搭眼睛上面遮太阳，抬头往远瞧，就是「看」。",
+  "words": [
+    "看见",
+    "好看",
+    "看书"
+  ],
+  "sentence": "我在看电视。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:39.071Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "月",
+  "pinyin": "yuè",
+  "explain": "月，就是天上的月亮，也说月份。咱们数日子说一月二月，也用这个字。",
+  "mnemonic": "弯弯小船挂天上，两横在里是「月」亮。",
+  "words": [
+    "月亮",
+    "月份",
+    "正月"
+  ],
+  "sentence": "天上有大月亮。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:33.769Z"
+}

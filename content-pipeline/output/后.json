@@ -1,0 +1,17 @@
+{
+  "char": "后",
+  "pinyin": "hòu",
+  "explain": "后，跟「前」相反。排队站在你后面的人，就是这个「后」。",
+  "mnemonic": "撇横在上像小帽，中间幺幺口在下，就是「后」。",
+  "words": [
+    "后面",
+    "以后",
+    "前后"
+  ],
+  "sentence": "我坐在你后面。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:35.369Z"
+}

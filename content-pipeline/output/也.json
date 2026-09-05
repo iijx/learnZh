@@ -1,0 +1,17 @@
+{
+  "char": "也",
+  "pinyin": "yě",
+  "explain": "也，就是「跟前面一样」的意思。你吃饭，我也吃饭；你去公园，我也去公园。",
+  "mnemonic": "「他」字去掉单人旁，剩下的就是「也」。",
+  "words": [
+    "也是",
+    "也有",
+    "也好"
+  ],
+  "sentence": "你吃我也吃。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:54.345Z"
+}

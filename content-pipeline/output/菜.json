@@ -1,0 +1,17 @@
+{
+  "char": "菜",
+  "pinyin": "cài",
+  "explain": "菜，就是咱们每天吃的蔬菜、青菜。去菜市场买菜、炒菜放调料，都用这个字。",
+  "mnemonic": "草字头下一个采，菜园采菜就是「菜」。",
+  "words": [
+    "买菜",
+    "青菜",
+    "蔬菜"
+  ],
+  "sentence": "我早上上街买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:24.285Z"
+}

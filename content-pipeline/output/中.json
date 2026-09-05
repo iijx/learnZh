@@ -2,14 +2,14 @@
   "char": "中",
   "pinyin": "zhōng",
   "explain": "中，就是夹在两头中间的意思。排队站中间、买苹果挑中等个儿的，都用它。咱们中国的中也是这个字。",
-  "mnemonic": "口像碗边插根筷，不歪不斜就是「中」。",
+  "mnemonic": "方口上下通个洞，不偏不倚就是「中」。",
   "words": [
     "中间",
     "中国",
     "中午"
   ],
   "sentence": "我是中国人。",
-  "status": "draft",
+  "status": "applied",
   "errors": [],
   "warnings": [],
   "model": "doubao-seed-2.1-turbo",

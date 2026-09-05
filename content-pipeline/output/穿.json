@@ -1,0 +1,19 @@
+{
+  "char": "穿",
+  "pinyin": "chuān",
+  "explain": "穿，就是把衣服、鞋子套在身上。早上起床穿衣服，出门要穿鞋子，都用这个字。",
+  "mnemonic": "上面是个小洞穴（穴），下面藏颗牙，洞穴套牙就是「穿」。",
+  "words": [
+    "穿衣",
+    "穿鞋",
+    "穿上"
+  ],
+  "sentence": "我穿上大棉袄。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（上棉袄），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:44.720Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "远",
+  "pinyin": "yuǎn",
+  "explain": "远，就是路走起来费劲儿，要好久才到。比如菜市场离家远，孙子的学校远，都用这个字。",
+  "mnemonic": "走之旁像走路，里面有个元，走老远才花一元钱——「远」。",
+  "words": [
+    "很远",
+    "远方",
+    "远近"
+  ],
+  "sentence": "我家离公园远。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:31.597Z"
+}

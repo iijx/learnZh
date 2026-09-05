@@ -1,0 +1,17 @@
+{
+  "char": "两",
+  "pinyin": "liǎng",
+  "explain": "两，就是二，数到二的那个数。买两斤菜、吃两个包子、走两站路，都用它。",
+  "mnemonic": "横下框里藏俩小人，就是「两」。",
+  "words": [
+    "两个",
+    "两天",
+    "两斤"
+  ],
+  "sentence": "我买了两个苹果。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:08.184Z"
+}

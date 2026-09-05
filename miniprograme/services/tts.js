@@ -4,7 +4,7 @@
 //   音频由 ../audio-pipeline/（豆包 TTS → 腾讯云 COS）批量生成，
 //   已生成的 key 登记在 data/audio-manifest.js（每次生成后自动重写）。
 //   音频位置由 services/audio-config.js 的 BASE 一处决定：
-//   本地打包 '/assets/audio/'，或 CDN 'https://…/course/v1/audio/'。
+//   本地打包 '/assets/audio/'，或 CDN 'https://cdn.pastecuts.cn/learn-zh/audio/'。
 //   speak() 会先用 opts.audioKey、再用「文本 → key」自动映射（_textKeyMap）找音频；
 //   找不到对应音频的文本走占位实现（播静音 + 按字数估算时长），流程不受影响。
 //   CDN 音频首次播放时下载到用户本地缓存（老人流量敏感，见 tools/README.md 第 1 节）。
@@ -20,9 +20,11 @@ var storage = require('./storage.js');
 var audioConfig = require('./audio-config.js');
 var audioManifest = require('../data/audio-manifest.js');
 var charsData = require('../data/chars.js');
+var poemsData = require('../data/poems.js');
+var storiesData = require('../data/stories.js');
 
 // 占位音频：极短静音 mp3（tools/gen-placeholders.js 生成）
-var SILENCE_SRC = '/assets/audio/silence.mp3';
+var SILENCE_SRC = '/assets/silence.mp3';
 
 // 语速系数：每个字占多少秒（占位实现按文本长度估算播报时长；真实音频也用它算兜底超时）
 var SECONDS_PER_CHAR = { slow: 0.45, normal: 0.28 };
@@ -52,15 +54,31 @@ function _getTextKeyMap() {
     if (c.sentence && audioManifest.has('sentence_' + c.char)) {
       _textKeyMap[c.sentence] = 'sentence_' + c.char;
     }
+    if (c.explain && audioManifest.has('explain_' + c.char)) {
+      _textKeyMap['这个字念' + c.char + '，' + c.char + '。' + c.explain] = 'explain_' + c.char;
+    }
+  });
+  // 里程碑童谣/故事逐行映射（milestone 页按行文本朗读）
+  [['poem', poemsData], ['story', storiesData]].forEach(function (pair) {
+    (pair[1] || []).forEach(function (item) {
+      (item.lines || []).forEach(function (line, i) {
+        var key = pair[0] + '_' + item.id + '_' + i;
+        if (audioManifest.has(key)) _textKeyMap[line] = key;
+      });
+    });
   });
   return _textKeyMap;
 }
 
 // 音频按 key 取播放地址：清单命中后由 audio-config.js 决定本地路径还是 CDN URL；
-// 不在清单内（尚未生成）返回 null
+// 不在清单内（尚未生成）返回 null。key 含中文，拼 URL 必须 encode（COS 对象 Key 是原始 UTF-8，
+// 请求时编码后指向同一对象）
 function _audioSrcFor(audioKey) {
   if (!USE_LOCAL_AUDIO || !audioKey) return null;
   if (!audioManifest.has(audioKey)) return null;
+  if (/^https?:\/\//.test(audioConfig.BASE)) {
+    return audioConfig.BASE + encodeURIComponent(audioKey) + '.mp3';
+  }
   return audioConfig.BASE + audioKey + '.mp3';
 }
 
@@ -80,7 +98,8 @@ function _getCtx() {
   if (!hasWx) return null;
   if (!_ctx) {
     _ctx = wx.createInnerAudioContext();
-    _ctx.src = SILENCE_SRC;
+    // 注意：不要在这里预设 src——每次 play 前都会设置（真实音频或 SILENCE_SRC 占位），
+    // 预设一个可能不存在的路径只会白报一条加载错误
     // 真实音频播完自然结束时触发 onDone（比估算时长准确）
     _ctx.onEnded(function () {
       if (!_realDone) return;
@@ -224,6 +243,11 @@ var tts = {
     _onQueueDone = onDone || null;
     _stopped = false;
     _playNext();
+  },
+
+  // 某音频 key 是否已生成（决定页面播放按钮显隐）
+  hasAudio: function (audioKey) {
+    return USE_LOCAL_AUDIO && audioManifest.has(audioKey);
   },
 
   // 停止当前播报（含队列）

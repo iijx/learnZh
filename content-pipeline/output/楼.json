@@ -1,0 +1,17 @@
+{
+  "char": "楼",
+  "pinyin": "lóu",
+  "explain": "楼，就是咱们住的高房子。一楼、二楼，爬楼坐电梯都用它。",
+  "mnemonic": "木字边，加个娄，高高立着是大「楼」。",
+  "words": [
+    "楼房",
+    "大楼",
+    "上楼"
+  ],
+  "sentence": "我家住在三楼。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:12.674Z"
+}

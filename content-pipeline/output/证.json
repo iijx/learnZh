@@ -1,0 +1,17 @@
+{
+  "char": "证",
+  "pinyin": "zhèng",
+  "explain": "证，就是能证明你是谁、你有啥资格的小本子。出门坐车、看病、领钱，常要用到各种证。",
+  "mnemonic": "言字旁来加个正，说话作数才算「证」。",
+  "words": [
+    "证明",
+    "证件",
+    "身份证"
+  ],
+  "sentence": "出门带好证。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:58.640Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "桥",
+  "pinyin": "qiáo",
+  "explain": "桥，就是架在河上、路上，让人走车过的东西。咱们小区门口那座小桥，回老家过的大桥，都是这个桥。",
+  "mnemonic": "木字旁加个乔，架在河上就是「桥」。",
+  "words": [
+    "大桥",
+    "小桥",
+    "过桥"
+  ],
+  "sentence": "我们一起过桥。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:27.118Z"
+}

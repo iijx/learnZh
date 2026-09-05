@@ -1,0 +1,17 @@
+{
+  "char": "张",
+  "pinyin": "zhāng",
+  "explain": "张，有好几个意思。最常用的是说姓张，比如张阿姨；还有张开嘴、张开手的张；还有数纸、数桌子的时候也用它，比如一张纸。",
+  "mnemonic": "左边弓儿拉得满，右边长长就「张」开。",
+  "words": [
+    "张开",
+    "一张",
+    "姓张"
+  ],
+  "sentence": "张奶奶张开嘴笑了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:12.975Z"
+}

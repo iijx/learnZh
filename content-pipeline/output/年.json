@@ -1,0 +1,17 @@
+{
+  "char": "年",
+  "pinyin": "nián",
+  "explain": "年，就是一年三百六十五天的那个年。过年、去年、明年，都用它。",
+  "mnemonic": "撇横下面有个小，加个十字加个竖，三百六十五天是一「年」。",
+  "words": [
+    "过年",
+    "去年",
+    "明年"
+  ],
+  "sentence": "我今年六十岁了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:27.127Z"
+}

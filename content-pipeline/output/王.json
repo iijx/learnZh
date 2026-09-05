@@ -1,0 +1,17 @@
+{
+  "char": "王",
+  "pinyin": "wáng",
+  "explain": "王，最常见的是当姓氏用，比如隔壁王大爷、王奶奶。也指老大、领头的，比如山中的老虎叫山大王。",
+  "mnemonic": "三横一竖站中间，虎头额上刻个「王」。",
+  "words": [
+    "大王",
+    "王子",
+    "王国"
+  ],
+  "sentence": "王大爷在公园下棋。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:16.595Z"
+}

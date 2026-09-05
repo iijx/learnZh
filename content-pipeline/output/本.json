@@ -1,0 +1,17 @@
+{
+  "char": "本",
+  "pinyin": "běn",
+  "explain": "本，最常说的是书本、本子。买菜记账的小本子、孙子上学的作业本，都用这个字。",
+  "mnemonic": "「木」字底下加一横，树的根就是本。",
+  "words": [
+    "本子",
+    "书本",
+    "本来"
+  ],
+  "sentence": "我有一个小本子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:22.192Z"
+}

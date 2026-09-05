@@ -1,0 +1,17 @@
+{
+  "char": "药",
+  "pinyin": "yào",
+  "explain": "药，就是生病要吃的那个东西。有药片、药水，还有中药，吃了能好得快。",
+  "mnemonic": "草字头下有个约，治病的草就是「药」。",
+  "words": [
+    "吃药",
+    "药片",
+    "中药"
+  ],
+  "sentence": "我要吃药了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:16.159Z"
+}

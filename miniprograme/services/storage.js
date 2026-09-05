@@ -159,7 +159,7 @@ var storage = {
   // ===== 设置项 =====
   getSettings: function () {
     var s = rawGet(KEY.SETTINGS, null) || {};
-    // 合并默认值，保证新增设置项老数据也有值
+    // 合并默认值，新增设置项时已有存储自动补齐
     var merged = {};
     for (var k in DEFAULT_SETTINGS) merged[k] = (k in s) ? s[k] : DEFAULT_SETTINGS[k];
     rawSet(KEY.SETTINGS, merged);
@@ -201,7 +201,10 @@ var storage = {
     rawSet(KEY.RESUME, null);
   },
 
-  _dateStr: dateStr
+  _dateStr: dateStr,
+  // 内部裸读写（course.js 缓存课程包 manifest 等自有 key 用；业务代码请用上面的语义接口）
+  _rawGet: rawGet,
+  _rawSet: rawSet
 };
 
 module.exports = storage;

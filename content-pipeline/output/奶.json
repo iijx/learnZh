@@ -1,0 +1,19 @@
+{
+  "char": "奶",
+  "pinyin": "nǎi",
+  "explain": "奶，就是喝的牛奶、奶粉。家里的奶奶，也用这个字。",
+  "mnemonic": "左边女字旁，右边像个乃，奶奶是女的叫「奶」。",
+  "words": [
+    "奶奶",
+    "牛奶",
+    "奶粉"
+  ],
+  "sentence": "我每天喝牛奶。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（每天牛），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:18.821Z"
+}

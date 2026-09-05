@@ -9,7 +9,7 @@
     "说明"
   ],
   "sentence": "妈妈说要去买菜。",
-  "status": "draft",
+  "status": "applied",
   "errors": [],
   "warnings": [],
   "model": "doubao-seed-2.1-turbo",

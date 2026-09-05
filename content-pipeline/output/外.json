@@ -1,0 +1,17 @@
+{
+  "char": "外",
+  "pinyin": "wài",
+  "explain": "外，就是家外面、屋子外头的意思。出门买菜、去公园遛弯，都算去外面。",
+  "mnemonic": "夕在左，卜在右，凑一起就是「外」。",
+  "words": [
+    "外面",
+    "外头",
+    "外人"
+  ],
+  "sentence": "外面风大。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:18.804Z"
+}

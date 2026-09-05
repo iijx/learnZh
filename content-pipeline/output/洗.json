@@ -1,0 +1,19 @@
+{
+  "char": "洗",
+  "pinyin": "xǐ",
+  "explain": "洗，就是用水冲干净脏东西。洗手、洗衣服、洗菜，都用这个字。",
+  "mnemonic": "三点水加个先，先用水冲，就是「洗」。",
+  "words": [
+    "洗手",
+    "洗脸",
+    "洗衣服"
+  ],
+  "sentence": "吃饭前要洗手。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（前要手），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:36.304Z"
+}

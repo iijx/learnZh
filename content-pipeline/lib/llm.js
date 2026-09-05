@@ -15,7 +15,9 @@ async function chat(messages, llmCfg) {
         model: llmCfg.model,
         messages: messages,
         temperature: llmCfg.temperature,
-        response_format: { type: 'json_object' }
+        response_format: { type: 'json_object' },
+        // 思考型模型（如 doubao-seed-2.1-turbo）默认深度思考要 2 分钟+，超过超时时间
+        thinking: llmCfg.thinking
       }),
       signal: ctrl.signal
     });

@@ -1,0 +1,19 @@
+{
+  "char": "左",
+  "pinyin": "zuǒ",
+  "explain": "左，就是你左手的那一边。出门走路看左边，穿衣服先伸左胳膊，都用这个字。",
+  "mnemonic": "「工」字头上撇，左手扶着工，就是「左」。",
+  "words": [
+    "左边",
+    "左手",
+    "左右"
+  ],
+  "sentence": "我左手拿杯子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（手杯子），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:20.920Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "问",
+  "pinyin": "wèn",
+  "explain": "问，就是有不懂的事开口找人说。比如买菜问价钱，坐车问坐几路，带孙子不会认字也能问老师。",
+  "mnemonic": "门里站着张嘴巴，开口找人「问」一下。",
+  "words": [
+    "请问",
+    "问话",
+    "问路"
+  ],
+  "sentence": "我问你一个事。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:07.219Z"
+}

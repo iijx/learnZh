@@ -1,0 +1,17 @@
+{
+  "char": "园",
+  "pinyin": "yuán",
+  "explain": "园，就是围起来的一块地方。咱们常去的公园、幼儿园、菜园子，都用这个字。",
+  "mnemonic": "大口框像围墙，里面一个元，围起来就是「园」。",
+  "words": [
+    "公园",
+    "幼儿园",
+    "菜园"
+  ],
+  "sentence": "我天天去公园。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:24.136Z"
+}

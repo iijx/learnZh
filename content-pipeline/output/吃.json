@@ -1,0 +1,17 @@
+{
+  "char": "吃",
+  "pinyin": "chī",
+  "explain": "吃，就是把饭、菜放到嘴里咽下去。咱们一日三餐吃饭、吃菜，都用这个「吃」。",
+  "mnemonic": "左边一张嘴（口），右边是乞——张着嘴要饭吃，就是「吃」。",
+  "words": [
+    "吃饭",
+    "吃菜",
+    "好吃"
+  ],
+  "sentence": "我吃了一大碗饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:14.716Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "孙",
+  "pinyin": "sūn",
+  "explain": "孙，就是儿子的儿子，咱们常说的孙子、孙女儿。平时带孙、接孙放学，都用这个字。",
+  "mnemonic": "左边一个子，右边一个小，子小是孙「孙」。",
+  "words": [
+    "孙子",
+    "孙女",
+    "儿孙"
+  ],
+  "sentence": "我的孙子上小学了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:21.475Z"
+}

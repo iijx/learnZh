@@ -1,0 +1,17 @@
+{
+  "char": "民",
+  "pinyin": "mín",
+  "explain": "民，就是咱们普通老百姓。平时说的人民、农民，都用这个字。",
+  "mnemonic": "左边歪框像笑脸，右边伸个小尾巴，就是「民」。",
+  "words": [
+    "人民",
+    "农民",
+    "市民"
+  ],
+  "sentence": "农民伯伯种大米。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:22.190Z"
+}

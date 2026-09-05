@@ -11,13 +11,14 @@
 //   node index.js --limit N        # 最多处理 N 条（试跑用）
 //
 // 产物：
-//   miniprograme/assets/audio/<key>.mp3   合成音频（--remote-only 时不写）
+//   out/audio/<key>.mp3                   合成音频本地缓存（增量合成跳过依据；--remote-only 时不写）
 //   miniprograme/data/audio-manifest.js   每次运行后按最终可用 key 重写（小程序端读取）
-//   COS  <prefix>/<key>.mp3 + manifest.json（上传模式，prefix 见 config.json）
+//   COS  <prefix>/audio/<key>.mp3 + <prefix>/audio/manifest.json（上传模式，prefix 见 config.json）
 //   state.json                            本次运行统计（含失败清单，供续跑排查）
 //
 // key 规则与 miniprograme/tools/README.md 第 1 节一致：
-//   单字读音 <字>；组词 word_<字>_<i>；例句 sentence_<字>（讲解不合成音频）
+//   单字读音 <字>；组词 word_<字>_<i>；例句 sentence_<字>；讲解 explain_<字>；
+//   里程碑朗读 poem_<id>_<行> / story_<id>_<行>
 
 var fs = require('fs');
 var path = require('path');
@@ -28,7 +29,8 @@ var tts = require('./lib/doubao-tts.js');
 var jobsLib = require('./lib/jobs.js');
 
 var MINIPROG = path.join(__dirname, '..', 'miniprograme');
-var OUT_DIR = path.join(MINIPROG, 'assets', 'audio');
+// 合成产物缓存目录（音频走 CDN 分发，本地文件只是增量合成的跳过依据，不进小程序包）
+var OUT_DIR = path.join(__dirname, 'out', 'audio');
 var MANIFEST_FILE = path.join(MINIPROG, 'data', 'audio-manifest.js');
 var STATE_FILE = path.join(__dirname, 'state.json');
 var CHARS_FILE = path.join(MINIPROG, 'data', 'chars.js');
@@ -45,6 +47,13 @@ var LIMIT = 0;
   var i = ARGS.indexOf('--limit');
   if (i !== -1 && ARGS[i + 1] && /^\d+$/.test(ARGS[i + 1])) LIMIT = parseInt(ARGS[i + 1], 10);
 })();
+// --chars 药医病：只处理这些字的任务，且对它们强制重新合成+覆盖上传（文案修订后更新音频用）
+var CHARS_ONLY = null;
+(function () {
+  var i = ARGS.indexOf('--chars');
+  if (i !== -1 && ARGS[i + 1]) CHARS_ONLY = ARGS[i + 1].split('');
+})();
+var FORCE_JOBS = FORCE || REMOTE_ONLY || !!CHARS_ONLY;
 
 if (REMOTE_ONLY && SKIP_UPLOAD) {
   console.error('参数冲突：--remote-only 与 --skip-upload 不能同时使用');
@@ -100,12 +109,12 @@ function synthWithRetry(text, cfg) {
 function writeManifest(keys) {
   keys = keys.slice().sort();
   var out = '// data/audio-manifest.js —— 已生成的语音清单（audio-pipeline/index.js 每次运行后自动重写）\n' +
-    '// key 规则：单字读音 <字>；组词 word_<字>_<i>；例句 sentence_<字>（讲解不合成音频）\n' +
-    '// 音频实际位置由 services/audio-config.js 的 BASE 决定（本地打包或 CDN）\n' +
+    '// key 规则：单字读音 <字>；组词 word_<字>_<i>；例句 sentence_<字>；讲解 explain_<字>；\n' +
+    '//   里程碑朗读 poem_<id>_<行> / story_<id>_<行>\n' +
+    '// 音频实际位置由 services/audio-config.js 的 BASE 决定（当前 CDN）\n' +
     'var KEYS = ' + JSON.stringify(keys, null, 2) + ';\n\n' +
     'module.exports = {\n' +
     '  has: function (key) { return KEYS.indexOf(key) !== -1; },\n' +
-    '  path: function (key) { return this.has(key) ? \'/assets/audio/\' + key + \'.mp3\' : null; },\n' +
     '  keys: KEYS\n};\n';
   fs.writeFileSync(MANIFEST_FILE, out);
   return keys.length;
@@ -116,8 +125,17 @@ function fmtKb(n) { return (n / 1024).toFixed(1) + ' KB'; }
 async function main() {
   var cfg = config.load();
   var chars = require(CHARS_FILE);
-  var jobs = jobsLib.buildJobs(chars, { all: ALL });
+  var jobs = jobsLib.buildJobs(chars, {
+    all: ALL,
+    poems: require(path.join(MINIPROG, 'data', 'poems.js')),
+    stories: require(path.join(MINIPROG, 'data', 'stories.js'))
+  });
   var fullCount = chars.filter(function (c) { return c.explain && c.explain !== '内容待补充'; }).length;
+
+  // --chars：只保留这些字的任务（童谣/故事行任务无 char 归属，不受影响）
+  if (CHARS_ONLY) {
+    jobs = jobs.filter(function (j) { return j.char && CHARS_ONLY.indexOf(j.char) !== -1; });
+  }
 
   if (DRY_RUN) {
     console.log('【dry-run】不合成不上传，仅列出任务（共 ' + jobs.length + ' 条）');
@@ -130,8 +148,8 @@ async function main() {
   config.validate(cfg, UPLOAD ? 'upload' : 'skip-upload');
   if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 
-  // 需合成的：本地缺失，或 --force / --remote-only 全量
-  var todo = (FORCE || REMOTE_ONLY)
+  // 需合成的：本地缺失，或 --force / --remote-only / --chars 指定字强制
+  var todo = FORCE_JOBS
     ? jobs.slice()
     : jobs.filter(function (j) { return !fs.existsSync(path.join(OUT_DIR, j.key + '.mp3')); });
   var skipLocal = jobs.length - todo.length;
@@ -160,8 +178,8 @@ async function main() {
         console.log('[' + (++done) + '/' + todo.length + '] ' + j.key + ' OK (' + fmtKb(buf.length) + ')');
         return { key: j.key };
       }
-      // 上传：--force / --remote-only 直接覆盖；否则 COS 已存在就跳过
-      var p = (FORCE || REMOTE_ONLY)
+      // 上传：--force / --remote-only / --chars 直接覆盖；否则 COS 已存在就跳过
+      var p = FORCE_JOBS
         ? Promise.resolve('put')
         : cosLib.head(cos, cfg.cos, j.key).then(function (exists) { return exists ? 'skip' : 'put'; });
       return p.then(function (act) {

@@ -1,0 +1,17 @@
+{
+  "char": "迎",
+  "pinyin": "yíng",
+  "explain": "迎，就是主动上前接人接东西。比如家里来客人了，你走到门口接，就是迎；过年迎财神、接孙子放学迎上去，都是这个字。",
+  "mnemonic": "走之底像迈开腿，卯字像人站门口，抬脚接人就是「迎」。",
+  "words": [
+    "欢迎",
+    "迎接",
+    "迎面"
+  ],
+  "sentence": "我在门口迎客人。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:59.052Z"
+}

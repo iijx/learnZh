@@ -1,0 +1,17 @@
+{
+  "char": "伞",
+  "pinyin": "sǎn",
+  "explain": "伞，就是下雨、大太阳天出门撑的那个东西。下雨天打伞，不会淋湿衣裳；夏天撑伞，能遮太阳。",
+  "mnemonic": "人字顶个大屋顶，下面立着伞柄杆——就是「伞」。",
+  "words": [
+    "雨伞",
+    "打伞",
+    "小伞"
+  ],
+  "sentence": "下雨了，我打伞出门。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:48.435Z"
+}

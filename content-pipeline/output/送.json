@@ -1,0 +1,17 @@
+{
+  "char": "送",
+  "pinyin": "sòng",
+  "explain": "送，就是把东西或人从这儿带到那儿。比如送孙子上学、给邻居送点菜。",
+  "mnemonic": "关字加个走之儿，走过去递东西就是「送」。",
+  "words": [
+    "送人",
+    "送给",
+    "送上"
+  ],
+  "sentence": "我送你回家。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:04.675Z"
+}

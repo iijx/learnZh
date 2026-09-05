@@ -1,0 +1,17 @@
+{
+  "char": "六",
+  "pinyin": "liù",
+  "explain": "六，就是数字六，数数的时候排第六。买六斤菜、给孙子六块糖，都用它。",
+  "mnemonic": "一点一横长，下面两条小短腿，就是「六」。",
+  "words": [
+    "六个",
+    "六月",
+    "六斤"
+  ],
+  "sentence": "我有六个苹果。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:06.776Z"
+}

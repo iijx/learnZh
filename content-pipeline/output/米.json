@@ -1,0 +1,17 @@
+{
+  "char": "米",
+  "pinyin": "mǐ",
+  "explain": "米，就是咱们天天吃的大米、白米。买米、淘米、蒸米饭，都用这个字。",
+  "mnemonic": "十字上面加两点，下面撇捺像米粒，就是「米」。",
+  "words": [
+    "大米",
+    "米饭",
+    "小米"
+  ],
+  "sentence": "我今天吃大米饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:57.449Z"
+}

@@ -1,0 +1,19 @@
+{
+  "char": "牙",
+  "pinyin": "yá",
+  "explain": "牙，就是嘴里用来嚼东西的牙。每天要刷牙，不然牙疼，就吃不动爱吃的红烧肉啦。",
+  "mnemonic": "竖折像大牙，撇是小牙尖，就是「牙」。",
+  "words": [
+    "刷牙",
+    "牙疼",
+    "牙齿"
+  ],
+  "sentence": "我每天早晚都刷牙。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 6 个更晚才学的字（每天早晚都刷），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:38.269Z"
+}

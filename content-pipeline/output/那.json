@@ -1,0 +1,17 @@
+{
+  "char": "那",
+  "pinyin": "nà",
+  "explain": "那，是指离我们远的人或东西。比如你站在这儿，街对面的小卖部，就叫「那边」。",
+  "mnemonic": "右边挂个小耳朵，指远处就用这个「那」。",
+  "words": [
+    "那边",
+    "那个",
+    "那么"
+  ],
+  "sentence": "那个是我孙子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:29.531Z"
+}

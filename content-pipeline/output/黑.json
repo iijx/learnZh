@@ -1,0 +1,17 @@
+{
+  "char": "黑",
+  "pinyin": "hēi",
+  "explain": "黑，就是晚上关了灯的颜色。黑头发、黑裤子、天黑了，都用这个字。",
+  "mnemonic": "上边扁口加两竖，中间土字底四点，合起来是「黑」。",
+  "words": [
+    "黑色",
+    "天黑",
+    "黑板"
+  ],
+  "sentence": "天黑了，快回家。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:51.552Z"
+}

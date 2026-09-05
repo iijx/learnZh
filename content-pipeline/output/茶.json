@@ -1,0 +1,19 @@
+{
+  "char": "茶",
+  "pinyin": "chá",
+  "explain": "茶，就是咱们平时泡的茶水。早上泡一杯热茶、饭后喝口茶，都用这个字。",
+  "mnemonic": "草字头下藏个人，木头旁边喝香「茶」。",
+  "words": [
+    "茶水",
+    "喝茶",
+    "茶叶"
+  ],
+  "sentence": "我每天都喝茶。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（每天都），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:58.542Z"
+}

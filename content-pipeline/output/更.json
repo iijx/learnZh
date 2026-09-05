@@ -1,0 +1,17 @@
+{
+  "char": "更",
+  "pinyin": "gèng",
+  "explain": "更，就是比原来还多、还厉害的意思。比如今天比昨天更冷，孙子比上个月更乖。",
+  "mnemonic": "一横下面扁曰藏，竖撇一捺拖个尾，越变越超是「更」字。",
+  "words": [
+    "更好",
+    "更多",
+    "更大"
+  ],
+  "sentence": "我今天更开心。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:00.876Z"
+}

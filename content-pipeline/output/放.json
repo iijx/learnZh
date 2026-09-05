@@ -1,0 +1,19 @@
+{
+  "char": "放",
+  "pinyin": "fàng",
+  "explain": "放，就是把东西挪到合适的地方。买菜的袋子放桌上、钥匙放门口、孙子的书包放椅子上，都用这个字。",
+  "mnemonic": "左边「方」右边「攵」，方方正正放好「放」。",
+  "words": [
+    "放下",
+    "放在",
+    "放学"
+  ],
+  "sentence": "把杯子放桌上。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 5 个更晚才学的字（把杯子桌上），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:28.847Z"
+}

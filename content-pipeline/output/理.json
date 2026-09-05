@@ -1,0 +1,17 @@
+{
+  "char": "理",
+  "pinyin": "lǐ",
+  "explain": "理，一个意思是把乱的归置顺，比如理菜、理玩具。还有个意思是说话办事的规矩，比如讲理、讲道理。",
+  "mnemonic": "王字旁边加个里，归置规矩都是「理」。",
+  "words": [
+    "道理",
+    "理发",
+    "理由"
+  ],
+  "sentence": "你这话有道理。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:39.506Z"
+}

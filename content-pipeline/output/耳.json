@@ -1,0 +1,17 @@
+{
+  "char": "耳",
+  "pinyin": "ěr",
+  "explain": "耳，就是咱们脑袋两边的耳朵。听人说话、听戏、听鸟叫，都靠它。",
+  "mnemonic": "一个长方框，框里两横是耳纹——「耳」。",
+  "words": [
+    "耳朵",
+    "耳机",
+    "木耳"
+  ],
+  "sentence": "我耳朵不好。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:46.952Z"
+}

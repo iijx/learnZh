@@ -1,0 +1,17 @@
+{
+  "char": "小",
+  "pinyin": "xiǎo",
+  "explain": "小，跟「大」反着来。小孙子、小勺子、小苹果，都用它。",
+  "mnemonic": "中间一竖站得直，两边两点像小脚丫，就是「小」。",
+  "words": [
+    "小孩",
+    "大小",
+    "小心"
+  ],
+  "sentence": "我家有个小孙子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:22.240Z"
+}

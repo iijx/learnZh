@@ -9,7 +9,7 @@
     "minified": true,
     "urlCheck": false,
     "coverView": true,
-    "ignoreUploadUnusedFiles": true,
+    "ignoreUploadUnusedFiles": false,
     "compileWorklet": false,
     "uglifyFileName": false,
     "uploadWithSourceMap": true,

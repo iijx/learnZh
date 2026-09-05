@@ -1,0 +1,17 @@
+{
+  "char": "十",
+  "pinyin": "shí",
+  "explain": "十，就是十个手指头的十，数到九再数一个就是十。买东西花十块钱，也用这个字。",
+  "mnemonic": "一横一竖十字路，中间站着个「十」。",
+  "words": [
+    "十个",
+    "十月",
+    "十块"
+  ],
+  "sentence": "我有十个手指头。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:04.646Z"
+}

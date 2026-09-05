@@ -1,0 +1,19 @@
+{
+  "char": "鸟",
+  "pinyin": "niǎo",
+  "explain": "鸟，就是天上飞的长羽毛的动物。麻雀、鸽子、燕子，都叫鸟。",
+  "mnemonic": "撇是头，点是眼，竖折折钩像身子，一横是翅膀——「鸟」。",
+  "words": [
+    "小鸟",
+    "鸟儿",
+    "飞鸟"
+  ],
+  "sentence": "天上有一只小鸟。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（天只小），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:13.753Z"
+}

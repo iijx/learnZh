@@ -1,0 +1,17 @@
+{
+  "char": "建",
+  "pinyin": "jiàn",
+  "explain": "建，就是盖房子、修东西的意思。咱们小区的新健身器材，就是工人建的。",
+  "mnemonic": "「廴」像条大路，右边「聿」像堆砖，路边堆砖盖新房——「建」。",
+  "words": [
+    "建设",
+    "建房子",
+    "修建"
+  ],
+  "sentence": "工人建大房子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:17.049Z"
+}

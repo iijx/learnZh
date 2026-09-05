@@ -1,0 +1,17 @@
+{
+  "char": "新",
+  "pinyin": "xīn",
+  "explain": "新，就是刚出来的、没用过的。新衣服、新菜、新孙子的小玩具，都用它。",
+  "mnemonic": "左边亲右边斤，新东西亲又新「新」。",
+  "words": [
+    "新年",
+    "新衣服",
+    "新鲜"
+  ],
+  "sentence": "我有一件新衣服。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:10.837Z"
+}

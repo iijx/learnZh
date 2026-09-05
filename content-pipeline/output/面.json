@@ -1,0 +1,17 @@
+{
+  "char": "面",
+  "pinyin": "miàn",
+  "explain": "面，就是脸，也指咱们常吃的面条、面粉。早上吃碗面，出门见人面，都用这个字。",
+  "mnemonic": "撇顶方框两竖站，下边长腿去买面——就是「面」。",
+  "words": [
+    "面条",
+    "面子",
+    "面粉"
+  ],
+  "sentence": "我早上吃了面。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:03.566Z"
+}

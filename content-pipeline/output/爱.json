@@ -1,0 +1,19 @@
+{
+  "char": "爱",
+  "pinyin": "ài",
+  "explain": "爱，就是心里喜欢、疼人的意思。你疼孙子、爱老伴儿，都是这个爱。",
+  "mnemonic": "爪字头下藏友心，真心疼人就是「爱」。",
+  "words": [
+    "爱心",
+    "可爱",
+    "亲爱"
+  ],
+  "sentence": "我爱我的小孙子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（小孙子），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:36.401Z"
+}

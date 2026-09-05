@@ -1,0 +1,19 @@
+{
+  "char": "高",
+  "pinyin": "gāo",
+  "explain": "高，就是往上伸得特别长，跟「矮」相反。大树高、楼房高、个子高，都是这个「高」。",
+  "mnemonic": "点横口字在上方，下面像个高台样，就是「高」。",
+  "words": [
+    "高兴",
+    "高大",
+    "高山"
+  ],
+  "sentence": "我今天真高兴。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（天真兴），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:13.289Z"
+}

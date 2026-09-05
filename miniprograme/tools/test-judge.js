@@ -51,8 +51,8 @@ expect('exam=false 但不足 40 点 → 不通过', judge.judge({ medians: media
 expect('无 medians 且 ≥40 点 → 兜底通过', judge.judge({ medians: null, trace: traceGood, exam: true }), true);
 expect('无 medians 且不足 40 点 → 不通过', judge.judge({ medians: null, trace: [], exam: true }), false);
 
-// 真实笔顺数据走一遍（「大」字 3 笔，1024 坐标系）
-var da = require('../data/strokes/大.json.js');
+// 真实笔顺数据走一遍（「大」字 3 笔，1024 坐标系；数据源 hanzi-writer-data）
+var da = require('../../content-pipeline/node_modules/hanzi-writer-data/大.json');
 var traceDa = [];
 da.medians.forEach(function (pts) {
   // 把每条中线按 1024 坐标系原样当轨迹（半径 35/300*1024 ≈ 120 的数据坐标单位，必然全覆盖）

@@ -1,0 +1,17 @@
+{
+  "char": "近",
+  "pinyin": "jìn",
+  "explain": "近，就是离得不远，走几步就到的意思。比如小区门口的菜店很近，下楼就能买菜。",
+  "mnemonic": "走之旁加个斤，路不远走得快，就是「近」。",
+  "words": [
+    "远近",
+    "附近",
+    "近路"
+  ],
+  "sentence": "我家离公园很近。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:29.089Z"
+}

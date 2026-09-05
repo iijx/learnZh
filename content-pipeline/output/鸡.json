@@ -1,0 +1,17 @@
+{
+  "char": "鸡",
+  "pinyin": "jī",
+  "explain": "鸡，就是咱们常吃的鸡子，有公鸡有母鸡。早上公鸡打鸣，母鸡下蛋，菜市场也能买到鸡肉。",
+  "mnemonic": "左边又字像鸡爪抓地，右边鸟字是鸟身，合起来就是「鸡」。",
+  "words": [
+    "公鸡",
+    "母鸡",
+    "鸡肉"
+  ],
+  "sentence": "我今天吃鸡肉。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:37.981Z"
+}

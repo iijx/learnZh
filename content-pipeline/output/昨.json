@@ -1,0 +1,17 @@
+{
+  "char": "昨",
+  "pinyin": "zuó",
+  "explain": "昨，说的是今天的前一天。比如昨天你去买菜了、昨天去看孙子了，就用这个字。",
+  "mnemonic": "日字在左边，乍字在右边，昨天的「昨」。",
+  "words": [
+    "昨天",
+    "昨晚",
+    "昨儿"
+  ],
+  "sentence": "昨天我去买菜了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:27.650Z"
+}

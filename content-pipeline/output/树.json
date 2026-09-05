@@ -1,0 +1,17 @@
+{
+  "char": "树",
+  "pinyin": "shù",
+  "explain": "树，就是路边、公园里长的大树。买的水果很多都是树上结的，比如苹果、桃子。",
+  "mnemonic": "左边木字旁，右边一个又加一寸，合起来是「树」。",
+  "words": [
+    "大树",
+    "树叶",
+    "桃树"
+  ],
+  "sentence": "大树下有老人。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:09.608Z"
+}

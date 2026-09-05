@@ -1,0 +1,19 @@
+{
+  "char": "轻",
+  "pinyin": "qīng",
+  "explain": "轻，跟「重」相反。拿在手里不压手的东西，就叫轻。比如一片树叶很轻，一个大馒头也轻。",
+  "mnemonic": "车字旁加个巠，东西不沉就叫「轻」。",
+  "words": [
+    "轻轻",
+    "轻一点",
+    "轻松"
+  ],
+  "sentence": "这个小杯子很轻。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 4 个更晚才学的字（小杯子很），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:04.488Z"
+}

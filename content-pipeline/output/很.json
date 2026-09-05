@@ -1,0 +1,17 @@
+{
+  "char": "很",
+  "pinyin": "hěn",
+  "explain": "很，就是程度深、特别的意思。比如饭很香、路很远、孙子很乖，都用它。",
+  "mnemonic": "双人旁加个艮，加深程度就是「很」。",
+  "words": [
+    "很多",
+    "很好",
+    "很大"
+  ],
+  "sentence": "今天天气很好。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:59.809Z"
+}

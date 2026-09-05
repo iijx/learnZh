@@ -1,0 +1,17 @@
+{
+  "char": "她",
+  "pinyin": "tā",
+  "explain": "她，说的是女的那个。比如奶奶、阿姨、姐姐，说她们的时候就用这个「她」。",
+  "mnemonic": "左边女字旁，右边也念也，女的也是她。",
+  "words": [
+    "她们",
+    "她的",
+    "是她"
+  ],
+  "sentence": "她是我奶奶。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:50.252Z"
+}

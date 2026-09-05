@@ -1,0 +1,19 @@
+{
+  "char": "水",
+  "pinyin": "shuǐ",
+  "explain": "水，就是咱们天天喝的、用的水。喝水、洗手、浇花，都离不开这个「水」。",
+  "mnemonic": "中间一竖像水柱，两边撇捺像水花——流下来的就是「水」。",
+  "words": [
+    "喝水",
+    "水果",
+    "口水"
+  ],
+  "sentence": "我每天喝八杯水。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 4 个更晚才学的字（每天八杯），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:34.153Z"
+}

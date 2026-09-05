@@ -1,0 +1,17 @@
+{
+  "char": "秋",
+  "pinyin": "qiū",
+  "explain": "秋，就是夏天过后、冬天之前的那个季节，天慢慢变凉，庄稼也熟了。秋天咱们常去摘果子、收庄稼，还会贴秋膘。",
+  "mnemonic": "左边禾苗黄，右边火样红，禾加火就是「秋」。",
+  "words": [
+    "秋天",
+    "秋风",
+    "立秋"
+  ],
+  "sentence": "秋天天气凉了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:48.550Z"
+}

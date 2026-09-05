@@ -1,0 +1,17 @@
+{
+  "char": "特",
+  "pinyin": "tè",
+  "explain": "特，就是特别、格外的意思。比如今天天气特好，买的菜特新鲜。",
+  "mnemonic": "左边牛，右边寺，特别好记就是「特」。",
+  "words": [
+    "特别",
+    "特地",
+    "特意"
+  ],
+  "sentence": "今天的天特好。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:43.684Z"
+}

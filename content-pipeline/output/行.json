@@ -1,0 +1,17 @@
+{
+  "char": "行",
+  "pinyin": "xíng",
+  "explain": "行，就是可以、能这么做的意思。你问老伴“明天去买菜行不行”，答应的那个“行”就是它。还有出门走路、坐车赶路也叫出行。",
+  "mnemonic": "双人旁加个亍，走路办事都能「行」。",
+  "words": [
+    "不行",
+    "行人",
+    "出行"
+  ],
+  "sentence": "今天不行，我有事。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:39.195Z"
+}

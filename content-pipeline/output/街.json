@@ -1,0 +1,17 @@
+{
+  "char": "街",
+  "pinyin": "jiē",
+  "explain": "街，就是咱们出门买菜、遛弯走的大马路两边的路。上街买酱油、逛大街，都用这个字。",
+  "mnemonic": "两边像人站成排走路，中间两个土堆着，就是热闹的大「街」。",
+  "words": [
+    "大街",
+    "上街",
+    "街道"
+  ],
+  "sentence": "我上街去买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:26.399Z"
+}

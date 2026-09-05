@@ -1,0 +1,17 @@
+{
+  "char": "黄",
+  "pinyin": "huáng",
+  "explain": "黄，就是黄颜色的黄。像秋天的落叶、地里的玉米、老母鸡的毛，都是黄的。",
+  "mnemonic": "草头加个由，下边八字托——「黄」。",
+  "words": [
+    "黄色",
+    "黄花",
+    "黄瓜"
+  ],
+  "sentence": "我爱吃黄瓜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:50.871Z"
+}

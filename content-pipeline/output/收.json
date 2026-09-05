@@ -1,0 +1,17 @@
+{
+  "char": "收",
+  "pinyin": "shōu",
+  "explain": "收，就是把东西归拢放好的意思。买菜收零钱、收衣服叠柜子，还有收孙子的玩具，都用它。",
+  "mnemonic": "左边提手要动手，右边反文轻轻拢，拢到一起就是「收」。",
+  "words": [
+    "收衣服",
+    "收东西",
+    "收下"
+  ],
+  "sentence": "我去收衣服。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:52.442Z"
+}

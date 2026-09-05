@@ -1,0 +1,17 @@
+{
+  "char": "将",
+  "pinyin": "jiāng",
+  "explain": "将，就是快要、就要的意思。天将要亮、饭将要好，都用这个字。",
+  "mnemonic": "左边丬像小床，右边「寸」托个「夕」，太阳快落山，「将」要到晚上。",
+  "words": [
+    "将要",
+    "将来",
+    "即将"
+  ],
+  "sentence": "天将要下雨了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:35:58.660Z"
+}

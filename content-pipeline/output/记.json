@@ -1,0 +1,17 @@
+{
+  "char": "记",
+  "pinyin": "jì",
+  "explain": "记，就是把事儿装在脑子里不忘。比如记吃药的时间、记孙子的生日，都用这个字。",
+  "mnemonic": "言字旁加个己，自己说给自己听，牢牢牢「记」住。",
+  "words": [
+    "记住",
+    "忘记",
+    "记得"
+  ],
+  "sentence": "你要记得吃药。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:45.585Z"
+}

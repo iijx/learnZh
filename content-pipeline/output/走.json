@@ -1,0 +1,17 @@
+{
+  "char": "走",
+  "pinyin": "zǒu",
+  "explain": "走，就是走路的走。咱们出门买菜、遛弯、接孙子，迈开腿走，都用这个字。",
+  "mnemonic": "上面像个「土」，下面像人迈两条腿，土路上迈腿就是「走」。",
+  "words": [
+    "走路",
+    "走了",
+    "快走"
+  ],
+  "sentence": "我走路去买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:42.402Z"
+}

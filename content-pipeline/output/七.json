@@ -1,0 +1,17 @@
+{
+  "char": "七",
+  "pinyin": "qī",
+  "explain": "七，是数数的数，比六大比八小。买七块钱的菜、数七个鸡蛋，都用它。",
+  "mnemonic": "一横一竖弯个尾，就像镰刀割麦子「七」。",
+  "words": [
+    "七个",
+    "七月",
+    "七斤"
+  ],
+  "sentence": "我有七个鸡蛋。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:02.505Z"
+}

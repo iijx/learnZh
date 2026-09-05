@@ -1,0 +1,17 @@
+{
+  "char": "下",
+  "pinyin": "xià",
+  "explain": "下，跟「上」相反。下楼、下雨、坐下，都用这个「下」。",
+  "mnemonic": "一横在上，小短腿往下伸，就是「下」。",
+  "words": [
+    "下雨",
+    "下面",
+    "坐下"
+  ],
+  "sentence": "外面下雨了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:25.521Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "价",
+  "pinyin": "jià",
+  "explain": "价，就是东西卖多少钱。买菜问价、看价签，都用这个字。",
+  "mnemonic": "单人旁加个介，问价先把人叫来「价」。",
+  "words": [
+    "价钱",
+    "价格",
+    "价签"
+  ],
+  "sentence": "这个菜的价不高。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:42.744Z"
+}

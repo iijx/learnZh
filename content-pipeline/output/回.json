@@ -1,0 +1,17 @@
+{
+  "char": "回",
+  "pinyin": "huí",
+  "explain": "回，就是从外头回到家里。下班回家、放学回学校，都用这个字。",
+  "mnemonic": "一个大方框套小方框，里外都是家，就是「回」。",
+  "words": [
+    "回家",
+    "回来",
+    "回去"
+  ],
+  "sentence": "我晚上回家吃饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:00.194Z"
+}

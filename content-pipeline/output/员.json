@@ -1,0 +1,17 @@
+{
+  "char": "员",
+  "pinyin": "yuán",
+  "explain": "员，就是做某件事的人。比如小区里管事儿的叫物业人员，买菜收钱的是收银员，跳广场舞的是队员。",
+  "mnemonic": "上面一个「口」，下面一个「贝」，上下合起来是「员」。",
+  "words": [
+    "人员",
+    "队员",
+    "员工"
+  ],
+  "sentence": "他是公园的工作人员。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:15.851Z"
+}

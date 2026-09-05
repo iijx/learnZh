@@ -1,0 +1,17 @@
+{
+  "char": "今",
+  "pinyin": "jīn",
+  "explain": "今，就是现在、今天这一天。你今天吃了啥、今天出门不，都用这个字。",
+  "mnemonic": "「令」字少掉下面一点，就是今天的「今」。",
+  "words": [
+    "今天",
+    "今年",
+    "今儿"
+  ],
+  "sentence": "今天我吃了面。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:40.004Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "秒",
+  "pinyin": "miǎo",
+  "explain": "秒，就是时间里最小的小不点。眨一下眼、数一个数，差不多就是一秒。",
+  "mnemonic": "禾木旁边加个少，时间最短是「秒」。",
+  "words": [
+    "秒针",
+    "几秒",
+    "一秒"
+  ],
+  "sentence": "等我一秒钟。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:32.801Z"
+}

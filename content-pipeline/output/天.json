@@ -1,0 +1,17 @@
+{
+  "char": "天",
+  "pinyin": "tiān",
+  "explain": "天，就是咱们抬头看见的天空，也指日子。晴天、阴天，还有今天、明天，都用这个天。",
+  "mnemonic": "「大」字头上加一横，头顶蓝天就是「天」。",
+  "words": [
+    "今天",
+    "天气",
+    "明天"
+  ],
+  "sentence": "今天天气真好。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:35:56.788Z"
+}

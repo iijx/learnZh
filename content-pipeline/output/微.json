@@ -1,0 +1,17 @@
+{
+  "char": "微",
+  "pinyin": "wēi",
+  "explain": "微，就是很小、一点点的意思。咱们天天用的微信、出门吹的微风，都带这个字。",
+  "mnemonic": "双人旁山加几攵，细小不起眼就是「微」。",
+  "words": [
+    "微信",
+    "微风",
+    "微笑"
+  ],
+  "sentence": "我天天用微信。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:26.075Z"
+}

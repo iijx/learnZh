@@ -1,0 +1,17 @@
+{
+  "char": "瓶",
+  "pinyin": "píng",
+  "explain": "瓶，就是装水装油的罐子。咱们买的酱油瓶、花瓶、装药片的小瓶子，都是这个「瓶」。",
+  "mnemonic": "左边是瓦右边是并，左右合起就是「瓶」。",
+  "words": [
+    "瓶子",
+    "花瓶",
+    "水瓶"
+  ],
+  "sentence": "桌上有个大花瓶。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:25.058Z"
+}

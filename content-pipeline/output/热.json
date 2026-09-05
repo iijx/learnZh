@@ -1,0 +1,17 @@
+{
+  "char": "热",
+  "pinyin": "rè",
+  "explain": "热，就是身上冒汗、摸上去发烫的意思。夏天天热，喝热粥、用热水，都用这个字。",
+  "mnemonic": "执字底下四点火，烤得浑身发烫「热」。",
+  "words": [
+    "热水",
+    "天气热",
+    "热闹"
+  ],
+  "sentence": "今天天太热了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:36.736Z"
+}

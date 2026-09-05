@@ -1,0 +1,17 @@
+{
+  "char": "元",
+  "pinyin": "yuán",
+  "explain": "元，就是咱们花的钱的单位。买一斤白菜一块钱，也叫一元钱。",
+  "mnemonic": "「二」下带个弯勾儿，就是一块钱的「元」。",
+  "words": [
+    "一元",
+    "十元",
+    "元旦"
+  ],
+  "sentence": "这瓶水一元钱。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:32.166Z"
+}

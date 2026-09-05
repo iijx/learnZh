@@ -1,0 +1,17 @@
+{
+  "char": "山",
+  "pinyin": "shān",
+  "explain": "山，就是咱们去爬山、看风景的山。老家后山、公园小山，都用这个字。",
+  "mnemonic": "三座山峰排一排，中间高两边低，就是「山」。",
+  "words": [
+    "山上",
+    "大山",
+    "爬山"
+  ],
+  "sentence": "山上有很多树。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:11.964Z"
+}

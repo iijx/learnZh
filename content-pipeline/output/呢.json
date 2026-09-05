@@ -1,0 +1,17 @@
+{
+  "char": "呢",
+  "pinyin": "ne",
+  "explain": "呢，是说话末尾带的小语气词，像话尾巴似的。问人在哪、说事儿还没做完，都能加个它，听着更顺口。",
+  "mnemonic": "口字旁边一个尼，嘴边挂着小尾巴「呢」。",
+  "words": [
+    "你呢",
+    "我呢",
+    "他呢"
+  ],
+  "sentence": "你今天上哪去呢？",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:59.994Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "窗",
+  "pinyin": "chuāng",
+  "explain": "窗，就是房子墙上透亮、能开关的那个。白天开窗透气，晚上关窗睡觉，家家户户都有。",
+  "mnemonic": "宝盖头像屋顶，里面有洞透光亮，就是「窗」。",
+  "words": [
+    "窗户",
+    "开窗",
+    "门窗"
+  ],
+  "sentence": "我早上开窗户。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:38.254Z"
+}

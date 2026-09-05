@@ -1,0 +1,17 @@
+{
+  "char": "雪",
+  "pinyin": "xuě",
+  "explain": "雪，就是冬天天上飘下来的白花花的东西。冷的时候会下雪，落在地上白茫茫的，堆雪人、打雪仗都用它。",
+  "mnemonic": "雨字头下面像个歪歪的山，天上落白絮，就是「雪」。",
+  "words": [
+    "下雪",
+    "雪花",
+    "雪人"
+  ],
+  "sentence": "冬天下大雪。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:08.070Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "西",
+  "pinyin": "xī",
+  "explain": "西，就是太阳落下去的方向。西边的太阳快落山，买菜的时候也能碰到西瓜的西。",
+  "mnemonic": "四张嘴儿凑一桌，中间一横是西瓜。",
+  "words": [
+    "西瓜",
+    "西边",
+    "东西"
+  ],
+  "sentence": "我爱吃大西瓜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:34.178Z"
+}

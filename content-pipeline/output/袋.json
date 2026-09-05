@@ -1,0 +1,17 @@
+{
+  "char": "袋",
+  "pinyin": "dài",
+  "explain": "袋，就是装东西的兜子。买菜用的塑料袋、装衣服的布袋子，都是这个字。",
+  "mnemonic": "上代下衣装东西，鼓鼓囊囊就是「袋」。",
+  "words": [
+    "袋子",
+    "口袋",
+    "塑料袋"
+  ],
+  "sentence": "我有一个大袋子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:59.516Z"
+}

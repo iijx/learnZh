@@ -1,0 +1,17 @@
+{
+  "char": "诊",
+  "pinyin": "zhěn",
+  "explain": "诊，就是医生给人看病。去医院挂完号，医生给你看病，就叫诊病。",
+  "mnemonic": "言字旁加珍珠的珍去掉王字旁，医生问话来查病「诊」。",
+  "words": [
+    "门诊",
+    "诊病",
+    "诊室"
+  ],
+  "sentence": "我今天去看门诊。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:14.518Z"
+}

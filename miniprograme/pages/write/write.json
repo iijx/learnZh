@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "写一写",
+  "usingComponents": {
+    "tracer": "/components/tracer/tracer"
+  }
+}

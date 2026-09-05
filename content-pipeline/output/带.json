@@ -1,0 +1,17 @@
+{
+  "char": "带",
+  "pinyin": "dài",
+  "explain": "带，就是随身带着东西出门。出门带钥匙，带孙子去公园，都用这个字。",
+  "mnemonic": "秃宝盖下有三竖，底下巾字就是带。",
+  "words": [
+    "带着",
+    "带来",
+    "带走"
+  ],
+  "sentence": "你带孙子去玩。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:46.574Z"
+}

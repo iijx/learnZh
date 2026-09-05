@@ -1,0 +1,17 @@
+{
+  "char": "末",
+  "pinyin": "mò",
+  "explain": "末，就是尾巴、最后的意思。一个月最后几天叫月末，一年最后几天叫年末。",
+  "mnemonic": "「木」字头顶加一横，树梢最末就是「末」。",
+  "words": [
+    "周末",
+    "月末",
+    "年末"
+  ],
+  "sentence": "周末我去公园。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:20.157Z"
+}

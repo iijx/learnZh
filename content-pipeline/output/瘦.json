@@ -1,0 +1,19 @@
+{
+  "char": "瘦",
+  "pinyin": "shòu",
+  "explain": "瘦，就是身上肉不多，跟胖相反。比如老人胃口不好，吃少了就会瘦。",
+  "mnemonic": "病字框里一个叟，身子弱了人就「瘦」。",
+  "words": [
+    "瘦小",
+    "瘦弱",
+    "很瘦"
+  ],
+  "sentence": "爷爷最近瘦了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（爷最近），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:41.859Z"
+}

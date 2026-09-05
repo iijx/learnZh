@@ -1,0 +1,17 @@
+{
+  "char": "院",
+  "pinyin": "yuàn",
+  "explain": "院，就是围起来的一片地方。咱们住的院子、看病的医院、跳广场舞的大院，都有这个字。",
+  "mnemonic": "左耳旁加完，有墙围个圈，就是「院」。",
+  "words": [
+    "医院",
+    "院子",
+    "学院"
+  ],
+  "sentence": "我家院子里有花。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:26.716Z"
+}

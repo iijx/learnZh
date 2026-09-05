@@ -1,0 +1,17 @@
+{
+  "char": "给",
+  "pinyin": "gěi",
+  "explain": "给，就是把东西递到别人手里。给孙子糖、给老伴递水，都用这个字。",
+  "mnemonic": "左边绞丝像线绳，右边合起递手中，线绳捆好递人就是「给」。",
+  "words": [
+    "给你",
+    "给我",
+    "送给"
+  ],
+  "sentence": "给你一个大苹果。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:03.367Z"
+}

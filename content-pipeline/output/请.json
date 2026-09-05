@@ -1,0 +1,17 @@
+{
+  "char": "请",
+  "pinyin": "qǐng",
+  "explain": "请，就是客气地叫人做啥。请人吃饭、请进门，说这个字很有礼貌。",
+  "mnemonic": "言字旁加个青，客客气气说声「请」。",
+  "words": [
+    "请问",
+    "请客",
+    "请坐"
+  ],
+  "sentence": "请你喝口水。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:35.290Z"
+}

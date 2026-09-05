@@ -1,0 +1,17 @@
+{
+  "char": "村",
+  "pinyin": "cūn",
+  "explain": "村，就是咱们住的村子、村庄。买菜、串门、下地干活，都在村里。",
+  "mnemonic": "左边木头（木）右边寸，木寸凑成一个「村」。",
+  "words": [
+    "村子",
+    "农村",
+    "村庄"
+  ],
+  "sentence": "我家在农村。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:26.576Z"
+}

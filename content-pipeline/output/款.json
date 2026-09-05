@@ -1,0 +1,17 @@
+{
+  "char": "款",
+  "pinyin": "kuǎn",
+  "explain": "款，咱们常说的钱就是这个字。买菜付款、银行存款、给孙子压岁钱凑款，都用它。",
+  "mnemonic": "左边「士」加「示」，右边「欠」钱要记得还，就是「款」。",
+  "words": [
+    "付款",
+    "存款",
+    "款式"
+  ],
+  "sentence": "买菜我用手机付款。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:54.753Z"
+}

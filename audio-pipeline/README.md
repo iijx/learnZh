@@ -21,22 +21,23 @@ node index.js --remote-only   # 不落本地直接传 COS（CDN 全量部署，�
 node index.js --all           # 占位字也纳入（占位字只合成单字读音）
 node index.js --dry-run       # 只看任务清单，无需凭证
 node index.js --limit N       # 最多处理 N 条（试跑用）
+node index.js --chars 药医病   # 只处理这些字，并强制重新合成+覆盖上传（文案修订后更新音频用）
 ```
 
 ## 产物
 
-- `miniprograme/assets/audio/<key>.mp3` —— 合成音频（remote-only 时不写）
+- `out/audio/<key>.mp3` —— 合成音频本地缓存（增量合成跳过依据；remote-only 时不写）
 - `miniprograme/data/audio-manifest.js` —— 小程序端读取的可用 key 清单（每次运行后重写）
-- COS `course/v1/audio/<key>.mp3` + `manifest.json`（上传模式）
+- COS `<prefix>/audio/<key>.mp3` + `<prefix>/audio/manifest.json`（上传模式；音频固定放 `audio/` 子目录，与同桶的课程包对象 `manifest.json`/`chars.Ln.json` 隔离）
 - `state.json` —— 最近一次运行统计与失败清单
 
-key 规则（与 `miniprograme/tools/README.md` 第 1 节一致）：单字 `<字>`；组词 `word_<字>_<i>`；例句 `sentence_<字>`。讲解不合成音频，由小程序端另行处理。
+key 规则（与 `miniprograme/tools/README.md` 第 1 节一致）：单字 `<字>`；组词 `word_<字>_<i>`；例句 `sentence_<字>`；讲解 `explain_<字>`（「这个字念X，X。<讲解>」，与 learn.js 播报文案一致）；里程碑朗读 `poem_<id>_<行>` / `story_<id>_<行>`。
 
 ## 小程序端部署切换
 
 音频放本地代码包还是 CDN，由 `miniprograme/services/audio-config.js` 的 `BASE` 一处决定：
 
-- 本地打包（默认）：`BASE = '/assets/audio/'`
-- CDN 托管：`BASE = 'https://<公网域名>/course/v1/audio/'`，域名与 `config.json` 的 `cos.publicBaseUrl + prefix` 一致；`tts.js` 会在首次播放时下载到用户本地缓存（老人多为流量敏感用户）。
+- 本地打包：`BASE = '/assets/audio/'`
+- CDN 托管（当前线上）：`BASE = 'https://cdn.pastecuts.cn/learn-zh/audio/'`，域名与 `config.json` 的 `cos.publicBaseUrl + prefix + '/audio/'` 一致；`tts.js` 会在首次播放时下载到用户本地缓存（老人多为流量敏感用户）。
 
-注意：微信主包体积上限 2MB，500 字全量音频（3000+ 条）必须走 CDN。
+注意：微信主包体积上限 2MB，300 字全量音频（1500+ 条）必须走 CDN。

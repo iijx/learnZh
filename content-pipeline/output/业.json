@@ -1,0 +1,19 @@
+{
+  "char": "业",
+  "pinyin": "yè",
+  "explain": "业，就是做的事、干的活儿。以前上班叫干事业，现在看孙子也是咱们的家业事儿。",
+  "mnemonic": "两竖并排站，两横底下垫，长横托着干事业——「业」。",
+  "words": [
+    "事业",
+    "作业",
+    "家业"
+  ],
+  "sentence": "孙子作业做完了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 5 个更晚才学的字（孙子作做完），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:02.516Z"
+}

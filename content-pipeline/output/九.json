@@ -1,0 +1,17 @@
+{
+  "char": "九",
+  "pinyin": "jiǔ",
+  "explain": "九，是数数用的，排在八后面、十前面。买九块钱的菜、吃九个包子，都用它。",
+  "mnemonic": "撇像头，横折弯钩像弯身子，歪着身子找酒喝——「九」。",
+  "words": [
+    "九个",
+    "九十",
+    "初九"
+  ],
+  "sentence": "我今天吃了九个包子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:00.789Z"
+}

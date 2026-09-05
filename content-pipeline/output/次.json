@@ -1,0 +1,19 @@
+{
+  "char": "次",
+  "pinyin": "cì",
+  "explain": "次，就是数事儿的回数。去一趟叫一次，吃一顿也叫一次，比如你去买一次菜。",
+  "mnemonic": "两点水加个欠，回回数事儿用「次」算。",
+  "words": [
+    "一次",
+    "每次",
+    "下次"
+  ],
+  "sentence": "我下次再去买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（再去买），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:33.101Z"
+}

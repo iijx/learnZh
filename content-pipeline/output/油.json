@@ -1,0 +1,17 @@
+{
+  "char": "油",
+  "pinyin": "yóu",
+  "explain": "油，就是炒菜用的东西，像花生油、菜籽油都算。瓶子上、菜名里常看到它。",
+  "mnemonic": "左边三点水，右边一个由，炒菜香的就是「油」。",
+  "words": [
+    "香油",
+    "豆油",
+    "菜油"
+  ],
+  "sentence": "炒菜要放油。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:55.170Z"
+}

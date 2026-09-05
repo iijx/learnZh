@@ -1,0 +1,19 @@
+{
+  "char": "再",
+  "pinyin": "zài",
+  "explain": "再，就是又一次的意思。比如菜吃完了再买，孙子放学再见，都是这个再。",
+  "mnemonic": "横下两竖像俩人，中间两横连起来。",
+  "words": [
+    "再见",
+    "再来",
+    "再吃"
+  ],
+  "sentence": "你慢走，再见！",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "mnemonic 没有点出该字，记字诀结尾建议用「」带出字形"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:59.085Z"
+}

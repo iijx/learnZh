@@ -1,0 +1,19 @@
+{
+  "char": "裹",
+  "pinyin": "guǒ",
+  "explain": "裹，就是把东西包起来、缠起来的意思。冬天裹厚棉袄、买菜裹塑料袋、给孙子裹小被子，都用这个字。",
+  "mnemonic": "衣字在下托着果，包得严实不透气——「裹」。",
+  "words": [
+    "裹着",
+    "包裹",
+    "裹紧"
+  ],
+  "sentence": "天冷，我裹着大衣服。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（天着衣），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:58.609Z"
+}

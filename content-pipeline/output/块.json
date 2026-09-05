@@ -1,0 +1,17 @@
+{
+  "char": "块",
+  "pinyin": "kuài",
+  "explain": "块，是数东西用的，比如一块糖、一块豆腐。买东西说几块钱，也用这个字。",
+  "mnemonic": "左边土，右边夬，土堆成块就是「块」。",
+  "words": [
+    "一块",
+    "几块",
+    "块头"
+  ],
+  "sentence": "我有一块糖。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:46.763Z"
+}

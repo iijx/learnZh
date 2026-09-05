@@ -1,0 +1,19 @@
+{
+  "char": "冷",
+  "pinyin": "lěng",
+  "explain": "冷，就是天气凉、身上冻得慌的意思。冬天出门要穿厚衣服，不然就会冷。",
+  "mnemonic": "两点冰旁有个令，冻得人缩脖子——「冷」。",
+  "words": [
+    "冷水",
+    "天冷",
+    "很冷"
+  ],
+  "sentence": "今天天冷，多穿点。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（天多点），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:10.645Z"
+}

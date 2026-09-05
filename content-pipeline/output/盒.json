@@ -1,0 +1,17 @@
+{
+  "char": "盒",
+  "pinyin": "hé",
+  "explain": "盒，就是装东西的小盒子。装药的药盒、装饭的饭盒、装糖的糖盒，都用这个字。",
+  "mnemonic": "上面合起来盖好，下面底儿托住——合加皿，就是「盒」。",
+  "words": [
+    "盒子",
+    "饭盒",
+    "药盒"
+  ],
+  "sentence": "我的药盒在桌上。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:25.022Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "宝",
+  "pinyin": "bǎo",
+  "explain": "宝，就是特别珍贵、疼爱的东西。孙子孙女是家里的宝，金镯子银镯子也是宝。",
+  "mnemonic": "宝盖头像小房子，里面藏块玉——这就是「宝」。",
+  "words": [
+    "宝贝",
+    "宝宝",
+    "珍宝"
+  ],
+  "sentence": "我的小孙孙是个宝。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:22.624Z"
+}

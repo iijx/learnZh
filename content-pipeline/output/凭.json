@@ -1,0 +1,19 @@
+{
+  "char": "凭",
+  "pinyin": "píng",
+  "explain": "凭，就是靠着、拿着凭据的意思。坐车要凭老年卡，看病要凭医保卡，办事都得有个凭据。",
+  "mnemonic": "任字底下有个几，办事要靠它才行「凭」。",
+  "words": [
+    "凭借",
+    "凭据",
+    "凭票"
+  ],
+  "sentence": "坐车要凭老年卡。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 4 个更晚才学的字（要老年卡），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:11.448Z"
+}

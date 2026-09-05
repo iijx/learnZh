@@ -1,0 +1,19 @@
+{
+  "char": "能",
+  "pinyin": "néng",
+  "explain": "能，就是你会做、可以做的意思。比如你能自己做饭，能自己坐车出门。",
+  "mnemonic": "左边厶下俩小竖，右边带匕本领「能」。",
+  "words": [
+    "不能",
+    "能够",
+    "可能"
+  ],
+  "sentence": "我能自己做饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（自己做），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:49.534Z"
+}

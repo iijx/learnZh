@@ -1,0 +1,17 @@
+{
+  "char": "想",
+  "pinyin": "xiǎng",
+  "explain": "想，就是心里头琢磨事儿。想儿女、想吃啥菜、想明天去哪玩，都用它。",
+  "mnemonic": "上面「相」下面「心」，心里琢磨就是「想」。",
+  "words": [
+    "想念",
+    "想看",
+    "想想"
+  ],
+  "sentence": "我想喝热水。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:08.374Z"
+}

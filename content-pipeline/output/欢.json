@@ -1,0 +1,19 @@
+{
+  "char": "欢",
+  "pinyin": "huān",
+  "explain": "欢，就是高兴、开心的意思。见到老姐妹、抱大孙子、吃爱吃的菜，心里欢得很。",
+  "mnemonic": "又欠笑弯眼，乐得直颠颠——「欢」。",
+  "words": [
+    "喜欢",
+    "欢乐",
+    "欢迎"
+  ],
+  "sentence": "我喜欢吃大苹果。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（喜苹果），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:32.888Z"
+}

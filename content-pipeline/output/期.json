@@ -1,0 +1,17 @@
+{
+  "char": "期",
+  "pinyin": "qī",
+  "explain": "期，就是说定的日子、一段日子。比如你跟老姐妹约好下周去买菜的日子，就是日期；孙子放暑假的那段时间，就是假期。",
+  "mnemonic": "左边「其」右边「月」，约好日子按月份，就是「期」。",
+  "words": [
+    "日期",
+    "假期",
+    "星期"
+  ],
+  "sentence": "我下星期去买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:33.925Z"
+}

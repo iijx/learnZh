@@ -1,0 +1,17 @@
+{
+  "char": "吗",
+  "pinyin": "ma",
+  "explain": "吗，是用来问问题的字。你吃饭了吗？出门了吗？都用它。",
+  "mnemonic": "口字在左边，马字在右边，开口问问题就用「吗」。",
+  "words": [
+    "好吗",
+    "对吗",
+    "行吗"
+  ],
+  "sentence": "你今天吃了吗？",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:55.266Z"
+}

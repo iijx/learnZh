@@ -1,0 +1,17 @@
+{
+  "char": "谢",
+  "pinyin": "xiè",
+  "explain": "谢，就是别人帮了你，你说声谢谢。买菜找零、别人让座，都要说这个字。",
+  "mnemonic": "言字旁加身加寸，开口道谢有分寸——「谢」。",
+  "words": [
+    "谢谢",
+    "感谢",
+    "多谢"
+  ],
+  "sentence": "谢谢你帮我。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:02.127Z"
+}

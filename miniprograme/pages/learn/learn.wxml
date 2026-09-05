@@ -1,15 +1,29 @@
 <!-- pages/learn/learn.wxml —— 学习页：新字教学卡片与互动闭环 -->
 <view class="learn-page {{fontClass}}">
   <speaker id="speaker" />
+  <!-- ================= 0. 课程包加载遮罩（首次启动需联网；失败给大字重试） ================= -->
+  <view wx:if="{{packLoading || packError}}" class="pack-mask">
+    <block wx:if="{{packLoading}}">
+      <view class="pack-mask-icon">📖</view>
+      <view class="pack-mask-text">课程加载中，请稍等…</view>
+    </block>
+    <block wx:else>
+      <view class="pack-mask-icon">📡</view>
+      <view class="pack-mask-text">课程没加载出来，请检查网络</view>
+      <view class="done-action-btn pack-retry-btn" hover-class="btn-hover" bindtap="onRetryPack">
+        <text class="done-btn-text">重试</text>
+      </view>
+    </block>
+  </view>
   <!-- ================= 1. TEACH 阶段（新字学习主界面：大字居中，按钮吸底） ================= -->
   <view wx:if="{{stage === 'TEACH'}}" class="teach-wrapper">
     <!-- 顶部进度：五条短横，每学完一个字点亮一格，当前格浅色提示 -->
     <view class="progress-bars">
       <view wx:for="{{[0, 1, 2, 3, 4]}}" wx:key="*this" class="progress-seg {{item < charIndex ? 'seg-done' : (item === charIndex ? 'seg-current' : '')}}"></view>
     </view>
-    <!-- 「认一认 / 看意思」共用：米字格大字 + 拼音 + 喇叭（点按重播发音） -->
+    <!-- 「认一认 / 看意思」共用：米字格大字 + 拼音 + 喇叭（点按播单字读音） -->
     <block>
-      <view class="mizige-box" hover-class="mizige-hover" bindtap="onPlayVoice">
+      <view class="mizige-box" hover-class="mizige-hover" bindtap="onPlayChar">
         <view class="mizige-grid">
           <view class="grid-line line-h"></view>
           <view class="grid-line line-v"></view>
@@ -18,28 +32,60 @@
         </view>
         <text class="mizige-char">{{teachChar}}</text>
       </view>
-      <!-- 拼音与发音播放按钮 -->
+      <!-- 拼音与字音播放按钮 -->
       <view class="pinyin-row">
         <text class="pinyin-text">{{teachCharPinyin}}</text>
-        <view class="speaker-btn" hover-class="btn-hover" bindtap="onPlayVoice">
+        <view wx:if="{{hasCharAudio}}" class="speaker-btn {{playingKey === charKey ? 'playing' : ''}}" hover-class="btn-hover" bindtap="onPlayChar">
           <image class="speaker-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
         </view>
       </view>
     </block>
-    <!-- teachStep 1「看意思」：点「不认识」后，字义解读直接展开在字的下方 -->
+    <!-- teachStep 1「看意思」：字义解读 / 组词 / 例句分区展示，每条音频配独立播放按钮 -->
     <block wx:if="{{teachStep === 1}}">
-      <!-- 字义解读板块 -->
+      <!-- 字义解读 -->
       <view class="content-section">
         <view class="section-header">
           <view class="red-bar"></view>
           <text class="section-title">字义解读</text>
         </view>
-        <view class="explain-body">
-          <text>{{explain}}</text>
+        <view class="audio-card">
+          <text class="audio-card-text">{{explain}}</text>
+          <view wx:if="{{hasExplainAudio}}" class="play-btn {{playingKey === explainKey ? 'playing' : ''}}" hover-class="btn-hover"
+                data-key="{{explainKey}}" data-text="{{explainText}}" bindtap="onPlayAudio">
+            <image class="play-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+          </view>
         </view>
         <view wx:if="{{mnemonic}}" class="mnemonic-body">
           <text class="mnemonic-tag">记字诀：</text>
           <text>{{mnemonic}}</text>
+        </view>
+      </view>
+      <!-- 组词（3 条，每条独立播放） -->
+      <view wx:if="{{wordList.length}}" class="content-section">
+        <view class="section-header">
+          <view class="red-bar"></view>
+          <text class="section-title">组词</text>
+        </view>
+        <view wx:for="{{wordList}}" wx:key="key" class="audio-card word-card">
+          <text class="audio-card-text word-text">{{item.text}}</text>
+          <view wx:if="{{item.has}}" class="play-btn {{playingKey === item.key ? 'playing' : ''}}" hover-class="btn-hover"
+                data-key="{{item.key}}" data-text="{{item.text}}" bindtap="onPlayAudio">
+            <image class="play-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+          </view>
+        </view>
+      </view>
+      <!-- 例句 -->
+      <view wx:if="{{sentence}}" class="content-section">
+        <view class="section-header">
+          <view class="red-bar"></view>
+          <text class="section-title">例句</text>
+        </view>
+        <view class="audio-card">
+          <text class="audio-card-text">{{sentence}}</text>
+          <view wx:if="{{hasSentenceAudio}}" class="play-btn {{playingKey === sentenceKey ? 'playing' : ''}}" hover-class="btn-hover"
+                data-key="{{sentenceKey}}" data-text="{{sentence}}" bindtap="onPlayAudio">
+            <image class="play-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+          </view>
         </view>
       </view>
       <!-- 图解拼音插画板块 -->
@@ -88,42 +134,6 @@
     </view>
     <view class="done-home-btn" hover-class="btn-hover" bindtap="onTapHome">
       <text class="done-home-text">回到首页</text>
-    </view>
-  </view>
-  <!-- ================= 3. 临摹练字浮层弹窗（Tracer 描红） ================= -->
-  <!-- 遮罩不绑定关闭，防误触丢进度；只能走右上角「✕ 退出」 -->
-  <view wx:if="{{isWritingOpen}}" class="modal-mask">
-    <view class="modal-body" catchtap="onPreventBubble">
-      <view class="modal-head">
-        <text class="modal-title">临摹练字 · {{teachChar}}</text>
-        <view class="modal-close" hover-class="btn-hover" bindtap="onTapExitWriting">
-          <text class="modal-close-text">✕ 退出</text>
-        </view>
-      </view>
-      <view class="modal-tracer-wrap">
-        <tracer id="tracer" char="{{teachChar}}" size="{{540}}" />
-      </view>
-      <view class="modal-tip">{{hasStroke ? '用手指跟着笔顺写一写' : '照着底字，用手指写一写'}}</view>
-      <!-- 有笔迹时点退出：确认条替换底部按钮，防误触丢进度 -->
-      <view wx:if="{{showExitConfirm}}" class="exit-confirm">
-        <view class="exit-confirm-text">还没描完，要退出吗？</view>
-        <view class="modal-buttons">
-          <view class="modal-btn finish-btn" hover-class="btn-hover" bindtap="onTapContinueTrace">
-            <text>继续描</text>
-          </view>
-          <view class="modal-btn play-btn" hover-class="btn-hover" bindtap="onTapConfirmExit">
-            <text>退出</text>
-          </view>
-        </view>
-      </view>
-      <view wx:else class="modal-buttons">
-        <view wx:if="{{hasStroke}}" class="modal-btn play-btn" hover-class="btn-hover" bindtap="playStrokesAnimation">
-          <text>笔顺演示 🔄</text>
-        </view>
-        <view class="modal-btn finish-btn" hover-class="btn-hover" bindtap="onTapFinishWriting">
-          <text>完成练字 ✓</text>
-        </view>
-      </view>
     </view>
   </view>
 </view>

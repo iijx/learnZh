@@ -1,0 +1,17 @@
+{
+  "char": "头",
+  "pinyin": "tóu",
+  "explain": "头，就是咱们的脑袋，长在脖子上面的。平时说的点头、洗头、头疼，都是这个字。",
+  "mnemonic": "两点一框撇儿托，就像圆脑袋模样——「头」。",
+  "words": [
+    "头发",
+    "点头",
+    "洗头"
+  ],
+  "sentence": "我今天洗了头。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:47.358Z"
+}

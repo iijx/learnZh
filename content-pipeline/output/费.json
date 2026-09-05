@@ -1,0 +1,17 @@
+{
+  "char": "费",
+  "pinyin": "fèi",
+  "explain": "费，就是花出去的钱。买菜的钱、坐车的钱、交水电费的钱，都叫费。",
+  "mnemonic": "下面宝贝的贝，上面是弗，花钱用宝贝就是「费」。",
+  "words": [
+    "费用",
+    "花费",
+    "车费"
+  ],
+  "sentence": "坐车要给车费。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:16.237Z"
+}

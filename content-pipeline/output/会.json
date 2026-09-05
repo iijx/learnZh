@@ -1,0 +1,17 @@
+{
+  "char": "会",
+  "pinyin": "huì",
+  "explain": "会，就是你能做、懂做的事儿。比如你会做饭、会带孙子、会坐公交，都用这个字。",
+  "mnemonic": "人在云下面开会，人加云就是「会」。",
+  "words": [
+    "开会",
+    "不会",
+    "学会"
+  ],
+  "sentence": "我会做饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:35.820Z"
+}

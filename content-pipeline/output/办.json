@@ -1,0 +1,19 @@
+{
+  "char": "办",
+  "pinyin": "bàn",
+  "explain": "办，就是做事、处理事儿。买菜、交电费、带孙子打疫苗，都是办事儿。",
+  "mnemonic": "「力」字左右两滴汗，用力干活就是「办」。",
+  "words": [
+    "办事",
+    "办法",
+    "办卡"
+  ],
+  "sentence": "我今天去办事。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（天去事），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:38.138Z"
+}

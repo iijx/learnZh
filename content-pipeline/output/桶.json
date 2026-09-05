@@ -1,0 +1,17 @@
+{
+  "char": "桶",
+  "pinyin": "tǒng",
+  "explain": "桶，就是装水、装米的圆家伙。家里的水桶、垃圾桶，都是这个「桶」。",
+  "mnemonic": "左边木字旁，右边像个木桶有耳朵——木加甬就是「桶」。",
+  "words": [
+    "水桶",
+    "垃圾桶",
+    "木桶"
+  ],
+  "sentence": "我去拿水桶。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:55.489Z"
+}

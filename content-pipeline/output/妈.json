@@ -1,0 +1,19 @@
+{
+  "char": "妈",
+  "pinyin": "mā",
+  "explain": "妈，就是妈妈，咱们最亲的长辈。你喊自己的妈妈、孩子的妈妈，都用这个字。",
+  "mnemonic": "左边女，右边马，孝顺孩子喊妈「妈」。",
+  "words": [
+    "妈妈",
+    "大妈",
+    "姑妈"
+  ],
+  "sentence": "我妈妈今年六十了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（年六十），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:18.949Z"
+}

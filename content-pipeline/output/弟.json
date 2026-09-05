@@ -1,0 +1,17 @@
+{
+  "char": "弟",
+  "pinyin": "dì",
+  "explain": "弟，就是家里比你小的男兄弟。像你亲弟弟、表弟、堂弟，都叫弟。",
+  "mnemonic": "头顶撇儿小短竖，下面弓着小身子，老小就是「弟」。",
+  "words": [
+    "弟弟",
+    "兄弟",
+    "表弟"
+  ],
+  "sentence": "我有一个小弟弟。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:46.869Z"
+}

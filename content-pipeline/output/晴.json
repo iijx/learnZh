@@ -1,0 +1,17 @@
+{
+  "char": "晴",
+  "pinyin": "qíng",
+  "explain": "晴，就是太阳出来、天上没云的好天气。出门买菜、遛弯、接孙子，碰上个晴天最舒服。",
+  "mnemonic": "日字旁在左边站，青天白日天气好，就是「晴」。",
+  "words": [
+    "晴天",
+    "放晴",
+    "晴朗"
+  ],
+  "sentence": "今天是大晴天。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:34.802Z"
+}

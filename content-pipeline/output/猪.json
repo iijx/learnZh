@@ -1,0 +1,17 @@
+{
+  "char": "猪",
+  "pinyin": "zhū",
+  "explain": "猪，就是过年常吃的猪肉的那个猪。咱们买的五花肉、排骨，都是猪身上的肉。",
+  "mnemonic": "左边反犬像兽类，右边加者就是「猪」。",
+  "words": [
+    "猪肉",
+    "小猪",
+    "猪头"
+  ],
+  "sentence": "我今天买了猪肉。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:38.363Z"
+}

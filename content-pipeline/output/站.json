@@ -1,0 +1,17 @@
+{
+  "char": "站",
+  "pinyin": "zhàn",
+  "explain": "站，就是身子直直立着，不坐着也不蹲着。等公交车、接孙子放学，都要站一会儿。",
+  "mnemonic": "左边立着一个人，右边占个小地方，就是「站」。",
+  "words": [
+    "车站",
+    "站立",
+    "到站"
+  ],
+  "sentence": "我在车站等你。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:18.361Z"
+}

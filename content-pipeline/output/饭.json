@@ -1,0 +1,19 @@
+{
+  "char": "饭",
+  "pinyin": "fàn",
+  "explain": "饭，就是咱们一日三餐吃的米饭、白饭。早上去食堂打饭，晚上给孙子做饭，都用这个字。",
+  "mnemonic": "食字旁加个反，一碗热饭香又软，「饭」。",
+  "words": [
+    "吃饭",
+    "米饭",
+    "早饭"
+  ],
+  "sentence": "我每天早上吃早饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 5 个更晚才学的字（每天早上吃），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:11.657Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "路",
+  "pinyin": "lù",
+  "explain": "路，就是咱们出门走的道。马路、走路、去菜市场的路，都是它。",
+  "mnemonic": "左边足（脚），右边各，各走各的「路」。",
+  "words": [
+    "马路",
+    "走路",
+    "路上"
+  ],
+  "sentence": "我走路去买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:50.251Z"
+}

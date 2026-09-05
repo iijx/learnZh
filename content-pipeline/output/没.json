@@ -1,0 +1,17 @@
+{
+  "char": "没",
+  "pinyin": "méi",
+  "explain": "没，就是没有、不见啦。菜卖完了没买到，口袋里没钱，都用这个字。",
+  "mnemonic": "三点水加个几，东西没了剩无几。",
+  "words": [
+    "没有",
+    "没了",
+    "没钱"
+  ],
+  "sentence": "今天菜卖完了，没买到。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:37:01.967Z"
+}

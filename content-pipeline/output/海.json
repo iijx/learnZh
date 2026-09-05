@@ -1,0 +1,17 @@
+{
+  "char": "海",
+  "pinyin": "hǎi",
+  "explain": "海，就是一眼望不到边、全是咸水的地方。去海边玩、吃海鲜，都用这个字。",
+  "mnemonic": "三点水在旁，每字站边上，「海」水连天边。",
+  "words": [
+    "大海",
+    "海边",
+    "海鲜"
+  ],
+  "sentence": "大海真大呀。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:24.254Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "额",
+  "pinyin": "é",
+  "explain": "额，就是咱们脑门子的地方。人老了额头上容易长皱纹，擦脸的时候也会擦到额头。",
+  "mnemonic": "「客」字换个页字旁，脑门就是「额」。",
+  "words": [
+    "额头",
+    "额角",
+    "前额"
+  ],
+  "sentence": "他的额头有汗。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:56.561Z"
+}

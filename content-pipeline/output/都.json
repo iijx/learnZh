@@ -1,0 +1,17 @@
+{
+  "char": "都",
+  "pinyin": "dōu",
+  "explain": "都，就是全部、一块儿的意思。咱们全家都去公园，就是所有人都去。",
+  "mnemonic": "者字右边加个耳，全有都有都齐全。",
+  "words": [
+    "都是",
+    "都有",
+    "全都"
+  ],
+  "sentence": "我们都去公园。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:50.723Z"
+}

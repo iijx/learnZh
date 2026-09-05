@@ -1,0 +1,17 @@
+{
+  "char": "件",
+  "pinyin": "jiàn",
+  "explain": "件，就是数东西用的，数衣服、数事都用它。一件衣服、一件事，都用这个「件」。",
+  "mnemonic": "单人旁加个牛，一件衣裳穿在牛身上。",
+  "words": [
+    "一件",
+    "事件",
+    "条件"
+  ],
+  "sentence": "我今天买了一件衣服。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:47.360Z"
+}

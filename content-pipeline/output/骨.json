@@ -1,0 +1,17 @@
+{
+  "char": "骨",
+  "pinyin": "gǔ",
+  "explain": "骨，就是咱们身上的骨头，撑着身子的硬东西。年纪大了要多补钙，骨头才结实。",
+  "mnemonic": "上边像块弯骨头，下边带个小肉墩——「骨」。",
+  "words": [
+    "骨头",
+    "排骨",
+    "骨气"
+  ],
+  "sentence": "我今天买了排骨。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:20.976Z"
+}

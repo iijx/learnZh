@@ -1,0 +1,19 @@
+{
+  "char": "短",
+  "pinyin": "duǎn",
+  "explain": "短，跟「长」相反。比如短绳子、短头发、短裤子，都是不长的意思。",
+  "mnemonic": "左边矢（箭）右边豆，箭比豆矮一截，就是「短」。",
+  "words": [
+    "长短",
+    "短头发",
+    "短裤"
+  ],
+  "sentence": "这根绳子短。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（根绳子），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:43.802Z"
+}

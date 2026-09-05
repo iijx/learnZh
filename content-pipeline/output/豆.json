@@ -1,0 +1,17 @@
+{
+  "char": "豆",
+  "pinyin": "dòu",
+  "explain": "豆，就是咱们常吃的豆子。黄豆、绿豆、豆腐，都有这个字。",
+  "mnemonic": "横头上长俩小豆瓣，下面带个豆底座，就是「豆」。",
+  "words": [
+    "豆子",
+    "豆腐",
+    "黄豆"
+  ],
+  "sentence": "我早上喝了豆浆。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:44.897Z"
+}

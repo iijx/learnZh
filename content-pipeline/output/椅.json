@@ -1,0 +1,17 @@
+{
+  "char": "椅",
+  "pinyin": "yǐ",
+  "explain": "椅，就是家里坐的椅子。吃饭坐的餐椅、晒太阳的躺椅，都叫椅。",
+  "mnemonic": "木字旁加个奇，木头做的奇坐具，就是「椅」。",
+  "words": [
+    "椅子",
+    "桌椅",
+    "木椅"
+  ],
+  "sentence": "我坐在椅子上。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:32.699Z"
+}

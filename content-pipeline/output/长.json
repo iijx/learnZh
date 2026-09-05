@@ -1,0 +1,19 @@
+{
+  "char": "长",
+  "pinyin": "cháng",
+  "explain": "长，跟「短」相反。长绳子、长头发、长豆角，都用这个「长」。",
+  "mnemonic": "「长」像根长竹竿，竖画长又直。",
+  "words": [
+    "长短",
+    "很长",
+    "长久"
+  ],
+  "sentence": "这根绳子很长。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 4 个更晚才学的字（根绳子很），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:07.462Z"
+}

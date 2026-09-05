@@ -1,0 +1,19 @@
+{
+  "char": "场",
+  "pinyin": "chǎng",
+  "explain": "场，就是大伙凑一起的地方。买菜去菜市场，跳广场舞去广场，都用这个字。",
+  "mnemonic": "提土旁加个易，土上一块开阔地，就是「场」。",
+  "words": [
+    "广场",
+    "市场",
+    "上场"
+  ],
+  "sentence": "我天天去广场玩。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 4 个更晚才学的字（天去广玩），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:16.998Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "门",
+  "pinyin": "mén",
+  "explain": "门，就是家里进进出出的那扇门。出门、进门、关门，都要用到它。",
+  "mnemonic": "两扇门板立两边，中间留空好进出，就是「门」。",
+  "words": [
+    "出门",
+    "开门",
+    "大门"
+  ],
+  "sentence": "我出门去买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:10.834Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "手",
+  "pinyin": "shǒu",
+  "explain": "手，就是我们吃饭、拿东西的手。拿筷子、开门、带孙子都要用到它。",
+  "mnemonic": "三根手指竖起来，下面一横是手腕，就是「手」。",
+  "words": [
+    "手指",
+    "左手",
+    "右手"
+  ],
+  "sentence": "我用手吃饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:34.540Z"
+}

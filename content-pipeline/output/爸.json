@@ -1,0 +1,17 @@
+{
+  "char": "爸",
+  "pinyin": "bà",
+  "explain": "爸，就是爸爸，家里的长辈。你喊爸爸、老爸，都是这个字。",
+  "mnemonic": "上面是父字头，下面一个巴，合起来是「爸」。",
+  "words": [
+    "爸爸",
+    "老爸",
+    "爸妈"
+  ],
+  "sentence": "我爸在吃饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:40.934Z"
+}

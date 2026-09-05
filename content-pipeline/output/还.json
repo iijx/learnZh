@@ -1,0 +1,17 @@
+{
+  "char": "还",
+  "pinyin": "hái",
+  "explain": "还，就是“再、另外”的意思。比如饭没吃饱，还要一碗；出门忘带钥匙，还要回去拿。",
+  "mnemonic": "走之旁里一个不，不回去还得再跑一趟「还」。",
+  "words": [
+    "还有",
+    "还是",
+    "还要"
+  ],
+  "sentence": "我还要一碗饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:37:04.380Z"
+}

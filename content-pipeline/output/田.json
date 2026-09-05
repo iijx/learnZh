@@ -1,0 +1,19 @@
+{
+  "char": "田",
+  "pinyin": "tián",
+  "explain": "田，就是种庄稼的地，咱们吃的米、菜都是田里长出来的。农村老家的稻田、麦田，都用这个字。",
+  "mnemonic": "一个方框分四块，像块四方庄稼「田」。",
+  "words": [
+    "田地",
+    "稻田",
+    "种田"
+  ],
+  "sentence": "田里有很多稻子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 5 个更晚才学的字（里很多稻子），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:42.363Z"
+}

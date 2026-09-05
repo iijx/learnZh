@@ -1,0 +1,17 @@
+{
+  "char": "慢",
+  "pinyin": "màn",
+  "explain": "慢，就是不快、走得缓。年纪大了走路要慢，吃饭慢一点，别着急。",
+  "mnemonic": "竖心旁加曼，走路稳稳不着急「慢」。",
+  "words": [
+    "慢慢",
+    "快慢",
+    "慢走"
+  ],
+  "sentence": "你走路慢一点。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:20.461Z"
+}

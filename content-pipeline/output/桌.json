@@ -1,0 +1,17 @@
+{
+  "char": "桌",
+  "pinyin": "zhuō",
+  "explain": "桌，就是咱们吃饭放菜的桌子。家里的饭桌、书桌，都是这个字。",
+  "mnemonic": "上面是个「卜」加「日」，下面「木」字托，木头做的饭桌就是「桌」。",
+  "words": [
+    "桌子",
+    "书桌",
+    "饭桌"
+  ],
+  "sentence": "桌上有一杯水。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:31.935Z"
+}

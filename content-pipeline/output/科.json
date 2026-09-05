@@ -1,0 +1,17 @@
+{
+  "char": "科",
+  "pinyin": "kē",
+  "explain": "科，咱们常说的看病挂号的科室，就是这个字。内科、外科、儿科，都带这个字。",
+  "mnemonic": "左边禾苗右边斗，挂号找「科」不发愁。",
+  "words": [
+    "科室",
+    "内科",
+    "外科"
+  ],
+  "sentence": "我去内科看病。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:14.923Z"
+}

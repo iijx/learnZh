@@ -1,0 +1,17 @@
+{
+  "char": "明",
+  "pinyin": "míng",
+  "explain": "明，就是亮堂、看得清的意思。天刚亮叫天明，路灯亮了叫照明，心里清楚也叫明白。",
+  "mnemonic": "左边日右边月，日月同辉真光明。",
+  "words": [
+    "明天",
+    "明白",
+    "光明"
+  ],
+  "sentence": "明天我去买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:40.447Z"
+}

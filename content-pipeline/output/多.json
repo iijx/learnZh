@@ -1,0 +1,17 @@
+{
+  "char": "多",
+  "pinyin": "duō",
+  "explain": "多，跟“少”相反。买菜买多了、孙子零食多了，都用这个多。",
+  "mnemonic": "两个“夕”字上下叠，东西堆得就是多。",
+  "words": [
+    "多少",
+    "很多",
+    "多心"
+  ],
+  "sentence": "今天的人真多。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:40.563Z"
+}

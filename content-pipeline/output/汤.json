@@ -1,0 +1,17 @@
+{
+  "char": "汤",
+  "pinyin": "tāng",
+  "explain": "汤，就是咱们吃饭时喝的稀汤水。像鸡蛋汤、小米粥汤，都叫汤。",
+  "mnemonic": "三点水在左边，右边像个舀汤勺——「汤」。",
+  "words": [
+    "米汤",
+    "汤面",
+    "喝汤"
+  ],
+  "sentence": "我中午喝了汤。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:03.192Z"
+}

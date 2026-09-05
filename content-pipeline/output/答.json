@@ -1,0 +1,17 @@
+{
+  "char": "答",
+  "pinyin": "dá",
+  "explain": "答，就是回答、回应的意思。比如别人问你吃了吗，你说吃了，这就是答。",
+  "mnemonic": "竹字头下加个合，对答说话要对合。",
+  "words": [
+    "回答",
+    "答应",
+    "答案"
+  ],
+  "sentence": "你快回答我。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:46.875Z"
+}

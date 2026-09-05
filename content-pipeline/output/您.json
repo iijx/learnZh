@@ -1,0 +1,17 @@
+{
+  "char": "您",
+  "pinyin": "nín",
+  "explain": "您，就是把「你」说得更客气、更尊敬。见了长辈、老师、老邻居，都可以叫「您」。",
+  "mnemonic": "你字底下加个心，记在心上尊重「您」。",
+  "words": [
+    "您好",
+    "您老",
+    "您家"
+  ],
+  "sentence": "爷爷，您吃饭了吗？",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:43.808Z"
+}

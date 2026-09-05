@@ -1,0 +1,17 @@
+{
+  "char": "老",
+  "pinyin": "lǎo",
+  "explain": "老，就是年纪大的意思。爷爷奶奶是老人，我们常说的老大爷、老奶奶，都有这个字。",
+  "mnemonic": "上面像弯背长胡子，下面像拄拐棍——「老」。",
+  "words": [
+    "老人",
+    "老家",
+    "老年"
+  ],
+  "sentence": "老人爱早起。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:14.751Z"
+}

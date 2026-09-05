@@ -1,0 +1,17 @@
+{
+  "char": "红",
+  "pinyin": "hóng",
+  "explain": "红，是太阳、红花、大红包的颜色。过年贴的春联、孩子的红领巾，都是红的。",
+  "mnemonic": "左边丝（纟）右边工，红绸子绣大红花。",
+  "words": [
+    "红色",
+    "红花",
+    "红包"
+  ],
+  "sentence": "我有一个红包。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:34.313Z"
+}

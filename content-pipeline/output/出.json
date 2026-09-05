@@ -1,0 +1,17 @@
+{
+  "char": "出",
+  "pinyin": "chū",
+  "explain": "出，就是从屋里走到外面。出门买菜、出门遛弯、出门坐车，都用这个字。",
+  "mnemonic": "两座山，上下叠，翻过山就出了门。",
+  "words": [
+    "出门",
+    "出去",
+    "出来"
+  ],
+  "sentence": "我早上出门买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:38.226Z"
+}

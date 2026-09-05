@@ -1,0 +1,17 @@
+{
+  "char": "万",
+  "pinyin": "wàn",
+  "explain": "万，是个很大的数，比一千还多十倍。比如一万块钱、一万人，都是很多的意思。",
+  "mnemonic": "两笔像个厂，加撇就是「万」。",
+  "words": [
+    "一万",
+    "千万",
+    "万一"
+  ],
+  "sentence": "出门千万关好门。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:07.565Z"
+}

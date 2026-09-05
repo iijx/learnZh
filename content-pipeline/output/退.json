@@ -1,0 +1,17 @@
+{
+  "char": "退",
+  "pinyin": "tuì",
+  "explain": "退，就是往后走、往回走的意思。比如买菜多给了钱要退钱，走太靠前了往后退两步。",
+  "mnemonic": "「艮」字加走之，往后挪步就是「退」。",
+  "words": [
+    "后退",
+    "退钱",
+    "退休"
+  ],
+  "sentence": "人多了往后退一退。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:35:59.708Z"
+}

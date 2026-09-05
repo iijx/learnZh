@@ -1,0 +1,17 @@
+{
+  "char": "镇",
+  "pinyin": "zhèn",
+  "explain": "镇，就是比村子大一点、比县城小一点的地方。咱们常去赶集的镇上，就是这个字。",
+  "mnemonic": "左边金（钅）右边真，赶集要去「镇」上逛。",
+  "words": [
+    "镇上",
+    "小镇",
+    "乡镇"
+  ],
+  "sentence": "我去镇上买菜。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:29.243Z"
+}

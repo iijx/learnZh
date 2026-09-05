@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// tools/check-components.js —— 校验 4 个自定义组件结构完整
+// tools/check-components.js —— 校验 3 个自定义组件结构完整
 //
 // 用法：node tools/check-components.js
 // 检查每个组件目录下 .json/.wxml/.wxss/.js 四件套齐全，
@@ -9,7 +9,7 @@ var fs = require('fs');
 var path = require('path');
 
 var ROOT = path.join(__dirname, '..', 'components');
-var COMPONENTS = ['big-button', 'char-card', 'tracer', 'speaker'];
+var COMPONENTS = ['big-button', 'tracer', 'speaker'];
 
 var failed = false;
 
@@ -60,4 +60,4 @@ if (failed) {
   console.error('\n组件校验未通过');
   process.exit(1);
 }
-console.log('\n全部 4 个组件结构校验通过 ✓');
+console.log('\n全部 3 个组件结构校验通过 ✓');

@@ -1,0 +1,17 @@
+{
+  "char": "支",
+  "pinyin": "zhī",
+  "explain": "支，数数东西常用的。比如买一支笔、一支蜡烛，都用它。",
+  "mnemonic": "又字头上顶个十，竖上加横变了样，就是「支」。",
+  "words": [
+    "一支",
+    "支持",
+    "支付"
+  ],
+  "sentence": "我有一支笔。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:52.190Z"
+}

@@ -1,0 +1,17 @@
+{
+  "char": "土",
+  "pinyin": "tǔ",
+  "explain": "土，就是脚下的泥土地。咱们种的菜、栽的花，都长在土里。",
+  "mnemonic": "「十」字底下加一横，就是脚踩的「土」。",
+  "words": [
+    "土地",
+    "泥土",
+    "土里"
+  ],
+  "sentence": "土里长了小草。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:22:12.301Z"
+}

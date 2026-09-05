@@ -1,0 +1,17 @@
+{
+  "char": "付",
+  "pinyin": "fù",
+  "explain": "付，就是把钱给别人的意思。买菜给人钱、买药给人钱，都叫付。",
+  "mnemonic": "左边站个人，右边拿一寸，递钱给人就是「付」。",
+  "words": [
+    "付钱",
+    "付账",
+    "付款"
+  ],
+  "sentence": "买菜我来付钱。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:20:55.884Z"
+}

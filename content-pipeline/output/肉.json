@@ -1,0 +1,17 @@
+{
+  "char": "肉",
+  "pinyin": "ròu",
+  "explain": "肉，就是我们常吃的猪肉、牛肉那些。菜市场买肉、炒菜放肉，都用这个字。",
+  "mnemonic": "竖弯加两横，咬着香的是「肉」。",
+  "words": [
+    "猪肉",
+    "吃肉",
+    "肥肉"
+  ],
+  "sentence": "今天中午吃肉。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:41.032Z"
+}

@@ -4,7 +4,7 @@
 // 产物：
 //   assets/img/placeholder-<字>.svg  暖色底 + 居中大字的占位插画（2:1 尺寸，对应 PRD 6.3）
 //   assets/img/placeholder.svg       通用占位图
-//   assets/audio/silence.mp3         极短静音音频（tts.js 占位播放用）
+//   assets/silence.mp3               极短静音音频（tts.js 兜底播放用）
 // 全部为程序生成，无 npm 依赖；真实素材替换方法见 tools/README.md。
 
 var fs = require('fs');
@@ -12,7 +12,7 @@ var path = require('path');
 
 var ROOT = path.join(__dirname, '..');
 var IMG_DIR = path.join(ROOT, 'assets', 'img');
-var AUDIO_DIR = path.join(ROOT, 'assets', 'audio');
+var AUDIO_DIR = path.join(ROOT, 'assets');
 
 // 需要生成占位插画的字：前 20 个示范字 + 其余需要占位插画的教学字 + 通用占位
 var DEMO_CHARS = '的一是了 我人 在他 有 这个 大 们 来 上 到 时 地 为 子'.replace(/\s/g, '').split('');
@@ -69,7 +69,7 @@ function main() {
 
   console.log('生成完成：');
   console.log('  assets/img/placeholder-<字>.svg × ' + count + '（+ 通用 placeholder.svg）');
-  console.log('  assets/audio/silence.mp3（约 1 秒静音）');
+  console.log('  assets/silence.mp3（约 1 秒静音）');
 }
 
 main();

@@ -1,0 +1,17 @@
+{
+  "char": "未",
+  "pinyin": "wèi",
+  "explain": "未，就是还没、还没有的意思。比如饭还没做好，就说「饭未好」；药还没吃，就说「药未吃」。",
+  "mnemonic": "下横长上横短，还没到头就是「未」。",
+  "words": [
+    "未来",
+    "未必",
+    "未曾"
+  ],
+  "sentence": "饭未好，等一下。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:35:58.460Z"
+}

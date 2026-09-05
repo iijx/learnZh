@@ -1,0 +1,17 @@
+{
+  "char": "夫",
+  "pinyin": "fū",
+  "explain": "夫，就是成年的男人。咱们常说的夫妻、农夫，都有这个字。",
+  "mnemonic": "「天」字出头长一截，顶天立地是大「夫」。",
+  "words": [
+    "大夫",
+    "农夫",
+    "丈夫"
+  ],
+  "sentence": "他是大夫。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:48.659Z"
+}

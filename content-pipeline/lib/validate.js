@@ -1,12 +1,22 @@
 // lib/validate.js —— 单字文案的机器校验（syllabus.md §6 规则 4 的文案部分）
 // errors 阻断 apply；warnings 只提醒，由人工审校定夺。
+//
+// ctx（可选）= { position, posOf }：position 为该字在学习顺序中的位置（1 起），
+// posOf 为 字→位置 映射。提供后启用「例句已学字」提醒——只作 warning 不作 error：
+// 例句主要靠 TTS 朗读消费，且前 50 字几乎没有已学字可组句，故位置 ≤50 跳过检查。
 
-function hanziCount(s) {
-  var m = String(s || '').match(/[一-鿿]/g);
-  return m ? m.length : 0;
+var EARLY_EXEMPT = 50;  // 学习位置 ≤ 此值的字不检查例句生字
+var MAX_LATER = 2;      // 例句中"更晚才学的字"超过此数才提醒
+
+function hanziOf(s) {
+  return String(s || '').match(/[一-鿿]/g) || [];
 }
 
-function validate(char, d) {
+function hanziCount(s) {
+  return hanziOf(s).length;
+}
+
+function validate(char, d, ctx) {
   var errors = [];
   var warnings = [];
   d = d || {};
@@ -56,6 +66,19 @@ function validate(char, d) {
     var n = hanziCount(sentence);
     if (n > 15) errors.push('sentence 超过 15 个汉字（' + n + ' 字），超出大纲上限');
     if (n < 4) warnings.push('sentence 不足 4 字，语境太少');
+
+    if (ctx && ctx.position > EARLY_EXEMPT) {
+      var later = [];
+      hanziOf(sentence).forEach(function (ch) {
+        if (ch !== char && (!ctx.posOf[ch] || ctx.posOf[ch] > ctx.position) && later.indexOf(ch) === -1) {
+          later.push(ch);
+        }
+      });
+      if (later.length > MAX_LATER) {
+        warnings.push('sentence 含 ' + later.length + ' 个更晚才学的字（' + later.join('') +
+          '），建议换用更简单的字重写例句');
+      }
+    }
   }
 
   return { errors: errors, warnings: warnings };

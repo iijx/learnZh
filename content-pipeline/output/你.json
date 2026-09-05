@@ -1,0 +1,17 @@
+{
+  "char": "你",
+  "pinyin": "nǐ",
+  "explain": "你，就是面对面说话的那个人。我问你吃饭了吗，说的就是你。",
+  "mnemonic": "单人旁加个尔，对着你说话的就是「你」。",
+  "words": [
+    "你好",
+    "你们",
+    "你的"
+  ],
+  "sentence": "你今天吃了吗？",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:19:46.789Z"
+}

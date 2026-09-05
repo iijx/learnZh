@@ -1,0 +1,17 @@
+{
+  "char": "女",
+  "pinyin": "nǚ",
+  "explain": "女，就是女的、女同志。奶奶、阿姨、小姑娘，都算女的。",
+  "mnemonic": "一个阿姨盘腿坐，怀里抱着小娃娃，就是「女」。",
+  "words": [
+    "女儿",
+    "女人",
+    "女士"
+  ],
+  "sentence": "我的妈妈是女人。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:19.124Z"
+}

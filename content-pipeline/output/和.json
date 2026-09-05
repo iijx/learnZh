@@ -9,7 +9,7 @@
     "和好"
   ],
   "sentence": "我和老伴去买菜。",
-  "status": "draft",
+  "status": "applied",
   "errors": [],
   "warnings": [],
   "model": "doubao-seed-2.1-turbo",

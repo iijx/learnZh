@@ -1,0 +1,17 @@
+{
+  "char": "包",
+  "pinyin": "bāo",
+  "explain": "包，就是装东西的袋子。买菜的布包、出门带的包、装菜的包子，都用这个字。",
+  "mnemonic": "一个勺子（勹）包住小包子，里面装个巳，就是「包」。",
+  "words": [
+    "包子",
+    "书包",
+    "钱包"
+  ],
+  "sentence": "我吃了一个大包子。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:32:53.972Z"
+}

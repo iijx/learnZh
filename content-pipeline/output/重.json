@@ -1,0 +1,19 @@
+{
+  "char": "重",
+  "pinyin": "zhòng",
+  "explain": "重，就是东西沉，拎着费劲儿。比如买菜买多了拎着重，大箱子搬着重。",
+  "mnemonic": "撇下千日叠土堆，压得沉又沉——「重」。",
+  "words": [
+    "很重",
+    "太重",
+    "重量"
+  ],
+  "sentence": "这袋米很重。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（袋米很），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:24:09.200Z"
+}

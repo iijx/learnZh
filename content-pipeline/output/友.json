@@ -1,0 +1,17 @@
+{
+  "char": "友",
+  "pinyin": "yǒu",
+  "explain": "友，就是跟你合得来、常一起聊天的人。老姐妹、老哥们，都是老朋友。",
+  "mnemonic": "两横一撇搭个又，相伴同行是好友。",
+  "words": [
+    "朋友",
+    "友好",
+    "工友"
+  ],
+  "sentence": "我有一个好朋友。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:38.081Z"
+}

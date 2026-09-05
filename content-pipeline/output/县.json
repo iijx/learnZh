@@ -1,0 +1,19 @@
+{
+  "char": "县",
+  "pinyin": "xiàn",
+  "explain": "县，就是比乡大、比市小的地方。咱们老家的县城、县里来的通知，都用这个字。",
+  "mnemonic": "「且」字头上戴小帽，老家县城就是「县」。",
+  "words": [
+    "县城",
+    "县里",
+    "县长"
+  ],
+  "sentence": "我上周去县城了。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [
+    "sentence 含 3 个更晚才学的字（周去城），建议换用更简单的字重写例句"
+  ],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:13.610Z"
+}

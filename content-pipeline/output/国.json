@@ -9,7 +9,7 @@
     "国旗"
   ],
   "sentence": "我是中国人。",
-  "status": "draft",
+  "status": "applied",
   "errors": [],
   "warnings": [],
   "model": "doubao-seed-2.1-turbo",

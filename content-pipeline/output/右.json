@@ -1,0 +1,17 @@
+{
+  "char": "右",
+  "pinyin": "yòu",
+  "explain": "右，就是我们的右手边。拿筷子、写字的手，大多是右手。",
+  "mnemonic": "「左」是工，「右」是口，右边吃饭用口。",
+  "words": [
+    "右手",
+    "右边",
+    "左右"
+  ],
+  "sentence": "我用右手吃饭。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:21:40.631Z"
+}

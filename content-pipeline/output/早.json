@@ -1,0 +1,17 @@
+{
+  "char": "早",
+  "pinyin": "zǎo",
+  "explain": "早，就是太阳刚出来的那段时间。早上买菜、早上去公园遛弯，都用这个字。",
+  "mnemonic": "太阳（日）立在十上头，清晨起得早——「早」。",
+  "words": [
+    "早上",
+    "早晨",
+    "早点"
+  ],
+  "sentence": "早上我去公园。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T13:36:27.208Z"
+}

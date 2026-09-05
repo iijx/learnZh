@@ -1,0 +1,17 @@
+{
+  "char": "矮",
+  "pinyin": "ǎi",
+  "explain": "矮，就是个子不高、东西不高的意思。你看楼下那棵小树苗比大树矮，家里小板凳比椅子矮，都用这个字。",
+  "mnemonic": "左边矢（箭）右边委，箭短人低就是「矮」。",
+  "words": [
+    "矮小",
+    "高矮",
+    "矮子"
+  ],
+  "sentence": "我家孙子个子矮。",
+  "status": "applied",
+  "errors": [],
+  "warnings": [],
+  "model": "doubao-seed-2.1-turbo",
+  "generatedAt": "2026-09-04T14:23:44.934Z"
+}
