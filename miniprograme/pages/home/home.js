@@ -3,7 +3,7 @@
 
 var tts = require('../../services/tts.js');
 var storage = require('../../services/storage.js');
-var review = require('../../services/review.js');
+var progress = require('../../services/progress.js');
 
 // 同一天只自动播报一次的记录键
 var GREET_DATE_KEY = 'lz_home_greet_date';
@@ -18,25 +18,33 @@ Page({
 
   onLoad: function (options) {
     // 子女分享进来的新用户（还没学过任何字）→ 进「帮爸妈设置」引导页
-    if (options && options.from === 'share' && storage.getLearnedCount() === 0) {
+    if (options && options.from === 'share' && progress.getSummary().totalLearned === 0) {
       wx.redirectTo({ url: '/pages/guide/guide' });
     }
   },
 
   onShow: function () {
+    var self = this;
     var settings = storage.getSettings();
     var hour = new Date().getHours();
     var greeting = hour < 12 ? '早上好' : (hour < 18 ? '下午好' : '晚上好');
-    var learnedCount = storage.getLearnedCount();
-    var streak = storage.getStreak();
-    this.setData({
-      greeting: greeting,
-      learnedCount: learnedCount,
-      streak: streak,
-      fontClass: settings.fontSize === 'xl' ? 'font-xl' : 'font-large'
+
+    // 先用缓存汇总渲染，后台刷新服务端进度后更新
+    this._renderHome(greeting, settings);
+    progress.refresh().then(function () {
+      self._renderHome(greeting, storage.getSettings());
     });
 
     this._speakTodayTask(greeting);
+  },
+
+  _renderHome: function (greeting, settings) {
+    this.setData({
+      greeting: greeting,
+      learnedCount: progress.getSummary().totalLearned,
+      streak: storage.getStreak(),
+      fontClass: settings.fontSize === 'xl' ? 'font-xl' : 'font-large'
+    });
   },
 
   // 语音播报问候 + 引导；同一天只自动播一次，之后 onShow 不再重播
@@ -47,9 +55,7 @@ Page({
     if (last === today) return;
     try { wx.setStorageSync(GREET_DATE_KEY, today); } catch (e) {}
 
-    var text = greeting + '！亲爱的长辈，欢迎来到课堂。一组五个字，学完一组接着下一组';
-    text += review.getTodayReview().length > 0 ? '，先复习之前学过的字。' : '。';
-    tts.speak(text);
+    tts.speak(greeting + '！亲爱的长辈，欢迎来到课堂。一组五个字，有复习有新生字，学完一组接着下一组。');
   },
 
   onStart: function () {
@@ -62,7 +68,7 @@ Page({
   },
 
   onShareAppMessage: function () {
-    var count = storage.getLearnedCount();
+    var count = progress.getSummary().totalLearned;
     return {
       title: '我爸妈已认识' + count + '个字！一天五个字，认遍生活',
       path: '/pages/home/home?from=share'

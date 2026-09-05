@@ -185,6 +185,20 @@
   box-shadow: 0 0 0 8rpx rgba(62, 107, 79, 0.25);
 }
 
+/* 复习字徽章 */
+.review-badge {
+  margin: 0 auto 24rpx;
+  width: fit-content;
+  background-color: #FFF3D6;
+  border: 2rpx solid #D48806;
+  border-radius: 999rpx;
+  padding: 8rpx 28rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #8A5A00;
+  text-align: center;
+}
+
 .speaker-icon {
   width: 44rpx;
   height: 44rpx;

@@ -4,11 +4,14 @@
 // 认识直接学下一个字（跳过讲解和写字）；不认识则展开字义解读，再进「写一写」。
 // 每个字 6 条音频：字音、组词×3、例句、讲解——「看意思」里每条配独立播放按钮，点哪个播哪个。
 // 「写一写」是独立页面（pages/write），写好后自动回到这里进入下一个字。
-// 新字按组学习：一组 5 个字，学完一组可接着学下一组（没有每日字数限制）。
+// 出组与进度都在服务端（services/progress.js → learnzh-api）：
+// 一组 5 个 = 3 复习 + 2 新；连续认识 5 次毕业，中途「不认识」清零重来。
+// 复习字卡片带「复习」徽章。
 
 var tts = require('../../services/tts.js');
 var storage = require('../../services/storage.js');
 var course = require('../../services/course.js');
+var progress = require('../../services/progress.js');
 
 var STAGE = { TEACH: 'TEACH', DONE: 'DONE' };
 var IMG_FALLBACK = '/assets/img/placeholder.svg';
@@ -33,6 +36,8 @@ Page({
     isLastChar: false,
     hasStroke: false,
     teachStep: 0,        // TEACH 子步骤：0 认一认 / 1 看意思（写一写走独立页面）
+    isReview: false,     // 当前字是复习字（服务端出组标记，展示「复习」徽章）
+    reviewStreak: 0,     // 当前复习字已连续认识次数
 
     // 逐条音频点播（每条音频一个 key，页面按 has 显隐播放按钮）
     wordList: [],        // [{ text, key, has }] 组词 3 条
@@ -54,7 +59,7 @@ Page({
   onLoad: function () {
     this.timers = [];
     this.newChars = [];
-    this._charList = null;
+    this._groupItems = null;
 
     var settings = storage.getSettings();
     this.setData({
@@ -93,7 +98,7 @@ Page({
     var today = storage._dateStr();
     if (r && r.page === 'learn' && r.date === today && r.stage === STAGE.TEACH) {
       // 断点续学保留到「第几个字」，但子步骤强制回到「认一认」（认识/不认识）重新开始
-      this._enterTeach(r.charIndex || 0, r.charList);
+      this._enterTeach(r.charIndex || 0, r.group);
       return;
     }
 
@@ -152,21 +157,44 @@ Page({
       page: 'learn',
       stage: this.data.stage,
       charIndex: this.data.charIndex,
-      charList: this._charList,
+      group: this._groupItems,   // 服务端出组结果 [{char, isReview, streak}]，续学原样恢复
       date: storage._dateStr()
     });
   },
 
   // ===== TEACH 新字教学阶段 =====
-  _enterTeach: function (charIndex, charList, teachStep) {
-    if (charList && charList.length) {
-      this._charList = charList;
-      this.newChars = charList.map(function (ch) { return course.getChar(ch); })
-        .filter(function (c) { return !!c; });
-    } else {
-      this.newChars = course.getNewCharsGroup();
-      this._charList = this.newChars.map(function (c) { return c.char; });
+  // groupItems 不传时从服务端出组（progress.getNextGroup），出组失败走 packError 重试
+  _enterTeach: function (charIndex, groupItems, teachStep) {
+    var self = this;
+    if (groupItems && groupItems.length) {
+      this._startWithGroup(groupItems, charIndex, teachStep);
+      return;
     }
+    this.setData({ packLoading: true, packError: false });
+    progress.getNextGroup().then(function (items) {
+      self.setData({ packLoading: false });
+      if (!items.length) {
+        // 字表学完且没有到期复习：全部学完
+        self._finish();
+        return;
+      }
+      self._startWithGroup(items, charIndex, teachStep);
+    }).catch(function () {
+      self.setData({ packLoading: false, packError: true });
+    });
+  },
+
+  _startWithGroup: function (groupItems, charIndex, teachStep) {
+    this._groupItems = groupItems;
+    this.newChars = groupItems.map(function (g) {
+      var c = course.getChar(g.char);
+      if (!c) return null;
+      var item = {};
+      for (var k in c) item[k] = c[k];
+      item.isReview = !!g.isReview;
+      item.streak = g.streak || 0;
+      return item;
+    }).filter(function (c) { return !!c; });
     if (!this.newChars.length) {
       this._finish();
       return;
@@ -204,6 +232,8 @@ Page({
       isLastChar: charIndex === this.newChars.length - 1,
       hasStroke: hasStroke,
       teachStep: 0,
+      isReview: !!info.isReview,
+      reviewStreak: info.streak || 0,
 
       wordList: wordList,
       charKey: ch,
@@ -236,14 +266,26 @@ Page({
     }
   },
 
-  // teachStep 0：点「认识」——本会，直接学下一个字（跳过讲解和临摹）
+  // teachStep 0：点「认识」——上报 known=true（服务端 streak+1，满 5 毕业），直接下一个字
   onTapKnow: function () {
+    this._report(true);
     this.onTapNext();
   },
 
-  // teachStep 0：点「不认识」——进入「看意思」讲解，之后照常「写一写」
+  // teachStep 0：点「不认识」——上报 known=false（服务端 streak 清零），进入「看意思」重学，
+  // 走完「写一写」后 onTapNext 会再上报 known=true（streak 0→1，明天再来）
   onTapUnknown: function () {
+    this._report(false);
     this._enterTeachStep(1);
+  },
+
+  // 上报当前字结果：后台进行（失败仅记日志，服务端未记录的字之后自然再出现）；
+  // 成功后记一次本地连续学习天数
+  _report: function (known) {
+    if (!this._charInfo) return;
+    progress.report(this._charInfo.char, known).then(function (data) {
+      if (data) storage.recordStudyDay();
+    });
   },
 
   // teachStep 1：点「写一写」进入写字页（写好自动回来进下一个字）
@@ -252,8 +294,15 @@ Page({
     wx.navigateTo({ url: '/pages/write/write?char=' + encodeURIComponent(this.data.teachChar) });
   },
 
-  // 写字页「写好了」回调：标记学会并进入下一个字
+  // 写字页「写好了」回调：上报学会并进入下一个字
   onWritingDone: function () {
+    this._report(true);
+    this.onTapNext();
+  },
+
+  // teachStep 1 无笔顺数据的「下一个字」：看完讲解即算学完，上报学会
+  onTapLearned: function () {
+    this._report(true);
     this.onTapNext();
   },
 
@@ -282,11 +331,10 @@ Page({
     });
   },
 
-  // 点击「下一个字 →」推进
+  // 点击「下一个字 →」推进（上报已由 onTapKnow/onWritingDone 路径完成，这里只翻页）
   onTapNext: function () {
     tts.stop();
     this._clearTimers();
-    storage.markCharLearned(this._charInfo.char);
 
     var nextChar = this._charIndex + 1;
     if (nextChar < this.newChars.length) {
@@ -299,7 +347,15 @@ Page({
   // ===== DONE 结束表扬阶段 =====
   _finish: function () {
     storage.clearResume();
-    var n = storage.getLearnedCount();
+    var self = this;
+    // 先拉一次服务端最新汇总（refresh 永不 reject），再判定里程碑解锁
+    progress.refresh().then(function () {
+      self._renderDone();
+    });
+  },
+
+  _renderDone: function () {
+    var n = progress.getSummary().totalLearned;
     var unlocked = course.getMilestones().unlocked;
     var newly = unlocked.slice(this._unlockedBefore);
     var milestone = newly.length ? newly[newly.length - 1] : null;
@@ -324,13 +380,8 @@ Page({
     }
   },
 
-  // 再学一组：取下一组 5 个新字，重新进入 TEACH；字表学完则语音提示
+  // 再学一组：重新从服务端出组进入 TEACH
   onLearnMore: function () {
-    var group = course.getNewCharsGroup();
-    if (!group.length) {
-      tts.speak('字表里的字都学完啦，你真了不起！');
-      return;
-    }
     this._unlockedBefore = course.getMilestones().unlocked.length;
     this._milestone = null;
     this._enterTeach(0);

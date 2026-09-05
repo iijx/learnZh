@@ -18,6 +18,14 @@
 
   <view class="stat-row">
     <view class="stat-item">
+      <view class="stat-num">{{masteredCount}}</view>
+      <view class="stat-label">完全认识</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-num">{{learningCount}}</view>
+      <view class="stat-label">巩固中</view>
+    </view>
+    <view class="stat-item">
       <view class="stat-num">{{streak}}</view>
       <view class="stat-label">连续学习（天）</view>
     </view>

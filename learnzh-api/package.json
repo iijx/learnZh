@@ -1,0 +1,35 @@
+{
+  "name": "learnzh-api",
+  "version": "1.0.0",
+  "description": "爸妈识字课小程序 进度/排期后端",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts",
+    "test": "vitest run",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "pm2:start": "pm2 start ecosystem.config.js",
+    "pm2:restart": "pm2 restart learnzh-api",
+    "pm2:reload": "pm2 reload learnzh-api",
+    "pm2:stop": "pm2 stop learnzh-api",
+    "pm2:delete": "pm2 delete learnzh-api",
+    "pm2:logs": "pm2 logs learnzh-api",
+    "pm2:status": "pm2 status learnzh-api"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.10.1",
+    "dotenv": "^16.3.0",
+    "hono": "^4.8.3",
+    "pino": "^9.7.0",
+    "pino-pretty": "^13.0.0",
+    "prisma": "^6.10.1",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.7",
+    "bun": "^1.4.2",
+    "vitest": "^1.0.0"
+  }
+}

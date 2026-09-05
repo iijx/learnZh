@@ -9,11 +9,13 @@
 //   古诗/故事——仍为本地 data/（尚未上线课程包，publish 支持后切换）。
 //
 // 页面使用约定：所有读字表的页面必须先 await course.ready() 再调同步接口
-// （loadChars / getChar / getNewCharsGroup），ready(false) 表示首次拉取失败，
+// （loadChars / getChar），ready(false) 表示首次拉取失败，
 // 页面应展示重试入口（见 pages/learn/learn.js）。
-// 里程碑解锁规则不变，仍按已学字数在本地判定。
+// 出组与学习进度在服务端（services/progress.js → learnzh-api）；
+// 里程碑解锁按服务端汇总缓存的已学字数在本地判定。
 
 var storage = require('./storage.js');
+var progress = require('./progress.js');
 var courseConfig = require('./course-config.js');
 
 var BASE = courseConfig.BASE;
@@ -171,16 +173,9 @@ var course = {
     return null;
   },
 
-  // 下一组新字：每组固定 5 个，从字表前部跳过已学字选取；学完一组接着下一组
-  getNewCharsGroup: function () {
-    var GROUP_SIZE = 5;
-    var learned = {};
-    storage.getLearnedChars().forEach(function (c) { learned[c] = true; });
-    var result = [];
-    for (var i = 0; i < _chars.length && result.length < GROUP_SIZE; i++) {
-      if (!learned[_chars[i].char]) result.push(_chars[i]);
-    }
-    return result;
+  // 已学字数（服务端汇总缓存；里程碑解锁按它算）
+  _learnedCount: function () {
+    return progress.getSummary().totalLearned;
   },
 
   // ===== 笔顺（CDN，按需下载 + 本地文件缓存；数据不可变，缓存永久有效）=====
@@ -226,20 +221,20 @@ var course = {
     return this._stories;
   },
 
-  // ===== 里程碑解锁判定（按已学字数）=====
+  // ===== 里程碑解锁判定（按已学字数，进度来自服务端汇总缓存）=====
   // 每 50 字解锁一首古诗、每 100 字一篇故事（数据里带 unlockAt）
   getUnlockedPoems: function () {
-    var n = storage.getLearnedCount();
+    var n = this._learnedCount();
     return this.loadPoems().filter(function (p) { return n >= p.unlockAt; });
   },
   getUnlockedStories: function () {
-    var n = storage.getLearnedCount();
+    var n = this._learnedCount();
     return this.loadStories().filter(function (s) { return n >= s.unlockAt; });
   },
 
   // 汇总：已解锁的里程碑课 + 下一个待解锁里程碑（进度页/首页展示用）
   getMilestones: function () {
-    var n = storage.getLearnedCount();
+    var n = this._learnedCount();
     var all = [];
     this.loadPoems().forEach(function (p) { all.push({ type: 'poem', title: p.title, unlockAt: p.unlockAt }); });
     this.loadStories().forEach(function (s) { all.push({ type: 'story', title: s.title, unlockAt: s.unlockAt }); });

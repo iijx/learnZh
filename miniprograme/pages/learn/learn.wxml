@@ -39,6 +39,8 @@
           <image class="speaker-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
         </view>
       </view>
+      <!-- 复习字徽章：复习字是之前学过、今天该巩固的字 -->
+      <view wx:if="{{isReview}}" class="review-badge">复习 · 已连续认识 {{reviewStreak}} 次</view>
     </block>
     <!-- teachStep 1「看意思」：字义解读 / 组词 / 例句分区展示，每条音频配独立播放按钮 -->
     <block wx:if="{{teachStep === 1}}">
@@ -110,11 +112,11 @@
         </view>
       </block>
       <block wx:elif="{{teachStep === 1}}">
-        <!-- 有笔顺数据：打开描红弹层；无笔顺数据：直接去下一个字 -->
+        <!-- 有笔顺数据：去写字页；无笔顺数据：看完讲解即算学完，直接去下一个字 -->
         <view wx:if="{{hasStroke}}" class="next-step-btn" hover-class="btn-hover" bindtap="onTapToWrite">
           <text class="next-text">写一写</text>
         </view>
-        <view wx:else class="next-step-btn" hover-class="btn-hover" bindtap="onTapNext">
+        <view wx:else class="next-step-btn" hover-class="btn-hover" bindtap="onTapLearned">
           <text class="next-text">{{isLastChar ? '学完这一组' : '下一个字'}}</text>
         </view>
       </block>

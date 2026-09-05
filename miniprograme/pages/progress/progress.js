@@ -3,6 +3,7 @@
 
 var storage = require('../../services/storage.js');
 var course = require('../../services/course.js');
+var progress = require('../../services/progress.js');
 var tts = require('../../services/tts.js');
 
 function getTreeInfo(n) {
@@ -17,6 +18,8 @@ Page({
   data: {
     fontClass: 'font-large',
     learnedCount: 0,
+    masteredCount: 0,   // 完全认识（连续 5 次毕业）
+    learningCount: 0,   // 巩固中
     streak: 0,
     studiedToday: false,
     treeInfo: { icon: '🌱', levelName: '破土小幼苗', desc: '' },
@@ -26,11 +29,16 @@ Page({
   },
 
   onShow: function () {
+    var self = this;
     this.setData({
       fontClass: storage.getSettings().fontSize === 'xl' ? 'font-xl' : 'font-large'
     });
     this._refresh();
     this._speakSummary();
+    // 后台拉服务端最新进度后重渲染
+    progress.refresh().then(function () {
+      self._refresh();
+    });
   },
 
   onReady: function () {
@@ -40,13 +48,8 @@ Page({
   },
 
   _refresh: function () {
-    var n = storage.getLearnedCount();
-    var today = storage._dateStr();
-    var map = storage.getLearnedMap();
-    var studiedToday = false;
-    for (var ch in map) {
-      if (map[ch].learnDate === today) { studiedToday = true; break; }
-    }
+    var summary = progress.getSummary();
+    var n = summary.totalLearned;
 
     var groups = [
       { name: '古诗', items: this._buildItems(course.loadPoems(), 'poem', n, '首') },
@@ -55,10 +58,12 @@ Page({
 
     this.setData({
       learnedCount: n,
+      masteredCount: summary.masteredCount,
+      learningCount: summary.learningCount,
       streak: storage.getStreak(),
-      studiedToday: studiedToday,
+      studiedToday: storage.studiedToday(),
       treeInfo: getTreeInfo(n),
-      certificates: storage.getCertificates(),
+      certificates: storage.getCertificates(n),
       groups: groups
     });
   },

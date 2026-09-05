@@ -172,7 +172,7 @@ L1 的选字原则只有一个：**今天学完，明天出门就能用上**。�
 - `data/poems.js` / `stories.js`：L1 部分已按 i+1 重写（童谣 6 + 故事 3，生字率 0）；随各级定稿扩容至 30 / 30
 - `pages/progress`：果树 5 档 → 按 5 级扩展成长线；奖状按级扩展（L3 脱盲奖状为重点）
 - `pages/home`：展示当前级别与级内进度（"生活篇 · 第 3 单元"）
-- `services/review.js`：不变（与字表解耦，天然兼容）
+- `services/review.js`：✅ 已删除——复习排期整体迁到服务端 learnzh-api（每组 3 复习 + 2 新，连续 5 次毕业，客户端只调 `services/progress.js`）
 - `tools/check-syllabus.js`：✅ 已实现，§6 五条验收（规则5 覆盖抽测待外部语料）
 
 ---

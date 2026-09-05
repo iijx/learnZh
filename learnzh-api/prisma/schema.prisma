@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  openid    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("learnzh_users")
+}
+
+model UserChar {
+  id           String   @id @default(cuid())
+  openid       String
+  char         String
+  streak       Int      @default(0)
+  mastered     Boolean  @default(false)
+  nextDue      String   @default("")
+  lastDoneDate String   @default("")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([openid, char])
+  @@index([openid, nextDue])
+  @@map("learnzh_user_chars")
+}
