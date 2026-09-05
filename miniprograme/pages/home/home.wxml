@@ -3,34 +3,31 @@
   <!-- 顶部主卡片：开始学习 -->
   <view class="card learn-card">
     <view class="card-title">开始学习</view>
-
     <!-- 具象太阳图标大徽章 -->
     <view class="badge-wrapper">
       <view class="sun-badge">
         <image class="sun-icon" src="/assets/img/icon-sun.svg" mode="aspectFit" />
       </view>
     </view>
-
     <!-- 问候与引导正文 -->
     <view class="welcome-section">
       <text class="lead-char">亲</text>
-      <text class="lead-text"> 爱的长辈，欢迎来到课堂。五个字一组，学完一组接着下一组，都是与生活息息相关的常用汉字。保持每天阅读的好习惯，让生活更加丰富多彩。</text>
+      <text class="lead-text">
+        爱的长辈，欢迎来到课堂。五个字一组，学完一组接着下一组，都是与生活息息相关的常用汉字。保持每天阅读的好习惯，让生活更加丰富多彩。
+      </text>
     </view>
-
     <!-- 主按钮：进入课堂 -->
     <view class="cta-btn" hover-class="cta-btn-hover" bindtap="onStart">
       <text class="cta-btn-text">开始学习</text>
       <text class="cta-btn-arrow">→</text>
     </view>
   </view>
-
   <!-- 底部卡片：识字成果报告 -->
   <view class="card report-card" hover-class="card-hover" bindtap="goProgress">
     <view class="report-header">
       <image class="report-icon" src="/assets/img/icon-report.svg" mode="aspectFit" />
       <text class="report-title">识字成果报告</text>
     </view>
-
     <view class="report-metrics">
       <view class="metric-item">
         <view class="metric-label">累计识字</view>
@@ -39,7 +36,6 @@
           <text class="metric-unit">字</text>
         </view>
       </view>
-
       <view class="metric-item">
         <view class="metric-label">连续学习</view>
         <view class="metric-val-wrap">

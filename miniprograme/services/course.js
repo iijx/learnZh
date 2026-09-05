@@ -211,7 +211,7 @@ var course = {
     return _strokeLoading[ch];
   },
 
-  // ===== 古诗/故事（本地，未上线课程包）=====
+  // ===== 古诗/故事/场景（本地 data/，未上线课程包）=====
   loadPoems: function () {
     if (!this._poems) this._poems = require('../data/poems.js');
     return this._poems;
@@ -219,6 +219,14 @@ var course = {
   loadStories: function () {
     if (!this._stories) this._stories = require('../data/stories.js');
     return this._stories;
+  },
+  loadScenes: function () {
+    if (!this._scenes) this._scenes = require('../data/scenes.js');
+    return this._scenes;
+  },
+  getUnlockedScenes: function () {
+    var n = this._learnedCount();
+    return this.loadScenes().filter(function (s) { return n >= s.unlockAt; });
   },
 
   // ===== 里程碑解锁判定（按已学字数，进度来自服务端汇总缓存）=====
@@ -230,6 +238,12 @@ var course = {
   getUnlockedStories: function () {
     var n = this._learnedCount();
     return this.loadStories().filter(function (s) { return n >= s.unlockAt; });
+  },
+
+  // ===== 插画 URL（走 CDN，未生成时由组件 binderror 自动 fallback 至 /assets/img/placeholder.svg）=====
+  getIllustrationUrl: function (ch) {
+    if (!ch) return '/assets/img/placeholder.svg';
+    return BASE + 'img/' + encodeURIComponent(ch) + '.png';
   },
 
   // 汇总：已解锁的里程碑课 + 下一个待解锁里程碑（进度页/首页展示用）

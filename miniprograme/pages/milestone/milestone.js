@@ -103,7 +103,9 @@ Page({
   // ---------- 内容态 ----------
 
   _openContent: function (type, id) {
-    var list = type === 'poem' ? course.loadPoems() : course.loadStories();
+    var list = type === 'poem' ? course.loadPoems()
+      : type === 'scene' ? course.loadScenes()
+      : course.loadStories();
     var item = null;
     for (var i = 0; i < list.length; i++) {
       if (list[i].id === id) item = list[i];
@@ -151,6 +153,8 @@ Page({
     this.setData({ currentLine: -1, phase: 'done', paused: false });
     if (this.data.mode === 'story') {
       this.speaker.speak('你自己读完了一个故事，真了不起！');
+    } else if (this.data.mode === 'scene') {
+      this.speaker.speak('你自己读懂了这个场景，真了不起！');
     } else {
       this.speaker.speak('读完啦！你可以跟着再读一遍。');
     }

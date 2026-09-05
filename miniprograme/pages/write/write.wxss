@@ -1,12 +1,14 @@
-/* pages/write/write.wxss —— 写字页 */
+/* pages/write/write.wxss —— 写字页：严格单屏展示 */
 .write-page {
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   background-color: #FAF7F2;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   box-sizing: border-box;
-  padding-bottom: 40rpx;
+  padding: 16rpx 36rpx calc(24rpx + env(safe-area-inset-bottom)) 36rpx;
 }
 
 /* 顶栏 */
@@ -15,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24rpx 32rpx 8rpx;
+  padding: 8rpx 0;
   box-sizing: border-box;
 }
 
@@ -23,74 +25,94 @@
   display: flex;
   align-items: baseline;
   gap: 16rpx;
+  padding: 8rpx 24rpx;
+  border-radius: 20rpx;
 }
 
 .char-text {
-  font-size: 48rpx;
+  font-size: 52rpx;
   font-weight: 800;
   color: #111111;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", serif;
 }
 
 .pinyin-text {
-  font-size: 36rpx;
-  color: #666666;
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #555555;
+  letter-spacing: 1rpx;
 }
 
 /* 描红区 */
 .tracer-wrap {
-  margin-top: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
+/* tracer 下方的图标工具栏（重看笔顺 / 擦掉重写） */
+.tracer-tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40rpx;
+  margin-top: 14rpx;
+}
+
+.tool-icon-btn {
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 3rpx solid #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.tool-icon {
+  width: 46rpx;
+  height: 46rpx;
+}
+
+/* 提示文案 */
 .tip {
-  margin-top: 20rpx;
-  font-size: 36rpx;
+  font-size: 32rpx;
+  font-weight: 600;
   color: #666666;
   text-align: center;
+  margin: 8rpx 0;
 }
 
 /* 底部按钮 */
 .bottom-bar {
   width: 100%;
-  margin-top: auto;
-  padding: 24rpx 32rpx 0;
   box-sizing: border-box;
-}
-
-.action-row {
-  display: flex;
-  gap: 20rpx;
-  margin-bottom: 20rpx;
-}
-
-.action-btn {
-  height: 110rpx;
-  border-radius: 16rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 38rpx;
-  font-weight: 700;
-  box-sizing: border-box;
-}
-
-.action-row .action-btn {
-  flex: 1;
-}
-
-.action-btn.secondary {
-  background-color: #FFFFFF;
-  border: 4rpx solid #333333;
-  color: #111111;
 }
 
 .action-btn.primary.finish {
   width: 100%;
-  height: 120rpx;
+  height: 116rpx;
   background-color: #000000;
   color: #FFFFFF;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.finish-text {
+  color: #FFFFFF;
   font-size: 42rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
 }
 
 .btn-hover {
-  opacity: 0.75;
+  opacity: 0.8;
+  transform: scale(0.98);
 }

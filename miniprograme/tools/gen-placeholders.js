@@ -52,23 +52,14 @@ function main() {
   fs.mkdirSync(IMG_DIR, { recursive: true });
   fs.mkdirSync(AUDIO_DIR, { recursive: true });
 
-  var chars = DEMO_CHARS.concat(EXTRA_CHARS);
-  var seen = {};
-  var count = 0;
-  chars.forEach(function (ch) {
-    if (seen[ch]) return;
-    seen[ch] = true;
-    fs.writeFileSync(path.join(IMG_DIR, 'placeholder-' + ch + '.svg'), makeSvg(ch), 'utf8');
-    count++;
-  });
-
-  // 通用占位图（无明显对应字时用）
+  // 通用占位图（未下载到 CDN 插画时兜底使用）
   fs.writeFileSync(path.join(IMG_DIR, 'placeholder.svg'), makeSvg('图'), 'utf8');
 
+  // 占位静音音频
   fs.writeFileSync(path.join(AUDIO_DIR, 'silence.mp3'), makeSilenceMp3());
 
   console.log('生成完成：');
-  console.log('  assets/img/placeholder-<字>.svg × ' + count + '（+ 通用 placeholder.svg）');
+  console.log('  assets/img/placeholder.svg（通用占位图）');
   console.log('  assets/silence.mp3（约 1 秒静音）');
 }
 

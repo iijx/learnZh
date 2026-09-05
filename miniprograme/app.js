@@ -1,5 +1,5 @@
 // app.js —— 小程序入口
-// 「爸妈识字课」：面向零基础老人的识字课
+// 「阿福认字」：面向零基础老人的识字课
 var storage = require('./services/storage.js');
 var course = require('./services/course.js');
 var api = require('./services/api.js');

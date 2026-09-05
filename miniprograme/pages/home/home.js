@@ -51,9 +51,9 @@ Page({
   _speakTodayTask: function (greeting) {
     var today = storage._dateStr();
     var last = '';
-    try { last = wx.getStorageSync(GREET_DATE_KEY) || ''; } catch (e) {}
+    try { last = wx.getStorageSync(GREET_DATE_KEY) || ''; } catch (e) { }
     if (last === today) return;
-    try { wx.setStorageSync(GREET_DATE_KEY, today); } catch (e) {}
+    try { wx.setStorageSync(GREET_DATE_KEY, today); } catch (e) { }
 
     tts.speak(greeting + '！亲爱的长辈，欢迎来到课堂。一组五个字，有复习有新生字，学完一组接着下一组。');
   },
@@ -62,15 +62,19 @@ Page({
     wx.navigateTo({ url: '/pages/learn/learn' });
   },
 
+  onGoReading: function () {
+    // 阅读课是 tab 页，用 switchTab 跳转
+    wx.switchTab({ url: '/pages/reading/reading' });
+  },
+
   goProgress: function () {
-    // 我的页是 tab 页，用 switchTab 跳转
-    wx.switchTab({ url: '/pages/progress/progress' });
+    wx.navigateTo({ url: '/pages/progress/progress' });
   },
 
   onShareAppMessage: function () {
     var count = progress.getSummary().totalLearned;
     return {
-      title: '我爸妈已认识' + count + '个字！一天五个字，认遍生活',
+      title: '我在阿福认字上已认识' + count + '个字！一天五个字，认遍生活',
       path: '/pages/home/home?from=share'
     };
   }

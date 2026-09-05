@@ -4,6 +4,7 @@
     "pages/learn/learn",
     "pages/write/write",
     "pages/milestone/milestone",
+    "pages/reading/reading",
     "pages/progress/progress",
     "pages/guide/guide"
   ],
@@ -11,7 +12,7 @@
     "backgroundColor": "#FAF0DC",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#FAF7F2",
-    "navigationBarTitleText": "爸妈识字课",
+    "navigationBarTitleText": "阿福认字",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -22,15 +23,11 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页",
-        "iconPath": "assets/img/tab-home.png",
-        "selectedIconPath": "assets/img/tab-home-active.png"
+        "text": "首页"
       },
       {
-        "pagePath": "pages/progress/progress",
-        "text": "我的",
-        "iconPath": "assets/img/tab-my.png",
-        "selectedIconPath": "assets/img/tab-my-active.png"
+        "pagePath": "pages/reading/reading",
+        "text": "阅读"
       }
     ]
   },

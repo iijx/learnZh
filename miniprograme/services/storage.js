@@ -85,28 +85,6 @@ var storage = {
     return rawGet(KEY.STREAK, { days: 0, lastStudyDate: '' }).lastStudyDate === dateStr();
   },
 
-  // ===== 荣誉大奖状（适老化正反馈荣誉体系） =====
-  // n：已学字数（progress.getSummary().totalLearned）
-  getCertificates: function (n) {
-    var all = [
-      { id: 'cert_5', need: 5, title: '初学启蒙奖', desc: '已认识 5 个生字，迈出识字第一步！', icon: '🌱' },
-      { id: 'cert_25', need: 25, title: '生活小能手', desc: '已认识 25 个常用字，买菜看牌更自如！', icon: '🧺' },
-      { id: 'cert_50', need: 50, title: '诗书达礼奖', desc: '已认识 50 个汉字，能独自诵读唐诗！', icon: '📜' },
-      { id: 'cert_100', need: 100, title: '百字脱盲状元', desc: '已认识 100 个大字，能读完整生活故事！', icon: '🏆' },
-      { id: 'cert_200', need: 200, title: '博闻强识学士', desc: '已认识 200 个汉字，畅行生活无障碍！', icon: '🌟' }
-    ];
-    return all.map(function (c) {
-      return {
-        id: c.id,
-        need: c.need,
-        title: c.title,
-        desc: c.desc,
-        icon: c.icon,
-        unlocked: n >= c.need
-      };
-    });
-  },
-
   // ===== 设置项 =====
   getSettings: function () {
     var s = rawGet(KEY.SETTINGS, null) || {};

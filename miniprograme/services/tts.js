@@ -22,6 +22,7 @@ var audioManifest = require('../data/audio-manifest.js');
 var charsData = require('../data/chars.js');
 var poemsData = require('../data/poems.js');
 var storiesData = require('../data/stories.js');
+var scenesData = require('../data/scenes.js');
 
 // 占位音频：极短静音 mp3（tools/gen-placeholders.js 生成）
 var SILENCE_SRC = '/assets/silence.mp3';
@@ -58,8 +59,8 @@ function _getTextKeyMap() {
       _textKeyMap['这个字念' + c.char + '，' + c.char + '。' + c.explain] = 'explain_' + c.char;
     }
   });
-  // 里程碑童谣/故事逐行映射（milestone 页按行文本朗读）
-  [['poem', poemsData], ['story', storiesData]].forEach(function (pair) {
+  // 里程碑童谣/故事/场景逐行映射（milestone 页按行文本朗读；场景音频生成后自动生效）
+  [['poem', poemsData], ['story', storiesData], ['scene', scenesData]].forEach(function (pair) {
     (pair[1] || []).forEach(function (item) {
       (item.lines || []).forEach(function (line, i) {
         var key = pair[0] + '_' + item.id + '_' + i;

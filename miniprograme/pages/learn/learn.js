@@ -13,7 +13,7 @@ var storage = require('../../services/storage.js');
 var course = require('../../services/course.js');
 var progress = require('../../services/progress.js');
 
-var STAGE = { TEACH: 'TEACH', DONE: 'DONE' };
+var STAGE = { TEACH: 'TEACH', PRACTICE: 'PRACTICE', DONE: 'DONE' };
 var IMG_FALLBACK = '/assets/img/placeholder.svg';
 
 Page({
@@ -49,6 +49,16 @@ Page({
     sentenceKey: '',
     hasSentenceAudio: false,
     playingKey: '',      // 正在播放的音频 key（播放中按钮高亮）
+
+    // PRACTICE 巩固练习数据
+    practiceIndex: 0,
+    practiceTotal: 0,
+    practiceQuestions: [],
+    currentQuestion: null,
+    selectedChar: '',
+    isCorrect: false,
+    isWrong: false,
+    isOptionLocked: false,
 
     // DONE 状态数据
     learnedCount: 0,
@@ -226,7 +236,7 @@ Page({
       mnemonic: info.mnemonic || '',
       words: (info.words || []).slice(0, 3),
       sentence: info.sentence || '',
-      imgSrc: '/assets/img/placeholder-' + ch + '.svg',
+      imgSrc: course.getIllustrationUrl(ch),
       charIndex: charIndex,
       charTotal: this.newChars.length,
       isLastChar: charIndex === this.newChars.length - 1,
@@ -250,7 +260,7 @@ Page({
     this._enterTeachStep(teachStep || 0);
   },
 
-  // 进入 TEACH 的某个子步骤：每步播一句简短引导语（「看意思」的解读直接展开在字的下方）
+  // 进入 TEACH 的某个子步骤：每步播一句简短引导语（「看意思」自动播放字义解读音频）
   _enterTeachStep: function (step) {
     this.setData({ teachStep: step });
     this._saveResume();
@@ -262,7 +272,8 @@ Page({
         '认识这个字吗？认识就点「认识」，不认识就点「不认识」'
       ]);
     } else if (step === 1) {
-      tts.speak('看看这个字的意思');
+      // 看意思：自动播放「字义解读」音频
+      this._playKey(this.data.explainKey, this.data.explainText);
     }
   },
 
@@ -272,9 +283,9 @@ Page({
     this.onTapNext();
   },
 
-  // teachStep 0：点「不认识」——上报 known=false（服务端 streak 清零），进入「看意思」重学，
-  // 走完「写一写」后 onTapNext 会再上报 known=true（streak 0→1，明天再来）
+  // teachStep 0：点「不认识」——上报 known=false（服务端 streak 清零），进入「看意思」并自动读音字义解读
   onTapUnknown: function () {
+    tts.stop();
     this._report(false);
     this._enterTeachStep(1);
   },
@@ -340,8 +351,184 @@ Page({
     if (nextChar < this.newChars.length) {
       this._startChar(nextChar);
     } else {
-      this._finish();
+      // 一组学完：进入巩固小练习
+      this._startPractice();
     }
+  },
+
+  // ===== PRACTICE 巩固练习阶段 =====
+  // 题目生成：2 题「听音选字」+ 2 题「例句挖空」
+  _buildPracticeQuestions: function (groupChars) {
+    if (!groupChars || !groupChars.length) return [];
+    var allChars = groupChars.map(function (c) { return c.char; });
+    var fallbackChars = ['大', '一', '白', '菜', '人', '日', '月', '水', '火', '土', '天', '地'];
+    var pool = allChars.slice();
+    fallbackChars.forEach(function (ch) {
+      if (pool.indexOf(ch) === -1) pool.push(ch);
+    });
+
+    var questions = [];
+
+    // 1. 练习1：听音选字（选取 2 个字）
+    var listenPool = groupChars.slice().sort(function () { return 0.5 - Math.random(); });
+    var listenTargets = listenPool.slice(0, Math.min(2, listenPool.length));
+
+    listenTargets.forEach(function (item) {
+      var target = item.char;
+      var distractors = pool.filter(function (c) { return c !== target; })
+                            .sort(function () { return 0.5 - Math.random(); })
+                            .slice(0, 3);
+      var options = [target].concat(distractors).sort(function () { return 0.5 - Math.random(); });
+      questions.push({
+        type: 'LISTEN_SELECT',
+        title: '听音选字',
+        hint: '请听读音，选出正确的字',
+        targetChar: target,
+        pinyin: item.pinyin || '',
+        options: options
+      });
+    });
+
+    // 2. 练习2：例句挖空选字（选取 2 个带例句的字）
+    var clozePool = groupChars.filter(function (c) {
+      return c.sentence && c.sentence.indexOf(c.char) > -1;
+    });
+    if (!clozePool.length) clozePool = groupChars.slice();
+    clozePool.sort(function () { return 0.5 - Math.random(); });
+    var clozeTargets = clozePool.slice(0, Math.min(2, clozePool.length));
+
+    clozeTargets.forEach(function (item) {
+      var target = item.char;
+      var sent = item.sentence || ('这个字是' + target);
+      var idx = sent.indexOf(target);
+      var before = idx > -1 ? sent.slice(0, idx) : '';
+      var after = idx > -1 ? sent.slice(idx + target.length) : '';
+      var distractors = pool.filter(function (c) { return c !== target; })
+                            .sort(function () { return 0.5 - Math.random(); })
+                            .slice(0, 3);
+      var options = [target].concat(distractors).sort(function () { return 0.5 - Math.random(); });
+      questions.push({
+        type: 'SENTENCE_CLOZE',
+        title: '选字填空',
+        hint: '根据例句，选出空缺的字',
+        targetChar: target,
+        sentence: sent,
+        beforeBlank: before,
+        afterBlank: after,
+        options: options
+      });
+    });
+
+    return questions;
+  },
+
+  _startPractice: function () {
+    this._clearTimers();
+    tts.stop();
+
+    var questions = this._buildPracticeQuestions(this.newChars);
+    if (!questions.length) {
+      this._finish();
+      return;
+    }
+
+    this.setData({
+      stage: STAGE.PRACTICE,
+      practiceIndex: 0,
+      practiceTotal: questions.length,
+      practiceQuestions: questions
+    });
+
+    var self = this;
+    tts.speak('学完啦！我们来做几个小练习巩固一下吧');
+    this._delay(function () {
+      self._startPracticeQuestion(0);
+    }, 1800);
+  },
+
+  _startPracticeQuestion: function (index) {
+    this._clearTimers();
+    var q = this.data.practiceQuestions[index];
+    if (!q) {
+      this._onPracticeAllDone();
+      return;
+    }
+
+    this.setData({
+      practiceIndex: index,
+      currentQuestion: q,
+      selectedChar: '',
+      isCorrect: false,
+      isWrong: false,
+      isOptionLocked: false
+    });
+
+    // 题目自动播音
+    if (q.type === 'LISTEN_SELECT') {
+      tts.speak(q.targetChar, { audioKey: q.targetChar });
+    } else if (q.type === 'SENTENCE_CLOZE') {
+      tts.speak(q.sentence || '请选出空缺的字');
+    }
+  },
+
+  // 重播题目音频
+  onReplayPracticeAudio: function () {
+    var q = this.data.currentQuestion;
+    if (!q) return;
+    if (q.type === 'LISTEN_SELECT') {
+      tts.speak(q.targetChar, { audioKey: q.targetChar });
+    } else if (q.type === 'SENTENCE_CLOZE') {
+      tts.speak(q.sentence || q.targetChar);
+    }
+  },
+
+  // 选项点击作答
+  onSelectPracticeOption: function (e) {
+    if (this.data.isOptionLocked) return;
+    var ch = e.currentTarget.dataset.char;
+    var q = this.data.currentQuestion;
+    if (!q || !ch) return;
+
+    var self = this;
+    if (ch === q.targetChar) {
+      // 答对
+      this.setData({
+        selectedChar: ch,
+        isCorrect: true,
+        isWrong: false,
+        isOptionLocked: true
+      });
+      tts.speak('答对啦！真棒！');
+
+      this._delay(function () {
+        var nextIdx = self.data.practiceIndex + 1;
+        if (nextIdx < self.data.practiceTotal) {
+          self._startPracticeQuestion(nextIdx);
+        } else {
+          self._onPracticeAllDone();
+        }
+      }, 1000);
+    } else {
+      // 答错
+      this.setData({
+        selectedChar: ch,
+        isWrong: true
+      });
+      tts.speak('不对哦，再试一次');
+      this._delay(function () {
+        if (!self.data.isCorrect) {
+          self.setData({ isWrong: false, selectedChar: '' });
+        }
+      }, 800);
+    }
+  },
+
+  _onPracticeAllDone: function () {
+    var self = this;
+    tts.speak('太棒了！练习全部完成！');
+    this._delay(function () {
+      self._finish();
+    }, 1200);
   },
 
   // ===== DONE 结束表扬阶段 =====

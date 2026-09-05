@@ -1,7 +1,7 @@
 /* pages/learn/learn.wxss —— 学习页样式（适老化极简卡片与米字格教学） */
 
 .learn-page {
-  min-height: 100vh;
+  height: 100vh;
   box-sizing: border-box;
   background-color: #FAF7F2;
   padding: 24rpx 36rpx 48rpx 36rpx;
@@ -73,19 +73,112 @@
   background-color: #3E6B4F;
 }
 
-/* ================= 2. 米字格汉字大展示框 ================= */
+/* ================= 2. 一体化字头主卡片 ================= */
+.char-hero-card {
+  background-color: #FFFFFF;
+  border: 2rpx solid #E6E0D6;
+  border-radius: 24rpx;
+  padding: 16rpx 24rpx 28rpx 24rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
+.hero-top-row {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.hero-placeholder {
+  width: 40rpx;
+}
+
+.review-badge-compact {
+  background-color: #FFF3D6;
+  border: 2rpx solid #D48806;
+  border-radius: 999rpx;
+  padding: 4rpx 18rpx;
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #8A5A00;
+  line-height: 1.3;
+}
+
+.mizige-write-btn {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  background-color: #000000;
+  border-radius: 30rpx;
+  padding: 8rpx 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.12);
+}
+
+.mizige-write-text {
+  color: #FFFFFF;
+  font-size: 26rpx;
+  font-weight: 700;
+  letter-spacing: 1rpx;
+  line-height: 1;
+}
+
+/* 拼音与播放小胶囊 */
+.pinyin-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16rpx;
+  gap: 16rpx;
+}
+
+.pinyin-text {
+  font-size: 46rpx;
+  font-weight: 700;
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: 2rpx;
+}
+
+.speaker-pill {
+  width: 58rpx;
+  height: 58rpx;
+  border-radius: 50%;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.speaker-pill.playing {
+  background-color: #3E6B4F;
+  box-shadow: 0 0 0 6rpx rgba(62, 107, 79, 0.25);
+}
+
+.speaker-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+/* 米字格大字框（360rpx 精致比例） */
 .mizige-box {
-  width: 440rpx;
-  height: 440rpx;
-  margin: 20rpx auto 32rpx auto;
-  border: 4.5rpx solid #000000;
+  width: 360rpx;
+  height: 360rpx;
+  margin: 0 auto;
+  border: 4rpx solid #000000;
   background-color: #FFFFFF;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.04);
 }
 
 .mizige-hover {
@@ -143,7 +236,7 @@
 .mizige-char {
   position: relative;
   z-index: 2;
-  font-size: 260rpx;
+  font-size: 230rpx;
   line-height: 1;
   color: #000000;
   font-weight: bold;
@@ -151,138 +244,82 @@
   text-align: center;
 }
 
-/* ================= 3. 拼音与播放按钮 ================= */
-.pinyin-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 36rpx;
-  gap: 20rpx;
-}
-
-.pinyin-text {
-  font-size: 46rpx;
-  font-weight: 700;
-  color: #000000;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  letter-spacing: 2rpx;
-}
-
-.speaker-btn {
-  width: 88rpx;
-  height: 88rpx;
-  border-radius: 50%;
-  background-color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ================= 4. 释义与例句聚合卡片 ================= */
+.meaning-card {
+  background-color: #FFFFFF;
+  border: 2rpx solid #E6E0D6;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.03);
   box-sizing: border-box;
 }
 
-.speaker-btn.playing,
-.play-btn.playing {
-  background-color: #3E6B4F;
-  box-shadow: 0 0 0 8rpx rgba(62, 107, 79, 0.25);
-}
-
-/* 复习字徽章 */
-.review-badge {
-  margin: 0 auto 24rpx;
-  width: fit-content;
-  background-color: #FFF3D6;
-  border: 2rpx solid #D48806;
-  border-radius: 999rpx;
-  padding: 8rpx 28rpx;
-  font-size: 30rpx;
-  font-weight: 700;
-  color: #8A5A00;
-  text-align: center;
-}
-
-.speaker-icon {
-  width: 44rpx;
-  height: 44rpx;
-}
-
-/* ================= 4. 内容板块（字义解读 / 书写练习） ================= */
-.content-section {
-  margin-bottom: 36rpx;
-}
-
-.section-header {
+.meaning-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 14rpx;
 }
 
+.section-title-wrap {
+  display: flex;
+  align-items: center;
+}
+
 .red-bar {
   width: 8rpx;
-  height: 38rpx;
+  height: 34rpx;
   background-color: #B82A2A;
   border-radius: 4rpx;
-  margin-right: 14rpx;
+  margin-right: 12rpx;
 }
 
 .section-title {
-  font-size: 40rpx;
+  font-size: 36rpx;
   font-weight: 800;
   color: #000000;
   letter-spacing: 1rpx;
 }
 
-/* 音频卡片：左文右喇叭，每条音频独立点播 */
-.audio-card {
-  display: flex;
-  align-items: center;
-  gap: 20rpx;
-  background-color: #FFFFFF;
-  border: 2rpx solid #E6E0D6;
-  border-radius: 16rpx;
-  padding: 24rpx;
-  box-sizing: border-box;
-}
-
-.word-card {
-  margin-bottom: 16rpx;
-}
-
-.audio-card-text {
-  flex: 1;
-  font-size: 34rpx;
-  line-height: 1.7;
-  color: #222222;
-  word-break: break-all;
-  letter-spacing: 0.5rpx;
-}
-
-.word-text {
-  font-size: 44rpx;
-  font-weight: 700;
-  color: #111111;
-}
-
-.play-btn {
-  flex-shrink: 0;
-  width: 80rpx;
-  height: 80rpx;
+.play-btn-mini {
+  width: 64rpx;
+  height: 64rpx;
   border-radius: 50%;
   background-color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   box-sizing: border-box;
 }
 
-.play-icon {
-  width: 40rpx;
-  height: 40rpx;
+.play-btn-mini.playing {
+  background-color: #3E6B4F;
+  box-shadow: 0 0 0 6rpx rgba(62, 107, 79, 0.25);
 }
 
-.mnemonic-body {
-  margin-top: 12rpx;
-  font-size: 32rpx;
-  color: #666666;
+.play-icon-mini {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.meaning-explain-text {
+  font-size: 34rpx;
+  line-height: 1.7;
+  color: #222222;
+  word-break: break-all;
+}
+
+.mnemonic-box {
+  margin-top: 16rpx;
+  padding: 12rpx 18rpx;
+  background-color: #FAF5EB;
+  border-left: 6rpx solid #D48806;
+  border-radius: 8rpx;
+  font-size: 30rpx;
   line-height: 1.6;
+  color: #555555;
 }
 
 .mnemonic-tag {
@@ -290,44 +327,153 @@
   font-weight: 700;
 }
 
-/* ================= 5. 图解拼音插画板块 ================= */
-.ill-section {
-  margin-bottom: 36rpx;
+.mnemonic-content {
+  color: #444444;
 }
 
-.ill-card {
-  background-color: #F7F5F0;
-  border-radius: 16rpx;
-  border: 1.5rpx solid #E6E0D6;
-  padding: 24rpx;
+.sentence-wrap {
+  margin-top: 16rpx;
+}
+
+.sentence-divider {
+  height: 1.5rpx;
+  background-color: #EFEBE5;
+  margin-bottom: 14rpx;
+}
+
+.sentence-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.sentence-label {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #666666;
+}
+
+.sentence-text {
+  font-size: 34rpx;
+  line-height: 1.7;
+  color: #222222;
+}
+
+/* ================= 5. 常用组词（横向 3 联精致词卡） ================= */
+.words-section {
+  margin-bottom: 20rpx;
+}
+
+.section-header-compact {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+
+.red-bar-compact {
+  width: 8rpx;
+  height: 30rpx;
+  background-color: #B82A2A;
+  border-radius: 4rpx;
+  margin-right: 12rpx;
+}
+
+.section-title-compact {
+  font-size: 34rpx;
+  font-weight: 800;
+  color: #000000;
+}
+
+.words-grid {
+  display: flex;
+  gap: 16rpx;
+}
+
+.word-chip {
+  flex: 1;
+  min-height: 110rpx;
+  background-color: #FFFFFF;
+  border: 2rpx solid #E0DAD0;
+  border-radius: 18rpx;
+  padding: 12rpx 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
+.word-chip.playing {
+  background-color: #3E6B4F;
+  border-color: #3E6B4F;
+  box-shadow: 0 0 0 4rpx rgba(62, 107, 79, 0.25);
+}
+
+.word-chip-text {
+  font-size: 38rpx;
+  font-weight: 800;
+  color: #111111;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.word-chip.playing .word-chip-text {
+  color: #FFFFFF;
+}
+
+.word-chip-speaker {
+  width: 28rpx;
+  height: 28rpx;
+  opacity: 0.7;
+}
+
+.word-chip.playing .word-chip-speaker {
+  opacity: 1;
+}
+
+/* ================= 6. 图解拼音插画板块（紧凑画卷） ================= */
+.ill-section-compact {
+  margin-bottom: 24rpx;
+}
+
+.ill-card-compact {
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  border: 2rpx solid #E6E0D6;
+  padding: 16rpx;
   position: relative;
   box-sizing: border-box;
 }
 
-.ill-badge {
+.ill-badge-compact {
   position: absolute;
   top: 24rpx;
   left: 24rpx;
   background-color: #FFFFFF;
   border: 2rpx solid #333333;
-  padding: 4rpx 14rpx;
-  font-size: 26rpx;
+  padding: 2rpx 14rpx;
+  font-size: 24rpx;
   font-weight: 700;
   color: #111111;
+  border-radius: 6rpx;
   z-index: 2;
 }
 
-.ill-image {
+.ill-image-compact {
   width: 100%;
-  height: 480rpx;
+  height: 280rpx;
   display: block;
-  border-radius: 8rpx;
+  border-radius: 12rpx;
 }
 
-/* ================= 6. 底部固定按钮（固定在屏幕最底部，不随内容滚动） ================= */
+/* ================= 7. 底部固定按钮（固定在屏幕最底部，不随内容滚动） ================= */
 .teach-wrapper {
   /* 给吸底按钮栏留出空间，防止长内容被遮住 */
-  padding-bottom: 300rpx;
+  padding-bottom: 260rpx;
+  box-sizing: border-box;
 }
 
 .bottom-action-bar {
@@ -338,6 +484,7 @@
   padding: 16rpx 36rpx calc(12rpx + env(safe-area-inset-bottom)) 36rpx;
   box-sizing: border-box;
   z-index: 10;
+  background-color: #FAF7F2;
 }
 
 .next-step-btn {
@@ -388,7 +535,264 @@
   letter-spacing: 2rpx;
 }
 
-/* ================= 8. DONE 阶段卡片 ================= */
+/* ================= 8. PRACTICE 阶段样式 ================= */
+.practice-wrapper {
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0rpx 0 calc(24rpx + env(safe-area-inset-bottom)) 0;
+}
+
+.practice-progress-bar {
+  margin-bottom: 20rpx;
+}
+
+.practice-progress-title {
+  font-size: 32rpx;
+  font-weight: 800;
+  color: #111111;
+  text-align: center;
+  margin-bottom: 12rpx;
+}
+
+.practice-progress-segs {
+  display: flex;
+  gap: 14rpx;
+}
+
+.p-seg {
+  flex: 1;
+  height: 10rpx;
+  border-radius: 5rpx;
+  background-color: #E6E0D6;
+}
+
+.p-seg.p-seg-current {
+  background-color: #A8C5B0;
+}
+
+.p-seg.p-seg-done {
+  background-color: #3E6B4F;
+}
+
+.practice-card {
+  flex: 1;
+  background-color: #FFFFFF;
+  border: 2rpx solid #E6E0D6;
+  border-radius: 28rpx;
+  padding: 32rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+/* 练习1：听音选字 */
+.listen-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx 0 16rpx;
+}
+
+.listen-speaker-btn {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.listen-speaker-btn.correct {
+  background-color: #3E6B4F;
+  box-shadow: 0 0 0 12rpx rgba(62, 107, 79, 0.25);
+}
+
+.listen-speaker-icon {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.listen-hint {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #555555;
+  text-align: center;
+}
+
+/* 练习2：例句挖空选字 */
+.cloze-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 0;
+}
+
+.cloze-sentence-box {
+  width: 100%;
+  background-color: #FAF7F2;
+  border: 2rpx solid #E0DAD0;
+  border-radius: 20rpx;
+  padding: 28rpx 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  box-sizing: border-box;
+  margin-bottom: 16rpx;
+  position: relative;
+}
+
+.cloze-text-part {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: #111111;
+  line-height: 1.6;
+  letter-spacing: 4rpx;
+}
+
+.cloze-slot {
+  min-width: 88rpx;
+  height: 88rpx;
+  border: 3.5rpx dashed #D48806;
+  border-radius: 14rpx;
+  background-color: #FFF8E7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0 4rpx;
+}
+
+.cloze-slot.slot-correct {
+  border: 3.5rpx solid #3E6B4F;
+  background-color: #E8F4EC;
+}
+
+.cloze-slot.slot-wrong {
+  border: 3.5rpx solid #CF1322;
+  background-color: #FFF1F0;
+}
+
+.cloze-slot-char {
+  font-size: 52rpx;
+  font-weight: 800;
+  color: #D48806;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", serif;
+}
+
+.cloze-slot.slot-correct .cloze-slot-char {
+  color: #3E6B4F;
+}
+
+.cloze-speaker-pill {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background-color: #000000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12rpx;
+}
+
+.cloze-speaker-icon {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.cloze-hint {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #666666;
+}
+
+/* 2x2 选项网格 */
+.option-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+  margin-top: 16rpx;
+}
+
+.practice-option-btn {
+  height: 140rpx;
+  background-color: #FAF7F2;
+  border: 3rpx solid #333333;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  transition: all 0.15s ease;
+}
+
+.option-char {
+  font-size: 72rpx;
+  font-weight: bold;
+  color: #000000;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", serif;
+}
+
+.practice-option-btn.opt-correct {
+  background-color: #3E6B4F;
+  border-color: #3E6B4F;
+  box-shadow: 0 0 0 8rpx rgba(62, 107, 79, 0.25);
+}
+
+.practice-option-btn.opt-correct .option-char {
+  color: #FFFFFF;
+}
+
+.practice-option-btn.opt-wrong {
+  background-color: #FFF1F0;
+  border-color: #CF1322;
+  box-shadow: 0 0 0 6rpx rgba(207, 19, 34, 0.2);
+}
+
+.practice-option-btn.opt-wrong .option-char {
+  color: #CF1322;
+}
+
+/* 底部状态提示 */
+.practice-feedback-bar {
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedback-text {
+  font-size: 34rpx;
+  font-weight: 700;
+  letter-spacing: 1rpx;
+}
+
+.feedback-normal {
+  color: #888888;
+}
+
+.feedback-correct {
+  color: #3E6B4F;
+}
+
+.feedback-wrong {
+  color: #CF1322;
+}
+
+/* ================= 9. DONE 阶段卡片 ================= */
 .done-wrapper {
   padding: 60rpx 32rpx;
   text-align: center;
@@ -472,27 +876,40 @@
 
 /* ================= 特大字号适配（font-xl） ================= */
 .font-xl .mizige-char {
-  font-size: 280rpx;
+  font-size: 205rpx;
 }
 
 .font-xl .pinyin-text {
-  font-size: 52rpx;
-}
-
-.font-xl .section-title {
   font-size: 46rpx;
 }
 
-.font-xl .audio-card-text {
+.font-xl .section-title {
   font-size: 40rpx;
-  line-height: 1.85;
 }
 
-.font-xl .word-text {
-  font-size: 50rpx;
+.font-xl .meaning-explain-text,
+.font-xl .sentence-text {
+  font-size: 38rpx;
+  line-height: 1.8;
+}
+
+.font-xl .word-chip-v-text {
+  font-size: 38rpx;
 }
 
 .font-xl .next-text,
 .font-xl .know-text {
   font-size: 46rpx;
+}
+
+.font-xl .mizige-write-text {
+  font-size: 28rpx;
+}
+
+.font-xl .option-char {
+  font-size: 80rpx;
+}
+
+.font-xl .cloze-text-part {
+  font-size: 44rpx;
 }

@@ -1,8 +1,8 @@
-<!-- pages/write/write.wxml —— 写字页：大屏描红，按钮吸底 -->
+<!-- pages/write/write.wxml —— 写字页：大屏描红，严格单屏展示 -->
 <view class="write-page">
-  <!-- 顶部：当前字（返回用小程序自带导航栏） -->
+  <!-- 顶部：当前字（点击可重听读音） -->
   <view class="top-bar">
-    <view class="char-info">
+    <view class="char-info" hover-class="btn-hover" bindtap="onPlayChar">
       <text class="char-text">{{char}}</text>
       <text class="pinyin-text">{{pinyin}}</text>
     </view>
@@ -10,22 +10,26 @@
 
   <!-- 大字描红区 -->
   <view class="tracer-wrap">
-    <tracer id="tracer" char="{{char}}" size="{{660}}" />
+    <tracer id="tracer" char="{{char}}" size="{{580}}" />
   </view>
+
+  <!-- tracer-wrap 下方的图标工具栏：重看笔顺 / 擦掉重写（纯图标） -->
+  <view class="tracer-tools">
+    <view wx:if="{{hasStroke}}" class="tool-icon-btn" hover-class="btn-hover" bindtap="onReplay" aria-label="重看笔顺">
+      <image class="tool-icon" src="/assets/img/icon-replay.svg" mode="aspectFit" />
+    </view>
+    <view class="tool-icon-btn" hover-class="btn-hover" bindtap="onClear" aria-label="擦掉重写">
+      <image class="tool-icon" src="/assets/img/icon-eraser.svg" mode="aspectFit" />
+    </view>
+  </view>
+
+  <!-- 引导提示语 -->
   <view class="tip">{{tracing ? (hasStroke ? '跟着金色的点，把字描一遍' : '照着底字，用手指写一写') : '先看一遍笔顺…'}}</view>
 
-  <!-- 底部吸底按钮：重看笔顺 / 擦掉重写 / 写好了 -->
+  <!-- 底部吸底按钮：写好了 -->
   <view class="bottom-bar">
-    <view class="action-row">
-      <view wx:if="{{hasStroke}}" class="action-btn secondary" hover-class="btn-hover" bindtap="onReplay">
-        <text>重看笔顺</text>
-      </view>
-      <view class="action-btn secondary" hover-class="btn-hover" bindtap="onClear">
-        <text>擦掉重写</text>
-      </view>
-    </view>
     <view class="action-btn primary finish" hover-class="btn-hover" bindtap="onFinish">
-      <text>写好了 ✓</text>
+      <text class="finish-text">写好了 ✓</text>
     </view>
   </view>
 </view>

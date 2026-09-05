@@ -1,0 +1,28 @@
+<!-- pages/reading/reading.wxml —— 阅读课：场景/古诗/故事 tab -->
+<view class="reading-page {{fontClass}}">
+  <!-- 顶部 tab：大字号三段切换 -->
+  <view class="tab-bar">
+    <view wx:for="{{tabs}}" wx:key="key"
+          class="tab-item {{tab === item.key ? 'tab-active' : ''}}"
+          hover-class="btn-hover"
+          data-tab="{{item.key}}" bindtap="onTab">
+      {{item.name}}
+    </view>
+  </view>
+
+  <!-- 列表 -->
+  <view wx:for="{{items}}" wx:key="id"
+        class="read-item {{item.unlocked ? 'read-open' : 'read-locked'}}"
+        hover-class="btn-hover"
+        data-id="{{item.id}}" data-unlocked="{{item.unlocked}}" data-need="{{item.need}}"
+        bindtap="onTapItem">
+    <view class="read-main">
+      <view class="read-title">{{item.title}}</view>
+      <view wx:if="{{item.sub}}" class="read-sub">{{item.sub}}</view>
+    </view>
+    <view class="read-status {{item.unlocked ? 'read-status-open' : ''}}">
+      {{item.unlocked ? '点我阅读' : '再学 ' + item.need + ' 字'}}
+    </view>
+  </view>
+  <view wx:if="{{!items.length}}" class="empty-hint">还没有内容，多学一些字就有啦</view>
+</view>

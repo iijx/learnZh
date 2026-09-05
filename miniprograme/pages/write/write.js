@@ -34,17 +34,24 @@ Page({
     tts.stop();
   },
 
-  // 开场：语音提示 + 自动播笔顺动画（无笔顺数据则直接进入描红）
+  // 开场：先自动读一遍字音，再语音提示 + 自动播笔顺动画（无笔顺数据则直接进入描红）
   _startDemo: function () {
     var self = this;
+    var ch = this.data.char;
     if (!this.data.hasStroke) {
       this.setData({ tracing: true });
-      tts.speak('照着底字，用手指写一写');
+      tts.speakSequence([
+        ch,
+        '照着底字，用手指写一写'
+      ]);
       this._startTraceWhenReady();
       return;
     }
-    tts.speak('先看一遍笔顺');
-    this._delay(600).then(function () {
+    tts.speakSequence([
+      ch,
+      '先看一遍笔顺'
+    ]);
+    this._delay(1000).then(function () {
       var tracer = self.selectComponent('#tracer');
       if (!tracer) return;
       tracer.playStrokes(function () {
@@ -53,6 +60,12 @@ Page({
         tracer.startTrace();
       });
     });
+  },
+
+  // 点击顶部当前字：重播字音
+  onPlayChar: function () {
+    var ch = this.data.char;
+    if (ch) tts.speak(ch, { audioKey: ch });
   },
 
   _startTraceWhenReady: function () {

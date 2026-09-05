@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// tools/check-pages.js —— 校验 app.json 注册的 6 个页面
+// tools/check-pages.js —— 校验 app.json 注册的全部页面
 // 检查项：pages/<name>/ 下四件套（js/json/wxml/wxss）齐全、json 合法且含 navigationBarTitleText。
 // 页面目录不存在则跳过（多代理并行开发时，他人负责的页面可能尚未创建）。
 // 用法：node tools/check-pages.js；有「存在但不合规」的页面时退出码为 1。
@@ -8,7 +8,9 @@ var fs = require('fs');
 var path = require('path');
 
 var ROOT = path.join(__dirname, '..');
-var PAGES = ['home', 'learn', 'write', 'milestone', 'progress', 'guide'];
+// 页面列表以 app.json 的注册为准（'pages/home/home' → 'home'）
+var PAGES = JSON.parse(fs.readFileSync(path.join(ROOT, 'app.json'), 'utf8'))
+  .pages.map(function (p) { return p.split('/')[1]; });
 var EXTS = ['js', 'json', 'wxml', 'wxss'];
 
 var ok = 0, failed = 0, skipped = 0;

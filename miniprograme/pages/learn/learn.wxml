@@ -21,83 +21,89 @@
     <view class="progress-bars">
       <view wx:for="{{[0, 1, 2, 3, 4]}}" wx:key="*this" class="progress-seg {{item < charIndex ? 'seg-done' : (item === charIndex ? 'seg-current' : '')}}"></view>
     </view>
-    <!-- 「认一认 / 看意思」共用：米字格大字 + 拼音 + 喇叭（点按播单字读音） -->
-    <block>
-      <view class="mizige-box" hover-class="mizige-hover" bindtap="onPlayChar">
-        <view class="mizige-grid">
-          <view class="grid-line line-h"></view>
-          <view class="grid-line line-v"></view>
-          <view class="grid-line line-d1"></view>
-          <view class="grid-line line-d2"></view>
-        </view>
-        <text class="mizige-char">{{teachChar}}</text>
-      </view>
-      <!-- 拼音与字音播放按钮 -->
-      <view class="pinyin-row">
-        <text class="pinyin-text">{{teachCharPinyin}}</text>
-        <view wx:if="{{hasCharAudio}}" class="speaker-btn {{playingKey === charKey ? 'playing' : ''}}" hover-class="btn-hover" bindtap="onPlayChar">
-          <image class="speaker-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
-        </view>
-      </view>
-      <!-- 复习字徽章：复习字是之前学过、今天该巩固的字 -->
-      <view wx:if="{{isReview}}" class="review-badge">复习 · 已连续认识 {{reviewStreak}} 次</view>
-    </block>
-    <!-- teachStep 1「看意思」：字义解读 / 组词 / 例句分区展示，每条音频配独立播放按钮 -->
-    <block wx:if="{{teachStep === 1}}">
-      <!-- 字义解读 -->
-      <view class="content-section">
-        <view class="section-header">
-          <view class="red-bar"></view>
-          <text class="section-title">字义解读</text>
-        </view>
-        <view class="audio-card">
-          <text class="audio-card-text">{{explain}}</text>
-          <view wx:if="{{hasExplainAudio}}" class="play-btn {{playingKey === explainKey ? 'playing' : ''}}" hover-class="btn-hover"
-                data-key="{{explainKey}}" data-text="{{explainText}}" bindtap="onPlayAudio">
-            <image class="play-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+    <scroll-view scroll-y="true" class="scroll-viewer">
+      <!-- 1. 一体化字头主卡片：拼音、读音、米字格、写一写快捷入口、复习徽章 -->
+      <view class="char-hero-card">
+        <!-- 顶部功能行：复习徽章 / 写一写入口 -->
+        <view class="hero-top-row">
+          <view wx:if="{{isReview}}" class="review-badge-compact">复习 · 连对 {{reviewStreak}} 次</view>
+          <view wx:else class="hero-placeholder"></view>
+          <view wx:if="{{hasStroke}}" class="mizige-write-btn" hover-class="btn-hover" catchtap="onTapToWrite">
+            <text class="mizige-write-text">写一写</text>
           </view>
         </view>
-        <view wx:if="{{mnemonic}}" class="mnemonic-body">
-          <text class="mnemonic-tag">记字诀：</text>
-          <text>{{mnemonic}}</text>
-        </view>
-      </view>
-      <!-- 组词（3 条，每条独立播放） -->
-      <view wx:if="{{wordList.length}}" class="content-section">
-        <view class="section-header">
-          <view class="red-bar"></view>
-          <text class="section-title">组词</text>
-        </view>
-        <view wx:for="{{wordList}}" wx:key="key" class="audio-card word-card">
-          <text class="audio-card-text word-text">{{item.text}}</text>
-          <view wx:if="{{item.has}}" class="play-btn {{playingKey === item.key ? 'playing' : ''}}" hover-class="btn-hover"
-                data-key="{{item.key}}" data-text="{{item.text}}" bindtap="onPlayAudio">
-            <image class="play-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+        <!-- 拼音与单字发音行 -->
+        <view class="pinyin-row" hover-class="btn-hover" bindtap="onPlayChar">
+          <text class="pinyin-text">{{teachCharPinyin}}</text>
+          <view wx:if="{{hasCharAudio}}" class="speaker-pill {{playingKey === charKey ? 'playing' : ''}}">
+            <image class="speaker-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
           </view>
         </view>
-      </view>
-      <!-- 例句 -->
-      <view wx:if="{{sentence}}" class="content-section">
-        <view class="section-header">
-          <view class="red-bar"></view>
-          <text class="section-title">例句</text>
+        <!-- 精致米字格大字框（360rpx） -->
+        <view class="mizige-box" hover-class="mizige-hover" bindtap="onPlayChar">
+          <view class="mizige-grid">
+            <view class="grid-line line-h"></view>
+            <view class="grid-line line-v"></view>
+            <view class="grid-line line-d1"></view>
+            <view class="grid-line line-d2"></view>
+          </view>
+          <text class="mizige-char">{{teachChar}}</text>
         </view>
-        <view class="audio-card">
-          <text class="audio-card-text">{{sentence}}</text>
-          <view wx:if="{{hasSentenceAudio}}" class="play-btn {{playingKey === sentenceKey ? 'playing' : ''}}" hover-class="btn-hover"
-                data-key="{{sentenceKey}}" data-text="{{sentence}}" bindtap="onPlayAudio">
-            <image class="play-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+      </view>
+      <!-- 2. teachStep 1「看意思」：字义解读 / 组词 / 例句 / 图解插画（紧凑聚合） -->
+      <block wx:if="{{teachStep === 1}}">
+        <!-- 释义与例句聚合卡片 -->
+        <view class="meaning-card">
+          <!-- 字义解读 -->
+          <view class="meaning-header">
+            <view class="section-title-wrap">
+              <view class="red-bar"></view>
+              <text class="section-title">字义解读</text>
+            </view>
+            <view wx:if="{{hasExplainAudio}}" class="play-btn-mini {{playingKey === explainKey ? 'playing' : ''}}" hover-class="btn-hover" data-key="{{explainKey}}" data-text="{{explainText}}" bindtap="onPlayAudio">
+              <image class="play-icon-mini" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+            </view>
+          </view>
+          <view class="meaning-explain-text">{{explain}}</view>
+          <!-- 记字诀 -->
+          <!-- <view wx:if="{{mnemonic}}" class="mnemonic-box">
+            <text class="mnemonic-tag">记字诀：</text>
+            <text class="mnemonic-content">{{mnemonic}}</text>
+          </view> -->
+          <!-- 分隔线与例句 -->
+          <view wx:if="{{sentence}}" class="sentence-wrap">
+            <view class="sentence-divider"></view>
+            <view class="sentence-header">
+              <text class="sentence-label">例句</text>
+              <view wx:if="{{hasSentenceAudio}}" class="play-btn-mini {{playingKey === sentenceKey ? 'playing' : ''}}" hover-class="btn-hover" data-key="{{sentenceKey}}" data-text="{{sentence}}" bindtap="onPlayAudio">
+                <image class="play-icon-mini" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+              </view>
+            </view>
+            <view class="sentence-text">{{sentence}}</view>
           </view>
         </view>
-      </view>
-      <!-- 图解拼音插画板块 -->
-      <view class="ill-section">
-        <view class="ill-card">
-          <view class="ill-badge">图解拼音</view>
-          <image class="ill-image" src="{{imgSrc}}" mode="aspectFit" binderror="onImgError" />
+        <!-- 常用组词：横向 3 联精致词卡 -->
+        <view wx:if="{{wordList.length}}" class="words-section">
+          <view class="section-header-compact">
+            <view class="red-bar-compact"></view>
+            <text class="section-title-compact">常用组词</text>
+          </view>
+          <view class="words-grid">
+            <view wx:for="{{wordList}}" wx:key="key" class="word-chip {{playingKey === item.key ? 'playing' : ''}}" hover-class="btn-hover" data-key="{{item.key}}" data-text="{{item.text}}" bindtap="onPlayAudio">
+              <text class="word-chip-text">{{item.text}}</text>
+              <!-- <image wx:if="{{item.has}}" class="word-chip-speaker" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" /> -->
+            </view>
+          </view>
         </view>
-      </view>
-    </block>
+        <!-- 图解拼音插画板块（紧凑画卷比例） -->
+        <view class="ill-section-compact">
+          <view class="ill-card-compact">
+            <view class="ill-badge-compact">图解拼音</view>
+            <image class="ill-image-compact" src="{{imgSrc}}" mode="aspectFit" binderror="onImgError" />
+          </view>
+        </view>
+      </block>
+    </scroll-view>
     <!-- 底部固定吸底按钮：每个子步骤主按钮唯一（认一认除外：认识/不认识 左右双选） -->
     <view class="bottom-action-bar">
       <block wx:if="{{teachStep === 0}}">
@@ -112,17 +118,65 @@
         </view>
       </block>
       <block wx:elif="{{teachStep === 1}}">
-        <!-- 有笔顺数据：去写字页；无笔顺数据：看完讲解即算学完，直接去下一个字 -->
-        <view wx:if="{{hasStroke}}" class="next-step-btn" hover-class="btn-hover" bindtap="onTapToWrite">
-          <text class="next-text">写一写</text>
-        </view>
-        <view wx:else class="next-step-btn" hover-class="btn-hover" bindtap="onTapLearned">
-          <text class="next-text">{{isLastChar ? '学完这一组' : '下一个字'}}</text>
+        <view class="next-step-btn" hover-class="btn-hover" bindtap="onTapLearned">
+          <text class="next-text">知道了</text>
         </view>
       </block>
     </view>
   </view>
-  <!-- ================= 2. DONE 阶段（学完一组表扬） ================= -->
+  <!-- ================= 2. PRACTICE 阶段（学完一组后的互动练习） ================= -->
+  <view wx:if="{{stage === 'PRACTICE'}}" class="practice-wrapper">
+    <!-- 顶部练习进度条 -->
+    <view class="practice-progress-bar">
+      <view class="practice-progress-title">
+        巩固练习 {{practiceIndex + 1}} / {{practiceTotal}} · {{currentQuestion.title}}
+      </view>
+      <view class="practice-progress-segs">
+        <view wx:for="{{practiceQuestions}}" wx:key="index" class="p-seg {{index < practiceIndex ? 'p-seg-done' : (index === practiceIndex ? 'p-seg-current' : '')}}"></view>
+      </view>
+    </view>
+    <!-- 题目主卡片 -->
+    <view class="practice-card">
+      <!-- 练习 1：听音选字 -->
+      <block wx:if="{{currentQuestion.type === 'LISTEN_SELECT'}}">
+        <view class="listen-prompt">
+          <view class="listen-speaker-btn {{isCorrect ? 'correct' : ''}}" hover-class="btn-hover" bindtap="onReplayPracticeAudio">
+            <image class="listen-speaker-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+          </view>
+          <text class="listen-hint">点击大喇叭听读音，选出正确的字</text>
+        </view>
+      </block>
+      <!-- 练习 2：例句挖空选字 -->
+      <block wx:elif="{{currentQuestion.type === 'SENTENCE_CLOZE'}}">
+        <view class="cloze-prompt">
+          <view class="cloze-sentence-box" hover-class="btn-hover" bindtap="onReplayPracticeAudio">
+            <text class="cloze-text-part">{{currentQuestion.beforeBlank}}</text>
+            <view class="cloze-slot {{isCorrect ? 'slot-correct' : (isWrong ? 'slot-wrong' : '')}}">
+              <text class="cloze-slot-char">{{isCorrect ? currentQuestion.targetChar : '?'}}</text>
+            </view>
+            <text class="cloze-text-part">{{currentQuestion.afterBlank}}</text>
+            <view class="cloze-speaker-pill">
+              <image class="cloze-speaker-icon" src="/assets/img/icon-speaker-white.svg" mode="aspectFit" />
+            </view>
+          </view>
+          <text class="cloze-hint">选出填入括号里最合适的字</text>
+        </view>
+      </block>
+      <!-- 2x2 大字选项网格（四张候选项大卡片） -->
+      <view class="option-grid">
+        <view wx:for="{{currentQuestion.options}}" wx:key="*this" class="practice-option-btn {{selectedChar === item ? (isCorrect ? 'opt-correct' : (isWrong ? 'opt-wrong' : '')) : ''}}" hover-class="btn-hover" data-char="{{item}}" bindtap="onSelectPracticeOption">
+          <text class="option-char">{{item}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 底部状态提示栏 -->
+    <view class="practice-feedback-bar">
+      <view wx:if="{{isCorrect}}" class="feedback-text feedback-correct">✓ 答对啦！真棒！</view>
+      <view wx:elif="{{isWrong}}" class="feedback-text feedback-wrong">✕ 不对哦，再选一次试试</view>
+      <view wx:else class="feedback-text feedback-normal">请点击上方卡片选择</view>
+    </view>
+  </view>
+  <!-- ================= 3. DONE 阶段（学完一组表扬） ================= -->
   <view wx:if="{{stage === 'DONE'}}" class="done-wrapper">
     <view class="praise-badge">🏅</view>
     <view class="praise-title">你真棒！</view>

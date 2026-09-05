@@ -111,6 +111,27 @@
   line-height: 1;
 }
 
+/* 次按钮：阅读课（白底黑框，视觉次于主按钮） */
+.reading-btn {
+  width: 100%;
+  height: 100rpx;
+  margin-top: 20rpx;
+  background-color: #FFFFFF;
+  border: 4rpx solid #333333;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.reading-btn-text {
+  color: #111111;
+  font-size: 36rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
 /* ===== 底部卡片：识字成果报告 ===== */
 .report-card {
   margin-top: 28rpx;

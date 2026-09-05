@@ -43,7 +43,7 @@
     </block>
   </block>
 
-  <!-- 故事：逐句大字朗读，读完展示全文 -->
+  <!-- 故事 / 场景：逐句大字朗读，读完展示全文 -->
   <block wx:else>
     <view class="work-title">{{title}}</view>
 
@@ -51,7 +51,7 @@
           class="line {{index === currentLine ? 'line-active' : ''}}">{{item}}</view>
 
     <block wx:if="{{phase === 'done'}}">
-      <view class="story-praise">你自己读完了一个故事，真了不起！</view>
+      <view class="story-praise">{{mode === 'scene' ? '你自己读懂了这个场景，真了不起！' : '你自己读完了一个故事，真了不起！'}}</view>
       <big-button text="再读一遍" bind:tap="onReplay" />
       <view class="btn-gap"></view>
       <big-button text="返回" type="plain" bind:tap="goBack" />
